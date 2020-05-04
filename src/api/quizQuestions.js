@@ -1,6 +1,6 @@
 var quizQuestions = [
   {
-    question: "What franchise would you rather play a game from?",
+    question: "👋 What's your first name?",
     answers: [
       {
         type: "Microsoft",
@@ -17,7 +17,7 @@ var quizQuestions = [
     ],
   },
   {
-    question: "Which console would you prefer to play with friends?",
+    question: "Nice to meet you, _____! What's your current age?",
     answers: [
       {
         type: "Microsoft",
@@ -34,8 +34,7 @@ var quizQuestions = [
     ],
   },
   {
-    question:
-      "Which of these racing franchises would you prefer to play a game from?",
+    question: "Great! What are your total monthly expenses?",
     answers: [
       {
         type: "Microsoft",
@@ -52,7 +51,8 @@ var quizQuestions = [
     ],
   },
   {
-    question: "Which of these games do you think is best?",
+    question:
+      "And how much money do you have saved up that could be used to pay your monthly expenses beginning today?",
     answers: [
       {
         type: "Microsoft",
@@ -69,19 +69,21 @@ var quizQuestions = [
     ],
   },
   {
-    question: "What console would you prefer to own?",
+    question: "Which of the following best describes you?",
     answers: [
       {
         type: "Microsoft",
-        content: "X-Box One",
+        content:
+          "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
       },
       {
         type: "Nintendo",
-        content: "Wii U",
+        content:
+          "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
       },
       {
         type: "Sony",
-        content: "Playstation 4",
+        content: "Can I retire now?",
       },
     ],
   },
