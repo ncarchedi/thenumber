@@ -14,7 +14,7 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <div>{props.result}</div>
+      <h2>{props.result}</h2>
     </CSSTransitionGroup>
   );
 }

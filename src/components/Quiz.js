@@ -26,7 +26,7 @@ const Quiz = (props) => {
         <Question
           type={props.questionType}
           content={props.questionContent}
-          onAnswerSelected={props.onAnswerSelected}
+          onAnswerSubmitted={props.onAnswerSubmitted}
         />
       </div>
     </CSSTransitionGroup>
@@ -38,7 +38,7 @@ Quiz.propTypes = {
   questionTotal: PropTypes.number.isRequired,
   questionType: PropTypes.string.isRequired,
   questionContent: PropTypes.object.isRequired,
-  onAnswerSelected: PropTypes.func.isRequired,
+  onAnswerSubmitted: PropTypes.func.isRequired,
 };
 
 export default Quiz;

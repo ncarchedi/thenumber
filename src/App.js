@@ -11,22 +11,22 @@ class App extends React.Component {
     result: "",
   };
 
-  setNextQuestion = () => {
+  goToNextQuestion = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
 
+  // TODO: set result(s) based on quiz
   setResult = () => {
     this.setState({
       result: "You need to save $10,000,000 by next weekend. Good luck!",
     });
   };
 
-  handleAnswerSelected = (event) => {
-    // this.setUserAnswer(event.currentTarget.value);
+  handleAnswerSubmitted = () => {
     if (this.state.questionNumber < quizQuestions.length) {
-      setTimeout(() => this.setNextQuestion(), 300);
+      setTimeout(() => this.goToNextQuestion(), 100);
     } else {
-      setTimeout(() => this.setResult(), 300);
+      setTimeout(() => this.setResult(), 100);
     }
   };
 
@@ -40,7 +40,7 @@ class App extends React.Component {
         questionTotal={quizQuestions.length}
         questionType={quizQuestion.type}
         questionContent={quizQuestion.content}
-        onAnswerSelected={this.handleAnswerSelected}
+        onAnswerSubmitted={this.handleAnswerSubmitted}
       />
     );
   };

@@ -5,16 +5,16 @@ var quizQuestions = [
       question: "👋 What's your first name?",
       answers: [
         {
-          type: "Microsoft",
-          content: "Halo",
+          value: "Microsoft",
+          label: "Halo",
         },
         {
-          type: "Nintendo",
-          content: "Pokemon",
+          value: "Nintendo",
+          label: "Pokemon",
         },
         {
-          type: "Sony",
-          content: "Uncharted",
+          value: "Sony",
+          label: "Uncharted",
         },
       ],
     },
@@ -25,16 +25,16 @@ var quizQuestions = [
       question: "Nice to meet you, _____! What's your current age?",
       answers: [
         {
-          type: "Microsoft",
-          content: "X-Box",
+          value: "Microsoft",
+          label: "X-Box",
         },
         {
-          type: "Nintendo",
-          content: "Nintendo 64",
+          value: "Nintendo",
+          label: "Nintendo 64",
         },
         {
-          type: "Sony",
-          content: "Playstation 1",
+          value: "Sony",
+          label: "Playstation 1",
         },
       ],
     },
@@ -45,16 +45,16 @@ var quizQuestions = [
       question: "Great! What are your total monthly expenses?",
       answers: [
         {
-          type: "Microsoft",
-          content: "Forza",
+          value: "Microsoft",
+          label: "Forza",
         },
         {
-          type: "Nintendo",
-          content: "Mario Kart",
+          value: "Nintendo",
+          label: "Mario Kart",
         },
         {
-          type: "Sony",
-          content: "Gran Turismo",
+          value: "Sony",
+          label: "Gran Turismo",
         },
       ],
     },
@@ -66,16 +66,16 @@ var quizQuestions = [
         "And how much money do you have saved up that could be used to pay your monthly expenses beginning today?",
       answers: [
         {
-          type: "Microsoft",
-          content: "BioShock",
+          value: "Microsoft",
+          label: "BioShock",
         },
         {
-          type: "Nintendo",
-          content: "The Legend of Zelda: Ocarina of Time",
+          value: "Nintendo",
+          label: "The Legend of Zelda: Ocarina of Time",
         },
         {
-          type: "Sony",
-          content: "Final Fantasy VII",
+          value: "Sony",
+          label: "Final Fantasy VII",
         },
       ],
     },
@@ -86,18 +86,18 @@ var quizQuestions = [
       question: "Which of the following best describes you?",
       answers: [
         {
-          type: "Microsoft",
-          content:
+          value: "Microsoft",
+          label:
             "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
         },
         {
-          type: "Nintendo",
-          content:
+          value: "Nintendo",
+          label:
             "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
         },
         {
-          type: "Sony",
-          content: "Can I retire now?",
+          value: "Sony",
+          label: "Can I retire now?",
         },
       ],
     },

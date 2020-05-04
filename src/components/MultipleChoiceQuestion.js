@@ -1,19 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import AnswerOption from "./AnswerOption";
-
 const MultipleChoiceQuestion = (props) => {
-  const renderAnswerOptions = (key) => {
+  const renderAnswerOptions = (ans) => {
     return (
-      <AnswerOption
-        key={key.content}
-        answerContent={key.content}
-        answerType={key.type}
-        answer={props.answer}
-        questionNumber={props.questionNumber}
-        onAnswerSelected={props.onAnswerSelected}
-      />
+      <div className="answerOption" onClick={props.onAnswerSubmitted}>
+        {ans.label}
+      </div>
     );
   };
 
@@ -29,6 +22,7 @@ const MultipleChoiceQuestion = (props) => {
 
 MultipleChoiceQuestion.propTypes = {
   content: PropTypes.object.isRequired,
+  onAnswerSubmitted: PropTypes.func.isRequired,
 };
 
 export default MultipleChoiceQuestion;

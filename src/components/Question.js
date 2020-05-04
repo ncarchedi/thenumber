@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import MultipleChoice from "./MultipleChoiceQuestion";
+import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 
 const Question = (props) => {
   if (props.type === "MultipleChoice") {
     return (
-      <MultipleChoice
+      <MultipleChoiceQuestion
         content={props.content}
-        onAnswerSelected={props.onAnswerSelected}
+        onAnswerSubmitted={props.onAnswerSubmitted}
       />
     );
   } else {
@@ -19,7 +19,7 @@ const Question = (props) => {
 Question.propTypes = {
   type: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
-  onAnswerSelected: PropTypes.func.isRequired,
+  onAnswerSubmitted: PropTypes.func.isRequired,
 };
 
 export default Question;
