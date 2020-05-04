@@ -10,11 +10,16 @@ class TextQuestion extends React.Component {
     this.setState({ value: event.target.value });
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onAnswerSubmitted();
+  };
+
   render() {
     return (
       <div>
         <h2 className="question">{this.props.content.question}</h2>
-        <form onSubmit={this.onAnswerSubmitted}>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             className="textQuestionInput"

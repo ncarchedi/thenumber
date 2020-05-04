@@ -36,13 +36,6 @@ code {
   padding: 1.5rem 2.5rem;
 }
 
-/* Quiz Component */
-.answerOptions {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 /* QuestionCount Component */
 .questionCount {
   padding: 1.5rem 2.5rem 1.5rem 0;
@@ -63,10 +56,20 @@ h2 {
 }
 
 /* Multiple Choice Question Component */
+.answerOptions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .answerOption {
   background-color: #303030;
-  padding: 15px 0;
-  margin: 10px 50px;
+  padding: 15px 25px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #f1ece2;
+  border-style: solid;
 }
 
 .answerOption:hover {

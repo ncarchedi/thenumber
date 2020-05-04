@@ -14,7 +14,7 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <h2>{props.result}</h2>
+      <h1 style={{ textAlign: "center" }}>{props.result}</h1>
     </CSSTransitionGroup>
   );
 }

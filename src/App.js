@@ -22,6 +22,7 @@ class App extends React.Component {
   };
 
   handleAnswerSubmitted = () => {
+    console.log("test!");
     if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.goToNextQuestion(), 100);
     } else {
