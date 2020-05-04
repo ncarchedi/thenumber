@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./App.css";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import quizQuestions from "./api/quizQuestions";

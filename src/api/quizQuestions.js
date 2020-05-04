@@ -1,22 +1,8 @@
 var quizQuestions = [
   {
-    type: "MultipleChoice",
+    type: "TextQuestion",
     content: {
       question: "👋 What's your first name?",
-      answers: [
-        {
-          value: "Microsoft",
-          label: "Halo",
-        },
-        {
-          value: "Nintendo",
-          label: "Pokemon",
-        },
-        {
-          value: "Sony",
-          label: "Uncharted",
-        },
-      ],
     },
   },
   {

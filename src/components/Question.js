@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
+import TextQuestion from "./TextQuestion";
 
 const Question = (props) => {
   if (props.type === "MultipleChoice") {
@@ -11,8 +12,19 @@ const Question = (props) => {
         onAnswerSubmitted={props.onAnswerSubmitted}
       />
     );
+  } else if (props.type === "TextQuestion") {
+    return (
+      <TextQuestion
+        content={props.content}
+        onAnswerSubmitted={props.onAnswerSubmitted}
+      />
+    );
   } else {
-    return <h2 className="question">Not a multiple choice question!</h2>;
+    return (
+      <h2 className="question">
+        Not a text question or multiple choice question!
+      </h2>
+    );
   }
 };
 

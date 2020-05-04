@@ -21,9 +21,8 @@ code {
 
 .container {
   position: relative;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
-  border-radius: 3px;
 }
 
 @media (min-width: 769px) {
@@ -46,7 +45,7 @@ code {
 
 /* QuestionCount Component */
 .questionCount {
-  padding: 1.5rem 2.5rem 1.5rem;
+  padding: 1.5rem 2.5rem 1.5rem 0;
   font-size: 14px;
   color: #f1ece2;
   font-style: italic;
@@ -55,7 +54,7 @@ code {
 /* Question Component */
 .question {
   margin: 0;
-  padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+  padding: 0.5rem 2.5rem 1.5rem 0;
   color: #f1ece2;
 }
 
@@ -72,6 +71,23 @@ h2 {
 
 .answerOption:hover {
   background-color: #3f3f3f;
+}
+
+/* Text Question Component */
+.textQuestionInput {
+  padding: 10px 0;
+  width: 100%;
+  background-color: #262626;
+  font-size: 2rem;
+  caret-color: #f1ece2;
+  color: #f1ece2;
+  border-style: none none solid none;
+  border-color: #3f3f3f;
+  border-width: 1px;
+}
+
+.textQuestionInput:focus {
+  outline: none;
 }
 
 /* Animation */
