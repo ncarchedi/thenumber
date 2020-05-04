@@ -6,64 +6,22 @@ var quizQuestions = [
     },
   },
   {
-    type: "MultipleChoice",
+    type: "TextQuestion",
     content: {
       question: "Nice to meet you, _____! What's your current age?",
-      answers: [
-        {
-          value: "Microsoft",
-          label: "X-Box",
-        },
-        {
-          value: "Nintendo",
-          label: "Nintendo 64",
-        },
-        {
-          value: "Sony",
-          label: "Playstation 1",
-        },
-      ],
     },
   },
   {
-    type: "MultipleChoice",
+    type: "TextQuestion",
     content: {
       question: "Great! What are your total monthly expenses?",
-      answers: [
-        {
-          value: "Microsoft",
-          label: "Forza",
-        },
-        {
-          value: "Nintendo",
-          label: "Mario Kart",
-        },
-        {
-          value: "Sony",
-          label: "Gran Turismo",
-        },
-      ],
     },
   },
   {
-    type: "MultipleChoice",
+    type: "TextQuestion",
     content: {
       question:
         "And how much money do you have saved up that could be used to pay your monthly expenses beginning today?",
-      answers: [
-        {
-          value: "Microsoft",
-          label: "BioShock",
-        },
-        {
-          value: "Nintendo",
-          label: "The Legend of Zelda: Ocarina of Time",
-        },
-        {
-          value: "Sony",
-          label: "Final Fantasy VII",
-        },
-      ],
     },
   },
   {
@@ -83,7 +41,7 @@ var quizQuestions = [
         },
         {
           value: "Sony",
-          label: "Can I retire now?",
+          label: "I'd like to retire now. Am I ready?",
         },
       ],
     },

@@ -21,7 +21,7 @@ code {
 
 .container {
   position: relative;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -73,7 +73,7 @@ h2 {
 }
 
 .answerOption:hover {
-  background-color: #3f3f3f;
+  background-color: #545454;
 }
 
 /* Text Question Component */

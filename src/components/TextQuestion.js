@@ -26,6 +26,7 @@ class TextQuestion extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
             placeholder="Type your answer here..."
+            autoFocus
           ></input>
         </form>
       </div>
