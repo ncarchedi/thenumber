@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./App.css";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
@@ -6,87 +7,46 @@ import quizQuestions from "./api/quizQuestions";
 
 class App extends React.Component {
   state = {
-    counter: 0,
-    questionId: 1,
-    question: "",
-    answerOptions: [],
-    answer: "",
-    answersCount: {},
+    questionNumber: 1,
     result: "",
   };
 
-  componentDidMount() {
-    this.setState({
-      question: quizQuestions[0].question,
-      answerOptions: quizQuestions[0].answers,
-    });
-  }
-
-  setUserAnswer = (answer) => {
-    this.setState((state) => ({
-      answersCount: {
-        ...state.answersCount,
-        [answer]: (state.answersCount[answer] || 0) + 1,
-      },
-      answer: answer,
-    }));
-  };
-
   setNextQuestion = () => {
-    const counter = this.state.counter + 1;
-    const questionId = this.state.questionId + 1;
+    this.setState({ questionNumber: this.state.questionNumber + 1 });
+  };
+
+  setResult = () => {
     this.setState({
-      counter: counter,
-      questionId: questionId,
-      question: quizQuestions[counter].question,
-      answerOptions: quizQuestions[counter].answers,
-      answer: "",
+      result: "You need to save $10,000,000 by next weekend. Good luck!",
     });
-  };
-
-  getResults = () => {
-    const answersCount = this.state.answersCount;
-    const answersCountKeys = Object.keys(answersCount);
-    const answersCountValues = answersCountKeys.map((key) => answersCount[key]);
-    const maxAnswerCount = Math.max.apply(null, answersCountValues);
-
-    return answersCountKeys.filter(
-      (key) => answersCount[key] === maxAnswerCount
-    );
-  };
-
-  setResults = (result) => {
-    if (result.length === 1) {
-      this.setState({ result: result[0] });
-    } else {
-      this.setState({ result: "Undetermined" });
-    }
   };
 
   handleAnswerSelected = (event) => {
-    this.setUserAnswer(event.currentTarget.value);
-    if (this.state.questionId < quizQuestions.length) {
+    // this.setUserAnswer(event.currentTarget.value);
+    if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.setNextQuestion(), 300);
     } else {
-      setTimeout(() => this.setResults(this.getResults()), 300);
+      setTimeout(() => this.setResult(), 300);
     }
   };
 
   renderQuiz = () => {
+    const questionNumber = this.state.questionNumber;
+    const quizQuestion = quizQuestions[questionNumber - 1];
+
     return (
       <Quiz
-        answer={this.state.answer}
-        answerOptions={this.state.answerOptions}
-        questionId={this.state.questionId}
-        question={this.state.question}
+        questionNumber={questionNumber}
         questionTotal={quizQuestions.length}
+        questionType={quizQuestion.type}
+        questionContent={quizQuestion.content}
         onAnswerSelected={this.handleAnswerSelected}
       />
     );
   };
 
   renderResult = () => {
-    return <Result quizResult={this.state.result} />;
+    return <Result result={this.state.result} />;
   };
 
   render() {
