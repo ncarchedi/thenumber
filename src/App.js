@@ -13,7 +13,7 @@ const replaceBlanks = (text, value) => {
 class App extends React.Component {
   state = {
     questionNumber: 1,
-    result: "",
+    showResult: false,
     user: {
       name: "",
       age: "",
@@ -27,13 +27,6 @@ class App extends React.Component {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
 
-  // TODO: set result(s) based on quiz
-  setResult = () => {
-    this.setState({
-      result: "You need to save $10,000,000 by next weekend. Good luck!",
-    });
-  };
-
   saveUserValue = (key, value) => {
     const user = {
       ...this.state.user,
@@ -43,13 +36,17 @@ class App extends React.Component {
     this.setState({ user });
   };
 
+  showResult = () => {
+    this.setState({ showResult: true });
+  };
+
   handleAnswerSubmitted = (variableName, variableValue) => {
     this.saveUserValue(variableName, variableValue);
 
     if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.goToNextQuestion(), 100);
     } else {
-      setTimeout(() => this.setResult(), 100);
+      setTimeout(() => this.showResult(), 100);
     }
   };
 
@@ -78,13 +75,13 @@ class App extends React.Component {
   };
 
   renderResult = () => {
-    return <Result result={this.state.result} />;
+    return <Result userData={this.state.user} />;
   };
 
   render() {
     return (
       <div className="App">
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
+        {this.state.showResult ? this.renderResult() : this.renderQuiz()}
       </div>
     );
   }

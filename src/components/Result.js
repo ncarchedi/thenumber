@@ -14,13 +14,18 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <h1 style={{ textAlign: "center" }}>{props.result}</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
+        You need to save $10,000,000 by next weekend. Good luck!
+      </h1>
+      <hr></hr>
+      <h2 style={{ marginTop: "50px" }}>Quiz Results</h2>
+      <pre>{JSON.stringify(props.userData, null, 2)}</pre>
     </CSSTransitionGroup>
   );
 }
 
 Result.propTypes = {
-  result: PropTypes.string.isRequired,
+  userData: PropTypes.object.isRequired,
 };
 
 export default Result;
