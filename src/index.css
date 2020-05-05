@@ -130,6 +130,17 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: darkgrey;
+}
+
 /* Animation */
 .fade-enter {
   opacity: 0;
