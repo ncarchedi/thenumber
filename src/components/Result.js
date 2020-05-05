@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { CSSTransitionGroup } from "react-transition-group";
+
+import ResultChart from "./ResultChart.js";
 
 const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
   // TODO: validate things like currentAge <= targetAge
@@ -66,16 +67,7 @@ const Result = (props) => {
             )} over the
             next ${yearsToRetirement} years.`}
             </p>
-            <hr />
-            <p className="temporaryGoodLuckText">
-              I'll be able to help you with that soon, but in the meantime...
-            </p>
-            <div className="temporaryGoodLuckGif">
-              <img
-                src="https://media.giphy.com/media/j1Xyt3DHfJcmk/giphy.gif"
-                alt="good luck square pants"
-              ></img>
-            </div>
+            <ResultChart />
           </div>
         ) : (
           <div>

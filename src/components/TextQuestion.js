@@ -16,7 +16,7 @@ class TextQuestion extends React.Component {
     const variableName = this.props.variableName;
     const variableValue = this.state.value;
 
-    this.props.onAnswerSubmitted(variableName, variableValue);
+    this.props.onSubmitAnswer(variableName, variableValue);
   };
 
   render() {
@@ -46,7 +46,7 @@ class TextQuestion extends React.Component {
 TextQuestion.propTypes = {
   variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
-  onAnswerSubmitted: PropTypes.func.isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
 };
 
 export default TextQuestion;

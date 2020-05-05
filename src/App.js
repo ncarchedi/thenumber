@@ -43,7 +43,7 @@ class App extends React.Component {
     this.setState({ showResult: true });
   };
 
-  handleAnswerSubmitted = (variableName, variableValue) => {
+  handleSubmitAnswer = (variableName, variableValue) => {
     this.saveUserValue(variableName, variableValue);
 
     if (this.state.questionNumber < quizQuestions.length) {
@@ -51,6 +51,22 @@ class App extends React.Component {
     } else {
       setTimeout(() => this.showResult(), 100);
     }
+  };
+
+  handleSkipQuiz = () => {
+    const fakeUser = {
+      name: "Marley",
+      strategy: "targetAge",
+      targetAge: "60",
+      currentAge: "30",
+      monthlyExpenses: "5000",
+      savings: "100000",
+    };
+
+    this.setState({
+      showResult: true,
+      user: fakeUser,
+    });
   };
 
   renderQuiz = () => {
@@ -80,7 +96,8 @@ class App extends React.Component {
         questionType={quizQuestion.type}
         variableName={quizQuestion.variableName}
         questionContent={quizQuestion.content}
-        onAnswerSubmitted={this.handleAnswerSubmitted}
+        onSubmitAnswer={this.handleSubmitAnswer}
+        onSkipQuiz={this.handleSkipQuiz}
       />
     );
   };
