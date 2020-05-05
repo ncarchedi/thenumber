@@ -55,11 +55,8 @@ code {
 }
 
 .temporaryGoodLuckText {
-  font-weight: 600;
   margin-top: 50px;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: darkgrey;
+  font-style: italic;
 }
 
 .temporaryGoodLuckGif {
