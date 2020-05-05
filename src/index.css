@@ -50,14 +50,15 @@ code {
 }
 
 .additionalSavingsText {
+  font-size: 1.2rem;
   margin: 50px 50px;
 }
 
 .temporaryGoodLuckText {
-  font-weight: 400;
+  font-weight: 600;
   margin-top: 50px;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: darkgrey;
 }
 
@@ -67,9 +68,9 @@ code {
 
 /* QuestionCount Component */
 .questionCount {
-  padding: 1.5rem 2.5rem 1.5rem 0;
+  padding: 1.5rem 0;
   font-size: 14px;
-  color: #f1ece2;
+  color: darkgrey;
   font-style: italic;
 }
 

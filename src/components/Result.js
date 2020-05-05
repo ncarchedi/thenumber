@@ -57,7 +57,7 @@ const Result = (props) => {
             <h1 className="targetSavingsText">{`You need a total of ${toDollars(
               targetSavings
             )} by age ${userData.targetAge}.`}</h1>
-            <h3 className="additionalSavingsText">
+            <p className="additionalSavingsText">
               {`You have ${toDollars(
                 userData.savings
               )} saved today, which means you
@@ -65,10 +65,10 @@ const Result = (props) => {
               additionalSavings
             )} over the
             next ${yearsToRetirement} years.`}
-            </h3>
+            </p>
             <hr />
             <p className="temporaryGoodLuckText">
-              I'll be able to help you with that soon, but in the mean time...
+              I'll be able to help you with that soon, but in the meantime...
             </p>
             <div className="temporaryGoodLuckGif">
               <img
