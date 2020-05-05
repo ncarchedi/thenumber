@@ -1,18 +1,20 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
+import toDollars from "../utils/toDollars.js";
+
 class ResultChart extends React.Component {
   state = {
     series: [
       {
         name: "Savings",
-        data: [1, 2.5, 5, 10, 20, 40, 80],
+        data: [100000, 200000, 400000, 700000, 1200000, 2100000, 3600000],
       },
     ],
     options: {
       chart: {
         height: 350,
-        type: "line",
+        type: "bar",
         zoom: {
           enabled: false,
         },
@@ -24,8 +26,11 @@ class ResultChart extends React.Component {
       dataLabels: {
         enabled: false,
       },
-      stroke: {
-        curve: "smooth",
+      markers: {
+        size: 7,
+        colors: "#59cd90",
+        strokeColors: "#262626",
+        strokeWidth: 3,
       },
       tooltip: {
         enabled: false,
@@ -35,6 +40,12 @@ class ResultChart extends React.Component {
         borderColor: "#f1ece2",
       },
       xaxis: {
+        title: {
+          text: "Age",
+          style: {
+            color: "#f1ece2",
+          },
+        },
         categories: [30, 35, 40, 45, 50, 55, 60],
         labels: {
           style: {
@@ -43,10 +54,17 @@ class ResultChart extends React.Component {
         },
       },
       yaxis: {
+        title: {
+          text: "Total Savings",
+          style: {
+            color: "#f1ece2",
+          },
+        },
         labels: {
           style: {
             colors: "#f1ece2",
           },
+          formatter: toDollars,
         },
       },
     },

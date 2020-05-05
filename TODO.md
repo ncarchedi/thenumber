@@ -1,4 +1,4 @@
-- Add form validation
+- Add form validation (remove commas, etc.)
 - Add beta sign up form?
 - Add conditional logic to quiz questions
 - Support other strategy options

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultChart from "./ResultChart.js";
+import toDollars from "../utils/toDollars.js";
 
 const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
   // TODO: validate things like currentAge <= targetAge
@@ -13,21 +14,6 @@ const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
   const futureAnnualExpenses = annualExpenses * 1.03 ** yearsToRetirement;
   // apply the rule of 25 to inflation-adjusted expenses
   return futureAnnualExpenses * 25;
-};
-
-const toDollars = (num) => {
-  const wholeNumberText = num.toString().split(".")[0];
-  const digits = wholeNumberText.length;
-
-  // TODO: make this compatible with non-US currencies?
-  // https://stackoverflow.com/a/16233919/2338922
-  const dollarFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumSignificantDigits: digits,
-  });
-
-  return dollarFormatter.format(wholeNumberText);
 };
 
 const Result = (props) => {
