@@ -95,7 +95,7 @@ class App extends React.Component {
         <div>
           <Header />
           {this.state.showResult ? this.renderResult() : this.renderQuiz()}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     );
