@@ -56,7 +56,7 @@ const Result = (props) => {
           <div>
             <h1 className="targetSavingsText">{`You need a total of ${toDollars(
               targetSavings
-            )} by age ${userData.targetAge}.`}</h1>
+            )} by age ${userData.targetAge}`}</h1>
             <p className="additionalSavingsText">
               {`You have ${toDollars(
                 userData.savings
