@@ -14,7 +14,7 @@ class TextQuestion extends React.Component {
     event.preventDefault();
 
     const variableName = this.props.variableName;
-    const variableValue = this.state.value;
+    const variableValue = this.state.value.replace(/\D/g, "");
 
     this.props.onSubmitAnswer(variableName, variableValue);
   };
