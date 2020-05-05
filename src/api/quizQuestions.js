@@ -10,7 +10,7 @@ var quizQuestions = [
     type: "TextQuestion",
     variableName: "age",
     content: {
-      question: "Nice to meet you, _____! What's your current age?",
+      question: "Nice to meet you, ___! What's your current age?",
     },
   },
   {

@@ -4,6 +4,12 @@ import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import quizQuestions from "./api/quizQuestions";
 
+// TODO: extract into file/folder of utility functions
+// TODO: use existing templating library
+const replaceBlanks = (text, value) => {
+  return text.replace("___", value);
+};
+
 class App extends React.Component {
   state = {
     questionNumber: 1,
@@ -50,6 +56,14 @@ class App extends React.Component {
   renderQuiz = () => {
     const questionNumber = this.state.questionNumber;
     const quizQuestion = quizQuestions[questionNumber - 1];
+    const userName = this.state.user.name;
+
+    // replace blank in age question with user's name
+    var updatedQuestion = quizQuestion.content.question;
+    if (questionNumber === 2) {
+      updatedQuestion = replaceBlanks(quizQuestion.content.question, userName);
+    }
+    quizQuestion.content.question = updatedQuestion;
 
     return (
       <Quiz

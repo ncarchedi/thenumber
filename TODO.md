@@ -1,0 +1,2 @@
+- Add follow up question(s) based on answer to #5
+- Do basic math and show a result (the number)
