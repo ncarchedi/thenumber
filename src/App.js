@@ -1,5 +1,7 @@
 import React from "react";
 
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import quizQuestions from "./api/quizQuestions";
@@ -90,7 +92,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.showResult ? this.renderResult() : this.renderQuiz()}
+        <div>
+          <Header />
+          {this.state.showResult ? this.renderResult() : this.renderQuiz()}
+          <Footer />
+        </div>
       </div>
     );
   }
