@@ -25,6 +25,7 @@ const Quiz = (props) => {
         />
         <Question
           type={props.questionType}
+          variableName={props.variableName}
           content={props.questionContent}
           onAnswerSubmitted={props.onAnswerSubmitted}
         />
@@ -37,6 +38,7 @@ Quiz.propTypes = {
   questionNumber: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
   questionType: PropTypes.string.isRequired,
+  variableName: PropTypes.string.isRequired,
   questionContent: PropTypes.object.isRequired,
   onAnswerSubmitted: PropTypes.func.isRequired,
 };

@@ -1,28 +1,28 @@
 var quizQuestions = [
   {
     type: "TextQuestion",
-    variable: "name",
+    variableName: "name",
     content: {
       question: "👋 What's your first name?",
     },
   },
   {
     type: "TextQuestion",
-    variable: "age",
+    variableName: "age",
     content: {
       question: "Nice to meet you, _____! What's your current age?",
     },
   },
   {
     type: "TextQuestion",
-    variable: "monthlyExpenses",
+    variableName: "monthlyExpenses",
     content: {
       question: "Great! What are your total monthly expenses?",
     },
   },
   {
     type: "TextQuestion",
-    variable: "savings",
+    variableName: "savings",
     content: {
       question:
         "And how much money do you have saved up that could be used to pay your monthly expenses beginning today?",
@@ -30,7 +30,7 @@ var quizQuestions = [
   },
   {
     type: "MultipleChoice",
-    variable: "strategy",
+    variableName: "strategy",
     content: {
       question: "Which of the following best describes you?",
       answers: [

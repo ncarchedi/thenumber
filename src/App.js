@@ -8,6 +8,13 @@ class App extends React.Component {
   state = {
     questionNumber: 1,
     result: "",
+    user: {
+      name: "",
+      age: "",
+      monthlyExpenses: "",
+      savings: "",
+      strategy: "",
+    },
   };
 
   goToNextQuestion = () => {
@@ -21,8 +28,18 @@ class App extends React.Component {
     });
   };
 
-  handleAnswerSubmitted = (value) => {
-    console.log(value);
+  saveUserValue = (key, value) => {
+    const user = {
+      ...this.state.user,
+      [key]: value,
+    };
+
+    this.setState({ user });
+  };
+
+  handleAnswerSubmitted = (variableName, variableValue) => {
+    this.saveUserValue(variableName, variableValue);
+
     if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.goToNextQuestion(), 100);
     } else {
@@ -39,6 +56,7 @@ class App extends React.Component {
         questionNumber={questionNumber}
         questionTotal={quizQuestions.length}
         questionType={quizQuestion.type}
+        variableName={quizQuestion.variableName}
         questionContent={quizQuestion.content}
         onAnswerSubmitted={this.handleAnswerSubmitted}
       />

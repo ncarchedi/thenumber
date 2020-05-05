@@ -12,7 +12,11 @@ class TextQuestion extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onAnswerSubmitted(this.state.value);
+
+    const variableName = this.props.variableName;
+    const variableValue = this.state.value;
+
+    this.props.onAnswerSubmitted(variableName, variableValue);
   };
 
   render() {
@@ -35,6 +39,7 @@ class TextQuestion extends React.Component {
 }
 
 TextQuestion.propTypes = {
+  variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
   onAnswerSubmitted: PropTypes.func.isRequired,
 };

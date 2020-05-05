@@ -8,6 +8,7 @@ const Question = (props) => {
   if (props.type === "MultipleChoice") {
     return (
       <MultipleChoiceQuestion
+        variableName={props.variableName}
         content={props.content}
         onAnswerSubmitted={props.onAnswerSubmitted}
       />
@@ -15,6 +16,7 @@ const Question = (props) => {
   } else if (props.type === "TextQuestion") {
     return (
       <TextQuestion
+        variableName={props.variableName}
         content={props.content}
         onAnswerSubmitted={props.onAnswerSubmitted}
       />
@@ -30,6 +32,7 @@ const Question = (props) => {
 
 Question.propTypes = {
   type: PropTypes.string.isRequired,
+  variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
   onAnswerSubmitted: PropTypes.func.isRequired,
 };
