@@ -65,11 +65,12 @@ h2 {
 .answerOption {
   background-color: #303030;
   padding: 15px 25px;
-  margin: 10px 0;
+  margin: 15px 0;
   border-radius: 5px;
   border-width: 1px;
   border-color: #f1ece2;
   border-style: solid;
+  font-size: 1.5rem;
 }
 
 .answerOption:hover {
@@ -91,6 +92,12 @@ h2 {
 
 .textQuestionInput:focus {
   outline: none;
+}
+
+.helperText {
+  margin-top: 30px;
+  color: darkgrey;
+  font-size: 0.9rem;
 }
 
 /* Animation */

@@ -1,5 +1,6 @@
 var quizQuestions = [
   {
+    id: 1,
     type: "TextQuestion",
     variableName: "name",
     content: {
@@ -7,50 +8,88 @@ var quizQuestions = [
     },
   },
   {
-    type: "TextQuestion",
-    variableName: "age",
-    content: {
-      question: "Nice to meet you, ___! What's your current age?",
-    },
-  },
-  {
-    type: "TextQuestion",
-    variableName: "monthlyExpenses",
-    content: {
-      question: "Great! What are your total monthly expenses?",
-    },
-  },
-  {
-    type: "TextQuestion",
-    variableName: "savings",
-    content: {
-      question:
-        "And how much money do you have saved up that could be used to pay your monthly expenses beginning today?",
-    },
-  },
-  {
+    id: 2,
     type: "MultipleChoice",
     variableName: "strategy",
     content: {
-      question: "Which of the following best describes you?",
+      question:
+        "Nice to meet you, ___! Which of the following best describes you?",
       answers: [
         {
           value: "targetAge",
           label:
-            "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
+            "I'd like to retire at a specific age. How much do I need to save between now and then? 📆",
         },
         {
           value: "targetSavings",
           label:
-            "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
+            "I'm able to save a certain amount of money each year. When will I be able to retire? 📈",
         },
         {
           value: "retireNow",
-          label: "I'd like to retire now. Am I ready?",
+          label: "I'd like to retire now. Am I ready? 🚀",
         },
       ],
     },
   },
+  {
+    id: 3,
+    type: "TextQuestion",
+    variableName: "age",
+    content: {
+      question: "Great! What age would you like to retire at? 📆",
+    },
+  },
+  {
+    id: 4,
+    type: "TextQuestion",
+    variableName: "age",
+    content: {
+      question: "And how old are you right now? 🕒",
+    },
+  },
+  {
+    id: 5,
+    type: "TextQuestion",
+    variableName: "monthlyExpenses",
+    content: {
+      question: "What are your total monthly expenses? 💸",
+    },
+  },
+  {
+    id: 6,
+    type: "TextQuestion",
+    variableName: "savings",
+    content: {
+      question: "How much money do you have saved? 💰",
+      helperText:
+        "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
+    },
+  },
+  // {
+  //   id: 5,
+  //   type: "MultipleChoice",
+  //   variableName: "strategy",
+  //   content: {
+  //     question: "Which of the following best describes you?",
+  //     answers: [
+  //       {
+  //         value: "targetAge",
+  //         label:
+  //           "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
+  //       },
+  //       {
+  //         value: "targetSavings",
+  //         label:
+  //           "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
+  //       },
+  //       {
+  //         value: "retireNow",
+  //         label: "I'd like to retire now. Am I ready?",
+  //       },
+  //     ],
+  //   },
+  // },
 ];
 
 export default quizQuestions;

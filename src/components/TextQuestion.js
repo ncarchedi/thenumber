@@ -20,9 +20,11 @@ class TextQuestion extends React.Component {
   };
 
   render() {
+    const content = this.props.content;
+
     return (
       <div>
-        <h2 className="question">{this.props.content.question}</h2>
+        <h2 className="question">{content.question}</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -33,6 +35,9 @@ class TextQuestion extends React.Component {
             autoFocus
           ></input>
         </form>
+        {content.helperText && (
+          <p className="helperText">{"ℹ️ " + content.helperText}</p>
+        )}
       </div>
     );
   }

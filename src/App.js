@@ -62,6 +62,14 @@ class App extends React.Component {
     }
     quizQuestion.content.question = updatedQuestion;
 
+    // TODO: this feels hacky to me - better placement?
+    // only allow quiz for targetAge strategy right now
+    const strategy = this.state.user.strategy;
+    if (strategy && strategy !== "targetAge") {
+      this.showResult();
+      return null;
+    }
+
     return (
       <Quiz
         questionNumber={questionNumber}

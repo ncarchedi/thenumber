@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { CSSTransitionGroup } from "react-transition-group";
 
-function Result(props) {
+const Result = (props) => {
   return (
     <CSSTransitionGroup
       className="container result"
@@ -14,15 +14,21 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-        You need to save $10,000,000 by next weekend. Good luck!
-      </h1>
+      {props.userData.strategy === "targetAge" ? (
+        <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
+          You need to save $10,000,000 by next weekend. Good luck!
+        </h1>
+      ) : (
+        <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
+          Sorry, we don't support that question yet!
+        </h1>
+      )}
       <hr></hr>
       <h2 style={{ marginTop: "50px" }}>Quiz Results</h2>
       <pre>{JSON.stringify(props.userData, null, 2)}</pre>
     </CSSTransitionGroup>
   );
-}
+};
 
 Result.propTypes = {
   userData: PropTypes.object.isRequired,

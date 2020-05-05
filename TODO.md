@@ -1,3 +1,4 @@
 - Add follow up question(s) based on answer to #5
 - Do basic math and show a result (the number)
 - Add keyboard shortcuts to multiple choice questions
+- Add a note that we don't store ANY data right now
