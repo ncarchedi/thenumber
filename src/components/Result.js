@@ -78,7 +78,12 @@ const Result = (props) => {
             </div>
           </div>
         ) : (
-          <h1>Sorry, we don't support that question yet!</h1>
+          <div>
+            <h2>
+              Sorry, we don't support that option yet!{" "}
+              <a href=".">Try again?</a>
+            </h2>
+          </div>
         )}
       </div>
     </CSSTransitionGroup>

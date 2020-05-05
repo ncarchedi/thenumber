@@ -12,8 +12,7 @@ var quizQuestions = [
     type: "MultipleChoice",
     variableName: "strategy",
     content: {
-      question:
-        "Nice to meet you, ___! Which of the following best describes you?",
+      question: "Welcome, ___! Which of the following best describes you?",
       answers: [
         {
           value: "targetAge",

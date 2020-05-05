@@ -1,3 +1,4 @@
+- Add beta sign up form?
 - Add conditional logic to quiz questions
 - Support other strategy options
 - Add keyboard shortcuts to multiple choice questions

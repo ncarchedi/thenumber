@@ -12,6 +12,10 @@ body {
   color: #f1ece2;
 }
 
+a {
+  color: #59cd90;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -38,7 +42,7 @@ body {
 }
 
 .targetSavingsText {
-  color: #9dcbba;
+  color: #59cd90;
   border-width: 4px;
   border-style: solid;
   border-radius: 15px;
@@ -87,8 +91,8 @@ h2 {
 
 .answerOption {
   background-color: #303030;
-  padding: 15px 25px;
-  margin: 15px 0;
+  padding: 15px 40px;
+  margin: 15px 15px;
   border-radius: 15px;
   border-width: 1px;
   border-color: #f1ece2;
@@ -127,8 +131,8 @@ h2 {
 /* Header */
 .header {
   margin-top: 20px;
-  color: #9dcbba;
-  font-family: "Montserrat", sans-serif;
+  color: #59cd90;
+  font-family: "Racing Sans One", cursive;
   font-size: 2.5rem;
   text-align: center;
 }
