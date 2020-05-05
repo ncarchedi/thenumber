@@ -1,10 +1,10 @@
 import React from "react";
+import Logo from "./Logo";
 
 const Header = () => {
   return (
     <div className="container header">
-      <div className="logo">the number</div>
-      <div className="tagline">Retirement Planning That Doesn't Suck™</div>
+      <Logo />
     </div>
   );
 };

@@ -51,7 +51,7 @@ a {
 
 .additionalSavingsText {
   font-size: 1.2rem;
-  margin: 50px 50px;
+  margin: 50px;
 }
 
 .temporaryGoodLuckText {
@@ -134,6 +134,11 @@ h2 {
   text-align: center;
 }
 
+.logoContainer {
+  display: block;
+  display: inline-block;
+}
+
 .logo {
   color: #59cd90;
   font-family: "Racing Sans One", cursive;
@@ -143,6 +148,7 @@ h2 {
 .tagline {
   font-size: 0.8rem;
   font-style: italic;
+  color: #f1ece2;
 }
 
 /* Footer */
