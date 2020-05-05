@@ -12,7 +12,7 @@ class TextQuestion extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onAnswerSubmitted();
+    this.props.onAnswerSubmitted(this.state.value);
   };
 
   render() {

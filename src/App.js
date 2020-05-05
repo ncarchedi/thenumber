@@ -21,8 +21,8 @@ class App extends React.Component {
     });
   };
 
-  handleAnswerSubmitted = () => {
-    console.log("test!");
+  handleAnswerSubmitted = (value) => {
+    console.log(value);
     if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.goToNextQuestion(), 100);
     } else {

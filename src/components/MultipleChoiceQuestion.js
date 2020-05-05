@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 const MultipleChoiceQuestion = (props) => {
   const renderAnswerOptions = (ans) => {
     return (
-      <div className="answerOption" onClick={props.onAnswerSubmitted}>
+      <div
+        key={ans.value}
+        className="answerOption"
+        onClick={() => props.onAnswerSubmitted(ans.value)}
+      >
         {ans.label}
       </div>
     );
