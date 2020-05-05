@@ -16,10 +16,11 @@ class App extends React.Component {
     showResult: false,
     user: {
       name: "",
-      age: "",
+      strategy: "",
+      targetAge: "",
+      currentAge: "",
       monthlyExpenses: "",
       savings: "",
-      strategy: "",
     },
   };
 

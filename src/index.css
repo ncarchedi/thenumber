@@ -36,6 +36,35 @@ code {
   padding: 1.5rem 2.5rem;
 }
 
+.resultContainer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.targetSavingsText {
+  color: #9dcbba;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.additionalSavingsText {
+  margin: 50px 50px;
+}
+
+.temporaryGoodLuckText {
+  font-weight: 400;
+  margin-top: 50px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: darkgrey;
+}
+
+.temporaryGoodLuckGif {
+  margin-top: 50px;
+}
+
 /* QuestionCount Component */
 .questionCount {
   padding: 1.5rem 2.5rem 1.5rem 0;
@@ -66,7 +95,7 @@ h2 {
   background-color: #303030;
   padding: 15px 25px;
   margin: 15px 0;
-  border-radius: 5px;
+  border-radius: 15px;
   border-width: 1px;
   border-color: #f1ece2;
   border-style: solid;

@@ -35,7 +35,7 @@ var quizQuestions = [
   {
     id: 3,
     type: "TextQuestion",
-    variableName: "age",
+    variableName: "targetAge",
     content: {
       question: "Great! What age would you like to retire at? 📆",
     },
@@ -43,7 +43,7 @@ var quizQuestions = [
   {
     id: 4,
     type: "TextQuestion",
-    variableName: "age",
+    variableName: "currentAge",
     content: {
       question: "And how old are you right now? 🕒",
     },
