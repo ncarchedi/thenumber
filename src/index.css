@@ -32,12 +32,12 @@ a {
   }
 }
 
-/* Result Component */
-.result {
+/* Results Component */
+.results {
   padding: 0 2.5rem;
 }
 
-.resultContainer {
+.resultsContainer {
   text-align: center;
 }
 
@@ -45,7 +45,7 @@ a {
   color: #59cd90;
   border-width: 4px;
   border-style: solid;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 15px;
 }
 
@@ -61,6 +61,24 @@ a {
 
 .temporaryGoodLuckGif {
   margin-top: 50px;
+}
+
+/* Quiz Component */
+.skipQuizButton {
+  padding: 10px;
+  background-color: #59cd90;
+  border-width: 0;
+  font-size: 12px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.skipQuizButton:hover {
+  cursor: pointer;
+}
+
+.skipQuizButton:focus {
+  outline: none;
 }
 
 /* QuestionCount Component */
@@ -93,7 +111,7 @@ h2 {
   background-color: #303030;
   padding: 15px 40px;
   margin: 15px 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   border-width: 1px;
   border-color: #f1ece2;
   border-style: solid;
