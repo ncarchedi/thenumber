@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Chart from "react-apexcharts";
 
 import toDollars from "../utils/toDollars.js";
@@ -7,14 +8,14 @@ class ResultsChart extends React.Component {
   state = {
     series: [
       {
-        name: "Savings",
-        data: [100000, 200000, 400000, 700000, 1200000, 2100000, 3600000],
+        name: "Total Savings",
+        data: [...this.props.savingsArray],
       },
     ],
     options: {
       chart: {
         height: 350,
-        type: "bar",
+        type: "line",
         zoom: {
           enabled: false,
         },
@@ -27,7 +28,7 @@ class ResultsChart extends React.Component {
         enabled: false,
       },
       markers: {
-        size: 7,
+        size: 5,
         colors: "#59cd90",
         strokeColors: "#262626",
         strokeWidth: 3,
@@ -46,7 +47,7 @@ class ResultsChart extends React.Component {
             color: "#f1ece2",
           },
         },
-        categories: [30, 35, 40, 45, 50, 55, 60],
+        categories: [...this.props.ageArray],
         labels: {
           style: {
             colors: "#f1ece2",
@@ -82,5 +83,10 @@ class ResultsChart extends React.Component {
     );
   }
 }
+
+ResultsChart.propTypes = {
+  ageArray: PropTypes.array.isRequired,
+  savingsArray: PropTypes.array.isRequired,
+};
 
 export default ResultsChart;

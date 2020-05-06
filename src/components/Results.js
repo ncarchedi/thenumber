@@ -4,6 +4,7 @@ import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart.js";
 import toDollars from "../utils/toDollars.js";
+import getResultsChartData from "../utils/getResultsChartData.js";
 
 const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
   // TODO: validate things like currentAge <= targetAge
@@ -17,16 +18,29 @@ const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
 };
 
 const Results = (props) => {
-  const userData = props.userData;
+  const {
+    currentAge,
+    targetAge,
+    monthlyExpenses,
+    currentSavings,
+    strategy,
+  } = props.userData;
 
   const targetSavings = calculateTargetSavings(
-    userData.currentAge,
-    userData.targetAge,
-    userData.monthlyExpenses
+    currentAge,
+    targetAge,
+    monthlyExpenses
   );
 
-  const additionalSavings = targetSavings - userData.savings;
-  const yearsToRetirement = userData.targetAge - userData.currentAge;
+  const additionalSavings = targetSavings - currentSavings;
+  const yearsToRetirement = targetAge - currentAge;
+
+  const chartData = getResultsChartData(
+    currentAge,
+    targetAge,
+    currentSavings,
+    targetSavings
+  );
 
   return (
     <CSSTransitionGroup
@@ -39,21 +53,24 @@ const Results = (props) => {
       transitionAppearTimeout={500}
     >
       <div className="resultsContainer">
-        {userData.strategy === "targetAge" ? (
+        {strategy === "targetAge" ? (
           <div>
             <h1 className="targetSavingsText">{`You need a total of ${toDollars(
               targetSavings
-            )} by age ${userData.targetAge}`}</h1>
+            )} by age ${targetAge}`}</h1>
             <p className="additionalSavingsText">
               {`You have ${toDollars(
-                userData.savings
+                currentSavings
               )} saved today, which means you
             need to accumulate an additional ${toDollars(
               additionalSavings
             )} over the
             next ${yearsToRetirement} years.`}
             </p>
-            <ResultsChart />
+            <ResultsChart
+              ageArray={chartData.ageArray}
+              savingsArray={chartData.savingsArray}
+            />
           </div>
         ) : (
           <div>
@@ -75,7 +92,7 @@ Results.propTypes = {
     targetAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
-    savings: PropTypes.string.isRequired,
+    currentSavings: PropTypes.string.isRequired,
   }),
 };
 

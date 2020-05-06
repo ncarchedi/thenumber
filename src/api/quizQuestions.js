@@ -63,7 +63,7 @@ var quizQuestions = [
     id: 6,
     type: "TextQuestion",
     inputType: "number",
-    variableName: "savings",
+    variableName: "currentSavings",
     content: {
       question: "How much money do you have saved? 💰",
       helperText:

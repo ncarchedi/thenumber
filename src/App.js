@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Quiz from "./components/Quiz";
 import Results from "./components/Results";
 import quizQuestions from "./api/quizQuestions";
@@ -22,7 +22,7 @@ class App extends React.Component {
       targetAge: "",
       currentAge: "",
       monthlyExpenses: "",
-      savings: "",
+      currentSavings: "",
     },
   };
 
@@ -60,7 +60,7 @@ class App extends React.Component {
       targetAge: "60",
       currentAge: "30",
       monthlyExpenses: "5000",
-      savings: "100000",
+      currentSavings: "100000",
     };
 
     this.setState({
