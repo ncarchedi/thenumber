@@ -2,6 +2,7 @@ var quizQuestions = [
   {
     id: 1,
     type: "TextQuestion",
+    inputType: "string",
     variableName: "name",
     content: {
       question: "👋 What's your first name?",
@@ -34,6 +35,7 @@ var quizQuestions = [
   {
     id: 3,
     type: "TextQuestion",
+    inputType: "number",
     variableName: "targetAge",
     content: {
       question: "Great! What age would you like to retire at? 📆",
@@ -42,6 +44,7 @@ var quizQuestions = [
   {
     id: 4,
     type: "TextQuestion",
+    inputType: "number",
     variableName: "currentAge",
     content: {
       question: "And how old are you right now? 🕒",
@@ -50,6 +53,7 @@ var quizQuestions = [
   {
     id: 5,
     type: "TextQuestion",
+    inputType: "number",
     variableName: "monthlyExpenses",
     content: {
       question: "What are your total monthly expenses? 💸",
@@ -58,6 +62,7 @@ var quizQuestions = [
   {
     id: 6,
     type: "TextQuestion",
+    inputType: "number",
     variableName: "savings",
     content: {
       question: "How much money do you have saved? 💰",

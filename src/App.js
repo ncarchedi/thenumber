@@ -94,6 +94,7 @@ class App extends React.Component {
         questionNumber={questionNumber}
         questionTotal={quizQuestions.length}
         questionType={quizQuestion.type}
+        questionInputType={quizQuestion.inputType}
         variableName={quizQuestion.variableName}
         questionContent={quizQuestion.content}
         onSubmitAnswer={this.handleSubmitAnswer}

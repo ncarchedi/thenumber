@@ -16,6 +16,7 @@ const Question = (props) => {
   } else if (props.type === "TextQuestion") {
     return (
       <TextQuestion
+        inputType={props.inputType}
         variableName={props.variableName}
         content={props.content}
         onSubmitAnswer={props.onSubmitAnswer}
@@ -32,6 +33,7 @@ const Question = (props) => {
 
 Question.propTypes = {
   type: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
   variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
   onSubmitAnswer: PropTypes.func.isRequired,
