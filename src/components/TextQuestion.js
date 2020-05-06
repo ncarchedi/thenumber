@@ -7,7 +7,12 @@ class TextQuestion extends React.Component {
   };
 
   handleChange = (event) => {
-    this.setState({ value: event.target.value });
+    const text = event.target.value;
+    // if getting a number, then strip non-numeric stuff
+    const cleanText =
+      this.props.inputType === "number" ? text.replace(/\D/g, "") : text;
+
+    this.setState({ value: cleanText });
   };
 
   handleSubmit = (event) => {
@@ -16,7 +21,7 @@ class TextQuestion extends React.Component {
     const variableName = this.props.variableName;
     const variableValue = this.state.value;
 
-    this.props.onAnswerSubmitted(variableName, variableValue);
+    this.props.onSubmitAnswer(variableName, variableValue);
   };
 
   render() {
@@ -44,9 +49,10 @@ class TextQuestion extends React.Component {
 }
 
 TextQuestion.propTypes = {
+  inputType: PropTypes.string.isRequired,
   variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
-  onAnswerSubmitted: PropTypes.func.isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
 };
 
 export default TextQuestion;

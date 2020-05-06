@@ -10,7 +10,7 @@ const MultipleChoiceQuestion = (props) => {
       <div
         key={ans.value}
         className="answerOption"
-        onClick={() => props.onAnswerSubmitted(variableName, variableValue)}
+        onClick={() => props.onSubmitAnswer(variableName, variableValue)}
       >
         {ans.label}
       </div>
@@ -30,7 +30,7 @@ const MultipleChoiceQuestion = (props) => {
 MultipleChoiceQuestion.propTypes = {
   variableName: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired,
-  onAnswerSubmitted: PropTypes.func.isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
 };
 
 export default MultipleChoiceQuestion;

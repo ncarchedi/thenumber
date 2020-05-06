@@ -5,8 +5,6 @@ import { CSSTransitionGroup } from "react-transition-group";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
 
-// import AnswerOption from "./AnswerOption";
-
 const Quiz = (props) => {
   return (
     <CSSTransitionGroup
@@ -25,11 +23,15 @@ const Quiz = (props) => {
         />
         <Question
           type={props.questionType}
+          inputType={props.questionInputType}
           variableName={props.variableName}
           content={props.questionContent}
-          onAnswerSubmitted={props.onAnswerSubmitted}
+          onSubmitAnswer={props.onSubmitAnswer}
         />
       </div>
+      <button className="skipQuizButton" onClick={props.onSkipQuiz}>
+        Skip Quiz (Admin Only)
+      </button>
     </CSSTransitionGroup>
   );
 };
@@ -38,9 +40,11 @@ Quiz.propTypes = {
   questionNumber: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
   questionType: PropTypes.string.isRequired,
+  questionInputType: PropTypes.string.isRequired,
   variableName: PropTypes.string.isRequired,
   questionContent: PropTypes.object.isRequired,
-  onAnswerSubmitted: PropTypes.func.isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
+  onSkipQuiz: PropTypes.func.isRequired,
 };
 
 export default Quiz;

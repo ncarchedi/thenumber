@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Quiz from "./components/Quiz";
-import Result from "./components/Result";
+import Results from "./components/Results";
 import quizQuestions from "./api/quizQuestions";
 
 // TODO: extract into file/folder of utility functions
@@ -15,7 +15,7 @@ const replaceBlanks = (text, value) => {
 class App extends React.Component {
   state = {
     questionNumber: 1,
-    showResult: false,
+    showResults: false,
     user: {
       name: "",
       strategy: "",
@@ -39,18 +39,34 @@ class App extends React.Component {
     this.setState({ user });
   };
 
-  showResult = () => {
-    this.setState({ showResult: true });
+  showResults = () => {
+    this.setState({ showResults: true });
   };
 
-  handleAnswerSubmitted = (variableName, variableValue) => {
+  handleSubmitAnswer = (variableName, variableValue) => {
     this.saveUserValue(variableName, variableValue);
 
     if (this.state.questionNumber < quizQuestions.length) {
       setTimeout(() => this.goToNextQuestion(), 100);
     } else {
-      setTimeout(() => this.showResult(), 100);
+      setTimeout(() => this.showResults(), 100);
     }
+  };
+
+  handleSkipQuiz = () => {
+    const fakeUser = {
+      name: "Marley",
+      strategy: "targetAge",
+      targetAge: "60",
+      currentAge: "30",
+      monthlyExpenses: "5000",
+      savings: "100000",
+    };
+
+    this.setState({
+      showResults: true,
+      user: fakeUser,
+    });
   };
 
   renderQuiz = () => {
@@ -69,7 +85,7 @@ class App extends React.Component {
     // only allow quiz for targetAge strategy right now
     const strategy = this.state.user.strategy;
     if (strategy && strategy !== "targetAge") {
-      this.showResult();
+      this.showResults();
       return null;
     }
 
@@ -78,15 +94,17 @@ class App extends React.Component {
         questionNumber={questionNumber}
         questionTotal={quizQuestions.length}
         questionType={quizQuestion.type}
+        questionInputType={quizQuestion.inputType}
         variableName={quizQuestion.variableName}
         questionContent={quizQuestion.content}
-        onAnswerSubmitted={this.handleAnswerSubmitted}
+        onSubmitAnswer={this.handleSubmitAnswer}
+        onSkipQuiz={this.handleSkipQuiz}
       />
     );
   };
 
-  renderResult = () => {
-    return <Result userData={this.state.user} />;
+  renderResults = () => {
+    return <Results userData={this.state.user} />;
   };
 
   render() {
@@ -94,7 +112,7 @@ class App extends React.Component {
       <div className="App">
         <div>
           <Header />
-          {this.state.showResult ? this.renderResult() : this.renderQuiz()}
+          {this.state.showResults ? this.renderResults() : this.renderQuiz()}
           {/* <Footer /> */}
         </div>
       </div>
