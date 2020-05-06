@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
-import ResultChart from "./ResultChart.js";
+import ResultsChart from "./ResultsChart.js";
 import toDollars from "../utils/toDollars.js";
 
 const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
@@ -16,7 +16,7 @@ const calculateTargetSavings = (currentAge, targetAge, monthlyExpenses) => {
   return futureAnnualExpenses * 25;
 };
 
-const Result = (props) => {
+const Results = (props) => {
   const userData = props.userData;
 
   const targetSavings = calculateTargetSavings(
@@ -30,7 +30,7 @@ const Result = (props) => {
 
   return (
     <CSSTransitionGroup
-      className="container result"
+      className="container results"
       component="div"
       transitionName="fade"
       transitionEnterTimeout={800}
@@ -38,7 +38,7 @@ const Result = (props) => {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <div className="resultContainer">
+      <div className="resultsContainer">
         {userData.strategy === "targetAge" ? (
           <div>
             <h1 className="targetSavingsText">{`You need a total of ${toDollars(
@@ -53,7 +53,7 @@ const Result = (props) => {
             )} over the
             next ${yearsToRetirement} years.`}
             </p>
-            <ResultChart />
+            <ResultsChart />
           </div>
         ) : (
           <div>
@@ -68,7 +68,7 @@ const Result = (props) => {
   );
 };
 
-Result.propTypes = {
+Results.propTypes = {
   userData: PropTypes.exact({
     name: PropTypes.string.isRequired,
     strategy: PropTypes.string.isRequired,
@@ -79,4 +79,4 @@ Result.propTypes = {
   }),
 };
 
-export default Result;
+export default Results;
