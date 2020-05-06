@@ -66,10 +66,11 @@ a {
 /* Quiz Component */
 .skipQuizButton {
   padding: 10px;
-  background-color: #59cd90;
+  background-color: #262626;
+  color: #262626;
   border-width: 0;
   font-size: 12px;
-  margin-top: 50px;
+  margin-top: 100px;
   border-radius: 10px;
 }
 
