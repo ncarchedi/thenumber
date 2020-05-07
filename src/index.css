@@ -16,6 +16,12 @@ a {
   color: #59cd90;
 }
 
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -96,10 +102,6 @@ textarea {
 
 .skipQuizButton:hover {
   cursor: pointer;
-}
-
-.skipQuizButton:focus {
-  outline: none;
 }
 
 /* QuestionCount Component */
