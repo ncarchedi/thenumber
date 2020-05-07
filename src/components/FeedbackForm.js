@@ -20,7 +20,7 @@ class FeedbackForm extends React.Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "feedback", ...this.state }),
     })
-      .then(() => alert("Success!"))
+      .then(() => alert("Feedback sent!"))
       .catch((error) => alert(error));
 
     e.preventDefault();
