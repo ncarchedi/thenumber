@@ -9,9 +9,9 @@ const Header = () => {
       <Link to="/">
         <Logo />
       </Link>
-      <div className="aboutPageLink">
-        <Link to="/about">about</Link>
-      </div>
+      <Link to="/about">
+        <div className="aboutPageLink">about</div>
+      </Link>
     </div>
   );
 };
