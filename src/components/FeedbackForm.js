@@ -30,43 +30,35 @@ class FeedbackForm extends React.Component {
   render() {
     const { name, email, message } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div className="feedbackForm">
+        <h3 className="feedbackFormTitle">We Want Your Feedback 🤔</h3>
         <p>
-          <label>
-            Your Name:{" "}
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
+          <em>The Number</em> is a work in progress—and you can help shape it!
         </p>
-        <p>
-          <label>
-            Your Email:{" "}
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            Message:{" "}
-            <textarea
-              name="message"
-              value={message}
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+            placeholder="Name"
+          />
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+            placeholder="Email"
+          />
+          <textarea
+            name="message"
+            value={message}
+            onChange={this.handleChange}
+            placeholder="Write your suggestions here..."
+          />
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </div>
     );
   }
 }
