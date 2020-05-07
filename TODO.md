@@ -1,6 +1,7 @@
 ## TODO
 
 - Add about / manifesto page
+- Add CTA stubs to results page
 - Add feedback form to results page
 - Add conditional logic to quiz questions
 - Add keyboard shortcuts to multiple choice questions
