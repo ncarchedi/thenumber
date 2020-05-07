@@ -44,7 +44,7 @@ class FeedbackForm extends React.Component {
             name="email"
             value={email}
             onChange={this.handleChange}
-            placeholder="Your email"
+            placeholder="Your email (in case we have questions)"
           />
           <textarea
             name="message"
