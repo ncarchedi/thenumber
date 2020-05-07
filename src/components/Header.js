@@ -5,6 +5,9 @@ const Header = () => {
   return (
     <div className="container header">
       <Logo />
+      <div className="aboutPageLink">
+        <a href=".">about</a>
+      </div>
     </div>
   );
 };
