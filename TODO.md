@@ -2,6 +2,7 @@
 
 - Add about / manifesto page
 - Add CTA stubs to results page
+- Improve submit text for feedback form
 - Add conditional logic to quiz questions
 - Add keyboard shortcuts to multiple choice questions
 - Add a note that we don't store ANY data right now
