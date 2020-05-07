@@ -1,6 +1,8 @@
 ## TODO
 
 - Add about / manifesto page
+- About link shouldn't push logo to the left
+- Add a note that we'll help them achieve their goal
 - Add CTA stubs to results page
 - Add conditional logic to quiz questions
 - Add keyboard shortcuts to multiple choice questions
