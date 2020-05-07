@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Logo from "./Logo";
 
 const Header = () => {
   return (
     <div className="container header">
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
       <div className="aboutPageLink">
-        <a href=".">about</a>
+        <Link to="/about">about</Link>
       </div>
     </div>
   );
