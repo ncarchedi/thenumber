@@ -9,6 +9,7 @@
 - Support other strategy options
 - Update favicon
 - Explore backends for data security (AWS guy?)
+- Add spans to emojis per the inline warnings
 
 ## DONE
 

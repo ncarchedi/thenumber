@@ -56,7 +56,9 @@ var quizQuestions = [
     inputType: "number",
     variableName: "monthlyExpenses",
     content: {
-      question: "What are your total monthly expenses? 💸",
+      question: "How much money do you spend in an average month? 💸",
+      helperText:
+        "Expenses often vary month-to-month. This can be a rough estimate.",
     },
   },
   {
