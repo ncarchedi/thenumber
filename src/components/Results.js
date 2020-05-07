@@ -10,6 +10,7 @@ import calculateTargetSavings from "../utils/calculateTargetSavings";
 
 const Results = (props) => {
   const {
+    name,
     currentAge,
     targetAge,
     monthlyExpenses,
@@ -48,7 +49,7 @@ const Results = (props) => {
           ageArray={chartData.ageArray}
           savingsArray={chartData.savingsArray}
         />
-        <FeedbackForm />
+        <FeedbackForm name={name} />
       </div>
     );
   };

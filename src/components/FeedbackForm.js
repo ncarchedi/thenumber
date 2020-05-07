@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const encode = (data) => {
   return Object.keys(data)
@@ -8,7 +9,7 @@ const encode = (data) => {
 
 class FeedbackForm extends React.Component {
   state = {
-    name: "",
+    name: this.props.name,
     email: "",
     message: "",
   };
@@ -31,24 +32,19 @@ class FeedbackForm extends React.Component {
     const { name, email, message } = this.state;
     return (
       <div className="feedbackForm">
-        <h3 className="feedbackFormTitle">Where should we go from here? 🤔</h3>
+        <h3 className="feedbackFormTitle">
+          {name}, where should we go from here? 🤔
+        </h3>
         <p>
           <em>The Number</em> is a work in progress—and you can help shape it!
         </p>
         <form onSubmit={this.handleSubmit}>
           <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            placeholder="Name (optional)"
-          />
-          <input
             type="email"
             name="email"
             value={email}
             onChange={this.handleChange}
-            placeholder="Email (optional)"
+            placeholder="Your email"
           />
           <textarea
             name="message"
@@ -62,5 +58,9 @@ class FeedbackForm extends React.Component {
     );
   }
 }
+
+FeedbackForm.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default FeedbackForm;
