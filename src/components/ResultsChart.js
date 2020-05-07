@@ -73,13 +73,15 @@ class ResultsChart extends React.Component {
 
   render() {
     return (
-      <Chart
-        options={this.state.options}
-        series={this.state.series}
-        type="line"
-        width="100%"
-        height={300}
-      />
+      <div className="resultsChart">
+        <Chart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          width="100%"
+          height={300}
+        />
+      </div>
     );
   }
 }

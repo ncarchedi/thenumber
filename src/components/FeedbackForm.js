@@ -31,7 +31,7 @@ class FeedbackForm extends React.Component {
     const { name, email, message } = this.state;
     return (
       <div className="feedbackForm">
-        <h3 className="feedbackFormTitle">We Want Your Feedback 🤔</h3>
+        <h3 className="feedbackFormTitle">Where should we go from here? 🤔</h3>
         <p>
           <em>The Number</em> is a work in progress—and you can help shape it!
         </p>
@@ -41,20 +41,20 @@ class FeedbackForm extends React.Component {
             name="name"
             value={name}
             onChange={this.handleChange}
-            placeholder="Name"
+            placeholder="Name (optional)"
           />
           <input
             type="email"
             name="email"
             value={email}
             onChange={this.handleChange}
-            placeholder="Email"
+            placeholder="Email (optional)"
           />
           <textarea
             name="message"
             value={message}
             onChange={this.handleChange}
-            placeholder="Write your suggestions here..."
+            placeholder="Write your feedback and/or suggestions here..."
           />
           <button type="submit">Submit Feedback</button>
         </form>
