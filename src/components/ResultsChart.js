@@ -55,12 +55,12 @@ class ResultsChart extends React.Component {
         },
       },
       yaxis: {
-        title: {
-          text: "Total Savings",
-          style: {
-            color: "#f1ece2",
-          },
-        },
+        // title: {
+        //   text: "Total Savings",
+        //   style: {
+        //     color: "#f1ece2",
+        //   },
+        // },
         labels: {
           style: {
             colors: "#f1ece2",
