@@ -1,7 +1,10 @@
 ## TODO
 
 - Add about / manifesto page
+- About link shouldn't push logo to the left
+- Add a note that we'll help them achieve their goal
 - Add CTA stubs to results page
+- Improve submit text for feedback form
 - Add conditional logic to quiz questions
 - Add keyboard shortcuts to multiple choice questions
 - Add a note that we don't store ANY data right now
@@ -9,6 +12,7 @@
 - Update favicon
 - Explore backends for data security (AWS guy?)
 - Add spans to emojis per the inline warnings
+- Make the logo an image
 - Check other inline TODOs
 
 ## DONE

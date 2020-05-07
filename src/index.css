@@ -38,56 +38,47 @@ button:focus {
   }
 }
 
-/* Results Component */
-.results {
-  padding: 0 2.5rem;
-}
-
-.resultsContainer {
+/* Header */
+.header {
+  margin-top: 20px;
   text-align: center;
 }
 
-.targetSavingsText {
+.logoContainer {
+  display: inline-block;
+}
+
+.logo {
   color: #59cd90;
-  border-width: 4px;
-  border-style: solid;
-  border-radius: 10px;
-  padding: 15px;
+  font-family: "Racing Sans One", cursive;
+  font-size: 2.5rem;
 }
 
-.additionalSavingsText {
-  font-size: 1.2rem;
-  margin: 35px 50px 25px 50px;
+.tagline {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #f1ece2;
 }
 
-.feedbackForm form {
-  margin-top: 25px;
+.aboutPageLink {
+  float: right;
+  margin-top: 10px;
+  font-family: "Racing Sans One", cursive;
 }
 
-.feedbackForm input,
-textarea {
-  display: block;
-  width: 70%;
-  margin: 15px auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
+.aboutPageLink a {
+  text-decoration: none;
 }
 
-.feedbackForm textarea {
-  height: 5rem;
-}
-
-.feedbackForm button {
-  padding: 10px;
-  font-size: 12px;
-  border: none;
-  border-radius: 10px;
-}
-
-.feedbackForm button:hover {
-  cursor: pointer;
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: darkgrey;
 }
 
 /* Quiz Component */
@@ -169,38 +160,56 @@ h2 {
   font-size: 0.9rem;
 }
 
-/* Header */
-.header {
-  margin-top: 20px;
+/* Results Component */
+.results {
+  padding: 0 2.5rem;
+}
+
+.resultsContainer {
   text-align: center;
 }
 
-.logoContainer {
-  display: block;
-  display: inline-block;
-}
-
-.logo {
+.targetSavingsText {
   color: #59cd90;
-  font-family: "Racing Sans One", cursive;
-  font-size: 2.5rem;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 15px;
 }
 
-.tagline {
-  font-size: 0.8rem;
-  font-style: italic;
-  color: #f1ece2;
+.additionalSavingsText {
+  font-size: 1.2rem;
+  margin: 35px 50px 25px 50px;
 }
 
-/* Footer */
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.75rem;
-  color: darkgrey;
+.feedbackForm form {
+  margin-top: 25px;
+}
+
+.feedbackForm input,
+textarea {
+  display: block;
+  width: 70%;
+  margin: 15px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+.feedbackForm textarea {
+  height: 5rem;
+}
+
+.feedbackForm button {
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+}
+
+.feedbackForm button:hover {
+  cursor: pointer;
 }
 
 /* Animation */
