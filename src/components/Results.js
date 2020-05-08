@@ -35,13 +35,13 @@ const Results = (props) => {
   const renderTargetAgeResults = () => {
     return (
       <div>
-        <h1 className="targetSavingsText">{`You need a total of ${toDollars(
-          targetSavings
-        )} by age ${targetAge}`}</h1>
+        <div className="targetSavingsText">{toDollars(targetSavings)}</div>
         <p className="additionalSavingsText">
-          {`You have ${toDollars(currentSavings)} saved today, which means you
-      need to accumulate an additional ${toDollars(additionalSavings)} over the
-      next ${yearsToRetirement} years.`}
+          {`This is the amount you need by age ${targetAge}. You have ${toDollars(
+            currentSavings
+          )} today, so you need to accumulate an additional ${toDollars(
+            additionalSavings
+          )} over the next ${yearsToRetirement} years.`}
         </p>
         <ResultsChart
           ageArray={chartData.ageArray}

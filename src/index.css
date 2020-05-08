@@ -177,25 +177,23 @@ h2 {
 }
 
 /* Results Component */
-.results {
-  padding: 0 2.5rem;
-}
-
 .resultsContainer {
   text-align: center;
 }
 
 .targetSavingsText {
+  display: inline-block;
+  padding: 15px 35px;
   color: #59cd90;
-  border-width: 4px;
-  border-style: solid;
-  border-radius: 10px;
-  padding: 15px;
+  font-family: "Racing Sans One", cursive;
+  font-size: 2.5rem;
+  border-bottom: solid;
+  border-width: 8px;
 }
 
 .additionalSavingsText {
   font-size: 1.2rem;
-  margin: 35px 50px 25px 50px;
+  margin: 35px 75px 25px 75px;
 }
 
 .feedbackForm form {
