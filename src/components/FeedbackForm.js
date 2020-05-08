@@ -32,9 +32,15 @@ class FeedbackForm extends React.Component {
     const { name, email, message } = this.state;
     return (
       <div className="feedbackForm">
-        <h3 className="feedbackFormTitle">
-          {name}, where should we go from here? 🤔
-        </h3>
+        {name ? (
+          <h3 className="feedbackFormTitle">
+            {name}, where should we go from here? 🤔
+          </h3>
+        ) : (
+          <h3 className="feedbackFormTitle">
+            Where should we go from here? 🤔
+          </h3>
+        )}
         <p>
           <em>The Number</em> is a work in progress—and you can help shape it!
         </p>

@@ -3,14 +3,12 @@ import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart";
-import FeedbackForm from "./FeedbackForm";
 import toDollars from "../utils/toDollars";
 import getResultsChartData from "../utils/getResultsChartData";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
 const Results = (props) => {
   const {
-    name,
     currentAge,
     targetAge,
     monthlyExpenses,
@@ -49,8 +47,6 @@ const Results = (props) => {
           ageArray={chartData.ageArray}
           savingsArray={chartData.savingsArray}
         />
-        <hr />
-        <FeedbackForm name={name} />
       </div>
     );
   };

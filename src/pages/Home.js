@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
@@ -33,6 +34,8 @@ class Home extends React.Component {
       ...this.state.user,
       [key]: value,
     };
+
+    if (key === "name") this.props.onSetName(value);
 
     this.setState({ user });
   };
@@ -113,5 +116,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  onSetName: PropTypes.func.isRequired,
+};
 
 export default Home;

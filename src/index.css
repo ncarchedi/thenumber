@@ -25,6 +25,7 @@ button:focus {
 button {
   background-color: #303030;
   color: #f1ece2;
+  margin: 10px 0;
   padding: 10px;
   font-size: 12px;
   border-radius: 10px;
@@ -57,7 +58,6 @@ button:hover {
 /* Header */
 .header {
   margin-top: 20px;
-  text-align: center;
 }
 
 .logoContainer {
@@ -76,13 +76,13 @@ button:hover {
   color: #f1ece2;
 }
 
-.aboutPageLink {
+.feedbackPageLink {
   float: right;
   margin-top: 10px;
   font-family: "Racing Sans One", cursive;
 }
 
-.aboutPageLink a {
+.feedbackPageLink a {
   text-decoration: none;
 }
 
@@ -198,10 +198,6 @@ h2 {
   margin: 35px 50px 25px 50px;
 }
 
-.feedbackForm {
-  margin-top: 35px;
-}
-
 .feedbackForm form {
   margin-top: 25px;
 }
@@ -210,7 +206,7 @@ h2 {
 textarea {
   display: block;
   width: 70%;
-  margin: 15px auto;
+  margin: 15px 0 15px 0;
   padding: 10px;
   border-radius: 10px;
   border: none;

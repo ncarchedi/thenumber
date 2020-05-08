@@ -12,6 +12,9 @@ const Header = () => {
       {/* <Link to="/about">
         <div className="aboutPageLink">about</div>
       </Link> */}
+      <Link to="/feedback">
+        <div className="feedbackPageLink">give us feedback</div>
+      </Link>
     </div>
   );
 };
