@@ -58,7 +58,7 @@ var quizQuestions = [
     content: {
       question: "How much money do you spend in an average month? 💸",
       helperText:
-        "Expenses often vary month-to-month. This can be a rough estimate.",
+        "Expenses often vary month-to-month. This can be a rough estimate for now.",
     },
   },
   {
@@ -67,7 +67,7 @@ var quizQuestions = [
     inputType: "number",
     variableName: "currentSavings",
     content: {
-      question: "How much money do you have saved? 💰",
+      question: "Approximately how much money do you have saved? 💰",
       helperText:
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },
