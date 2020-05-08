@@ -16,7 +16,7 @@ class Home extends React.Component {
     showResults: false,
     user: {
       name: "",
-      strategy: "",
+      strategy: "targetAge",
       targetAge: "",
       currentAge: "",
       monthlyExpenses: "",

@@ -8,37 +8,37 @@ var quizQuestions = [
       question: "👋 What's your first name?",
     },
   },
-  {
-    id: 2,
-    type: "MultipleChoice",
-    variableName: "strategy",
-    content: {
-      question: "Welcome, ___! Which of the following best describes you?",
-      answers: [
-        {
-          value: "targetAge",
-          label:
-            "I'd like to retire at a specific age. How much do I need to save between now and then? 📆",
-        },
-        {
-          value: "targetSavings",
-          label:
-            "I'm able to save a certain amount of money each year. When will I be able to retire? 📈",
-        },
-        {
-          value: "retireNow",
-          label: "I'd like to retire now. Am I ready? 🚀",
-        },
-      ],
-    },
-  },
+  // {
+  //   id: 2,
+  //   type: "MultipleChoice",
+  //   variableName: "strategy",
+  //   content: {
+  //     question: "Welcome, ___! Which of the following best describes you?",
+  //     answers: [
+  //       {
+  //         value: "targetAge",
+  //         label:
+  //           "I'd like to retire at a specific age. How much do I need to save between now and then? 📆",
+  //       },
+  //       {
+  //         value: "targetSavings",
+  //         label:
+  //           "I'm able to save a certain amount of money each year. When will I be able to retire? 📈",
+  //       },
+  //       {
+  //         value: "retireNow",
+  //         label: "I'd like to retire now. Am I ready? 🚀",
+  //       },
+  //     ],
+  //   },
+  // },
   {
     id: 3,
     type: "TextQuestion",
     inputType: "number",
     variableName: "targetAge",
     content: {
-      question: "Great! What age would you like to retire at? 📆",
+      question: "Welcome, ___! What age would you like to retire at? 📆",
     },
   },
   {
