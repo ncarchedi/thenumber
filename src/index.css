@@ -22,6 +22,22 @@ button:focus {
   outline: none;
 }
 
+button {
+  background-color: #303030;
+  color: #f1ece2;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #f1ece2;
+  border-style: solid;
+}
+
+button:hover {
+  background-color: #545454;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -182,6 +198,10 @@ h2 {
   margin: 35px 50px 25px 50px;
 }
 
+.feedbackForm {
+  margin-top: 35px;
+}
+
 .feedbackForm form {
   margin-top: 25px;
 }
@@ -199,17 +219,6 @@ textarea {
 
 .feedbackForm textarea {
   height: 5rem;
-}
-
-.feedbackForm button {
-  padding: 10px;
-  font-size: 12px;
-  border: none;
-  border-radius: 10px;
-}
-
-.feedbackForm button:hover {
-  cursor: pointer;
 }
 
 /* Animation */

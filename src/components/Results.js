@@ -49,6 +49,7 @@ const Results = (props) => {
           ageArray={chartData.ageArray}
           savingsArray={chartData.savingsArray}
         />
+        <hr />
         <FeedbackForm name={name} />
       </div>
     );

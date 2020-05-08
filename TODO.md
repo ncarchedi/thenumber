@@ -1,5 +1,6 @@
 ## TODO
 
+- Add 'coming soon' overlays over strategies 2-3
 - Add about / manifesto page
 - About link shouldn't push logo to the left
 - Add a note that we'll help them achieve their goal
