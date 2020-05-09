@@ -9,7 +9,7 @@ class ResultsChart extends React.Component {
     series: [
       {
         name: "Total Savings",
-        data: [...this.props.savingsArray],
+        data: [...this.props.yArray],
       },
     ],
     options: {
@@ -38,7 +38,7 @@ class ResultsChart extends React.Component {
         theme: "dark",
         x: {
           formatter: (x) => {
-            return `Age ${this.props.ageArray[x - 1]}`;
+            return `Age ${this.props.xArray[x - 1]}`;
           },
         },
       },
@@ -47,7 +47,7 @@ class ResultsChart extends React.Component {
         borderColor: "#f1ece2",
       },
       xaxis: {
-        categories: [...this.props.ageArray],
+        categories: [...this.props.xArray],
         labels: {
           style: {
             colors: "#f1ece2",
@@ -87,8 +87,8 @@ class ResultsChart extends React.Component {
 }
 
 ResultsChart.propTypes = {
-  ageArray: PropTypes.array.isRequired,
-  savingsArray: PropTypes.array.isRequired,
+  xArray: PropTypes.array.isRequired,
+  yArray: PropTypes.array.isRequired,
 };
 
 export default ResultsChart;

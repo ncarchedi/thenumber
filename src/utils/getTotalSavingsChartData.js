@@ -1,4 +1,4 @@
-const getResultsChartData = (
+const getTotalSavingsChartData = (
   startAge,
   endAge,
   principal,
@@ -22,4 +22,4 @@ const getResultsChartData = (
   return { ageArray: ageArray, savingsArray: savingsArray };
 };
 
-export default getResultsChartData;
+export default getTotalSavingsChartData;

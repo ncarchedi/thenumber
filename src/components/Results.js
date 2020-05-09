@@ -5,7 +5,8 @@ import { CSSTransitionGroup } from "react-transition-group";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
 import toPercent from "../utils/toPercent";
-import getResultsChartData from "../utils/getResultsChartData";
+import getTotalSavingsChartData from "../utils/getTotalSavingsChartData";
+import getAnnualWithdrawalChartData from "../utils/getAnnualWithdrawalChartData";
 import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
@@ -45,13 +46,22 @@ class Results extends React.Component {
       yearsToRetirement
     );
 
-    const chartData = getResultsChartData(
+    const totalSavingsChartData = getTotalSavingsChartData(
       currentAge,
       targetAge,
       currentSavings,
       annualContribution,
       annualReturn
     );
+
+    const annualWithdrawalChartData = getAnnualWithdrawalChartData(
+      currentAge,
+      targetAge,
+      100, // TODO: un-hardcode death age?
+      monthlyExpenses,
+      annualInflation
+    );
+    // console.log(annualWithdrawalChartData);
 
     return (
       <div>
@@ -64,11 +74,11 @@ class Results extends React.Component {
           )} over the next ${yearsToRetirement} years.`}
         </p>
         <ResultsChart
-          ageArray={chartData.ageArray}
-          savingsArray={chartData.savingsArray}
+          xArray={totalSavingsChartData.ageArray}
+          yArray={totalSavingsChartData.savingsArray}
         />
         <div className="targetSavingsText">
-          {toDollars(monthlyExpenses * 1.03 ** yearsToRetirement) + " / month"}
+          {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
         </div>
         <p className="additionalSavingsText">
           {`This is how much you'll be able to spend in your first year of retirement, based on a ${toPercent(
@@ -77,6 +87,10 @@ class Results extends React.Component {
             withdrawalRate
           )} annual withdrawal rate.`}
         </p>
+        <ResultsChart
+          xArray={annualWithdrawalChartData.ageArray}
+          yArray={annualWithdrawalChartData.withdrawalArray}
+        />
         <div className="targetSavingsText">
           {toDollars(annualContribution / 12) + " / month"}
         </div>
