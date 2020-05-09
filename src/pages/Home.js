@@ -17,7 +17,6 @@ class Home extends React.Component {
     showResults: false,
     user: {
       name: "",
-      strategy: "targetAge",
       targetAge: "",
       currentAge: "",
       monthlyExpenses: "",
@@ -26,7 +25,8 @@ class Home extends React.Component {
     assumptions: {
       annualReturn: 0.07,
       annualInflation: 0.03,
-      taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
+      withdrawalRate: 0.04,
+      // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
     },
   };
 
@@ -67,7 +67,6 @@ class Home extends React.Component {
   handleSkipQuiz = () => {
     const fakeUser = {
       name: "Marley",
-      strategy: "targetAge",
       targetAge: "60",
       currentAge: "30",
       monthlyExpenses: "5000",
@@ -91,14 +90,6 @@ class Home extends React.Component {
       updatedQuestion = replaceBlanks(quizQuestion.content.question, userName);
     }
     quizQuestion.content.question = updatedQuestion;
-
-    // TODO: this feels hacky to me - better placement?
-    // only allow quiz for targetAge strategy right now
-    const strategy = this.state.user.strategy;
-    if (strategy && strategy !== "targetAge") {
-      this.showResults();
-      return null;
-    }
 
     return (
       <Quiz

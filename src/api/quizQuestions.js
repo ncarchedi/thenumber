@@ -72,30 +72,6 @@ var quizQuestions = [
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },
   },
-  // {
-  //   id: 5,
-  //   type: "MultipleChoice",
-  //   variableName: "strategy",
-  //   content: {
-  //     question: "Which of the following best describes you?",
-  //     answers: [
-  //       {
-  //         value: "targetAge",
-  //         label:
-  //           "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
-  //       },
-  //       {
-  //         value: "targetSavings",
-  //         label:
-  //           "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
-  //       },
-  //       {
-  //         value: "retireNow",
-  //         label: "I'd like to retire now. Am I ready?",
-  //       },
-  //     ],
-  //   },
-  // },
 ];
 
 export default quizQuestions;

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart";
-import AssumptionsForm from "./AssumptionsForm";
 import toDollars from "../utils/toDollars";
+import toPercent from "../utils/toPercent";
 import getResultsChartData from "../utils/getResultsChartData";
 import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
@@ -14,23 +14,7 @@ class Results extends React.Component {
     showCreatePlan: true,
   };
 
-  handleCreatePlanClick = () => {
-    this.setState({ showCreatePlan: !this.state.showCreatePlan });
-  };
-
-  renderCreatePlan = () => {
-    return this.state.showCreatePlan ? (
-      <AssumptionsForm assumptions={this.props.assumptions} />
-    ) : (
-      <div style={{ textAlign: "center" }}>
-        <button className="actionButton" onClick={this.handleCreatePlanClick}>
-          📝 Create a Plan
-        </button>
-      </div>
-    );
-  };
-
-  renderTargetAgeResults = () => {
+  renderResults = () => {
     const {
       targetAge,
       currentAge,
@@ -38,17 +22,18 @@ class Results extends React.Component {
       currentSavings,
     } = this.props.userData;
 
+    const { annualReturn, withdrawalRate } = this.props.assumptions;
+
     const targetSavings = calculateTargetSavings(
       currentAge,
       targetAge,
-      monthlyExpenses
+      monthlyExpenses,
+      withdrawalRate
     );
 
     const additionalSavings = targetSavings - currentSavings;
     const yearsToRetirement = targetAge - currentAge;
 
-    // TODO: un-hardcode this
-    const annualReturn = 0.07;
     const annualContribution = calculateAnnualContribution(
       currentSavings,
       targetSavings,
@@ -68,7 +53,7 @@ class Results extends React.Component {
       <div>
         <div className="targetSavingsText">{toDollars(targetSavings)}</div>
         <p className="additionalSavingsText">
-          {`This is the amount you need by age ${targetAge}. You have ${toDollars(
+          {`This is your number—the amount you need to retire at age ${targetAge}. You have ${toDollars(
             currentSavings
           )} today, so you need to accumulate an additional ${toDollars(
             additionalSavings
@@ -78,16 +63,16 @@ class Results extends React.Component {
           ageArray={chartData.ageArray}
           savingsArray={chartData.savingsArray}
         />
-      </div>
-    );
-  };
-
-  renderNotSupportedResults = () => {
-    return (
-      <div>
-        <h2>
-          Sorry, we don't support that option yet! <a href=".">Try again?</a>
-        </h2>
+        <div className="targetSavingsText">
+          {toDollars(annualContribution / 12) + " / month"}
+        </div>
+        <p className="additionalSavingsText">
+          {`This is how much you need to save to achieve your number on time, assuming an
+          average annual return of ${toPercent(
+            annualReturn
+          )} across your entire savings
+          portfolio.`}
+        </p>
       </div>
     );
   };
@@ -103,12 +88,7 @@ class Results extends React.Component {
         transitionAppear
         transitionAppearTimeout={500}
       >
-        <div className="resultsContainer">
-          {this.props.userData.strategy === "targetAge"
-            ? this.renderTargetAgeResults()
-            : this.renderNotSupportedResults()}
-        </div>
-        <div>{this.renderCreatePlan()}</div>
+        <div className="resultsContainer">{this.renderResults()}</div>
       </CSSTransitionGroup>
     );
   }
@@ -117,7 +97,6 @@ class Results extends React.Component {
 Results.propTypes = {
   userData: PropTypes.exact({
     name: PropTypes.string.isRequired,
-    strategy: PropTypes.string.isRequired,
     targetAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
@@ -126,7 +105,7 @@ Results.propTypes = {
   assumptions: PropTypes.exact({
     annualReturn: PropTypes.number.isRequired,
     annualInflation: PropTypes.number.isRequired,
-    taxRate: PropTypes.number.isRequired,
+    withdrawalRate: PropTypes.number.isRequired,
   }),
 };
 
