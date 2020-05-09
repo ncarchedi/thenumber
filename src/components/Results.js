@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart";
+import AssumptionsForm from "./AssumptionsForm";
 import toDollars from "../utils/toDollars";
 import getResultsChartData from "../utils/getResultsChartData";
 import calculateAnnualContribution from "../utils/calculateAnnualContribution";
@@ -10,7 +11,7 @@ import calculateTargetSavings from "../utils/calculateTargetSavings";
 
 class Results extends React.Component {
   state = {
-    showCreatePlan: false,
+    showCreatePlan: true,
   };
 
   handleCreatePlanClick = () => {
@@ -19,7 +20,7 @@ class Results extends React.Component {
 
   renderCreatePlan = () => {
     return this.state.showCreatePlan ? (
-      <h2>This is a test</h2>
+      <AssumptionsForm assumptions={this.props.assumptions} />
     ) : (
       <div style={{ textAlign: "center" }}>
         <button className="actionButton" onClick={this.handleCreatePlanClick}>
@@ -29,9 +30,8 @@ class Results extends React.Component {
     );
   };
 
-  render() {
+  renderTargetAgeResults = () => {
     const {
-      strategy,
       targetAge,
       currentAge,
       monthlyExpenses,
@@ -64,35 +64,35 @@ class Results extends React.Component {
       annualReturn
     );
 
-    const renderTargetAgeResults = () => {
-      return (
-        <div>
-          <div className="targetSavingsText">{toDollars(targetSavings)}</div>
-          <p className="additionalSavingsText">
-            {`This is the amount you need by age ${targetAge}. You have ${toDollars(
-              currentSavings
-            )} today, so you need to accumulate an additional ${toDollars(
-              additionalSavings
-            )} over the next ${yearsToRetirement} years.`}
-          </p>
-          <ResultsChart
-            ageArray={chartData.ageArray}
-            savingsArray={chartData.savingsArray}
-          />
-        </div>
-      );
-    };
+    return (
+      <div>
+        <div className="targetSavingsText">{toDollars(targetSavings)}</div>
+        <p className="additionalSavingsText">
+          {`This is the amount you need by age ${targetAge}. You have ${toDollars(
+            currentSavings
+          )} today, so you need to accumulate an additional ${toDollars(
+            additionalSavings
+          )} over the next ${yearsToRetirement} years.`}
+        </p>
+        <ResultsChart
+          ageArray={chartData.ageArray}
+          savingsArray={chartData.savingsArray}
+        />
+      </div>
+    );
+  };
 
-    const renderNotSupportedResults = () => {
-      return (
-        <div>
-          <h2>
-            Sorry, we don't support that option yet! <a href=".">Try again?</a>
-          </h2>
-        </div>
-      );
-    };
+  renderNotSupportedResults = () => {
+    return (
+      <div>
+        <h2>
+          Sorry, we don't support that option yet! <a href=".">Try again?</a>
+        </h2>
+      </div>
+    );
+  };
 
+  render() {
     return (
       <CSSTransitionGroup
         className="container results"
@@ -104,9 +104,9 @@ class Results extends React.Component {
         transitionAppearTimeout={500}
       >
         <div className="resultsContainer">
-          {strategy === "targetAge"
-            ? renderTargetAgeResults()
-            : renderNotSupportedResults()}
+          {this.props.userData.strategy === "targetAge"
+            ? this.renderTargetAgeResults()
+            : this.renderNotSupportedResults()}
         </div>
         <div>{this.renderCreatePlan()}</div>
       </CSSTransitionGroup>
@@ -122,6 +122,11 @@ Results.propTypes = {
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     currentSavings: PropTypes.string.isRequired,
+  }),
+  assumptions: PropTypes.exact({
+    annualReturn: PropTypes.number.isRequired,
+    annualInflation: PropTypes.number.isRequired,
+    taxRate: PropTypes.number.isRequired,
   }),
 };
 

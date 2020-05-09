@@ -1,5 +1,7 @@
 ## TODO
 
+- Account for actual assumptions instead of 'multiple by 25' rule
+
 - "Your number is..." on results page
 - Language around retirement coach?
 - Distinguish the number vs. the plan vs. the next steps vs. the progress
@@ -10,10 +12,10 @@
 - Tell me how much I need to save every month/year
 - Show new line on the plot?
 
-* Save state to firebase
-* Allow me to update my total savings manually
-* Track my balance update history
-* Show special questionnaire when I return asking for new balance
+- Save state to firebase
+- Allow me to update my total savings manually
+- Track my balance update history
+- Show special questionnaire when I return asking for new balance
 
 ---
 

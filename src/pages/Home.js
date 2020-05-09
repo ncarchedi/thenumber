@@ -23,6 +23,11 @@ class Home extends React.Component {
       monthlyExpenses: "",
       currentSavings: "",
     },
+    assumptions: {
+      annualReturn: 0.07,
+      annualInflation: 0.03,
+      taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
+    },
   };
 
   // For testing purposes only!
@@ -110,7 +115,12 @@ class Home extends React.Component {
   };
 
   renderResults = () => {
-    return <Results userData={this.state.user} />;
+    return (
+      <Results
+        userData={this.state.user}
+        assumptions={this.state.assumptions}
+      />
+    );
   };
 
   render() {
