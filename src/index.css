@@ -23,20 +23,33 @@ button:focus {
 }
 
 button {
-  background-color: #303030;
+  background-color: #262626;
   color: #f1ece2;
   margin: 10px 0;
   padding: 10px;
   font-size: 12px;
-  border-radius: 10px;
+  font-weight: bold;
+  border-radius: 20px;
   border-width: 1px;
   border-color: #f1ece2;
   border-style: solid;
 }
 
 button:hover {
-  background-color: #545454;
+  background-color: #303030;
   cursor: pointer;
+}
+
+.actionButton {
+  border: none;
+  background-color: #59cd90;
+  color: #262626;
+  font-size: 1.5rem;
+  padding: 15px 25px;
+}
+
+.actionButton:hover {
+  background-color: #50bf84;
 }
 
 * {
@@ -104,7 +117,7 @@ button:hover {
   color: #262626;
   margin-top: 100px;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .skipQuizButton:hover {
@@ -141,7 +154,7 @@ h2 {
   background-color: #303030;
   padding: 15px 40px;
   margin: 15px 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   border-width: 1px;
   border-color: #f1ece2;
   border-style: solid;
@@ -196,6 +209,7 @@ h2 {
   margin: 35px 75px 25px 75px;
 }
 
+/* Feedback Page */
 .feedbackForm form {
   margin-top: 25px;
 }
@@ -206,7 +220,7 @@ textarea {
   width: 70%;
   margin: 15px 0 15px 0;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   font-size: 1rem;
 }

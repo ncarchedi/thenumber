@@ -25,6 +25,11 @@ class Home extends React.Component {
     },
   };
 
+  // For testing purposes only!
+  componentDidMount = () => {
+    this.handleSkipQuiz();
+  };
+
   goToNextQuestion = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };

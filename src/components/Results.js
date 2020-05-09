@@ -47,6 +47,7 @@ const Results = (props) => {
           ageArray={chartData.ageArray}
           savingsArray={chartData.savingsArray}
         />
+        <button className="actionButton">📝 Create a Plan </button>
       </div>
     );
   };

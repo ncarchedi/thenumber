@@ -34,19 +34,19 @@ class ResultsChart extends React.Component {
         strokeWidth: 3,
       },
       tooltip: {
-        enabled: false,
+        enabled: true,
+        theme: "dark",
+        x: {
+          formatter: (x) => {
+            return `Age ${this.props.ageArray[x - 1]}`;
+          },
+        },
       },
       colors: ["#59cd90"],
       grid: {
         borderColor: "#f1ece2",
       },
       xaxis: {
-        title: {
-          text: "Age",
-          style: {
-            color: "#f1ece2",
-          },
-        },
         categories: [...this.props.ageArray],
         labels: {
           style: {
