@@ -1,23 +1,22 @@
-import { Finance } from "financejs";
-
 const getResultsChartData = (
-  currentAge,
-  targetAge,
-  currentSavings,
-  targetSavings
+  startAge,
+  endAge,
+  principal,
+  annualContribution,
+  annualReturn
 ) => {
-  const ageDiff = targetAge - currentAge;
+  const nYears = endAge - startAge + 1;
 
-  const finance = new Finance();
-  const cagr = finance.CAGR(currentSavings, targetSavings, ageDiff) / 100;
+  var ageArray = [];
+  var savingsArray = [];
 
-  var ageArray = [currentAge];
-  var savingsArray = [currentSavings];
+  for (var i = 0; i < nYears; i++) {
+    ageArray.push(Number(startAge) + i);
 
-  var i;
-  for (i = 1; i <= ageDiff; i++) {
-    ageArray.push(Number(currentAge) + i);
-    savingsArray.push(savingsArray[i - 1] * (1 + cagr));
+    const balance =
+      principal * (1 + annualReturn) ** i +
+      annualContribution * (((1 + annualReturn) ** i - 1) / annualReturn);
+    savingsArray.push(balance);
   }
 
   return { ageArray: ageArray, savingsArray: savingsArray };
