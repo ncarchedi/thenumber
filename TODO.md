@@ -7,6 +7,8 @@
 - Distinguish the number vs. the plan vs. the next steps vs. the progress
 - This number = financial freedom
 
+- show a warning for anyone retiring before 50? suggest more conservative assumptions?
+
 - Move results to its own page
 - Finish v1 of about / manifesto page
 - Tell me how much I need to save every month/year

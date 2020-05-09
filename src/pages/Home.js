@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import quizQuestions from "../api/quizQuestions";
+import getWithdrawalRate from "../utils/getWithdrawalRate";
+import getAnnualReturn from "../utils/getAnnualReturn";
 
 // TODO: extract into file/folder of utility functions
 // TODO: use existing templating library
@@ -21,11 +23,12 @@ class Home extends React.Component {
       currentAge: "",
       monthlyExpenses: "",
       currentSavings: "",
+      percentStocks: "",
     },
     assumptions: {
-      annualReturn: 0.07,
+      annualReturn: null,
+      withdrawalRate: null,
       annualInflation: 0.03,
-      withdrawalRate: 0.04,
       // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
     },
   };
@@ -39,6 +42,20 @@ class Home extends React.Component {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
 
+  setAnnualReturn = (percentStocks) => {
+    const annualReturn = getAnnualReturn(percentStocks);
+    this.setState({
+      assumptions: { ...this.state.assumptions, annualReturn },
+    });
+  };
+
+  setWithdrawalRate = (percentStocks) => {
+    const rate = getWithdrawalRate(percentStocks);
+    this.setState({
+      assumptions: { ...this.state.assumptions, withdrawalRate: rate },
+    });
+  };
+
   saveUserValue = (key, value) => {
     const user = {
       ...this.state.user,
@@ -46,6 +63,10 @@ class Home extends React.Component {
     };
 
     if (key === "name") this.props.onSetName(value);
+    if (key === "percentStocks") {
+      this.setAnnualReturn(value);
+      this.setWithdrawalRate(value);
+    }
 
     this.setState({ user });
   };
@@ -71,11 +92,19 @@ class Home extends React.Component {
       currentAge: "30",
       monthlyExpenses: "5000",
       currentSavings: "100000",
+      percentStocks: "mostlyStocks",
+    };
+
+    const fakeAssumptions = {
+      annualReturn: getAnnualReturn(fakeUser.percentStocks),
+      withdrawalRate: getWithdrawalRate(fakeUser.percentStocks),
+      annualInflation: 0.03,
     };
 
     this.setState({
       showResults: true,
       user: fakeUser,
+      assumptions: fakeAssumptions,
     });
   };
 

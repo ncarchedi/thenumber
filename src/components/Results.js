@@ -22,7 +22,11 @@ class Results extends React.Component {
       currentSavings,
     } = this.props.userData;
 
-    const { annualReturn, withdrawalRate } = this.props.assumptions;
+    const {
+      annualReturn,
+      withdrawalRate,
+      annualInflation,
+    } = this.props.assumptions;
 
     const targetSavings = calculateTargetSavings(
       currentAge,
@@ -64,10 +68,20 @@ class Results extends React.Component {
           savingsArray={chartData.savingsArray}
         />
         <div className="targetSavingsText">
+          {toDollars(monthlyExpenses * 1.03 ** yearsToRetirement) + " / month"}
+        </div>
+        <p className="additionalSavingsText">
+          {`This is how much you'll be able to spend in your first year of retirement, based on a ${toPercent(
+            annualInflation
+          )} annual inflation rate and a ${toPercent(
+            withdrawalRate
+          )} annual withdrawal rate.`}
+        </p>
+        <div className="targetSavingsText">
           {toDollars(annualContribution / 12) + " / month"}
         </div>
         <p className="additionalSavingsText">
-          {`This is how much you need to save to achieve your number on time, assuming an
+          {`This is how much you need to save to reach your number by age ${targetAge}, assuming an
           average annual return of ${toPercent(
             annualReturn
           )} across your entire savings
@@ -101,11 +115,12 @@ Results.propTypes = {
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     currentSavings: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
   }),
   assumptions: PropTypes.exact({
     annualReturn: PropTypes.number.isRequired,
-    annualInflation: PropTypes.number.isRequired,
     withdrawalRate: PropTypes.number.isRequired,
+    annualInflation: PropTypes.number.isRequired,
   }),
 };
 
