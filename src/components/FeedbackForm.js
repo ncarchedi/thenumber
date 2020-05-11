@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Button from "@material-ui/core/Button";
+import SendIcon from "@material-ui/icons/Send";
+
 const encode = (data) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -58,7 +61,14 @@ class FeedbackForm extends React.Component {
             onChange={this.handleChange}
             placeholder="Write your feedback and/or suggestions here..."
           />
-          <button type="submit">Submit Feedback</button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="default"
+            endIcon={<SendIcon />}
+          >
+            Submit Feedback
+          </Button>
         </form>
       </div>
     );
