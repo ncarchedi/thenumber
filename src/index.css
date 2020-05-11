@@ -194,7 +194,7 @@ h2 {
   text-align: center;
 }
 
-.targetSavingsText {
+.resultsSectionHeaderText {
   display: inline-block;
   padding: 15px 35px;
   color: #59cd90;
@@ -204,7 +204,7 @@ h2 {
   border-width: 8px;
 }
 
-.additionalSavingsText {
+.resultsSupportingText {
   font-size: 1.2rem;
   margin: 35px;
 }

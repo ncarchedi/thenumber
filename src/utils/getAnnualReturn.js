@@ -2,6 +2,7 @@
 
 const getAnnualReturn = (percentStocks) => {
   let annualReturn = null;
+
   if (percentStocks === "mostlyStocks") {
     annualReturn = 0.07;
   } else if (percentStocks === "halfStocks") {

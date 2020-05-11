@@ -26,35 +26,41 @@ class Home extends React.Component {
       percentStocks: "",
     },
     assumptions: {
-      annualReturn: null,
-      withdrawalRate: null,
+      annualReturn: 0.07,
+      withdrawalRate: 0.04,
       annualInflation: 0.03,
       // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
     },
   };
 
   // For testing purposes only!
-  componentDidMount = () => {
-    this.handleSkipQuiz();
-  };
+  // componentDidMount = () => {
+  //   this.handleSkipQuiz();
+  // };
 
   goToNextQuestion = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
 
-  setAnnualReturn = (percentStocks) => {
-    const annualReturn = getAnnualReturn(percentStocks);
-    this.setState({
-      assumptions: { ...this.state.assumptions, annualReturn },
-    });
-  };
+  // setAnnualReturn = (percentStocks) => {
+  //   const annualReturn = getAnnualReturn(percentStocks);
+  //   this.setState(
+  //     {
+  //       assumptions: { ...this.state.assumptions, annualReturn: annualReturn },
+  //     },
+  //     () => console.log(this.state)
+  //   );
+  // };
 
-  setWithdrawalRate = (percentStocks) => {
-    const rate = getWithdrawalRate(percentStocks);
-    this.setState({
-      assumptions: { ...this.state.assumptions, withdrawalRate: rate },
-    });
-  };
+  // setWithdrawalRate = (percentStocks) => {
+  //   const withdrawalRate = getWithdrawalRate(percentStocks);
+  //   this.setState({
+  //     assumptions: {
+  //       ...this.state.assumptions,
+  //       withdrawalRate: withdrawalRate,
+  //     },
+  //   });
+  // };
 
   saveUserValue = (key, value) => {
     const user = {
@@ -63,10 +69,10 @@ class Home extends React.Component {
     };
 
     if (key === "name") this.props.onSetName(value);
-    if (key === "percentStocks") {
-      this.setAnnualReturn(value);
-      this.setWithdrawalRate(value);
-    }
+    // if (key === "percentStocks") {
+    //   this.setAnnualReturn(value);
+    //   this.setWithdrawalRate(value);
+    // }
 
     this.setState({ user });
   };

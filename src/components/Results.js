@@ -4,9 +4,9 @@ import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
-import toPercent from "../utils/toPercent";
+// import toPercent from "../utils/toPercent";
 import getTotalSavingsChartData from "../utils/getTotalSavingsChartData";
-import getAnnualWithdrawalChartData from "../utils/getAnnualWithdrawalChartData";
+// import getAnnualWithdrawalChartData from "../utils/getAnnualWithdrawalChartData";
 import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
@@ -26,7 +26,7 @@ class Results extends React.Component {
     const {
       annualReturn,
       withdrawalRate,
-      annualInflation,
+      // annualInflation,
     } = this.props.assumptions;
 
     const targetSavings = calculateTargetSavings(
@@ -54,19 +54,20 @@ class Results extends React.Component {
       annualReturn
     );
 
-    const annualWithdrawalChartData = getAnnualWithdrawalChartData(
-      currentAge,
-      targetAge,
-      100, // TODO: un-hardcode death age?
-      monthlyExpenses,
-      annualInflation
-    );
-    // console.log(annualWithdrawalChartData);
+    // const annualWithdrawalChartData = getAnnualWithdrawalChartData(
+    //   currentAge,
+    //   targetAge,
+    //   100, // TODO: un-hardcode death age?
+    //   monthlyExpenses,
+    //   annualInflation
+    // );
 
     return (
       <div>
-        <div className="targetSavingsText">{toDollars(targetSavings)}</div>
-        <p className="additionalSavingsText">
+        <div className="resultsSectionHeaderText">
+          {toDollars(targetSavings)}
+        </div>
+        <p className="resultsSupportingText">
           {`This is your number—the amount you need to retire at age ${targetAge}. You have ${toDollars(
             currentSavings
           )} today, so you need to accumulate an additional ${toDollars(
@@ -76,11 +77,12 @@ class Results extends React.Component {
         <ResultsChart
           xArray={totalSavingsChartData.ageArray}
           yArray={totalSavingsChartData.savingsArray}
+          chartType="line"
         />
-        <div className="targetSavingsText">
+        {/* <div className="resultsSectionHeaderText">
           {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
         </div>
-        <p className="additionalSavingsText">
+        <p className="resultsSupportingText">
           {`This is how much you'll be able to spend in your first year of retirement, based on a ${toPercent(
             annualInflation
           )} annual inflation rate and a ${toPercent(
@@ -90,17 +92,18 @@ class Results extends React.Component {
         <ResultsChart
           xArray={annualWithdrawalChartData.ageArray}
           yArray={annualWithdrawalChartData.withdrawalArray}
+          chartType="bar"
         />
-        <div className="targetSavingsText">
+        <div className="resultsSectionHeaderText">
           {toDollars(annualContribution / 12) + " / month"}
         </div>
-        <p className="additionalSavingsText">
+        <p className="resultsSupportingText">
           {`This is how much you need to save to reach your number by age ${targetAge}, assuming an
           average annual return of ${toPercent(
             annualReturn
           )} across your entire savings
           portfolio.`}
-        </p>
+        </p> */}
       </div>
     );
   };

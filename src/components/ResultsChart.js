@@ -15,7 +15,6 @@ class ResultsChart extends React.Component {
     options: {
       chart: {
         height: 350,
-        type: "line",
         zoom: {
           enabled: false,
         },
@@ -77,7 +76,7 @@ class ResultsChart extends React.Component {
         <Chart
           options={this.state.options}
           series={this.state.series}
-          type="line"
+          type={this.props.chartType}
           width="100%"
           height={300}
         />
@@ -89,6 +88,7 @@ class ResultsChart extends React.Component {
 ResultsChart.propTypes = {
   xArray: PropTypes.array.isRequired,
   yArray: PropTypes.array.isRequired,
+  chartType: PropTypes.string.isRequired,
 };
 
 export default ResultsChart;

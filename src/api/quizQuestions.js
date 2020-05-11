@@ -72,30 +72,30 @@ var quizQuestions = [
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },
   },
-  {
-    id: 7,
-    type: "MultipleChoice",
-    inputType: "string",
-    variableName: "percentStocks",
-    content: {
-      question:
-        "Which of the following most accurately describes how those savings are allocated?",
-      answers: [
-        {
-          value: "mostlyStocks",
-          label: "Mostly stocks",
-        },
-        {
-          value: "halfStocks",
-          label: "About half stocks",
-        },
-        {
-          value: "mostlyNotStocks",
-          label: "Mostly not stocks",
-        },
-      ],
-    },
-  },
+  // {
+  //   id: 7,
+  //   type: "MultipleChoice",
+  //   inputType: "string",
+  //   variableName: "percentStocks",
+  //   content: {
+  //     question:
+  //       "Which of the following most accurately describes how those savings are allocated?",
+  //     answers: [
+  //       {
+  //         value: "mostlyStocks",
+  //         label: "Mostly stocks",
+  //       },
+  //       {
+  //         value: "halfStocks",
+  //         label: "About half stocks",
+  //       },
+  //       {
+  //         value: "mostlyNotStocks",
+  //         label: "Mostly not stocks",
+  //       },
+  //     ],
+  //   },
+  // },
 ];
 
 export default quizQuestions;
