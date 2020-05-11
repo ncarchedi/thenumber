@@ -9,13 +9,12 @@ class ResultsChart extends React.Component {
     series: [
       {
         name: "Total Savings",
-        data: [...this.props.savingsArray],
+        data: [...this.props.yArray],
       },
     ],
     options: {
       chart: {
         height: 350,
-        type: "line",
         zoom: {
           enabled: false,
         },
@@ -34,20 +33,20 @@ class ResultsChart extends React.Component {
         strokeWidth: 3,
       },
       tooltip: {
-        enabled: false,
+        enabled: true,
+        theme: "dark",
+        x: {
+          formatter: (x) => {
+            return `Age ${this.props.xArray[x - 1]}`;
+          },
+        },
       },
       colors: ["#59cd90"],
       grid: {
         borderColor: "#f1ece2",
       },
       xaxis: {
-        title: {
-          text: "Age",
-          style: {
-            color: "#f1ece2",
-          },
-        },
-        categories: [...this.props.ageArray],
+        categories: [...this.props.xArray],
         labels: {
           style: {
             colors: "#f1ece2",
@@ -77,7 +76,7 @@ class ResultsChart extends React.Component {
         <Chart
           options={this.state.options}
           series={this.state.series}
-          type="line"
+          type={this.props.chartType}
           width="100%"
           height={300}
         />
@@ -87,8 +86,9 @@ class ResultsChart extends React.Component {
 }
 
 ResultsChart.propTypes = {
-  ageArray: PropTypes.array.isRequired,
-  savingsArray: PropTypes.array.isRequired,
+  xArray: PropTypes.array.isRequired,
+  yArray: PropTypes.array.isRequired,
+  chartType: PropTypes.string.isRequired,
 };
 
 export default ResultsChart;

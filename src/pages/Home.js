@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import quizQuestions from "../api/quizQuestions";
+// import getWithdrawalRate from "../utils/getWithdrawalRate";
+// import getAnnualReturn from "../utils/getAnnualReturn";
 
 // TODO: extract into file/folder of utility functions
 // TODO: use existing templating library
@@ -17,17 +19,48 @@ class Home extends React.Component {
     showResults: false,
     user: {
       name: "",
-      strategy: "targetAge",
       targetAge: "",
       currentAge: "",
       monthlyExpenses: "",
       currentSavings: "",
+      percentStocks: "",
+    },
+    assumptions: {
+      annualReturn: 0.07,
+      withdrawalRate: 0.04,
+      annualInflation: 0.03,
+      // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
     },
   };
+
+  // For testing purposes only!
+  // componentDidMount = () => {
+  //   this.handleSkipQuiz();
+  // };
 
   goToNextQuestion = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
+
+  // setAnnualReturn = (percentStocks) => {
+  //   const annualReturn = getAnnualReturn(percentStocks);
+  //   this.setState(
+  //     {
+  //       assumptions: { ...this.state.assumptions, annualReturn: annualReturn },
+  //     },
+  //     () => console.log(this.state)
+  //   );
+  // };
+
+  // setWithdrawalRate = (percentStocks) => {
+  //   const withdrawalRate = getWithdrawalRate(percentStocks);
+  //   this.setState({
+  //     assumptions: {
+  //       ...this.state.assumptions,
+  //       withdrawalRate: withdrawalRate,
+  //     },
+  //   });
+  // };
 
   saveUserValue = (key, value) => {
     const user = {
@@ -36,6 +69,10 @@ class Home extends React.Component {
     };
 
     if (key === "name") this.props.onSetName(value);
+    // if (key === "percentStocks") {
+    //   this.setAnnualReturn(value);
+    //   this.setWithdrawalRate(value);
+    // }
 
     this.setState({ user });
   };
@@ -57,16 +94,23 @@ class Home extends React.Component {
   handleSkipQuiz = () => {
     const fakeUser = {
       name: "Marley",
-      strategy: "targetAge",
       targetAge: "60",
       currentAge: "30",
       monthlyExpenses: "5000",
       currentSavings: "100000",
+      percentStocks: "mostlyStocks",
+    };
+
+    const fakeAssumptions = {
+      annualReturn: getAnnualReturn(fakeUser.percentStocks),
+      withdrawalRate: getWithdrawalRate(fakeUser.percentStocks),
+      annualInflation: 0.03,
     };
 
     this.setState({
       showResults: true,
       user: fakeUser,
+      assumptions: fakeAssumptions,
     });
   };
 
@@ -81,14 +125,6 @@ class Home extends React.Component {
       updatedQuestion = replaceBlanks(quizQuestion.content.question, userName);
     }
     quizQuestion.content.question = updatedQuestion;
-
-    // TODO: this feels hacky to me - better placement?
-    // only allow quiz for targetAge strategy right now
-    const strategy = this.state.user.strategy;
-    if (strategy && strategy !== "targetAge") {
-      this.showResults();
-      return null;
-    }
 
     return (
       <Quiz
@@ -105,7 +141,12 @@ class Home extends React.Component {
   };
 
   renderResults = () => {
-    return <Results userData={this.state.user} />;
+    return (
+      <Results
+        userData={this.state.user}
+        assumptions={this.state.assumptions}
+      />
+    );
   };
 
   render() {

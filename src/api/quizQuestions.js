@@ -73,25 +73,25 @@ var quizQuestions = [
     },
   },
   // {
-  //   id: 5,
+  //   id: 7,
   //   type: "MultipleChoice",
-  //   variableName: "strategy",
+  //   inputType: "string",
+  //   variableName: "percentStocks",
   //   content: {
-  //     question: "Which of the following best describes you?",
+  //     question:
+  //       "Which of the following most accurately describes how those savings are allocated?",
   //     answers: [
   //       {
-  //         value: "targetAge",
-  //         label:
-  //           "I'd like to retire at a specific age. Tell me how much I need to save between now and then.",
+  //         value: "mostlyStocks",
+  //         label: "Mostly stocks",
   //       },
   //       {
-  //         value: "targetSavings",
-  //         label:
-  //           "I'm able to save a certain amount of money each year. Tell me when I'll be able to retire.",
+  //         value: "halfStocks",
+  //         label: "About half stocks",
   //       },
   //       {
-  //         value: "retireNow",
-  //         label: "I'd like to retire now. Am I ready?",
+  //         value: "mostlyNotStocks",
+  //         label: "Mostly not stocks",
   //       },
   //     ],
   //   },

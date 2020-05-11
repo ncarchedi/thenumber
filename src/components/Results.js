@@ -4,90 +4,140 @@ import { CSSTransitionGroup } from "react-transition-group";
 
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
-import getResultsChartData from "../utils/getResultsChartData";
+// import toPercent from "../utils/toPercent";
+import getTotalSavingsChartData from "../utils/getTotalSavingsChartData";
+// import getAnnualWithdrawalChartData from "../utils/getAnnualWithdrawalChartData";
+import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
-const Results = (props) => {
-  const {
-    currentAge,
-    targetAge,
-    monthlyExpenses,
-    currentSavings,
-    strategy,
-  } = props.userData;
+class Results extends React.Component {
+  state = {
+    showCreatePlan: true,
+  };
 
-  const targetSavings = calculateTargetSavings(
-    currentAge,
-    targetAge,
-    monthlyExpenses
-  );
+  renderResults = () => {
+    const {
+      targetAge,
+      currentAge,
+      monthlyExpenses,
+      currentSavings,
+    } = this.props.userData;
 
-  const additionalSavings = targetSavings - currentSavings;
-  const yearsToRetirement = targetAge - currentAge;
+    const {
+      annualReturn,
+      withdrawalRate,
+      // annualInflation,
+    } = this.props.assumptions;
 
-  const chartData = getResultsChartData(
-    currentAge,
-    targetAge,
-    currentSavings,
-    targetSavings
-  );
+    const targetSavings = calculateTargetSavings(
+      currentAge,
+      targetAge,
+      monthlyExpenses,
+      withdrawalRate
+    );
 
-  const renderTargetAgeResults = () => {
+    const additionalSavings = targetSavings - currentSavings;
+    const yearsToRetirement = targetAge - currentAge;
+
+    const annualContribution = calculateAnnualContribution(
+      currentSavings,
+      targetSavings,
+      annualReturn,
+      yearsToRetirement
+    );
+
+    const totalSavingsChartData = getTotalSavingsChartData(
+      currentAge,
+      targetAge,
+      currentSavings,
+      annualContribution,
+      annualReturn
+    );
+
+    // const annualWithdrawalChartData = getAnnualWithdrawalChartData(
+    //   currentAge,
+    //   targetAge,
+    //   100, // TODO: un-hardcode death age?
+    //   monthlyExpenses,
+    //   annualInflation
+    // );
+
     return (
       <div>
-        <h1 className="targetSavingsText">{`You need a total of ${toDollars(
-          targetSavings
-        )} by age ${targetAge}`}</h1>
-        <p className="additionalSavingsText">
-          {`You have ${toDollars(currentSavings)} saved today, which means you
-      need to accumulate an additional ${toDollars(additionalSavings)} over the
-      next ${yearsToRetirement} years.`}
+        <div className="resultsSectionHeaderText">
+          {toDollars(targetSavings)}
+        </div>
+        <p className="resultsSupportingText">
+          {`This is your number—the amount you need to retire at age ${targetAge}. You have ${toDollars(
+            currentSavings
+          )} today, so you need to accumulate an additional ${toDollars(
+            additionalSavings
+          )} over the next ${yearsToRetirement} years.`}
         </p>
         <ResultsChart
-          ageArray={chartData.ageArray}
-          savingsArray={chartData.savingsArray}
+          xArray={totalSavingsChartData.ageArray}
+          yArray={totalSavingsChartData.savingsArray}
+          chartType="line"
         />
+        {/* <div className="resultsSectionHeaderText">
+          {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
+        </div>
+        <p className="resultsSupportingText">
+          {`This is how much you'll be able to spend in your first year of retirement, based on a ${toPercent(
+            annualInflation
+          )} annual inflation rate and a ${toPercent(
+            withdrawalRate
+          )} annual withdrawal rate.`}
+        </p>
+        <ResultsChart
+          xArray={annualWithdrawalChartData.ageArray}
+          yArray={annualWithdrawalChartData.withdrawalArray}
+          chartType="bar"
+        />
+        <div className="resultsSectionHeaderText">
+          {toDollars(annualContribution / 12) + " / month"}
+        </div>
+        <p className="resultsSupportingText">
+          {`This is how much you need to save to reach your number by age ${targetAge}, assuming an
+          average annual return of ${toPercent(
+            annualReturn
+          )} across your entire savings
+          portfolio.`}
+        </p> */}
       </div>
     );
   };
 
-  const renderNotSupportedResults = () => {
+  render() {
     return (
-      <div>
-        <h2>
-          Sorry, we don't support that option yet! <a href=".">Try again?</a>
-        </h2>
-      </div>
+      <CSSTransitionGroup
+        className="container results"
+        component="div"
+        transitionName="fade"
+        transitionEnterTimeout={800}
+        transitionLeaveTimeout={500}
+        transitionAppear
+        transitionAppearTimeout={500}
+      >
+        <div className="resultsContainer">{this.renderResults()}</div>
+      </CSSTransitionGroup>
     );
-  };
-
-  return (
-    <CSSTransitionGroup
-      className="container results"
-      component="div"
-      transitionName="fade"
-      transitionEnterTimeout={800}
-      transitionLeaveTimeout={500}
-      transitionAppear
-      transitionAppearTimeout={500}
-    >
-      <div className="resultsContainer">
-        {strategy === "targetAge"
-          ? renderTargetAgeResults()
-          : renderNotSupportedResults()}
-      </div>
-    </CSSTransitionGroup>
-  );
-};
+  }
+}
 
 Results.propTypes = {
   userData: PropTypes.exact({
     name: PropTypes.string.isRequired,
-    strategy: PropTypes.string.isRequired,
     targetAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     currentSavings: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+  }),
+  assumptions: PropTypes.exact({
+    annualReturn: PropTypes.number.isRequired,
+    withdrawalRate: PropTypes.number.isRequired,
+    annualInflation: PropTypes.number.isRequired,
   }),
 };
 

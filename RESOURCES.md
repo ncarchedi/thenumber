@@ -1,0 +1,8 @@
+- https://www.thebalance.com/what-is-the-4percent-rule-in-retirement-2388273
+- https://www.thebalance.com/dont-confuse-these-two-retirement-rules-of-thumb-453920
+- https://www.thebalance.com/what-s-your-retirement-number-453995
+- https://www.thebalance.com/taxes-in-retirement-how-much-will-you-pay-2388987
+- https://www.onefpa.org/journal/Pages/Portfolio%20Success%20Rates%20Where%20to%20Draw%20the%20Line.aspx
+- https://www.onefpa.org/journal/Pages/AUG15-Sustainable-Retirement-Spending-with-Low-Interest-Rates-Updating-the-Trinity-Study.aspx
+- https://fourpillarfreedom.com/the-trinity-study-updated-for-2018/
+- https://www.forbes.com/sites/wadepfau/2018/01/16/the-trinity-study-and-portfolio-success-rates-updated-to-2018/#4092f97b6860
