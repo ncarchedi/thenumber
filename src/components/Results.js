@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
+import Button from "@material-ui/core/Button";
+import ReplayIcon from "@material-ui/icons/Replay";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
 // import toPercent from "../utils/toPercent";
@@ -79,6 +83,26 @@ class Results extends React.Component {
           yArray={totalSavingsChartData.savingsArray}
           chartType="line"
         />
+        <div className="resultsButtonGroup">
+          <Button
+            variant="contained"
+            color="default"
+            size="large"
+            endIcon={<ReplayIcon />}
+            onClick={() => alert("Coming soon!")}
+          >
+            Start Over
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => alert("Coming soon!")}
+          >
+            Create a Plan
+          </Button>
+        </div>
         {/* <div className="resultsSectionHeaderText">
           {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
         </div>
