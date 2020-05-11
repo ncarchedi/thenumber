@@ -102,8 +102,8 @@ class Home extends React.Component {
     };
 
     const fakeAssumptions = {
-      annualReturn: getAnnualReturn(fakeUser.percentStocks),
-      withdrawalRate: getWithdrawalRate(fakeUser.percentStocks),
+      annualReturn: 0.07,
+      withdrawalRate: 0.04,
       annualInflation: 0.03,
     };
 
