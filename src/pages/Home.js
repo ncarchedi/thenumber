@@ -98,7 +98,6 @@ class Home extends React.Component {
       currentAge: "30",
       monthlyExpenses: "5000",
       currentSavings: "100000",
-      percentStocks: "mostlyStocks",
     };
 
     const fakeAssumptions = {
