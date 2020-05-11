@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import quizQuestions from "../api/quizQuestions";
-import getWithdrawalRate from "../utils/getWithdrawalRate";
-import getAnnualReturn from "../utils/getAnnualReturn";
+// import getWithdrawalRate from "../utils/getWithdrawalRate";
+// import getAnnualReturn from "../utils/getAnnualReturn";
 
 // TODO: extract into file/folder of utility functions
 // TODO: use existing templating library
