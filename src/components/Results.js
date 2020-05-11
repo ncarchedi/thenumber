@@ -89,6 +89,7 @@ class Results extends React.Component {
             color="default"
             size="large"
             endIcon={<ReplayIcon />}
+            onClick={() => alert("Coming soon!")}
           >
             Start Over
           </Button>
@@ -97,6 +98,7 @@ class Results extends React.Component {
             color="primary"
             size="large"
             endIcon={<ArrowForwardIcon />}
+            onClick={() => alert("Coming soon!")}
           >
             Create a Plan
           </Button>
