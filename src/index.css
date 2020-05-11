@@ -52,6 +52,21 @@ button:hover {
   background-color: #50bf84;
 }
 
+.secondaryActionButton {
+  border: solid;
+  border-width: 1px;
+  border-color: #f1ece2;
+  background-color: #262626;
+  color: #f1ece2;
+  font-size: 1.5rem;
+  padding: 15px 25px;
+}
+
+.secondaryActionButton:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -207,6 +222,15 @@ h2 {
 .resultsSupportingText {
   font-size: 1.2rem;
   margin: 35px;
+}
+
+.resultsButtonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.resultsButtonGroup button {
+  margin: 25px 35px;
 }
 
 /* Feedback Page */

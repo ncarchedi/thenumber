@@ -79,6 +79,10 @@ class Results extends React.Component {
           yArray={totalSavingsChartData.savingsArray}
           chartType="line"
         />
+        <div className="resultsButtonGroup">
+          <button className="secondaryActionButton">Start Over</button>
+          <button className="actionButton">Create a Plan</button>
+        </div>
         {/* <div className="resultsSectionHeaderText">
           {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
         </div>
