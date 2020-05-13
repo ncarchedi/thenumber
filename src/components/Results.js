@@ -2,15 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 
+import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import ReplayIcon from "@material-ui/icons/Replay";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
-// import toPercent from "../utils/toPercent";
 import getTotalSavingsChartData from "../utils/getTotalSavingsChartData";
-// import getAnnualWithdrawalChartData from "../utils/getAnnualWithdrawalChartData";
 import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
@@ -58,14 +57,6 @@ class Results extends React.Component {
       annualReturn
     );
 
-    // const annualWithdrawalChartData = getAnnualWithdrawalChartData(
-    //   currentAge,
-    //   targetAge,
-    //   100, // TODO: un-hardcode death age?
-    //   monthlyExpenses,
-    //   annualInflation
-    // );
-
     return (
       <div>
         <div className="resultsSectionHeaderText">
@@ -103,31 +94,6 @@ class Results extends React.Component {
             Create a Plan
           </Button>
         </div>
-        {/* <div className="resultsSectionHeaderText">
-          {toDollars(monthlyExpenses * 12 * 1.03 ** yearsToRetirement)}
-        </div>
-        <p className="resultsSupportingText">
-          {`This is how much you'll be able to spend in your first year of retirement, based on a ${toPercent(
-            annualInflation
-          )} annual inflation rate and a ${toPercent(
-            withdrawalRate
-          )} annual withdrawal rate.`}
-        </p>
-        <ResultsChart
-          xArray={annualWithdrawalChartData.ageArray}
-          yArray={annualWithdrawalChartData.withdrawalArray}
-          chartType="bar"
-        />
-        <div className="resultsSectionHeaderText">
-          {toDollars(annualContribution / 12) + " / month"}
-        </div>
-        <p className="resultsSupportingText">
-          {`This is how much you need to save to reach your number by age ${targetAge}, assuming an
-          average annual return of ${toPercent(
-            annualReturn
-          )} across your entire savings
-          portfolio.`}
-        </p> */}
       </div>
     );
   };
@@ -135,15 +101,15 @@ class Results extends React.Component {
   render() {
     return (
       <CSSTransitionGroup
-        className="container results"
-        component="div"
         transitionName="fade"
         transitionEnterTimeout={800}
         transitionLeaveTimeout={500}
         transitionAppear
         transitionAppearTimeout={500}
       >
-        <div className="resultsContainer">{this.renderResults()}</div>
+        <Container style={{ textAlign: "center" }}>
+          {this.renderResults()}
+        </Container>
       </CSSTransitionGroup>
     );
   }

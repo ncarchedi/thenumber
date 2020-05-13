@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Container from "@material-ui/core/Container";
+
 import FeedbackForm from "../components/FeedbackForm";
 
 const Feedback = (props) => {
   return (
-    <div className="container">
+    <Container>
       <FeedbackForm name={props.name} />
-    </div>
+    </Container>
   );
 };
 

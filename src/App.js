@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -24,22 +26,24 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <div className="App">
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home onSetName={handleSetName} />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/feedback">
-              <Feedback name={name} />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <Container maxWidth="xl">
+        <Router>
+          <div className="App">
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home onSetName={handleSetName} />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/feedback">
+                <Feedback name={name} />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </Container>
     </ThemeProvider>
   );
 };
