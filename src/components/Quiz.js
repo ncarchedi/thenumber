@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransitionGroup } from "react-transition-group";
 
 import Container from "@material-ui/core/Container";
 
@@ -9,32 +8,24 @@ import QuestionCount from "./QuestionCount";
 
 const Quiz = (props) => {
   return (
-    <CSSTransitionGroup
-      transitionName="fade"
-      transitionEnterTimeout={800}
-      transitionLeaveTimeout={500}
-      transitionAppear
-      transitionAppearTimeout={500}
-    >
-      <Container>
-        <div key={props.questionNumber}>
-          <QuestionCount
-            current={props.questionNumber}
-            total={props.questionTotal}
-          />
-          <Question
-            type={props.questionType}
-            inputType={props.questionInputType}
-            variableName={props.variableName}
-            content={props.questionContent}
-            onSubmitAnswer={props.onSubmitAnswer}
-          />
-        </div>
-        <button className="skipQuizButton" onClick={props.onSkipQuiz}>
-          Skip Quiz (Admin Only)
-        </button>
-      </Container>
-    </CSSTransitionGroup>
+    <Container>
+      <div key={props.questionNumber}>
+        <QuestionCount
+          current={props.questionNumber}
+          total={props.questionTotal}
+        />
+        <Question
+          type={props.questionType}
+          inputType={props.questionInputType}
+          variableName={props.variableName}
+          content={props.questionContent}
+          onSubmitAnswer={props.onSubmitAnswer}
+        />
+      </div>
+      <button className="skipQuizButton" onClick={props.onSkipQuiz}>
+        Skip Quiz (Admin Only)
+      </button>
+    </Container>
   );
 };
 

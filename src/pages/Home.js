@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import quizQuestions from "../api/quizQuestions";
-import Grid from "@material-ui/core/Grid";
 
 // import getWithdrawalRate from "../utils/getWithdrawalRate";
 // import getAnnualReturn from "../utils/getAnnualReturn";
@@ -162,14 +163,18 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Grid container>
-          <Grid item xs={6}>
-            {this.renderQuiz()}
+        {this.state.showResults ? (
+          <Grid container>
+            <Grid item xs={6}>
+              {this.renderQuiz()}
+            </Grid>
+            <Grid item xs={6}>
+              {this.renderResults()}
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            {this.state.showResults && this.renderResults()}
-          </Grid>
-        </Grid>
+        ) : (
+          <Container maxWidth="md">{this.renderQuiz()}</Container>
+        )}
       </div>
     );
   }
