@@ -89,7 +89,7 @@ class Results extends React.Component {
             color="default"
             size="large"
             endIcon={<ReplayIcon />}
-            onClick={() => alert("Coming soon!")}
+            onClick={this.props.onRestartQuiz}
           >
             Start Over
           </Button>
@@ -163,6 +163,7 @@ Results.propTypes = {
     withdrawalRate: PropTypes.number.isRequired,
     annualInflation: PropTypes.number.isRequired,
   }),
+  onRestartQuiz: PropTypes.func.isRequired,
 };
 
 export default Results;

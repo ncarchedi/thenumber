@@ -34,9 +34,17 @@ class Home extends React.Component {
   };
 
   // For testing purposes only!
-  // componentDidMount = () => {
-  //   this.handleSkipQuiz();
-  // };
+  componentDidMount = () => {
+    this.handleSkipQuiz();
+  };
+
+  // TODO: should we also reset 'user' state?
+  handleRestartQuiz = () => {
+    this.setState({
+      questionNumber: 1,
+      showResults: false,
+    });
+  };
 
   goToNextQuestion = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
@@ -144,6 +152,7 @@ class Home extends React.Component {
       <Results
         userData={this.state.user}
         assumptions={this.state.assumptions}
+        onRestartQuiz={this.handleRestartQuiz}
       />
     );
   };
