@@ -10,7 +10,7 @@ import About from "./pages/About";
 import Feedback from "./pages/Feedback";
 
 const App = () => {
-  const [name, setName] = useState(0);
+  const [name, setName] = useState("");
 
   const handleSetName = (name) => {
     setName(name);
