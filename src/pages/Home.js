@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import quizQuestions from "../api/quizQuestions";
+import Grid from "@material-ui/core/Grid";
+
 // import getWithdrawalRate from "../utils/getWithdrawalRate";
 // import getAnnualReturn from "../utils/getAnnualReturn";
 
@@ -34,9 +36,9 @@ class Home extends React.Component {
   };
 
   // For testing purposes only!
-  componentDidMount = () => {
-    this.handleSkipQuiz();
-  };
+  // componentDidMount = () => {
+  //   this.handleSkipQuiz();
+  // };
 
   // TODO: should we also reset 'user' state?
   handleRestartQuiz = () => {
@@ -160,7 +162,14 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        {this.state.showResults ? this.renderResults() : this.renderQuiz()}
+        <Grid container>
+          <Grid item xs={6}>
+            {this.renderQuiz()}
+          </Grid>
+          <Grid item xs={6}>
+            {this.state.showResults && this.renderResults()}
+          </Grid>
+        </Grid>
       </div>
     );
   }

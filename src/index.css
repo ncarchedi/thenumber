@@ -71,21 +71,9 @@ button:hover {
   box-sizing: border-box;
 }
 
-.container {
-  position: relative;
-  max-width: 800px;
-  margin: 3rem 1rem;
-}
-
-@media (min-width: 769px) {
-  .container {
-    margin: 4rem auto;
-  }
-}
-
 /* Header */
 .header {
-  margin-top: 20px;
+  margin: 15px 0 40px 0;
 }
 
 .logoContainer {
@@ -205,11 +193,9 @@ h2 {
 }
 
 /* Results Component */
-.resultsContainer {
-  text-align: center;
-}
 
 .resultsSectionHeaderText {
+  text-align: center;
   display: inline-block;
   padding: 15px 35px;
   color: #59cd90;
@@ -234,6 +220,10 @@ h2 {
 }
 
 /* Feedback Page */
+.feedbackForm {
+  max-width: 50%;
+}
+
 .feedbackForm form {
   margin-top: 25px;
 }
@@ -241,8 +231,8 @@ h2 {
 .feedbackForm input,
 textarea {
   display: block;
-  width: 70%;
-  margin: 15px 0 15px 0;
+  width: 100%;
+  margin: 15px 0px;
   padding: 10px;
   border-radius: 4px;
   border: none;

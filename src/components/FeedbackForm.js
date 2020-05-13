@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import SendIcon from "@material-ui/icons/Send";
 
@@ -34,7 +35,7 @@ class FeedbackForm extends React.Component {
   render() {
     const { name, email, message } = this.state;
     return (
-      <div className="feedbackForm">
+      <Container maxWidth="sm" className="feedbackForm">
         {name ? (
           <h3 className="feedbackFormTitle">
             {name}, where should we go from here? 🤔
@@ -70,7 +71,7 @@ class FeedbackForm extends React.Component {
             Submit Feedback
           </Button>
         </form>
-      </div>
+      </Container>
     );
   }
 }
