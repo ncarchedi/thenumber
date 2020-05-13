@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransitionGroup } from "react-transition-group";
 
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -100,17 +99,9 @@ class Results extends React.Component {
 
   render() {
     return (
-      <CSSTransitionGroup
-        transitionName="fade"
-        transitionEnterTimeout={800}
-        transitionLeaveTimeout={500}
-        transitionAppear
-        transitionAppearTimeout={500}
-      >
-        <Container style={{ textAlign: "center" }}>
-          {this.renderResults()}
-        </Container>
-      </CSSTransitionGroup>
+      <Container style={{ textAlign: "center" }}>
+        {this.renderResults()}
+      </Container>
     );
   }
 }

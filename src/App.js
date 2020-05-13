@@ -27,7 +27,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl">
-        <Router>
+        {/* Force refresh allows clicking the logo to refresh the page */}
+        <Router forceRefresh={true}>
           <div className="App">
             <Header />
             <Switch>
