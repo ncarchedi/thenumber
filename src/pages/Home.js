@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
+import QuestionEmptyScreen from "../components/QuestionEmptyScreen";
 import quizQuestions from "../api/quizQuestions";
-
-// import getWithdrawalRate from "../utils/getWithdrawalRate";
-// import getAnnualReturn from "../utils/getAnnualReturn";
 
 // TODO: extract into file/folder of utility functions
 // TODO: use existing templating library
@@ -26,7 +25,6 @@ class Home extends React.Component {
       currentAge: "",
       monthlyExpenses: "",
       currentSavings: "",
-      percentStocks: "",
     },
     assumptions: {
       annualReturn: 0.07,
@@ -53,26 +51,6 @@ class Home extends React.Component {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
 
-  // setAnnualReturn = (percentStocks) => {
-  //   const annualReturn = getAnnualReturn(percentStocks);
-  //   this.setState(
-  //     {
-  //       assumptions: { ...this.state.assumptions, annualReturn: annualReturn },
-  //     },
-  //     () => console.log(this.state)
-  //   );
-  // };
-
-  // setWithdrawalRate = (percentStocks) => {
-  //   const withdrawalRate = getWithdrawalRate(percentStocks);
-  //   this.setState({
-  //     assumptions: {
-  //       ...this.state.assumptions,
-  //       withdrawalRate: withdrawalRate,
-  //     },
-  //   });
-  // };
-
   saveUserValue = (key, value) => {
     const user = {
       ...this.state.user,
@@ -80,10 +58,6 @@ class Home extends React.Component {
     };
 
     if (key === "name") this.props.onSetName(value);
-    // if (key === "percentStocks") {
-    //   this.setAnnualReturn(value);
-    //   this.setWithdrawalRate(value);
-    // }
 
     this.setState({ user });
   };
@@ -95,10 +69,11 @@ class Home extends React.Component {
   handleSubmitAnswer = (variableName, variableValue) => {
     this.saveUserValue(variableName, variableValue);
 
-    if (this.state.questionNumber < quizQuestions.length) {
-      setTimeout(() => this.goToNextQuestion(), 100);
-    } else {
-      setTimeout(() => this.showResults(), 100);
+    this.goToNextQuestion();
+
+    // TODO: un-hardcode when to show results?
+    if (this.state.questionNumber >= 5) {
+      this.showResults();
     }
   };
 
@@ -118,6 +93,7 @@ class Home extends React.Component {
     };
 
     this.setState({
+      questionNumber: 999,
       showResults: true,
       user: fakeUser,
       assumptions: fakeAssumptions,
@@ -128,6 +104,11 @@ class Home extends React.Component {
     const questionNumber = this.state.questionNumber;
     const quizQuestion = quizQuestions[questionNumber - 1];
     const userName = this.state.user.name;
+
+    // if question doesn't exist, show empty screen
+    if (!quizQuestion) {
+      return <QuestionEmptyScreen />;
+    }
 
     // replace blank in age question with user's name
     var updatedQuestion = quizQuestion.content.question;

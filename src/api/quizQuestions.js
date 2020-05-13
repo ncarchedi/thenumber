@@ -72,14 +72,38 @@ var quizQuestions = [
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },
   },
+  {
+    id: 7,
+    type: "MultipleChoice",
+    inputType: "string",
+    variableName: "expensesRetirement",
+    content: {
+      question:
+        "How do you expect your living expenses to change in retirement, ignoring the impact of inflation?",
+      answers: [
+        {
+          value: "higher",
+          label: "My expenses will be lower in retirement",
+        },
+        {
+          value: "same",
+          label: "My expenses will be about the same",
+        },
+        {
+          value: "lower",
+          label: "My expenses will be higher in retirement",
+        },
+      ],
+    },
+  },
   // {
-  //   id: 7,
+  //   id: 8,
   //   type: "MultipleChoice",
   //   inputType: "string",
   //   variableName: "percentStocks",
   //   content: {
   //     question:
-  //       "Which of the following most accurately describes how those savings are allocated?",
+  //       "Which of the following best describes how your savings are allocated?",
   //     answers: [
   //       {
   //         value: "mostlyStocks",

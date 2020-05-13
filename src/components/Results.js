@@ -113,7 +113,6 @@ Results.propTypes = {
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     currentSavings: PropTypes.string.isRequired,
-    percentStocks: PropTypes.string.isRequired,
   }),
   assumptions: PropTypes.exact({
     annualReturn: PropTypes.number.isRequired,
