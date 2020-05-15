@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Container from "@material-ui/core/Container";
-
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import QuestionEmptyScreen from "../components/QuestionEmptyScreen";

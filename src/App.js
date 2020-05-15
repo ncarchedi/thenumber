@@ -31,7 +31,7 @@ const App = () => {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <Router>
-        <Container maxWidth="xl" className="App">
+        <Container maxWidth="lg" className="App">
           <Header />
           <Switch>
             <Route exact path="/">
