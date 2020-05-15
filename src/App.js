@@ -9,12 +9,8 @@ import Home from "./pages/Home";
 // import About from "./pages/About";
 import Feedback from "./pages/Feedback";
 
-const App = () => {
+export default function App() {
   const [name, setName] = useState("");
-
-  const handleSetName = (name) => {
-    setName(name);
-  };
 
   const theme = createMuiTheme({
     palette: {
@@ -32,7 +28,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/">
-              <Home onSetName={handleSetName} />
+              <Home onSetName={(name) => setName(name)} />
             </Route>
             <Route path="/feedback">
               <Feedback name={name} />
@@ -45,6 +41,4 @@ const App = () => {
       </Router>
     </ThemeProvider>
   );
-};
-
-export default App;
+}
