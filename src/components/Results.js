@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import ReplayIcon from "@material-ui/icons/Replay";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
 import ResultsChart from "./ResultsChart";
 import toDollars from "../utils/toDollars";
 import getTotalSavingsChartData from "../utils/getTotalSavingsChartData";
@@ -16,13 +15,17 @@ import calculateAnnualContribution from "../utils/calculateAnnualContribution";
 import calculateTargetSavings from "../utils/calculateTargetSavings";
 
 const useStyles = makeStyles((theme) => ({
-  resultsContainer: {
+  formContainer: {
+    // marginTop: theme.spacing(4),
     display: "flex",
     alignItems: "center",
   },
+  resultsContainer: {
+    textAlign: "center",
+  },
   resultsSectionHeaderText: {
     display: "inline-block",
-    padding: theme.spacing(3, 5),
+    padding: theme.spacing(0, 5, 3, 5),
     color: "#59cd90",
     fontFamily: ["Racing Sans One", "cursive"],
     fontSize: "2.5rem",
@@ -30,14 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
   resultsSupportingText: {
     fontSize: "1.2rem",
-    margin: "35px",
+    margin: theme.spacing(5),
   },
-  resultsButtonGroup: {
-    display: "flex",
-    justifyContent: "center",
-    "& button": {
-      margin: theme.spacing(3),
-    },
+  createPlanButton: {
+    marginTop: theme.spacing(3),
   },
 }));
 
@@ -84,9 +83,12 @@ export default function Results(props) {
     );
 
     return (
-      <Grid container spacing={6} className={classes.resultsContainer}>
-        <Grid item xs={4}>
+      <Grid container spacing={6}>
+        <Grid item xs={3} className={classes.formContainer}>
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography variant="h6">Your Inputs</Typography>
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 id="retirementAge"
@@ -153,9 +155,58 @@ export default function Results(props) {
                 fullWidth
               />
             </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6">Other Assumptions</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="inflationRate"
+                name="inflationRate"
+                label="Inflation rate"
+                value={3}
+                // onChange={setInflationRate}
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+                fullWidth
+              />
+            </Grid>
+            {/* <Grid item xs={12}>
+              <TextField
+                id="annualReturn"
+                name="annualReturn"
+                label="Annual return"
+                value={7}
+                // onChange={setAnnualReturn}
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+                fullWidth
+              />
+            </Grid> */}
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <Button
+                endIcon={<ReplayIcon />}
+                onClick={() => alert("Coming soon!")}
+              >
+                Update Results
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={8} style={{ textAlign: "center" }}>
+        <Grid item xs={9} className={classes.resultsContainer}>
           <div className={classes.resultsSectionHeaderText}>
             {toDollars(targetSavings)}
           </div>
@@ -171,26 +222,16 @@ export default function Results(props) {
             yArray={totalSavingsChartData.savingsArray}
             chartType="line"
           />
-          <div className={classes.resultsButtonGroup}>
-            <Button
-              variant="contained"
-              color="default"
-              size="large"
-              endIcon={<ReplayIcon />}
-              onClick={props.onRestartQuiz}
-            >
-              Start Over
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-              onClick={() => alert("Coming soon!")}
-            >
-              Create a Plan
-            </Button>
-          </div>
+          <Button
+            className={classes.createPlanButton}
+            variant="contained"
+            color="primary"
+            size="large"
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => alert("Coming soon!")}
+          >
+            Create a Plan
+          </Button>
         </Grid>
       </Grid>
     );
@@ -212,5 +253,4 @@ Results.propTypes = {
     withdrawalRate: PropTypes.number.isRequired,
     annualInflation: PropTypes.number.isRequired,
   }),
-  onRestartQuiz: PropTypes.func.isRequired,
 };

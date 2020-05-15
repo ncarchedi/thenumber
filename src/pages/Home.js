@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import QuestionEmptyScreen from "../components/QuestionEmptyScreen";
@@ -34,14 +33,6 @@ class Home extends React.Component {
   // For testing purposes only!
   componentDidMount = () => {
     this.handleSkipQuiz();
-  };
-
-  // TODO: should we also reset 'user' state?
-  handleRestartQuiz = () => {
-    this.setState({
-      questionNumber: 1,
-      showResults: false,
-    });
   };
 
   goToNextQuestion = () => {
@@ -133,7 +124,6 @@ class Home extends React.Component {
       <Results
         userData={this.state.user}
         assumptions={this.state.assumptions}
-        onRestartQuiz={this.handleRestartQuiz}
       />
     );
   };
