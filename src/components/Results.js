@@ -49,7 +49,7 @@ export default function Results(props) {
       currentAge,
       monthlyExpenses,
       currentSavings,
-    } = props.userData;
+    } = props.user;
 
     const {
       annualReturn,
@@ -241,7 +241,7 @@ export default function Results(props) {
 }
 
 Results.propTypes = {
-  userData: PropTypes.exact({
+  user: PropTypes.exact({
     name: PropTypes.string.isRequired,
     targetAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
