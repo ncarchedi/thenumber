@@ -22,16 +22,16 @@ export default function Home(props) {
     currentSavings: "",
   });
   const [assumptions, setAssumptions] = useState({
-    annualReturn: 0.07,
-    withdrawalRate: 0.04,
-    annualInflation: 0.03,
+    annualReturn: "7",
+    withdrawalRate: "4",
+    inflationRate: "3",
     // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
   });
 
   // For testing purposes only!
-  useEffect(() => {
-    handleSkipQuiz();
-  }, []);
+  // useEffect(() => {
+  //   handleSkipQuiz();
+  // }, []);
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
@@ -69,9 +69,9 @@ export default function Home(props) {
     };
 
     const fakeAssumptions = {
-      annualReturn: 0.07,
-      withdrawalRate: 0.04,
-      annualInflation: 0.03,
+      annualReturn: "7",
+      withdrawalRate: "4",
+      inflationRate: "3",
     };
 
     setQuestionNumber(999);
@@ -110,7 +110,14 @@ export default function Home(props) {
   };
 
   const renderResults = () => {
-    return <Results user={user} assumptions={assumptions} setUser={setUser} />;
+    return (
+      <Results
+        user={user}
+        assumptions={assumptions}
+        setUser={setUser}
+        setAssumptions={setAssumptions}
+      />
+    );
   };
 
   return showResults ? renderResults() : renderQuiz();

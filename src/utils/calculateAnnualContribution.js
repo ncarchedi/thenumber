@@ -5,8 +5,8 @@ const calculateAnnualContribution = (
   nYears
 ) => {
   return (
-    (futureValue - principal * (1 + annualReturn) ** nYears) /
-    (((1 + annualReturn) ** nYears - 1) / annualReturn)
+    (futureValue - principal * (1 + annualReturn / 100) ** nYears) /
+    (((1 + annualReturn / 100) ** nYears - 1) / (annualReturn / 100))
   );
 };
 

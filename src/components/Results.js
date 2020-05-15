@@ -50,6 +50,8 @@ export default function Results(props) {
     currentSavings,
   } = props.user;
 
+  const { annualReturn, withdrawalRate, inflationRate } = props.assumptions;
+
   // use props for initial form state
   const [retirementAgeInput, setRetirementAgeInput] = useState(retirementAge);
   const [currentAgeInput, setCurrentAgeInput] = useState(currentAge);
@@ -59,18 +61,14 @@ export default function Results(props) {
   const [currentSavingsInput, setCurrentSavingsInput] = useState(
     currentSavings
   );
-
-  const {
-    annualReturn,
-    withdrawalRate,
-    // annualInflation,
-  } = props.assumptions;
+  const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
 
   const targetSavings = calculateTargetSavings(
     currentAge,
     retirementAge,
     monthlyExpenses,
-    withdrawalRate
+    withdrawalRate,
+    inflationRate
   );
 
   const additionalSavings = targetSavings - currentSavings;
@@ -91,7 +89,7 @@ export default function Results(props) {
     annualReturn
   );
 
-  const updateUser = (e) => {
+  const updateInputs = (e) => {
     e.preventDefault();
 
     props.setUser({
@@ -101,12 +99,17 @@ export default function Results(props) {
       monthlyExpenses: monthlyExpensesInput,
       currentSavings: currentSavingsInput,
     });
+
+    props.setAssumptions({
+      ...props.assumptions,
+      inflationRate: inflationRateInput,
+    });
   };
 
   return (
     <Grid container spacing={6}>
       <Grid item xs={3} className={classes.formContainer}>
-        <form onSubmit={updateUser}>
+        <form onSubmit={updateInputs}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h6">Your Inputs</Typography>
@@ -185,8 +188,8 @@ export default function Results(props) {
                 id="inflationRate"
                 name="inflationRate"
                 label="Inflation rate"
-                value={3}
-                // onChange={setInflationRate}
+                value={inflationRateInput}
+                onChange={(e) => setInflationRateInput(e.target.value)}
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -266,9 +269,10 @@ Results.propTypes = {
     currentSavings: PropTypes.string.isRequired,
   }),
   assumptions: PropTypes.exact({
-    annualReturn: PropTypes.number.isRequired,
-    withdrawalRate: PropTypes.number.isRequired,
-    annualInflation: PropTypes.number.isRequired,
+    annualReturn: PropTypes.string.isRequired,
+    withdrawalRate: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
+  setAssumptions: PropTypes.func.isRequired,
 };

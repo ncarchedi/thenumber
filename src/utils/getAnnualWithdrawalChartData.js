@@ -3,7 +3,7 @@ const getAnnualWithdrawalChartData = (
   retirementAge,
   deathAge,
   currentMonthlyExpenses,
-  annualInflation
+  inflationRate
 ) => {
   const yearsFromNowUntilRetirement = retirementAge - currentAge;
   const yearsFromRetirementToDeath = deathAge - retirementAge + 1;
@@ -16,7 +16,7 @@ const getAnnualWithdrawalChartData = (
     const age = Number(retirementAge) + i;
     const withdrawal =
       currentAnnualExpenses *
-      (1 + annualInflation) ** (yearsFromNowUntilRetirement + i);
+      (1 + inflationRate / 100) ** (yearsFromNowUntilRetirement + i);
 
     ageArray.push(age);
     withdrawalArray.push(withdrawal);
