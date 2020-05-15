@@ -74,6 +74,7 @@ export default function Home(props) {
       inflationRate: "3",
     };
 
+    props.onSetName("Marley");
     setQuestionNumber(999);
     setShowResults(true);
     setUser(fakeUser);
