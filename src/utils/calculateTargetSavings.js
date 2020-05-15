@@ -1,11 +1,11 @@
 const calculateTargetSavings = (
   currentAge,
-  targetAge,
+  retirementAge,
   monthlyExpenses,
   withdrawalRate
 ) => {
-  // TODO: validate things like currentAge <= targetAge
-  const yearsToRetirement = targetAge - currentAge;
+  // TODO: validate things like currentAge <= retirementAge
+  const yearsToRetirement = retirementAge - currentAge;
   // compute annual expenses
   const annualExpenses = monthlyExpenses * 12;
   // adjust annual expenses for inflation at 3% a year

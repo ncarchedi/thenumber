@@ -12,7 +12,7 @@ var quizQuestions = [
     id: 2,
     type: "TextQuestion",
     inputType: "number",
-    variableName: "targetAge",
+    variableName: "retirementAge",
     content: {
       question: "Welcome, ___! What age would you like to retire at? 📆",
     },

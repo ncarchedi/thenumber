@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -43,48 +43,70 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
   const classes = useStyles();
 
-  const renderResults = () => {
-    const {
-      targetAge,
-      currentAge,
-      monthlyExpenses,
-      currentSavings,
-    } = props.user;
+  const {
+    retirementAge,
+    currentAge,
+    monthlyExpenses,
+    currentSavings,
+  } = props.user;
 
-    const {
-      annualReturn,
-      withdrawalRate,
-      // annualInflation,
-    } = props.assumptions;
+  // use props for initial form state
+  const [retirementAgeInput, setRetirementAgeInput] = useState(retirementAge);
+  const [currentAgeInput, setCurrentAgeInput] = useState(currentAge);
+  const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
+    monthlyExpenses
+  );
+  const [currentSavingsInput, setCurrentSavingsInput] = useState(
+    currentSavings
+  );
 
-    const targetSavings = calculateTargetSavings(
-      currentAge,
-      targetAge,
-      monthlyExpenses,
-      withdrawalRate
-    );
+  const {
+    annualReturn,
+    withdrawalRate,
+    // annualInflation,
+  } = props.assumptions;
 
-    const additionalSavings = targetSavings - currentSavings;
-    const yearsToRetirement = targetAge - currentAge;
+  const targetSavings = calculateTargetSavings(
+    currentAge,
+    retirementAge,
+    monthlyExpenses,
+    withdrawalRate
+  );
 
-    const annualContribution = calculateAnnualContribution(
-      currentSavings,
-      targetSavings,
-      annualReturn,
-      yearsToRetirement
-    );
+  const additionalSavings = targetSavings - currentSavings;
+  const yearsToRetirement = retirementAge - currentAge;
 
-    const totalSavingsChartData = getTotalSavingsChartData(
-      currentAge,
-      targetAge,
-      currentSavings,
-      annualContribution,
-      annualReturn
-    );
+  const annualContribution = calculateAnnualContribution(
+    currentSavings,
+    targetSavings,
+    annualReturn,
+    yearsToRetirement
+  );
 
-    return (
-      <Grid container spacing={6}>
-        <Grid item xs={3} className={classes.formContainer}>
+  const totalSavingsChartData = getTotalSavingsChartData(
+    currentAge,
+    retirementAge,
+    currentSavings,
+    annualContribution,
+    annualReturn
+  );
+
+  const updateUser = (e) => {
+    e.preventDefault();
+
+    props.setUser({
+      ...props.user,
+      retirementAge: retirementAgeInput,
+      currentAge: currentAgeInput,
+      monthlyExpenses: monthlyExpensesInput,
+      currentSavings: currentSavingsInput,
+    });
+  };
+
+  return (
+    <Grid container spacing={6}>
+      <Grid item xs={3} className={classes.formContainer}>
+        <form onSubmit={updateUser}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h6">Your Inputs</Typography>
@@ -94,8 +116,8 @@ export default function Results(props) {
                 id="retirementAge"
                 name="retirementAge"
                 label="Retirement age"
-                value={targetAge}
-                // onChange={setRetirementAge}
+                value={retirementAgeInput}
+                onChange={(e) => setRetirementAgeInput(e.target.value)}
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -108,8 +130,8 @@ export default function Results(props) {
                 id="currentAge"
                 name="currentAge"
                 label="Current age"
-                value={currentAge}
-                // onChange={setCurrentAge}
+                value={currentAgeInput}
+                onChange={(e) => setCurrentAgeInput(e.target.value)}
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -122,8 +144,8 @@ export default function Results(props) {
                 id="monthlyExpenses"
                 name="monthlyExpenses"
                 label="Monthly expenses"
-                value={monthlyExpenses}
-                // onChange={setMonthlyExpenses}
+                value={monthlyExpensesInput}
+                onChange={(e) => setMonthlyExpensesInput(e.target.value)}
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -141,8 +163,8 @@ export default function Results(props) {
                 id="currentSavings"
                 name="currentSavings"
                 label="Current savings"
-                value={currentSavings}
-                // onChange={setCurrentSavings}
+                value={currentSavingsInput}
+                onChange={(e) => setCurrentSavingsInput(e.target.value)}
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -197,53 +219,48 @@ export default function Results(props) {
               />
             </Grid> */}
             <Grid item xs={12} style={{ textAlign: "center" }}>
-              <Button
-                endIcon={<ReplayIcon />}
-                onClick={() => alert("Coming soon!")}
-              >
+              <Button endIcon={<ReplayIcon />} type="submit">
                 Update Results
               </Button>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={9} className={classes.resultsContainer}>
-          <div className={classes.resultsSectionHeaderText}>
-            {toDollars(targetSavings)}
-          </div>
-          <p className={classes.resultsSupportingText}>
-            {`This is your number—the amount you need to retire at age ${targetAge}. You have ${toDollars(
-              currentSavings
-            )} today, so you need to accumulate an additional ${toDollars(
-              additionalSavings
-            )} over the next ${yearsToRetirement} years.`}
-          </p>
-          <ResultsChart
-            xArray={totalSavingsChartData.ageArray}
-            yArray={totalSavingsChartData.savingsArray}
-            chartType="line"
-          />
-          <Button
-            className={classes.createPlanButton}
-            variant="contained"
-            color="primary"
-            size="large"
-            endIcon={<ArrowForwardIcon />}
-            onClick={() => alert("Coming soon!")}
-          >
-            Create a Plan
-          </Button>
-        </Grid>
+        </form>
       </Grid>
-    );
-  };
-
-  return renderResults();
+      <Grid item xs={9} className={classes.resultsContainer}>
+        <div className={classes.resultsSectionHeaderText}>
+          {toDollars(targetSavings)}
+        </div>
+        <p className={classes.resultsSupportingText}>
+          {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
+            currentSavings
+          )} today, so you need to accumulate an additional ${toDollars(
+            additionalSavings
+          )} over the next ${yearsToRetirement} years.`}
+        </p>
+        <ResultsChart
+          xArray={totalSavingsChartData.ageArray}
+          yArray={totalSavingsChartData.savingsArray}
+          chartType="line"
+        />
+        <Button
+          className={classes.createPlanButton}
+          variant="contained"
+          color="primary"
+          size="large"
+          endIcon={<ArrowForwardIcon />}
+          onClick={() => alert("Coming soon!")}
+        >
+          Create a Plan
+        </Button>
+      </Grid>
+    </Grid>
+  );
 }
 
 Results.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
-    targetAge: PropTypes.string.isRequired,
+    retirementAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     currentSavings: PropTypes.string.isRequired,
@@ -253,4 +270,5 @@ Results.propTypes = {
     withdrawalRate: PropTypes.number.isRequired,
     annualInflation: PropTypes.number.isRequired,
   }),
+  setUser: PropTypes.func.isRequired,
 };

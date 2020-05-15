@@ -16,7 +16,7 @@ export default function Home(props) {
   const [showResults, setShowResults] = useState(false);
   const [user, setUser] = useState({
     name: "",
-    targetAge: "",
+    retirementAge: "",
     currentAge: "",
     monthlyExpenses: "",
     currentSavings: "",
@@ -38,7 +38,6 @@ export default function Home(props) {
   };
 
   const saveUserValue = (key, value) => {
-    console.log({ key, value });
     const updatedUser = {
       ...user,
       [key]: value,
@@ -63,7 +62,7 @@ export default function Home(props) {
   const handleSkipQuiz = () => {
     const fakeUser = {
       name: "Marley",
-      targetAge: "60",
+      retirementAge: "60",
       currentAge: "30",
       monthlyExpenses: "5000",
       currentSavings: "100000",
@@ -111,7 +110,7 @@ export default function Home(props) {
   };
 
   const renderResults = () => {
-    return <Results user={user} assumptions={assumptions} />;
+    return <Results user={user} assumptions={assumptions} setUser={setUser} />;
   };
 
   return showResults ? renderResults() : renderQuiz();
