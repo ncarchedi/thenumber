@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Container from "@material-ui/core/Container";
-
 import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <Container maxWidth="xl" className="header">
+    <div className="header">
       <Link to="/">
         <Logo />
       </Link>
@@ -17,7 +15,7 @@ const Header = () => {
       <Link to="/feedback">
         <div className="feedbackPageLink">give us feedback</div>
       </Link>
-    </Container>
+    </div>
   );
 };
 

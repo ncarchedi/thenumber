@@ -8,32 +8,8 @@ var quizQuestions = [
       question: "👋 What's your first name?",
     },
   },
-  // {
-  //   id: 2,
-  //   type: "MultipleChoice",
-  //   variableName: "strategy",
-  //   content: {
-  //     question: "Welcome, ___! Which of the following best describes you?",
-  //     answers: [
-  //       {
-  //         value: "targetAge",
-  //         label:
-  //           "I'd like to retire at a specific age. How much do I need to save between now and then? 📆",
-  //       },
-  //       {
-  //         value: "targetSavings",
-  //         label:
-  //           "I'm able to save a certain amount of money each year. When will I be able to retire? 📈",
-  //       },
-  //       {
-  //         value: "retireNow",
-  //         label: "I'd like to retire now. Am I ready? 🚀",
-  //       },
-  //     ],
-  //   },
-  // },
   {
-    id: 3,
+    id: 2,
     type: "TextQuestion",
     inputType: "number",
     variableName: "targetAge",
@@ -42,7 +18,7 @@ var quizQuestions = [
     },
   },
   {
-    id: 4,
+    id: 3,
     type: "TextQuestion",
     inputType: "number",
     variableName: "currentAge",
@@ -51,7 +27,7 @@ var quizQuestions = [
     },
   },
   {
-    id: 5,
+    id: 4,
     type: "TextQuestion",
     inputType: "number",
     variableName: "monthlyExpenses",
@@ -62,7 +38,7 @@ var quizQuestions = [
     },
   },
   {
-    id: 6,
+    id: 5,
     type: "TextQuestion",
     inputType: "number",
     variableName: "currentSavings",
@@ -72,54 +48,6 @@ var quizQuestions = [
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },
   },
-  {
-    id: 7,
-    type: "MultipleChoice",
-    inputType: "string",
-    variableName: "expensesRetirement",
-    content: {
-      question:
-        "How do you expect your living expenses to change in retirement, ignoring the impact of inflation?",
-      answers: [
-        {
-          value: "higher",
-          label: "My expenses will be lower in retirement",
-        },
-        {
-          value: "same",
-          label: "My expenses will be about the same",
-        },
-        {
-          value: "lower",
-          label: "My expenses will be higher in retirement",
-        },
-      ],
-    },
-  },
-  // {
-  //   id: 8,
-  //   type: "MultipleChoice",
-  //   inputType: "string",
-  //   variableName: "percentStocks",
-  //   content: {
-  //     question:
-  //       "Which of the following best describes how your savings are allocated?",
-  //     answers: [
-  //       {
-  //         value: "mostlyStocks",
-  //         label: "Mostly stocks",
-  //       },
-  //       {
-  //         value: "halfStocks",
-  //         label: "About half stocks",
-  //       },
-  //       {
-  //         value: "mostlyNotStocks",
-  //         label: "Mostly not stocks",
-  //       },
-  //     ],
-  //   },
-  // },
 ];
 
 export default quizQuestions;

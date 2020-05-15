@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
@@ -35,9 +34,9 @@ class Home extends React.Component {
   };
 
   // For testing purposes only!
-  // componentDidMount = () => {
-  //   this.handleSkipQuiz();
-  // };
+  componentDidMount = () => {
+    this.handleSkipQuiz();
+  };
 
   // TODO: should we also reset 'user' state?
   handleRestartQuiz = () => {
@@ -69,12 +68,12 @@ class Home extends React.Component {
   handleSubmitAnswer = (variableName, variableValue) => {
     this.saveUserValue(variableName, variableValue);
 
-    this.goToNextQuestion();
-
     // TODO: un-hardcode when to show results?
     if (this.state.questionNumber >= 5) {
       this.showResults();
     }
+
+    this.goToNextQuestion();
   };
 
   handleSkipQuiz = () => {
@@ -111,7 +110,7 @@ class Home extends React.Component {
     }
 
     // replace blank in age question with user's name
-    var updatedQuestion = quizQuestion.content.question;
+    let updatedQuestion = quizQuestion.content.question;
     if (questionNumber === 2) {
       updatedQuestion = replaceBlanks(quizQuestion.content.question, userName);
     }
@@ -142,22 +141,7 @@ class Home extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.state.showResults ? (
-          <Grid container>
-            <Grid item xs={6}>
-              {this.renderQuiz()}
-            </Grid>
-            <Grid item xs={6}>
-              {this.renderResults()}
-            </Grid>
-          </Grid>
-        ) : (
-          <Container maxWidth="md">{this.renderQuiz()}</Container>
-        )}
-      </div>
-    );
+    return this.state.showResults ? this.renderResults() : this.renderQuiz();
   }
 }
 

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import About from "./pages/About";
+// import About from "./pages/About";
 import Feedback from "./pages/Feedback";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
 
   const theme = createMuiTheme({
     palette: {
+      type: "dark",
       primary: {
         main: "#59cd90",
       },
@@ -26,24 +28,24 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl">
-        <Router>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home onSetName={handleSetName} />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/feedback">
-                <Feedback name={name} />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </Container>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Router>
+        <Container maxWidth="xl" className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home onSetName={handleSetName} />
+            </Route>
+            <Route path="/feedback">
+              <Feedback name={name} />
+            </Route>
+            {/* <Route path="/about">
+              <About />
+            </Route> */}
+          </Switch>
+        </Container>
+      </Router>
     </ThemeProvider>
   );
 };

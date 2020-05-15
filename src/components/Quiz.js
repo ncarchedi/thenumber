@@ -8,7 +8,7 @@ import QuestionCount from "./QuestionCount";
 
 const Quiz = (props) => {
   return (
-    <Container>
+    <Container maxWidth="md">
       <div key={props.questionNumber}>
         <QuestionCount
           current={props.questionNumber}
