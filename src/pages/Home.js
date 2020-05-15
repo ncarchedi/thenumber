@@ -1,9 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-
 import Quiz from "../components/Quiz";
 import Results from "../components/Results";
 import QuestionEmptyScreen from "../components/QuestionEmptyScreen";
@@ -15,95 +11,78 @@ const replaceBlanks = (text, value) => {
   return text.replace("___", value);
 };
 
-class Home extends React.Component {
-  state = {
-    questionNumber: 1,
-    showResults: false,
-    user: {
-      name: "",
-      targetAge: "",
-      currentAge: "",
-      monthlyExpenses: "",
-      currentSavings: "",
-    },
-    assumptions: {
-      annualReturn: 0.07,
-      withdrawalRate: 0.04,
-      annualInflation: 0.03,
-      // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
-    },
-  };
+export default function Home(props) {
+  const [questionNumber, setQuestionNumber] = useState(1);
+  const [showResults, setShowResults] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    retirementAge: "",
+    currentAge: "",
+    monthlyExpenses: "",
+    currentSavings: "",
+  });
+  const [assumptions, setAssumptions] = useState({
+    annualReturn: "7",
+    withdrawalRate: "4",
+    inflationRate: "3",
+    // taxRate: 0.1, // https://www.bankrate.com/investing/long-term-capital-gains-tax/
+  });
 
   // For testing purposes only!
-  // componentDidMount = () => {
-  //   this.handleSkipQuiz();
-  // };
+  // useEffect(() => {
+  //   handleSkipQuiz();
+  // }, []);
 
-  // TODO: should we also reset 'user' state?
-  handleRestartQuiz = () => {
-    this.setState({
-      questionNumber: 1,
-      showResults: false,
-    });
+  const goToNextQuestion = () => {
+    setQuestionNumber(questionNumber + 1);
   };
 
-  goToNextQuestion = () => {
-    this.setState({ questionNumber: this.state.questionNumber + 1 });
-  };
-
-  saveUserValue = (key, value) => {
-    const user = {
-      ...this.state.user,
+  const saveUserValue = (key, value) => {
+    const updatedUser = {
+      ...user,
       [key]: value,
     };
 
-    if (key === "name") this.props.onSetName(value);
+    if (key === "name") props.onSetName(value);
 
-    this.setState({ user });
+    setUser(updatedUser);
   };
 
-  showResults = () => {
-    this.setState({ showResults: true });
-  };
-
-  handleSubmitAnswer = (variableName, variableValue) => {
-    this.saveUserValue(variableName, variableValue);
-
-    this.goToNextQuestion();
+  const handleSubmitAnswer = (variableName, variableValue) => {
+    saveUserValue(variableName, variableValue);
 
     // TODO: un-hardcode when to show results?
-    if (this.state.questionNumber >= 5) {
-      this.showResults();
+    if (questionNumber >= 5) {
+      setShowResults(true);
     }
+
+    goToNextQuestion();
   };
 
-  handleSkipQuiz = () => {
+  const handleSkipQuiz = () => {
     const fakeUser = {
       name: "Marley",
-      targetAge: "60",
+      retirementAge: "60",
       currentAge: "30",
       monthlyExpenses: "5000",
       currentSavings: "100000",
     };
 
     const fakeAssumptions = {
-      annualReturn: 0.07,
-      withdrawalRate: 0.04,
-      annualInflation: 0.03,
+      annualReturn: "7",
+      withdrawalRate: "4",
+      inflationRate: "3",
     };
 
-    this.setState({
-      questionNumber: 999,
-      showResults: true,
-      user: fakeUser,
-      assumptions: fakeAssumptions,
-    });
+    props.onSetName("Marley");
+    setQuestionNumber(999);
+    setShowResults(true);
+    setUser(fakeUser);
+    setAssumptions(fakeAssumptions);
   };
 
-  renderQuiz = () => {
-    const questionNumber = this.state.questionNumber;
+  const renderQuiz = () => {
     const quizQuestion = quizQuestions[questionNumber - 1];
-    const userName = this.state.user.name;
 
     // if question doesn't exist, show empty screen
     if (!quizQuestion) {
@@ -111,9 +90,9 @@ class Home extends React.Component {
     }
 
     // replace blank in age question with user's name
-    var updatedQuestion = quizQuestion.content.question;
+    let updatedQuestion = quizQuestion.content.question;
     if (questionNumber === 2) {
-      updatedQuestion = replaceBlanks(quizQuestion.content.question, userName);
+      updatedQuestion = replaceBlanks(quizQuestion.content.question, user.name);
     }
     quizQuestion.content.question = updatedQuestion;
 
@@ -125,44 +104,26 @@ class Home extends React.Component {
         questionInputType={quizQuestion.inputType}
         variableName={quizQuestion.variableName}
         questionContent={quizQuestion.content}
-        onSubmitAnswer={this.handleSubmitAnswer}
-        onSkipQuiz={this.handleSkipQuiz}
+        onSubmitAnswer={handleSubmitAnswer}
+        onSkipQuiz={handleSkipQuiz}
       />
     );
   };
 
-  renderResults = () => {
+  const renderResults = () => {
     return (
       <Results
-        userData={this.state.user}
-        assumptions={this.state.assumptions}
-        onRestartQuiz={this.handleRestartQuiz}
+        user={user}
+        assumptions={assumptions}
+        setUser={setUser}
+        setAssumptions={setAssumptions}
       />
     );
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.showResults ? (
-          <Grid container>
-            <Grid item xs={6}>
-              {this.renderQuiz()}
-            </Grid>
-            <Grid item xs={6}>
-              {this.renderResults()}
-            </Grid>
-          </Grid>
-        ) : (
-          <Container maxWidth="md">{this.renderQuiz()}</Container>
-        )}
-      </div>
-    );
-  }
+  return showResults ? renderResults() : renderQuiz();
 }
 
 Home.propTypes = {
   onSetName: PropTypes.func.isRequired,
 };
-
-export default Home;

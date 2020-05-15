@@ -1,12 +1,23 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Logo = () => {
+const useStyles = makeStyles((theme) => ({
+  logoContainer: {
+    display: "inline-block",
+  },
+  logo: {
+    color: "#59cd90",
+    fontFamily: ["Racing Sans One", "cursive"],
+    fontSize: "2.5rem",
+  },
+}));
+
+export default function Logo() {
+  const classes = useStyles();
+
   return (
-    <div className="logoContainer">
-      <div className="logo">the number</div>
-      {/* <div className="tagline">Retirement Planning That Doesn't Suck™</div> */}
+    <div className={classes.logoContainer}>
+      <div className={classes.logo}>the number</div>
     </div>
   );
-};
-
-export default Logo;
+}

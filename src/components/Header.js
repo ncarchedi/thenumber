@@ -1,13 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import Container from "@material-ui/core/Container";
-
+import { makeStyles } from "@material-ui/core/styles";
 import Logo from "./Logo";
 
-const Header = () => {
+const useStyles = makeStyles((theme) => ({
+  header: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(6),
+  },
+  feedbackPageLink: {
+    float: "right",
+    marginTop: theme.spacing(2),
+    fontFamily: ["Racing Sans One", "cursive"],
+  },
+}));
+
+export default function Header() {
+  const classes = useStyles();
+
   return (
-    <Container maxWidth="xl" className="header">
+    <div className={classes.header}>
       <Link to="/">
         <Logo />
       </Link>
@@ -15,10 +27,8 @@ const Header = () => {
         <div className="aboutPageLink">about</div>
       </Link> */}
       <Link to="/feedback">
-        <div className="feedbackPageLink">give us feedback</div>
+        <div className={classes.feedbackPageLink}>give us feedback</div>
       </Link>
-    </Container>
+    </div>
   );
-};
-
-export default Header;
+}

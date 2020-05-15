@@ -6,18 +6,15 @@ import Container from "@material-ui/core/Container";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import About from "./pages/About";
+// import About from "./pages/About";
 import Feedback from "./pages/Feedback";
 
-const App = () => {
+export default function App() {
   const [name, setName] = useState("");
-
-  const handleSetName = (name) => {
-    setName(name);
-  };
 
   const theme = createMuiTheme({
     palette: {
+      type: "dark",
       primary: {
         main: "#59cd90",
       },
@@ -26,26 +23,22 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl">
-        <Router>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home onSetName={handleSetName} />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/feedback">
-                <Feedback name={name} />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </Container>
+      <Router>
+        <Container maxWidth="lg" className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home onSetName={(name) => setName(name)} />
+            </Route>
+            <Route path="/feedback">
+              <Feedback name={name} />
+            </Route>
+            {/* <Route path="/about">
+              <About />
+            </Route> */}
+          </Switch>
+        </Container>
+      </Router>
     </ThemeProvider>
   );
-};
-
-export default App;
+}

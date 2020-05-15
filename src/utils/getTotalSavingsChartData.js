@@ -14,8 +14,9 @@ const getTotalSavingsChartData = (
     ageArray.push(Number(startAge) + i);
 
     const balance =
-      principal * (1 + annualReturn) ** i +
-      annualContribution * (((1 + annualReturn) ** i - 1) / annualReturn);
+      principal * (1 + annualReturn / 100) ** i +
+      annualContribution *
+        (((1 + annualReturn / 100) ** i - 1) / (annualReturn / 100));
     savingsArray.push(balance);
   }
 
