@@ -5,8 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   prompt: {
     margin: 0,
-    padding: ["0.5rem", "2.5rem", "1.5rem", 0],
-    color: "#f1ece2",
+    padding: theme.spacing(4, 0),
   },
   answers: {
     width: "90%",
@@ -16,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
   },
   answer: {
     backgroundColor: "#303030",
-    padding: ["15px", "25px"],
-    margin: ["15px", 0],
+    padding: theme.spacing(2, 3),
+    margin: theme.spacing(2, 0),
     borderRadius: "4px",
     borderWidth: "1px",
     borderColor: "#f1ece2",
     borderStyle: "solid",
     fontSize: "1.5rem",
-    ":hover": {
+    "&:hover": {
       backgroundColor: "#545454",
       cursor: "pointer",
     },

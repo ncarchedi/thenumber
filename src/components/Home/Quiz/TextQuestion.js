@@ -1,30 +1,22 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
     margin: 0,
-    padding: ["0.5rem", "2.5rem", "1.5rem", 0],
-    color: "#f1ece2",
-    fontWeight: 400,
+    padding: theme.spacing(4, 0, 3, 0),
   },
-  answerInput: {
-    padding: ["10px", 0],
+  textField: {
+    padding: theme.spacing(1, 0),
     width: "100%",
-    backgroundColor: "#262626",
-    fontSize: "2rem",
-    caretColor: "#f1ece2",
-    color: "#f1ece2",
-    borderStyle: ["none", "none", "solid", "none"],
-    borderColor: "#3f3f3f",
-    borderWidth: "1px",
-    // focus: {
-    //   outline: "none",
-    // },
+    "& input": {
+      fontSize: "2rem",
+    },
   },
   helperText: {
-    marginTop: "30px",
+    marginTop: theme.spacing(2),
     color: "darkgrey",
     fontSize: "0.9rem",
   },
@@ -36,6 +28,7 @@ export default function TextQuestion(props) {
 
   const { question, onSubmitAnswer } = props;
   const { inputType, variableName, content } = question;
+  const { prompt, helperText } = content;
 
   const handleChange = (e) => {
     const text = e.target.value;
@@ -51,20 +44,17 @@ export default function TextQuestion(props) {
 
   return (
     <div>
-      <h2 className={classes.prompt}>{content.prompt}</h2>
+      <h2 className={classes.prompt}>{prompt}</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className={classes.answerInput}
+        <TextField
+          className={classes.textField}
           value={value}
           onChange={handleChange}
           placeholder="Type your answer here..."
           autoFocus
-        ></input>
+        ></TextField>
       </form>
-      {content.helperText && (
-        <p className={classes.helperText}>{"ℹ️ " + content.helperText}</p>
-      )}
+      {helperText && <p className={classes.helperText}>{"ℹ️ " + helperText}</p>}
     </div>
   );
 }
