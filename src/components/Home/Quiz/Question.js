@@ -1,42 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import Typography from "@material-ui/core/Typography";
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 import TextQuestion from "./TextQuestion";
 
-const Question = (props) => {
-  if (props.type === "MultipleChoice") {
+export default function Question(props) {
+  const { question, onSubmitAnswer } = props;
+  const { type } = question;
+
+  if (type === "MultipleChoice") {
     return (
       <MultipleChoiceQuestion
-        variableName={props.variableName}
-        content={props.content}
-        onSubmitAnswer={props.onSubmitAnswer}
+        question={question}
+        onSubmitAnswer={onSubmitAnswer}
       />
     );
-  } else if (props.type === "TextQuestion") {
-    return (
-      <TextQuestion
-        inputType={props.inputType}
-        variableName={props.variableName}
-        content={props.content}
-        onSubmitAnswer={props.onSubmitAnswer}
-      />
-    );
+  } else if (type === "TextQuestion") {
+    return <TextQuestion question={question} onSubmitAnswer={onSubmitAnswer} />;
   } else {
     return (
-      <h2 className="question">
+      <Typography variant="h5">
         Not a text question or multiple choice question!
-      </h2>
+      </Typography>
     );
   }
-};
+}
 
 Question.propTypes = {
-  type: PropTypes.string.isRequired,
-  inputType: PropTypes.string.isRequired,
-  variableName: PropTypes.string.isRequired,
-  content: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired,
   onSubmitAnswer: PropTypes.func.isRequired,
 };
-
-export default Question;

@@ -5,7 +5,7 @@ var quizQuestions = [
     inputType: "string",
     variableName: "name",
     content: {
-      question: "👋 What's your first name?",
+      prompt: "👋 What's your first name?",
     },
   },
   {
@@ -14,7 +14,7 @@ var quizQuestions = [
     inputType: "number",
     variableName: "retirementAge",
     content: {
-      question: "Welcome, ___! What age would you like to retire at? 📆",
+      prompt: "Welcome, ___! What age would you like to retire at? 📆",
     },
   },
   {
@@ -23,7 +23,7 @@ var quizQuestions = [
     inputType: "number",
     variableName: "currentAge",
     content: {
-      question: "And how old are you right now? 🕒",
+      prompt: "And how old are you right now? 🕒",
     },
   },
   {
@@ -32,7 +32,7 @@ var quizQuestions = [
     inputType: "number",
     variableName: "monthlyExpenses",
     content: {
-      question: "How much money do you spend in an average month? 💸",
+      prompt: "How much money do you spend in an average month? 💸",
       helperText:
         "Expenses often vary month-to-month. This can be a rough estimate for now.",
     },
@@ -43,7 +43,7 @@ var quizQuestions = [
     inputType: "number",
     variableName: "currentSavings",
     content: {
-      question: "Approximately how much money do you have saved? 💰",
+      prompt: "Approximately how much money do you have saved? 💰",
       helperText:
         "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
     },

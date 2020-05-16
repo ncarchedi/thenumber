@@ -1,43 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-
 import Container from "@material-ui/core/Container";
-
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
+import QuestionEmptyScreen from "./QuestionEmptyScreen";
 
-const Quiz = (props) => {
+// TODO: use existing templating library?
+const replaceBlanks = (text, value) => {
+  return text.replace("___", value);
+};
+
+export default function Quiz(props) {
+  const [questionNumber, setQuestionNumber] = useState(1);
+
+  const { questions, userName, setUserValue, setShowCheckpoint } = props;
+
+  const goToNextQuestion = () => {
+    setQuestionNumber(questionNumber + 1);
+  };
+
+  const handleSubmitAnswer = (variableName, variableValue) => {
+    setUserValue(variableName, variableValue);
+
+    // TODO: un-hardcode when to show results?
+    if (questionNumber >= 5) {
+      setShowCheckpoint(true);
+    }
+
+    goToNextQuestion();
+  };
+
+  const currentQuestion = questions[questionNumber - 1];
+
+  // if question doesn't exist, show empty screen
+  if (!currentQuestion) {
+    return <QuestionEmptyScreen />;
+  }
+
+  // replace blank in age question with user's name
+  let updatedQuestion = currentQuestion.content.prompt;
+  if (questionNumber === 2) {
+    updatedQuestion = replaceBlanks(currentQuestion.content.prompt, userName);
+  }
+  currentQuestion.content.prompt = updatedQuestion;
+
   return (
     <Container maxWidth="md">
-      <div key={props.questionNumber}>
-        <QuestionCount
-          current={props.questionNumber}
-          total={props.questionTotal}
-        />
+      <div key={questionNumber}>
+        <QuestionCount current={questionNumber} total={questions.length} />
         <Question
-          type={props.questionType}
-          inputType={props.questionInputType}
-          variableName={props.variableName}
-          content={props.questionContent}
-          onSubmitAnswer={props.onSubmitAnswer}
+          question={currentQuestion}
+          onSubmitAnswer={handleSubmitAnswer}
         />
       </div>
-      <button className="skipQuizButton" onClick={props.onSkipQuiz}>
-        Skip Quiz (Admin Only)
-      </button>
     </Container>
   );
-};
+}
 
 Quiz.propTypes = {
-  questionNumber: PropTypes.number.isRequired,
-  questionTotal: PropTypes.number.isRequired,
-  questionType: PropTypes.string.isRequired,
-  questionInputType: PropTypes.string.isRequired,
-  variableName: PropTypes.string.isRequired,
-  questionContent: PropTypes.object.isRequired,
-  onSubmitAnswer: PropTypes.func.isRequired,
-  onSkipQuiz: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
+  userName: PropTypes.string.isRequired,
+  setUserValue: PropTypes.func.isRequired,
+  setShowCheckpoint: PropTypes.func.isRequired,
 };
-
-export default Quiz;
