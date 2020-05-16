@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     float: "right",
     marginTop: theme.spacing(2),
     fontFamily: ["Racing Sans One", "cursive"],
+    color: theme.palette.primary.main,
   },
 }));
 
