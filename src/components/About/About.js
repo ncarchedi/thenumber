@@ -1,13 +1,8 @@
 import React from "react";
-
-import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 
 const About = () => {
-  return (
-    <Container>
-      <h2>Coming soon!</h2>
-    </Container>
-  );
+  return <Typography variant="h2">Coming soon!</Typography>;
 };
 
 export default About;

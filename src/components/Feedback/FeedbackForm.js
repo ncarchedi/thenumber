@@ -79,12 +79,7 @@ export default function FeedbackForm(props) {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="default"
-              endIcon={<SendIcon />}
-            >
+            <Button type="submit" variant="contained" endIcon={<SendIcon />}>
               Submit Feedback
             </Button>
           </Grid>

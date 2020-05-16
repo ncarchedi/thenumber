@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
@@ -14,16 +15,16 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
   },
   answer: {
-    backgroundColor: "#303030",
+    // backgroundColor: "#303030",
     padding: theme.spacing(2, 3),
     margin: theme.spacing(2, 0),
     borderRadius: "4px",
     borderWidth: "1px",
-    borderColor: "#f1ece2",
+    // borderColor: "#f1ece2",
     borderStyle: "solid",
     fontSize: "1.5rem",
     "&:hover": {
-      backgroundColor: "#545454",
+      // backgroundColor: "#545454",
       cursor: "pointer",
     },
   },
@@ -49,7 +50,9 @@ export default function MultipleChoiceQuestion(props) {
 
   return (
     <div>
-      <h2 className={classes.prompt}>{content.prompt}</h2>
+      <Typography variant="h5" className={classes.prompt}>
+        {content.prompt}
+      </Typography>
       <ul className={classes.answers}>{content.answers.map(renderAnswer)}</ul>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ResultsChart from "./ResultsChart";
@@ -13,14 +14,12 @@ const useStyles = makeStyles((theme) => ({
   headerText: {
     display: "inline-block",
     padding: theme.spacing(0, 5, 3, 5),
-    color: "#59cd90",
+    color: theme.palette.primary.main,
     fontFamily: ["Racing Sans One", "cursive"],
-    fontSize: "2.5rem",
     borderBottom: "solid",
   },
   supportingText: {
-    fontSize: "1.2rem",
-    margin: theme.spacing(5),
+    margin: theme.spacing(4, 4, 2, 4),
   },
   actionButton: {
     marginTop: theme.spacing(3),
@@ -68,14 +67,16 @@ export default function Results(props) {
 
   return (
     <React.Fragment>
-      <div className={classes.headerText}>{toDollars(targetSavings)}</div>
-      <p className={classes.supportingText}>
+      <Typography variant="h2" className={classes.headerText}>
+        {toDollars(targetSavings)}
+      </Typography>
+      <Typography variant="h6" className={classes.supportingText}>
         {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
           currentSavings
         )} today, so you need to accumulate an additional ${toDollars(
           additionalSavings
         )} over the next ${yearsToRetirement} years.`}
-      </p>
+      </Typography>
       <ResultsChart
         xArray={totalSavingsChartData.ageArray}
         yArray={totalSavingsChartData.savingsArray}

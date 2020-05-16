@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
@@ -17,8 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   helperText: {
     marginTop: theme.spacing(2),
-    color: "darkgrey",
-    fontSize: "0.9rem",
+    color: theme.palette.text.secondary,
   },
 }));
 
@@ -44,7 +44,9 @@ export default function TextQuestion(props) {
 
   return (
     <div>
-      <h2 className={classes.prompt}>{prompt}</h2>
+      <Typography variant="h5" className={classes.prompt}>
+        {prompt}
+      </Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           className={classes.textField}
@@ -54,7 +56,11 @@ export default function TextQuestion(props) {
           autoFocus
         ></TextField>
       </form>
-      {helperText && <p className={classes.helperText}>{"ℹ️ " + helperText}</p>}
+      {helperText && (
+        <Typography variant="body2" className={classes.helperText}>
+          {"ℹ️ " + helperText}
+        </Typography>
+      )}
     </div>
   );
 }

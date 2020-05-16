@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   count: {
-    padding: ["1.5rem", 0],
-    fontSize: "14px",
-    color: "darkgrey",
+    padding: theme.spacing(2, 0, 0, 0),
+    color: theme.palette.text.secondary,
     fontStyle: "italic",
   },
 }));
@@ -15,9 +15,9 @@ export default function QuestionCount(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.count}>
+    <Typography variant="body2" className={classes.count}>
       Question <span>{props.current}</span> of <span>{props.total}</span>
-    </div>
+    </Typography>
   );
 }
 

@@ -5,12 +5,11 @@ import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(2),
     marginBottom: theme.spacing(6),
   },
-  feedbackPageLink: {
+  feedbackLink: {
     float: "right",
-    marginTop: theme.spacing(2),
     fontFamily: ["Racing Sans One", "cursive"],
     color: theme.palette.primary.main,
   },
@@ -28,7 +27,7 @@ export default function Header() {
         <div className="aboutPageLink">about</div>
       </Link> */}
       <Link to="/feedback">
-        <div className={classes.feedbackPageLink}>give us feedback</div>
+        <div className={classes.feedbackLink}>give us feedback</div>
       </Link>
     </div>
   );
