@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
-import Results from "./Checkpoint/Results";
+// import Results from "./Checkpoint/Results";
+import Checkpoint from "./Checkpoint/Checkpoint";
 import QuestionEmptyScreen from "./Quiz/QuestionEmptyScreen";
 import quizQuestions from "../../api/quizQuestions";
 
@@ -29,9 +30,9 @@ export default function Home(props) {
   });
 
   // For testing purposes only!
-  // useEffect(() => {
-  //   handleSkipQuiz();
-  // }, []);
+  useEffect(() => {
+    handleSkipQuiz();
+  }, []);
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
@@ -112,12 +113,18 @@ export default function Home(props) {
 
   const renderResults = () => {
     return (
-      <Results
+      <Checkpoint
         user={user}
         assumptions={assumptions}
         setUser={setUser}
         setAssumptions={setAssumptions}
       />
+      // <Results
+      //   user={user}
+      //   assumptions={assumptions}
+      //   setUser={setUser}
+      //   setAssumptions={setAssumptions}
+      // />
     );
   };
 
