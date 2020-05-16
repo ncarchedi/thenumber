@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
