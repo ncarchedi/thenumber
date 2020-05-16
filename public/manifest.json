@@ -6,15 +6,15 @@
     {
       "src": "favicon.ico",
       "type": "image/x-icon",
-      "sizes": "64x64 32x32 24x24 16x16"
+      "sizes": "24x24"
     },
     {
-      "src": "icons192.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icons512.png",
+      "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
