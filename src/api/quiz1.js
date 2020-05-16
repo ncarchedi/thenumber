@@ -1,4 +1,4 @@
-var quizQuestions = [
+export default [
   {
     id: 1,
     type: "TextQuestion",
@@ -49,5 +49,3 @@ var quizQuestions = [
     },
   },
 ];
-
-export default quizQuestions;
