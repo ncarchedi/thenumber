@@ -41,9 +41,15 @@ export default function FeedbackForm(props) {
 
   return (
     <Container maxWidth="sm">
-      <Typography variant="h6" gutterBottom>
-        Where should we go from here? 🤔
-      </Typography>
+      {name ? (
+        <Typography variant="h6" gutterBottom>
+          {name}, where should we go from here? 🤔
+        </Typography>
+      ) : (
+        <Typography variant="h6" gutterBottom>
+          Where should we go from here? 🤔
+        </Typography>
+      )}
       <Typography variant="subtitle1" gutterBottom>
         <em>The Number</em> is a work in progress—and you can help shape it!
       </Typography>
