@@ -8,9 +8,6 @@ import Switch from "@material-ui/core/Switch";
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    marginBottom: theme.spacing(4),
-  },
   logoLink: {
     textDecoration: "none",
     flexGrow: 1,
@@ -31,12 +28,7 @@ export default function Header(props) {
   const { darkMode, setDarkMode } = props;
 
   return (
-    <AppBar
-      position="static"
-      color="default"
-      elevation={1}
-      className={classes.appBar}
-    >
+    <AppBar position="static" color="default" elevation={1}>
       <Toolbar>
         <Link to="/" className={classes.logoLink}>
           <Logo />

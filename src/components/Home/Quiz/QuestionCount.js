@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   count: {
-    padding: theme.spacing(2, 0, 0, 0),
     color: theme.palette.text.secondary,
     fontStyle: "italic",
   },
