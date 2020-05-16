@@ -1,4 +1,4 @@
-const toDollars = (num) => {
+export default function toDollars(num) {
   const wholeNumberText = num.toString().split(".")[0];
   const digits = wholeNumberText.length;
 
@@ -11,6 +11,4 @@ const toDollars = (num) => {
   });
 
   return dollarFormatter.format(wholeNumberText);
-};
-
-export default toDollars;
+}

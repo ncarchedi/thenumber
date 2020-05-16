@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useTheme } from "@material-ui/core/styles";
 import Chart from "react-apexcharts";
-
-import toDollars from "../utils/toDollars.js";
+import toDollars from "../../../utils/toDollars.js";
 
 export default function ResultsChart(props) {
+  const theme = useTheme();
+
   const options = {
     chart: {
       height: 350,
@@ -14,15 +16,14 @@ export default function ResultsChart(props) {
       toolbar: {
         show: false,
       },
-      fontFamily: "sans-serif",
+      fontFamily: ["Roboto", "sans-serif"],
     },
     dataLabels: {
       enabled: false,
     },
     markers: {
       size: 5,
-      colors: "#59cd90",
-      strokeColors: "#262626",
+      strokeColors: theme.palette.background.default,
       strokeWidth: 3,
     },
     tooltip: {
@@ -34,28 +35,19 @@ export default function ResultsChart(props) {
         },
       },
     },
-    colors: ["#59cd90"],
-    grid: {
-      borderColor: "#f1ece2",
-    },
+    colors: [theme.palette.primary.main],
     xaxis: {
       categories: [...props.xArray],
       labels: {
         style: {
-          colors: "#f1ece2",
+          colors: theme.palette.text.primary,
         },
       },
     },
     yaxis: {
-      // title: {
-      //   text: "Total Savings",
-      //   style: {
-      //     color: "#f1ece2",
-      //   },
-      // },
       labels: {
         style: {
-          colors: "#f1ece2",
+          colors: theme.palette.text.primary,
         },
         formatter: toDollars,
       },

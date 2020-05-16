@@ -1,5 +1,3 @@
-const toPercent = (num) => {
-  return Math.round(num * 100) + "%";
-};
-
-export default toPercent;
+export default function toPercent(num) {
+  return num + "%";
+}

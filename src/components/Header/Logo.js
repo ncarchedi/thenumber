@@ -1,14 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   logoContainer: {
     display: "inline-block",
   },
   logo: {
-    color: "#59cd90",
+    color: theme.palette.primary.main,
     fontFamily: ["Racing Sans One", "cursive"],
-    fontSize: "2.5rem",
   },
 }));
 
@@ -17,7 +17,9 @@ export default function Logo() {
 
   return (
     <div className={classes.logoContainer}>
-      <div className={classes.logo}>the number</div>
+      <Typography variant="h4" className={classes.logo}>
+        the number
+      </Typography>
     </div>
   );
 }
