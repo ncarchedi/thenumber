@@ -71,7 +71,7 @@ button:hover {
   box-sizing: border-box;
 }
 
-/* Quiz Component */
+/* Quiz Component
 .skipQuizButton {
   padding: 10px;
   background-color: #262626;
@@ -83,28 +83,4 @@ button:hover {
 
 .skipQuizButton:hover {
   cursor: pointer;
-}
-
-/* Feedback Page */
-.feedbackForm {
-  max-width: 50%;
-}
-
-.feedbackForm form {
-  margin-top: 25px;
-}
-
-.feedbackForm input,
-textarea {
-  display: block;
-  width: 100%;
-  margin: 15px 0px;
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
-  font-size: 1rem;
-}
-
-.feedbackForm textarea {
-  height: 5rem;
-}
+} */
