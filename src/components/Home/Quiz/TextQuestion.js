@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2, 0, 1, 0),
       fontSize: "2rem",
     },
+    "& input::placeholder": {
+      padding: theme.spacing(2, 0, 1, 0),
+      fontSize: "2rem",
+    },
   },
   helperText: {
     marginTop: theme.spacing(2),
