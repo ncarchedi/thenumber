@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4, 0, 3, 0),
   },
   textField: {
-    padding: theme.spacing(1, 0),
     width: "100%",
     "& input": {
+      padding: theme.spacing(2, 0, 1, 0),
       fontSize: "2rem",
     },
   },
