@@ -13,6 +13,17 @@ export default function Home(props) {
     monthlyExpenses: "",
     currentSavings: "",
   });
+
+  // // For testing purposes only
+  // const [showCheckpoint, setShowCheckpoint] = useState(true);
+  // const [user, setUser] = useState({
+  //   name: "Marley",
+  //   retirementAge: "60",
+  //   currentAge: "30",
+  //   monthlyExpenses: "4000",
+  //   currentSavings: "200000",
+  // });
+
   const [assumptions, setAssumptions] = useState({
     annualReturn: "7",
     withdrawalRate: "4",
