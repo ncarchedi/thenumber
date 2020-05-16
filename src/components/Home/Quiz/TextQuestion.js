@@ -43,7 +43,7 @@ export default function TextQuestion(props) {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Typography variant="h5" className={classes.prompt}>
         {prompt}
       </Typography>
@@ -61,7 +61,7 @@ export default function TextQuestion(props) {
           {"ℹ️ " + helperText}
         </Typography>
       )}
-    </div>
+    </React.Fragment>
   );
 }
 

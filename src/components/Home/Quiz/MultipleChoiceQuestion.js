@@ -49,12 +49,12 @@ export default function MultipleChoiceQuestion(props) {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Typography variant="h5" className={classes.prompt}>
         {content.prompt}
       </Typography>
       <ul className={classes.answers}>{content.answers.map(renderAnswer)}</ul>
-    </div>
+    </React.Fragment>
   );
 }
 
