@@ -59,7 +59,7 @@ export default function Checkpoint(props) {
   return (
     <React.Fragment>
       <Grid container spacing={6}>
-        <Grid item xs={3} className={classes.assumptionsContainer}>
+        <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
           <Assumptions
             updateInputs={updateInputs}
             retirementAgeInput={retirementAgeInput}
@@ -74,7 +74,7 @@ export default function Checkpoint(props) {
             setInflationRateInput={setInflationRateInput}
           />
         </Grid>
-        <Grid item xs={9} className={classes.resultsContainer}>
+        <Grid item xs={12} md={9} className={classes.resultsContainer}>
           <Results
             retirementAge={retirementAge}
             currentAge={currentAge}

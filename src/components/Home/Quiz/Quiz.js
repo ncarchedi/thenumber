@@ -45,7 +45,7 @@ export default function Quiz(props) {
   currentQuestion.content.prompt = updatedQuestion;
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" disableGutters={true}>
       <div key={questionNumber}>
         <QuestionCount current={questionNumber} total={questions.length} />
         <Question

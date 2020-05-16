@@ -5,7 +5,7 @@ import FeedbackForm from "./FeedbackForm";
 
 export default function Feedback(props) {
   return (
-    <Container>
+    <Container maxWidth="sm" disableGutters={true}>
       <FeedbackForm name={props.name} />
     </Container>
   );

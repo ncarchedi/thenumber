@@ -1,6 +1,6 @@
 import React from "react";
 
-const QuestionEmptyScreen = () => {
+export default function QuestionEmptyScreen() {
   return (
     <div
       style={{
@@ -17,6 +17,4 @@ const QuestionEmptyScreen = () => {
       />
     </div>
   );
-};
-
-export default QuestionEmptyScreen;
+}

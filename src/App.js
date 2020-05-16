@@ -4,6 +4,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
+// import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 // import About from "./components/About/About";
 import Feedback from "./components/Feedback/Feedback";
@@ -37,6 +38,7 @@ export default function App() {
               <About />
             </Route> */}
           </Switch>
+          {/* <Footer /> */}
         </Container>
       </Router>
     </ThemeProvider>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -40,7 +39,7 @@ export default function FeedbackForm(props) {
   };
 
   return (
-    <Container maxWidth="sm">
+    <React.Fragment>
       {name ? (
         <Typography variant="h6" gutterBottom>
           {name}, where should we go from here? 🤔
@@ -85,7 +84,7 @@ export default function FeedbackForm(props) {
           </Grid>
         </Grid>
       </form>
-    </Container>
+    </React.Fragment>
   );
 }
 

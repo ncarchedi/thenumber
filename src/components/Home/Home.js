@@ -14,7 +14,7 @@ export default function Home(props) {
     currentSavings: "",
   });
 
-  // // For testing purposes only
+  // For testing purposes only
   // const [showCheckpoint, setShowCheckpoint] = useState(true);
   // const [user, setUser] = useState({
   //   name: "Marley",
