@@ -11,10 +11,11 @@ import Feedback from "./components/Feedback/Feedback";
 
 export default function App() {
   const [name, setName] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const theme = createMuiTheme({
     palette: {
-      type: "dark",
+      type: darkMode ? "dark" : "light",
       primary: {
         main: "#59cd90",
       },
@@ -25,8 +26,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <Container maxWidth="lg" className="App">
-          <Header />
           <Switch>
             <Route exact path="/">
               <Home onSetName={(name) => setName(name)} />

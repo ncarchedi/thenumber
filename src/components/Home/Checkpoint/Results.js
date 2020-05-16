@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   supportingText: {
     margin: theme.spacing(4, 4, 2, 4),
+    fontWeight: 400,
   },
   actionButton: {
     marginTop: theme.spacing(3),
