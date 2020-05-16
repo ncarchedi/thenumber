@@ -1,10 +1,12 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import SunIcon from "@material-ui/icons/Brightness7";
+import MoonIcon from "@material-ui/icons/Brightness4";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Switch from "@material-ui/core/Switch";
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   feedbackLink: {
     textDecoration: "none",
-    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   feedbackLinkText: {
     fontFamily: ["Racing Sans One", "cursive"],
@@ -33,20 +35,18 @@ export default function Header(props) {
         <Link to="/" className={classes.logoLink}>
           <Logo />
         </Link>
-        <Switch
-          checked={darkMode}
-          onChange={() => setDarkMode(!darkMode)}
+        <Link to="/feedback" className={classes.feedbackLink}>
+          <Typography variant="subtitle1" className={classes.feedbackLinkText}>
+            give us feedback
+          </Typography>
+        </Link>
+        <IconButton
+          aria-label="dark mode toggle"
           color="primary"
-          inputProps={{ "aria-label": "theme switcher" }}
-        />
-        {/* <Link to="/feedback" className={classes.feedbackLink}>
-            <Typography
-              variant="subtitle1"
-              className={classes.feedbackLinkText}
-            >
-              give us feedback
-            </Typography>
-          </Link> */}
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? <SunIcon /> : <MoonIcon />}
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
