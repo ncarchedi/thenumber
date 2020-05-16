@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Quiz from "../components/Quiz";
-import Results from "../components/Results";
-import QuestionEmptyScreen from "../components/QuestionEmptyScreen";
-import quizQuestions from "../api/quizQuestions";
+import Quiz from "./Quiz/Quiz";
+import Results from "./Checkpoint/Results";
+import QuestionEmptyScreen from "./Quiz/QuestionEmptyScreen";
+import quizQuestions from "../../api/quizQuestions";
 
 // TODO: extract into file/folder of utility functions
 // TODO: use existing templating library

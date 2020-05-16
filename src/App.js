@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-import Header from "./components/Header";
-import Home from "./pages/Home";
-// import About from "./pages/About";
-import Feedback from "./pages/Feedback";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+// import About from "./components/About/About";
+import Feedback from "./components/Feedback/Feedback";
 
 export default function App() {
   const [name, setName] = useState("");

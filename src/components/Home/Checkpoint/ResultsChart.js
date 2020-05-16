@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Chart from "react-apexcharts";
 
-import toDollars from "../utils/toDollars.js";
+import toDollars from "../../../utils/toDollars.js";
 
 export default function ResultsChart(props) {
   const options = {

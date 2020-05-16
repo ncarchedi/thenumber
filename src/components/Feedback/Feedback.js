@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import Container from "@material-ui/core/Container";
-
-import FeedbackForm from "../components/FeedbackForm";
+import FeedbackForm from "./FeedbackForm";
 
 const Feedback = (props) => {
   return (
