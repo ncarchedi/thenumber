@@ -7,8 +7,7 @@ import NumberFormat from "react-number-format";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
-    margin: 0,
-    padding: theme.spacing(4, 0, 3, 0),
+    margin: theme.spacing(4, 0, 3, 0),
   },
   textField: {
     width: "100%",

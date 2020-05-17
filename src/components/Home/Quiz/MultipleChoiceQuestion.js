@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     // borderColor: "#f1ece2",
     borderStyle: "solid",
     fontSize: "1.5rem",
-    "&:hover": {
+    "& :hover": {
       // backgroundColor: "#545454",
       cursor: "pointer",
     },
