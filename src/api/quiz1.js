@@ -29,7 +29,7 @@ export default [
   {
     id: 4,
     type: "TextQuestion",
-    inputType: "number",
+    inputType: "dollar",
     variableName: "monthlyExpenses",
     content: {
       prompt: "How much money do you spend in an average month? 💸",
@@ -40,7 +40,7 @@ export default [
   {
     id: 5,
     type: "TextQuestion",
-    inputType: "number",
+    inputType: "dollar",
     variableName: "currentSavings",
     content: {
       prompt: "Approximately how much money do you have saved? 💰",

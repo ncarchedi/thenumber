@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import NumberFormat from "react-number-format";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
@@ -21,6 +22,33 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+
+function DollarInputFormat(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      isNumericString
+      prefix="$"
+    />
+  );
+}
+
+DollarInputFormat.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default function TextQuestion(props) {
   const classes = useStyles();
@@ -47,13 +75,26 @@ export default function TextQuestion(props) {
         {prompt}
       </Typography>
       <form onSubmit={handleSubmit}>
-        <TextField
-          className={classes.textField}
-          value={value}
-          onChange={handleChange}
-          placeholder="Type your answer here..."
-          autoFocus
-        ></TextField>
+        {inputType === "dollar" ? (
+          <TextField
+            className={classes.textField}
+            value={value}
+            onChange={handleChange}
+            placeholder="Type your answer here..."
+            autoFocus
+            InputProps={{
+              inputComponent: DollarInputFormat,
+            }}
+          ></TextField>
+        ) : (
+          <TextField
+            className={classes.textField}
+            value={value}
+            onChange={handleChange}
+            placeholder="Type your answer here..."
+            autoFocus
+          ></TextField>
+        )}
       </form>
       {helperText && (
         <Typography variant="body2" className={classes.helperText}>
