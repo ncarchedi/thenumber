@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -7,11 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SendIcon from "@material-ui/icons/Send";
+import Emoji from "../General/Emoji";
 
 const useStyles = makeStyles((theme) => ({
-  form: {
-    marginTop: theme.spacing(3),
-  },
   paper: {
     position: "absolute",
     backgroundColor: theme.palette.background.paper,
@@ -22,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: "50%",
     },
+    "&:focus": {
+      outline: "none",
+    },
+  },
+  form: {
+    marginTop: theme.spacing(3),
   },
 }));
 
@@ -31,9 +35,13 @@ const encode = (data) => {
     .join("&");
 };
 
-export default function FeedbackForm(props) {
+// Rationale for using forwardRef():
+// https://material-ui.com/guides/composition/#caveat-with-refs
+// https://reactjs.org/docs/forwarding-refs.html
+// https://www.robinwieruch.de/react-function-component#react-function-component-ref
+const FeedbackForm = forwardRef((props, ref) => {
   const classes = useStyles();
-  const [name, setName] = useState(props.name);
+  const [name] = useState(props.name);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -50,14 +58,15 @@ export default function FeedbackForm(props) {
   };
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} ref={ref}>
       {name ? (
         <Typography variant="h6" gutterBottom>
-          {name}, where should we go from here? 🤔
+          {name}, where should we go from here?{" "}
+          <Emoji symbol="🤔" label="thinking" />
         </Typography>
       ) : (
         <Typography variant="h6" gutterBottom>
-          Where should we go from here? 🤔
+          Where should we go from here? <Emoji symbol="🤔" label="thinking" />
         </Typography>
       )}
       <Typography variant="subtitle1" gutterBottom>
@@ -97,7 +106,9 @@ export default function FeedbackForm(props) {
       </form>
     </Paper>
   );
-}
+});
+
+export default FeedbackForm;
 
 FeedbackForm.propTypes = {
   name: PropTypes.string.isRequired,
