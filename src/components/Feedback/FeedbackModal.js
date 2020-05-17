@@ -21,7 +21,12 @@ export default function FeedbackModal(props) {
   };
 
   return (
-    <Modal className={classes.modal} open={open} onClose={handleCloseModal}>
+    <Modal
+      className={classes.modal}
+      open={open}
+      onClose={handleCloseModal}
+      disableAutoFocus
+    >
       <FeedbackForm name={name} onCloseModal={handleCloseModal} />
     </Modal>
   );

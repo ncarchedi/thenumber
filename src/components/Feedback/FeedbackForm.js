@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: "50%",
     },
-    "&:focus": {
-      outline: "none",
-    },
   },
   form: {
     marginTop: theme.spacing(3),
