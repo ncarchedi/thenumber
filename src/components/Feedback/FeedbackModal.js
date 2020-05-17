@@ -25,8 +25,7 @@ const encode = (data) => {
 
 export default function FeedbackModal(props) {
   const classes = useStyles();
-  const { open, setOpen } = props;
-  const [name] = useState(props.name);
+  const { name, open, setOpen } = props;
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 

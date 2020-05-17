@@ -55,7 +55,6 @@ export default function App() {
               <About />
             </Route> */}
           </Switch>
-          {/* Feedback modal */}
           <FeedbackModal
             name={name}
             open={openFeedbackModal}
