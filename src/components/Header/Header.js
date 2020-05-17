@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
-
   const { darkMode, setDarkMode } = props;
 
   return (

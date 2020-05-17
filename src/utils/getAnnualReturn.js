@@ -1,6 +1,6 @@
 // https://www.investopedia.com/ask/answers/042415/what-average-annual-return-sp-500.asp
 
-const getAnnualReturn = (percentStocks) => {
+export default function getAnnualReturn(percentStocks) {
   let annualReturn = null;
 
   if (percentStocks === "mostlyStocks") {
@@ -12,6 +12,4 @@ const getAnnualReturn = (percentStocks) => {
   }
 
   return annualReturn;
-};
-
-export default getAnnualReturn;
+}

@@ -22,9 +22,7 @@ const replaceBlanks = (text, value) => {
 
 export default function Quiz(props) {
   const classes = useStyles();
-
   const [questionNumber, setQuestionNumber] = useState(1);
-
   const { questions, userName, setUserValue, setShowCheckpoint } = props;
 
   const goToNextQuestion = () => {

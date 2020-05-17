@@ -1,10 +1,10 @@
-const getTotalSavingsChartData = (
+export default function getTotalSavingsChartData(
   startAge,
   endAge,
   principal,
   annualContribution,
   annualReturn
-) => {
+) {
   const nYears = endAge - startAge + 1;
 
   var ageArray = [];
@@ -21,6 +21,4 @@ const getTotalSavingsChartData = (
   }
 
   return { ageArray: ageArray, savingsArray: savingsArray };
-};
-
-export default getTotalSavingsChartData;
+}

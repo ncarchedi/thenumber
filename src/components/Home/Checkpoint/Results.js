@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
-
   const {
     retirementAge,
     currentAge,
@@ -39,7 +38,6 @@ export default function Results(props) {
     withdrawalRate,
     inflationRate,
   } = props;
-
   const targetSavings = calculateTargetSavings(
     currentAge,
     retirementAge,

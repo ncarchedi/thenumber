@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Question(props) {
   const classes = useStyles();
-
   const { question, onSubmitAnswer } = props;
   const { type } = question;
 

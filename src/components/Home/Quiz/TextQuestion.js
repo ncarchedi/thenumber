@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TextQuestion(props) {
   const classes = useStyles();
   const [value, setValue] = useState("");
-
   const { question, onSubmitAnswer } = props;
   const { inputType, variableName, content } = question;
   const { prompt, helperText } = content;

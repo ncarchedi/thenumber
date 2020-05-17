@@ -1,10 +1,10 @@
-const getAnnualWithdrawalChartData = (
+export default function getAnnualWithdrawalChartData(
   currentAge,
   retirementAge,
   deathAge,
   currentMonthlyExpenses,
   inflationRate
-) => {
+) {
   const yearsFromNowUntilRetirement = retirementAge - currentAge;
   const yearsFromRetirementToDeath = deathAge - retirementAge + 1;
   const currentAnnualExpenses = currentMonthlyExpenses * 12;
@@ -23,6 +23,4 @@ const getAnnualWithdrawalChartData = (
   }
 
   return { ageArray: ageArray, withdrawalArray: withdrawalArray };
-};
-
-export default getAnnualWithdrawalChartData;
+}

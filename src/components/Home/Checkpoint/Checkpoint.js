@@ -19,14 +19,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkpoint(props) {
   const classes = useStyles();
-
   const {
     retirementAge,
     currentAge,
     monthlyExpenses,
     currentSavings,
   } = props.user;
-
   const { annualReturn, withdrawalRate, inflationRate } = props.assumptions;
 
   // use props for initial assumptions form state

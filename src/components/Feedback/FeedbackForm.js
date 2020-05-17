@@ -21,7 +21,6 @@ const encode = (data) => {
 
 export default function FeedbackForm(props) {
   const classes = useStyles();
-
   const [name, setName] = useState(props.name);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

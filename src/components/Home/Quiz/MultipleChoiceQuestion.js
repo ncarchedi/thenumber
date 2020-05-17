@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MultipleChoiceQuestion(props) {
   const classes = useStyles();
-
   const { question, onSubmitAnswer } = props;
   const { variableName, content } = question;
 
