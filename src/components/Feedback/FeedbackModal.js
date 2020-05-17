@@ -45,6 +45,8 @@ export default function FeedbackModal(props) {
 
   const handleClose = () => {
     setOpen(false);
+    setEmail("");
+    setMessage("");
   };
 
   return (
