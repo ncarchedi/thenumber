@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
-  logoLink: {
+  logo: {
     flexGrow: 1,
     textDecoration: "none",
   },
@@ -18,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
-  const { darkMode, setDarkMode } = props;
+  const { darkMode, setDarkMode, setOpenFeedbackModal } = props;
 
   return (
     <AppBar position="static" color="default" elevation={1}>
       <Toolbar>
-        <Link to="/" className={classes.logoLink}>
+        <Link to="/" className={classes.logo}>
           <Logo />
         </Link>
         <IconButton
@@ -33,12 +34,20 @@ export default function Header(props) {
         >
           {darkMode ? <SunIcon /> : <MoonIcon />}
         </IconButton>
-        <Link to="/feedback">
-          <IconButton aria-label="dark mode toggle" color="primary">
-            <FeedbackIcon />
-          </IconButton>
-        </Link>
+        <IconButton
+          aria-label="give us feedback"
+          color="primary"
+          onClick={() => setOpenFeedbackModal(true)}
+        >
+          <FeedbackIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
 }
+
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
+  setOpenFeedbackModal: PropTypes.func.isRequired,
+};

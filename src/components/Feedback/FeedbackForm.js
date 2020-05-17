@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -10,6 +11,17 @@ import SendIcon from "@material-ui/icons/Send";
 const useStyles = makeStyles((theme) => ({
   form: {
     marginTop: theme.spacing(3),
+  },
+  paper: {
+    position: "absolute",
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(3, 4),
+    maxWidth: "600px",
+    width: "90%",
+    [theme.breakpoints.up("sm")]: {
+      width: "50%",
+    },
   },
 }));
 
@@ -31,14 +43,14 @@ export default function FeedbackForm(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "feedback", name, email, message }),
     })
-      .then(() => alert("Feedback sent!"))
+      .then(props.onCloseModal)
       .catch((error) => alert(error));
 
     e.preventDefault();
   };
 
   return (
-    <React.Fragment>
+    <Paper className={classes.paper}>
       {name ? (
         <Typography variant="h6" gutterBottom>
           {name}, where should we go from here? 🤔
@@ -60,7 +72,7 @@ export default function FeedbackForm(props) {
               label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              helperText="In case we have any questions"
+              helperText="Just in case we have any questions"
               variant="outlined"
               fullWidth
             />
@@ -83,10 +95,11 @@ export default function FeedbackForm(props) {
           </Grid>
         </Grid>
       </form>
-    </React.Fragment>
+    </Paper>
   );
 }
 
 FeedbackForm.propTypes = {
   name: PropTypes.string.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };
