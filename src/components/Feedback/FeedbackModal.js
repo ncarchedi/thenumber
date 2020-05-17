@@ -70,6 +70,7 @@ export default function FeedbackModal(props) {
                 label="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                variant="outlined"
                 fullWidth
               />
             </Grid>
@@ -79,6 +80,9 @@ export default function FeedbackModal(props) {
                 label="Feedback"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                variant="outlined"
+                multiline
+                rows={3}
                 fullWidth
               />
             </Grid>

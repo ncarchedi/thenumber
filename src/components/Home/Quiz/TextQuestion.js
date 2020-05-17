@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(4, 0, 3, 0),
   },
   textField: {
-    width: "100%",
     "& input": {
       fontSize: "2rem",
     },
@@ -80,6 +79,7 @@ export default function TextQuestion(props) {
             onChange={handleChange}
             placeholder="Type your answer here..."
             autoFocus
+            fullWidth
             InputProps={{
               inputComponent: DollarInputFormat,
             }}
@@ -91,6 +91,7 @@ export default function TextQuestion(props) {
             onChange={handleChange}
             placeholder="Type your answer here..."
             autoFocus
+            fullWidth
           ></TextField>
         )}
       </form>
