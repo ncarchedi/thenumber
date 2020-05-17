@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Slide from "@material-ui/core/Slide";
 import Assumptions from "./Assumptions";
 import Results from "./Results";
 
@@ -57,7 +58,7 @@ export default function Checkpoint(props) {
   };
 
   return (
-    <React.Fragment>
+    <Slide direction="left" in={true} mountOnEnter unmountOnExit>
       <Grid container spacing={6}>
         <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
           <Assumptions
@@ -86,7 +87,7 @@ export default function Checkpoint(props) {
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Slide>
   );
 }
 

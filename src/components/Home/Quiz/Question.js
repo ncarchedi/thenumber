@@ -1,29 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Slide from "@material-ui/core/Slide";
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 import TextQuestion from "./TextQuestion";
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor: "inherit",
+  },
+}));
+
 export default function Question(props) {
+  const classes = useStyles();
+
   const { question, onSubmitAnswer } = props;
   const { type } = question;
 
-  if (type === "MultipleChoice") {
-    return (
-      <MultipleChoiceQuestion
-        question={question}
-        onSubmitAnswer={onSubmitAnswer}
-      />
-    );
-  } else if (type === "TextQuestion") {
-    return <TextQuestion question={question} onSubmitAnswer={onSubmitAnswer} />;
-  } else {
-    return (
-      <Typography variant="h5">
-        Not a text question or multiple choice question!
-      </Typography>
-    );
-  }
+  return (
+    <Slide direction="left" in={true} mountOnEnter unmountOnExit>
+      <Paper elevation={0} className={classes.paper}>
+        {type === "TextQuestion" ? (
+          <TextQuestion question={question} onSubmitAnswer={onSubmitAnswer} />
+        ) : (
+          <MultipleChoiceQuestion
+            question={question}
+            onSubmitAnswer={onSubmitAnswer}
+          />
+        )}
+      </Paper>
+    </Slide>
+  );
 }
 
 Question.propTypes = {
