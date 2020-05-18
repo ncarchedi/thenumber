@@ -33,7 +33,7 @@ export default function Results(props) {
     retirementAge,
     currentAge,
     monthlyExpenses,
-    currentSavings,
+    totalSavings,
     annualReturn,
     withdrawalRate,
     inflationRate,
@@ -46,11 +46,11 @@ export default function Results(props) {
     inflationRate
   );
 
-  const additionalSavings = targetSavings - currentSavings;
+  const additionalSavings = targetSavings - totalSavings;
   const yearsToRetirement = retirementAge - currentAge;
 
   const annualContribution = calculateAnnualContribution(
-    currentSavings,
+    totalSavings,
     targetSavings,
     annualReturn,
     yearsToRetirement
@@ -59,7 +59,7 @@ export default function Results(props) {
   const totalSavingsChartData = getTotalSavingsChartData(
     currentAge,
     retirementAge,
-    currentSavings,
+    totalSavings,
     annualContribution,
     annualReturn
   );
@@ -71,7 +71,7 @@ export default function Results(props) {
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
         {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
-          currentSavings
+          totalSavings
         )} today, so you need to accumulate an additional ${toDollars(
           additionalSavings
         )} over the next ${yearsToRetirement} years.`}
@@ -99,7 +99,7 @@ Results.propTypes = {
   retirementAge: PropTypes.string.isRequired,
   currentAge: PropTypes.string.isRequired,
   monthlyExpenses: PropTypes.string.isRequired,
-  currentSavings: PropTypes.string.isRequired,
+  totalSavings: PropTypes.string.isRequired,
   annualReturn: PropTypes.string.isRequired,
   withdrawalRate: PropTypes.string.isRequired,
   inflationRate: PropTypes.string.isRequired,

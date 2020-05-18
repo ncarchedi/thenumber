@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-import quiz1 from "../../api/quiz1";
+// import quiz1 from "../../api/quiz1";
+import quiz2 from "../../api/quiz2";
 
 export default function Home(props) {
   const [showCheckpoint, setShowCheckpoint] = useState(false);
   const [user, setUser] = useState({
     name: "",
-    retirementAge: "",
     currentAge: "",
     monthlyExpenses: "",
-    currentSavings: "",
+    monthlySavings: "",
+    totalSavings: "",
   });
 
   // For testing purposes only
@@ -21,7 +22,7 @@ export default function Home(props) {
   //   retirementAge: "60",
   //   currentAge: "30",
   //   monthlyExpenses: "4000",
-  //   currentSavings: "200000",
+  //   totalSavings: "200000",
   // });
 
   const [assumptions, setAssumptions] = useState({
@@ -50,7 +51,7 @@ export default function Home(props) {
     />
   ) : (
     <Quiz
-      questions={quiz1}
+      questions={quiz2}
       userName={user.name}
       setUserValue={setUserValue}
       setShowCheckpoint={setShowCheckpoint}

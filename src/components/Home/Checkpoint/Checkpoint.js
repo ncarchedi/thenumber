@@ -23,7 +23,7 @@ export default function Checkpoint(props) {
     retirementAge,
     currentAge,
     monthlyExpenses,
-    currentSavings,
+    totalSavings,
   } = props.user;
   const { annualReturn, withdrawalRate, inflationRate } = props.assumptions;
 
@@ -33,9 +33,7 @@ export default function Checkpoint(props) {
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
     monthlyExpenses
   );
-  const [currentSavingsInput, setCurrentSavingsInput] = useState(
-    currentSavings
-  );
+  const [currentSavingsInput, setCurrentSavingsInput] = useState(totalSavings);
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
 
   const updateInputs = (e) => {
@@ -46,7 +44,7 @@ export default function Checkpoint(props) {
       retirementAge: retirementAgeInput,
       currentAge: currentAgeInput,
       monthlyExpenses: monthlyExpensesInput,
-      currentSavings: currentSavingsInput,
+      totalSavings: currentSavingsInput,
     });
 
     props.setAssumptions({
@@ -78,7 +76,7 @@ export default function Checkpoint(props) {
             retirementAge={retirementAge}
             currentAge={currentAge}
             monthlyExpenses={monthlyExpenses}
-            currentSavings={currentSavings}
+            totalSavings={totalSavings}
             annualReturn={annualReturn}
             withdrawalRate={withdrawalRate}
             inflationRate={inflationRate}
@@ -95,7 +93,7 @@ Checkpoint.propTypes = {
     retirementAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
-    currentSavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
   }),
   assumptions: PropTypes.exact({
     annualReturn: PropTypes.string.isRequired,

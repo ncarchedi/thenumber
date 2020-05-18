@@ -77,8 +77,8 @@ export default function Assumptions(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="currentSavings"
-            name="currentSavings"
+            id="totalSavings"
+            name="totalSavings"
             label="Current savings"
             value={currentSavingsInput}
             onChange={(e) => setCurrentSavingsInput(e.target.value)}

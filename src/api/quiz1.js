@@ -1,6 +1,5 @@
 export default [
   {
-    id: 1,
     type: "TextQuestion",
     inputType: "string",
     variableName: "name",
@@ -9,7 +8,6 @@ export default [
     },
   },
   {
-    id: 2,
     type: "TextQuestion",
     inputType: "number",
     variableName: "retirementAge",
@@ -18,7 +16,6 @@ export default [
     },
   },
   {
-    id: 3,
     type: "TextQuestion",
     inputType: "number",
     variableName: "currentAge",
@@ -27,7 +24,6 @@ export default [
     },
   },
   {
-    id: 4,
     type: "TextQuestion",
     inputType: "dollar",
     variableName: "monthlyExpenses",
@@ -38,10 +34,9 @@ export default [
     },
   },
   {
-    id: 5,
     type: "TextQuestion",
     inputType: "dollar",
-    variableName: "currentSavings",
+    variableName: "totalSavings",
     content: {
       prompt: "Approximately how much money do you have saved? 💰",
       helperText:
