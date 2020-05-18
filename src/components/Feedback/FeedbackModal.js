@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -11,12 +10,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Emoji from "../General/Emoji";
 
-const useStyles = makeStyles((theme) => ({
-  form: {
-    marginTop: theme.spacing(3),
-  },
-}));
-
 const encode = (data) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -24,7 +17,6 @@ const encode = (data) => {
 };
 
 export default function FeedbackModal(props) {
-  const classes = useStyles();
   const { name, open, setOpen } = props;
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -61,7 +53,7 @@ export default function FeedbackModal(props) {
         <DialogContentText>
           <em>The Number</em> is a work in progress—and you can help shape it!
         </DialogContentText>
-        <form onSubmit={handleSubmit} className={classes.form}>
+        <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
