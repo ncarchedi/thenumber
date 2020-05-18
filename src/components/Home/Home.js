@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-// import quiz1 from "../../api/quiz1";
 import quiz2 from "../../api/quiz2";
 
 export default function Home(props) {
@@ -15,20 +14,20 @@ export default function Home(props) {
     totalSavings: "",
   });
 
-  // For testing purposes only
+  // // For testing purposes only
   // const [showCheckpoint, setShowCheckpoint] = useState(true);
   // const [user, setUser] = useState({
   //   name: "Marley",
-  //   retirementAge: "60",
-  //   currentAge: "30",
+  //   currentAge: "35",
   //   monthlyExpenses: "4000",
-  //   totalSavings: "200000",
+  //   monthlySavings: "2000",
+  //   totalSavings: "250000",
   // });
 
   const [assumptions, setAssumptions] = useState({
+    inflationRate: "3",
     annualReturn: "7",
     withdrawalRate: "4",
-    inflationRate: "3",
   });
 
   const setUserValue = (key, value) => {

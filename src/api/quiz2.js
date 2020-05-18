@@ -30,9 +30,9 @@ export default [
     inputType: "dollar",
     variableName: "monthlySavings",
     content: {
-      prompt: "And how much money do you save in a typical month? 💰",
+      prompt: "And how much do you save in a typical month? 💰",
       helperText:
-        "Don't forget about any money you might have direct deposited into something like a 401(k) through your employer.",
+        "Don't forget about any money you contribute to a retirement account through your employer, like a 401(k) or 403(b).",
     },
   },
   {
@@ -40,9 +40,9 @@ export default [
     inputType: "dollar",
     variableName: "totalSavings",
     content: {
-      prompt: "Approximately how much money do you have saved in total? 🏦",
+      prompt: "Approximately how much money do you have saved? 🏦",
       helperText:
-        "Include cash, investments, retirement accounts, and any other savings that could be used to cover your monthly expenses in retirement. Exclude things like the equity in your house unless you plan to sell it when you retire.",
+        "Include cash, investments, retirement accounts, and any other savings that could be used to pay your monthly expenses.",
     },
   },
   // {

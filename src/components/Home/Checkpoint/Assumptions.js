@@ -10,16 +10,18 @@ import ReplayIcon from "@material-ui/icons/Replay";
 export default function Assumptions(props) {
   const {
     updateInputs,
-    retirementAgeInput,
-    setRetirementAgeInput,
-    currentAgeInput,
-    setCurrentAgeInput,
     monthlyExpensesInput,
     setMonthlyExpensesInput,
-    currentSavingsInput,
-    setCurrentSavingsInput,
+    monthlySavingsInput,
+    setMonthlySavingsInput,
+    totalSavingsInput,
+    setTotalSavingsInput,
     inflationRateInput,
     setInflationRateInput,
+    annualReturnInput,
+    setAnnualReturnInput,
+    withdrawalRateInput,
+    setWithdrawalRateInput,
   } = props;
 
   return (
@@ -27,34 +29,6 @@ export default function Assumptions(props) {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography variant="h6">Your Inputs</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="retirementAge"
-            name="retirementAge"
-            label="Retirement age"
-            value={retirementAgeInput}
-            onChange={(e) => setRetirementAgeInput(e.target.value)}
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="currentAge"
-            name="currentAge"
-            label="Current age"
-            value={currentAgeInput}
-            onChange={(e) => setCurrentAgeInput(e.target.value)}
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            fullWidth
-          />
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -77,11 +51,30 @@ export default function Assumptions(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            id="monthlySavings"
+            name="monthlySavings"
+            label="Monthly savings"
+            value={monthlySavingsInput}
+            onChange={(e) => setMonthlySavingsInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
             id="totalSavings"
             name="totalSavings"
             label="Current savings"
-            value={currentSavingsInput}
-            onChange={(e) => setCurrentSavingsInput(e.target.value)}
+            value={totalSavingsInput}
+            onChange={(e) => setTotalSavingsInput(e.target.value)}
             variant="outlined"
             InputLabelProps={{
               shrink: true,
@@ -114,13 +107,13 @@ export default function Assumptions(props) {
             fullWidth
           />
         </Grid>
-        {/* <Grid item xs={12}>
+        <Grid item xs={12}>
           <TextField
             id="annualReturn"
             name="annualReturn"
             label="Annual return"
-            value={7}
-            // onChange={setAnnualReturn}
+            value={annualReturnInput}
+            onChange={(e) => setAnnualReturnInput(e.target.value)}
             variant="outlined"
             InputLabelProps={{
               shrink: true,
@@ -130,7 +123,24 @@ export default function Assumptions(props) {
             }}
             fullWidth
           />
-        </Grid> */}
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="withdrawalRate"
+            name="withdrawalRate"
+            label="Withdrawal rate"
+            value={withdrawalRateInput}
+            onChange={(e) => setWithdrawalRateInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
+            }}
+            fullWidth
+          />
+        </Grid>
         <Grid item xs={12} style={{ textAlign: "center" }}>
           <Button endIcon={<ReplayIcon />} type="submit">
             Update Results
@@ -143,14 +153,16 @@ export default function Assumptions(props) {
 
 Assumptions.propTypes = {
   updateInputs: PropTypes.func.isRequired,
-  retirementAgeInput: PropTypes.string.isRequired,
-  setRetirementAgeInput: PropTypes.func.isRequired,
-  currentAgeInput: PropTypes.string.isRequired,
-  setCurrentAgeInput: PropTypes.func.isRequired,
   monthlyExpensesInput: PropTypes.string.isRequired,
   setMonthlyExpensesInput: PropTypes.func.isRequired,
-  currentSavingsInput: PropTypes.string.isRequired,
-  setCurrentSavingsInput: PropTypes.func.isRequired,
+  monthlySavingsInput: PropTypes.string.isRequired,
+  setMonthlySavingsInput: PropTypes.func.isRequired,
+  totalSavingsInput: PropTypes.string.isRequired,
+  setTotalSavingsInput: PropTypes.func.isRequired,
   inflationRateInput: PropTypes.string.isRequired,
   setInflationRateInput: PropTypes.func.isRequired,
+  annualReturnInput: PropTypes.string.isRequired,
+  setAnnualReturnInput: PropTypes.func.isRequired,
+  withdrawalRateInput: PropTypes.string.isRequired,
+  setWithdrawalRateInput: PropTypes.func.isRequired,
 };

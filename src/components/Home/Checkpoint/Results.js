@@ -6,9 +6,7 @@ import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../../../utils/toDollars";
-import getTotalSavingsChartData from "../../../utils/getTotalSavingsChartData";
-import calculateAnnualContribution from "../../../utils/calculateAnnualContribution";
-import calculateTargetSavings from "../../../utils/calculateTargetSavings";
+import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
 const useStyles = makeStyles((theme) => ({
   headerText: {
@@ -17,9 +15,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     fontFamily: ["Racing Sans One", "cursive"],
     borderBottom: "solid",
+    borderBottomWidth: "5px",
   },
   supportingText: {
-    margin: theme.spacing(4, 4, 2, 4),
+    margin: theme.spacing(4),
     fontWeight: 400,
   },
   actionButton: {
@@ -30,44 +29,40 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
   const classes = useStyles();
   const {
-    retirementAge,
     currentAge,
     monthlyExpenses,
+    monthlySavings,
     totalSavings,
-    annualReturn,
-    withdrawalRate,
     inflationRate,
-  } = props;
-  const targetSavings = calculateTargetSavings(
-    currentAge,
-    retirementAge,
-    monthlyExpenses,
-    withdrawalRate,
-    inflationRate
-  );
-
-  const additionalSavings = targetSavings - totalSavings;
-  const yearsToRetirement = retirementAge - currentAge;
-
-  const annualContribution = calculateAnnualContribution(
-    totalSavings,
-    targetSavings,
     annualReturn,
-    yearsToRetirement
+    withdrawalRate,
+  } = props;
+
+  const {
+    age,
+    requiredSavings,
+    expectedSavings,
+    canRetire,
+  } = calculateRequiredAndExpectedSavings(
+    currentAge,
+    monthlyExpenses,
+    monthlySavings,
+    totalSavings,
+    inflationRate,
+    annualReturn,
+    withdrawalRate
   );
 
-  const totalSavingsChartData = getTotalSavingsChartData(
-    currentAge,
-    retirementAge,
-    totalSavings,
-    annualContribution,
-    annualReturn
-  );
+  const breakeven = canRetire.findIndex((e) => e);
+  const retirementAge = age[breakeven];
+  const retirementAmount = expectedSavings[breakeven];
+  const yearsToRetirement = retirementAge - currentAge;
+  const additionalSavings = retirementAmount - totalSavings;
 
   return (
     <React.Fragment>
       <Typography variant="h2" className={classes.headerText}>
-        {toDollars(targetSavings)}
+        {toDollars(retirementAmount)}
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
         {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
@@ -77,9 +72,9 @@ export default function Results(props) {
         )} over the next ${yearsToRetirement} years.`}
       </Typography>
       <ResultsChart
-        xArray={totalSavingsChartData.ageArray}
-        yArray={totalSavingsChartData.savingsArray}
-        chartType="line"
+        age={age}
+        requiredSavings={requiredSavings}
+        expectedSavings={expectedSavings}
       />
       <Button
         className={classes.actionButton}
@@ -96,11 +91,11 @@ export default function Results(props) {
 }
 
 Results.propTypes = {
-  retirementAge: PropTypes.string.isRequired,
   currentAge: PropTypes.string.isRequired,
   monthlyExpenses: PropTypes.string.isRequired,
+  monthlySavings: PropTypes.string.isRequired,
   totalSavings: PropTypes.string.isRequired,
+  inflationRate: PropTypes.string.isRequired,
   annualReturn: PropTypes.string.isRequired,
   withdrawalRate: PropTypes.string.isRequired,
-  inflationRate: PropTypes.string.isRequired,
 };

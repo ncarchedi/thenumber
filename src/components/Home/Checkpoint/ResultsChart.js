@@ -6,10 +6,10 @@ import toDollars from "../../../utils/toDollars.js";
 
 export default function ResultsChart(props) {
   const theme = useTheme();
+  const { age, requiredSavings, expectedSavings } = props;
 
   const options = {
     chart: {
-      height: 350,
       zoom: {
         enabled: false,
       },
@@ -21,23 +21,26 @@ export default function ResultsChart(props) {
     dataLabels: {
       enabled: false,
     },
-    markers: {
-      size: 5,
-      strokeColors: theme.palette.background.default,
-      strokeWidth: 3,
-    },
+    // markers: {
+    //   size: 5,
+    //   strokeColors: theme.palette.background.default,
+    //   strokeWidth: 3,
+    // },
     tooltip: {
       enabled: true,
       theme: "dark",
       x: {
         formatter: (x) => {
-          return `Age ${props.xArray[x - 1]}`;
+          return `Age ${age[x - 1]}`;
         },
       },
     },
-    colors: [theme.palette.primary.main],
+    colors: [theme.palette.primary.main, theme.palette.secondary.main],
+    legend: {
+      position: "top",
+    },
     xaxis: {
-      categories: [...props.xArray],
+      categories: [...age],
       labels: {
         style: {
           colors: theme.palette.text.primary,
@@ -56,8 +59,12 @@ export default function ResultsChart(props) {
 
   const series = [
     {
-      name: "Total Savings",
-      data: [...props.yArray],
+      name: "Required Savings",
+      data: [...requiredSavings],
+    },
+    {
+      name: "Expected Savings",
+      data: [...expectedSavings],
     },
   ];
 
@@ -65,7 +72,7 @@ export default function ResultsChart(props) {
     <Chart
       options={options}
       series={series}
-      type={props.chartType}
+      type="line"
       width="100%"
       height={300}
     />
@@ -73,7 +80,7 @@ export default function ResultsChart(props) {
 }
 
 ResultsChart.propTypes = {
-  xArray: PropTypes.array.isRequired,
-  yArray: PropTypes.array.isRequired,
-  chartType: PropTypes.string.isRequired,
+  age: PropTypes.array.isRequired,
+  requiredSavings: PropTypes.array.isRequired,
+  expectedSavings: PropTypes.array.isRequired,
 };
