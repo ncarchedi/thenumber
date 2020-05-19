@@ -6,7 +6,7 @@ import toDollars from "../../../utils/toDollars.js";
 
 export default function ResultsChart(props) {
   const theme = useTheme();
-  const { age, requiredSavings, expectedSavings } = props;
+  const { age, requiredSavings, expectedSavings, retirementAge } = props;
 
   const options = {
     chart: {
@@ -35,12 +35,22 @@ export default function ResultsChart(props) {
         },
       },
     },
-    colors: [theme.palette.primary.main, theme.palette.secondary.main],
+    colors: [theme.palette.secondary.main, theme.palette.primary.main],
     legend: {
       position: "top",
       labels: {
         colors: theme.palette.text.primary,
       },
+    },
+    annotations: {
+      xaxis: [
+        {
+          x: retirementAge,
+          strokeDashArray: 5,
+          borderColor: theme.palette.primary.main,
+          borderWidth: 5,
+        },
+      ],
     },
     xaxis: {
       categories: [...age],
@@ -66,7 +76,7 @@ export default function ResultsChart(props) {
       data: [...requiredSavings],
     },
     {
-      name: "Expected Savings",
+      name: "Your Savings",
       data: [...expectedSavings],
     },
   ];
@@ -86,4 +96,5 @@ ResultsChart.propTypes = {
   age: PropTypes.array.isRequired,
   requiredSavings: PropTypes.array.isRequired,
   expectedSavings: PropTypes.array.isRequired,
+  retirementAge: PropTypes.number.isRequired,
 };

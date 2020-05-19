@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+// import Button from "@material-ui/core/Button";
+// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
@@ -62,19 +62,19 @@ export default function Results(props) {
   return (
     <React.Fragment>
       <Typography variant="h2" className={classes.headerText}>
-        {toDollars(retirementAmount)}
+        Age {retirementAge}
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
-        {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
-          totalSavings
-        )} today, so you need to accumulate an additional ${toDollars(
-          additionalSavings
-        )} over the next ${yearsToRetirement} years.`}
+        If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
+        {yearsToRetirement} years, then you'll be on track to retire at age{" "}
+        {retirementAge} with a total of {toDollars(retirementAmount)} in
+        savings.
       </Typography>
       <ResultsChart
         age={age}
         requiredSavings={requiredSavings}
         expectedSavings={expectedSavings}
+        retirementAge={retirementAge}
       />
       {/* <Button
         className={classes.actionButton}
