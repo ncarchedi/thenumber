@@ -38,6 +38,9 @@ export default function ResultsChart(props) {
     colors: [theme.palette.primary.main, theme.palette.secondary.main],
     legend: {
       position: "top",
+      labels: {
+        colors: theme.palette.text.primary,
+      },
     },
     xaxis: {
       categories: [...age],

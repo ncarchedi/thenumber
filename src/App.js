@@ -34,6 +34,9 @@ export default function App() {
       primary: {
         main: "#59cd90",
       },
+      secondary: {
+        main: "#d500f9",
+      },
     },
   });
 
