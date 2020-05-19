@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
     alignItems: "center",
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(4),
+    },
   },
   resultsContainer: {
     textAlign: "center",

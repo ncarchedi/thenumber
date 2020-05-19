@@ -22,7 +22,7 @@ export default function Header(props) {
   const { darkMode, setDarkMode, setOpenFeedbackModal } = props;
 
   return (
-    <AppBar position="static" color="default" elevation={1}>
+    <AppBar color="default" elevation={1}>
       <Toolbar>
         <Link to="/" className={classes.logo}>
           <Logo />

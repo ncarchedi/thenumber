@@ -57,16 +57,16 @@ export default function Results(props) {
   const retirementAge = age[breakeven];
   const retirementAmount = expectedSavings[breakeven];
   const yearsToRetirement = retirementAge - currentAge;
-  const additionalSavings = retirementAmount - totalSavings;
+  // const additionalSavings = retirementAmount - totalSavings;
 
   return (
     <React.Fragment>
       <Typography variant="h2" className={classes.headerText}>
-        Age {retirementAge}
+        {toDollars(retirementAmount)}
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
         If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
-        {yearsToRetirement} years, then you'll be on track to retire at age{" "}
+        {yearsToRetirement} years, you'll be on track to retire at age{" "}
         {retirementAge} with a total of {toDollars(retirementAmount)} in
         savings.
       </Typography>

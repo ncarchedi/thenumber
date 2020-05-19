@@ -15,9 +15,9 @@ import FeedbackModal from "./components/Feedback/FeedbackModal";
 
 const useStyles = makeStyles((theme) => ({
   app: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(10),
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(12),
     },
   },
 }));
