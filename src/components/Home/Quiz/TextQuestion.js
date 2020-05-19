@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import NumberFormat from "react-number-format";
+import ContinueButton from "./ContinueButton";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
@@ -94,12 +95,13 @@ export default function TextQuestion(props) {
             fullWidth
           ></TextField>
         )}
+        {helperText && (
+          <Typography variant="body2" className={classes.helperText}>
+            {"ℹ️ " + helperText}
+          </Typography>
+        )}
+        {value && <ContinueButton text="OK" />}
       </form>
-      {helperText && (
-        <Typography variant="body2" className={classes.helperText}>
-          {"ℹ️ " + helperText}
-        </Typography>
-      )}
     </React.Fragment>
   );
 }

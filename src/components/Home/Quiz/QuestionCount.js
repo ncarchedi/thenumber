@@ -15,7 +15,7 @@ export default function QuestionCount(props) {
 
   return (
     <Typography variant="body2" className={classes.count}>
-      Question <span>{props.current}</span> of <span>{props.total}</span>
+      <span>{props.current}</span> of <span>{props.total}</span>
     </Typography>
   );
 }

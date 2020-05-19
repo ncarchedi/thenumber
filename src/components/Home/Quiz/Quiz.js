@@ -30,10 +30,11 @@ export default function Quiz(props) {
   };
 
   const handleSubmitAnswer = (variableName, variableValue) => {
-    setUserValue(variableName, variableValue);
+    if (variableName && variableValue)
+      setUserValue(variableName, variableValue);
 
     // TODO: un-hardcode when to show results?
-    if (questionNumber >= 5) {
+    if (questionNumber >= 8) {
       setShowCheckpoint(true);
     }
 

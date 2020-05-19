@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-import quiz2 from "../../api/quiz2";
+import content from "../../api/content";
 
 export default function Home(props) {
   const [showCheckpoint, setShowCheckpoint] = useState(false);
@@ -50,7 +50,7 @@ export default function Home(props) {
     />
   ) : (
     <Quiz
-      questions={quiz2}
+      questions={content}
       userName={user.name}
       setUserValue={setUserValue}
       setShowCheckpoint={setShowCheckpoint}
