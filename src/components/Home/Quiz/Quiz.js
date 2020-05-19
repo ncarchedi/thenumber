@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   quiz: {
     marginTop: 0,
     [theme.breakpoints.up("sm")]: {
-      marginTop: "10%",
+      marginTop: "15%",
     },
   },
 }));
