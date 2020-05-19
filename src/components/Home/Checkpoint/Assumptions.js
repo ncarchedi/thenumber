@@ -28,7 +28,7 @@ export default function Assumptions(props) {
     <form onSubmit={updateInputs}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography variant="h6">Your Inputs</Typography>
+          <Typography variant="h6">Your Information</Typography>
         </Grid>
         <Grid item xs={12}>
           <TextField

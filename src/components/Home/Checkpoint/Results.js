@@ -76,7 +76,7 @@ export default function Results(props) {
         requiredSavings={requiredSavings}
         expectedSavings={expectedSavings}
       />
-      <Button
+      {/* <Button
         className={classes.actionButton}
         variant="contained"
         color="primary"
@@ -85,7 +85,7 @@ export default function Results(props) {
         onClick={() => alert("Coming soon!")}
       >
         Create a Plan
-      </Button>
+      </Button> */}
     </React.Fragment>
   );
 }

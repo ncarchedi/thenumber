@@ -74,7 +74,7 @@ export default function ResultsChart(props) {
       series={series}
       type="line"
       width="100%"
-      height={300}
+      height="400px"
     />
   );
 }
