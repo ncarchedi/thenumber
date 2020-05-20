@@ -36,7 +36,7 @@ export default function MultipleChoiceQuestion(props) {
         key={answer.value}
         className={classes.answer}
         onClick={() => onSubmitAnswer(variableName, answer.value)}
-        variant="contained"
+        variant="outlined"
         fullWidth
       >
         {answer.label}
