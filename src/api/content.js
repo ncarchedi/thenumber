@@ -11,21 +11,21 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "Welcome, ___! In the next few minutes, I'm going to help you figure out how much money you need to achieve financial independence and how soon you'll be able to save it.",
+        "Welcome, ___! In the next few minutes, I'll help you figure out how much money you need to achieve financial independence and how soon you'll be able to achieve it. 🙌",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "There’s a common rule of thumb among personal finance nerds that you’ve achieved financial independence when your total savings exceed 25 times your annual expenses.",
+        "There’s a common rule of thumb among personal finance nerds that you’ve achieved financial independence when your total savings exceed 25 times your annual expenses...",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "But because living expenses generally increase over time—due to inflation and/or changes in lifestyle—your number is a moving target. Let's figure it out together.",
+        "...But because living expenses generally increase over time—due to inflation and/or changes in lifestyle—your number is a moving target. Let's figure it out together. 🎯",
     },
   },
   {
@@ -34,6 +34,8 @@ export default [
     variableName: "currentAge",
     content: {
       prompt: "What's your current age? ⏳",
+      helperText:
+        "By the way, I won't save any information you share with me unless you explicitly ask me to later on.",
     },
   },
   {
@@ -63,7 +65,7 @@ export default [
     content: {
       prompt: "Approximately how much money do you have saved? 🏦",
       helperText:
-        "Include cash, investments, retirement accounts, and any other savings that could be used to pay your monthly expenses.",
+        "Include cash, investments, retirement accounts, and any other savings that could be used to pay your monthly expenses someday.",
     },
   },
 ];

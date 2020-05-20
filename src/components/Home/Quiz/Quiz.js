@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
 import QuestionEmptyScreen from "./QuestionEmptyScreen";
@@ -10,7 +11,13 @@ const useStyles = makeStyles((theme) => ({
   quiz: {
     marginTop: 0,
     [theme.breakpoints.up("sm")]: {
-      marginTop: "15%",
+      marginTop: "10%",
+    },
+  },
+  question: {
+    marginTop: theme.spacing(4),
+    [theme.breakpoints.up("sm")]: {
+      marginTop: theme.spacing(8),
     },
   },
 }));
@@ -48,7 +55,7 @@ export default function Quiz(props) {
     return <QuestionEmptyScreen />;
   }
 
-  // replace blank in age question with user's name
+  // replace blank in second question with user's name
   let updatedQuestion = currentQuestion.content.prompt;
   if (questionNumber === 2) {
     updatedQuestion = replaceBlanks(currentQuestion.content.prompt, userName);
@@ -57,8 +64,12 @@ export default function Quiz(props) {
 
   return (
     <Container maxWidth="md" disableGutters={true} className={classes.quiz}>
-      <div key={questionNumber}>
-        <QuestionCount current={questionNumber} total={questions.length} />
+      <QuestionCount current={questionNumber} total={questions.length} />
+      <LinearProgress
+        variant="determinate"
+        value={100 * ((questionNumber - 1) / questions.length)}
+      />
+      <div key={questionNumber} className={classes.question}>
         <Question
           question={currentQuestion}
           onSubmitAnswer={handleSubmitAnswer}

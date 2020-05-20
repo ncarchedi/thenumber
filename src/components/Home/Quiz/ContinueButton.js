@@ -21,10 +21,12 @@ export default function ContinueButton(props) {
   useEffect(() => {
     const listener = (event) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
-        onClick && onClick();
+        event.preventDefault();
+        document.getElementById("continueButton").click();
       }
     };
     document.addEventListener("keydown", listener);
+
     return () => {
       document.removeEventListener("keydown", listener);
     };
@@ -33,6 +35,7 @@ export default function ContinueButton(props) {
   return (
     <div className={classes.buttonContainer}>
       <Button
+        id="continueButton"
         type="submit"
         endIcon={<DoneIcon />}
         color="primary"

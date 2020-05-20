@@ -8,7 +8,7 @@ import ContinueButton from "./ContinueButton";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
-    margin: theme.spacing(4, 0, 3, 0),
+    marginBottom: theme.spacing(3),
   },
   textField: {
     "& input": {
