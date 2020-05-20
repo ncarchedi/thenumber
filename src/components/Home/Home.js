@@ -13,7 +13,8 @@ export default function Home(props) {
     monthlySavings: "",
     totalSavings: "",
     inflationRate: "3",
-    annualReturn: "",
+    percentStocks: "",
+    stocksReturn: "",
   });
 
   // // For testing purposes only
@@ -25,7 +26,8 @@ export default function Home(props) {
   //   monthlySavings: "2000",
   //   totalSavings: "250000",
   //   inflationRate: "3",
-  //   annualReturn: "7",
+  //   percentStocks: "80",
+  //   stocksReturn: "7",
   // });
 
   const setUserValue = (key, value) => {

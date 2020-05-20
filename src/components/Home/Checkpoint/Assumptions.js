@@ -18,8 +18,10 @@ export default function Assumptions(props) {
     setTotalSavingsInput,
     inflationRateInput,
     setInflationRateInput,
-    annualReturnInput,
-    setAnnualReturnInput,
+    stocksReturnInput,
+    setStocksReturnInput,
+    percentStocksInput,
+    setPercentStocksInput,
   } = props;
 
   return (
@@ -87,11 +89,31 @@ export default function Assumptions(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="inflationRate"
-            name="inflationRate"
-            label="Annual inflation rate"
-            value={inflationRateInput}
-            onChange={(e) => setInflationRateInput(e.target.value)}
+            id="percentStocks"
+            name="percentStocks"
+            label="Percentage stocks"
+            value={percentStocksInput}
+            onChange={(e) => setPercentStocksInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h6">Other Assumptions</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="stocksReturn"
+            name="stocksReturn"
+            label="Annual return on stocks"
+            value={stocksReturnInput}
+            onChange={(e) => setStocksReturnInput(e.target.value)}
             variant="outlined"
             InputLabelProps={{
               shrink: true,
@@ -104,11 +126,11 @@ export default function Assumptions(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="annualReturn"
-            name="annualReturn"
-            label="Annual return on savings"
-            value={annualReturnInput}
-            onChange={(e) => setAnnualReturnInput(e.target.value)}
+            id="inflationRate"
+            name="inflationRate"
+            label="Annual inflation rate"
+            value={inflationRateInput}
+            onChange={(e) => setInflationRateInput(e.target.value)}
             variant="outlined"
             InputLabelProps={{
               shrink: true,
@@ -139,6 +161,8 @@ Assumptions.propTypes = {
   setTotalSavingsInput: PropTypes.func.isRequired,
   inflationRateInput: PropTypes.string.isRequired,
   setInflationRateInput: PropTypes.func.isRequired,
-  annualReturnInput: PropTypes.string.isRequired,
-  setAnnualReturnInput: PropTypes.func.isRequired,
+  stocksReturnInput: PropTypes.string.isRequired,
+  setStocksReturnInput: PropTypes.func.isRequired,
+  percentStocksInput: PropTypes.string.isRequired,
+  setPercentStocksInput: PropTypes.func.isRequired,
 };

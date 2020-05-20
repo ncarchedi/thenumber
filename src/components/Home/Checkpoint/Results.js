@@ -38,7 +38,8 @@ export default function Results(props) {
     monthlySavings,
     totalSavings,
     inflationRate,
-    annualReturn,
+    stocksReturn,
+    percentStocks,
   } = props;
 
   const {
@@ -52,7 +53,8 @@ export default function Results(props) {
     monthlySavings,
     totalSavings,
     inflationRate,
-    annualReturn
+    stocksReturn,
+    percentStocks
   );
 
   const breakeven = canRetire.findIndex((e) => e);
@@ -102,5 +104,6 @@ Results.propTypes = {
   monthlySavings: PropTypes.string.isRequired,
   totalSavings: PropTypes.string.isRequired,
   inflationRate: PropTypes.string.isRequired,
-  annualReturn: PropTypes.string.isRequired,
+  stocksReturn: PropTypes.string.isRequired,
+  percentStocks: PropTypes.string.isRequired,
 };

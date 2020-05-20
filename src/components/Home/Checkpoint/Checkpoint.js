@@ -24,7 +24,8 @@ export default function Checkpoint(props) {
     monthlySavings,
     totalSavings,
     inflationRate,
-    annualReturn,
+    stocksReturn,
+    percentStocks,
   } = props.user;
 
   // use props for initial assumptions form state
@@ -36,7 +37,8 @@ export default function Checkpoint(props) {
   );
   const [totalSavingsInput, setTotalSavingsInput] = useState(totalSavings);
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
-  const [annualReturnInput, setAnnualReturnInput] = useState(annualReturn);
+  const [stocksReturnInput, setStocksReturnInput] = useState(stocksReturn);
+  const [percentStocksInput, setPercentStocksInput] = useState(percentStocks);
 
   const updateInputs = (e) => {
     e.preventDefault();
@@ -47,7 +49,8 @@ export default function Checkpoint(props) {
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
       inflationRate: inflationRateInput,
-      annualReturn: annualReturnInput,
+      stocksReturn: stocksReturnInput,
+      percentStocks: percentStocksInput,
     });
   };
 
@@ -65,8 +68,10 @@ export default function Checkpoint(props) {
             setTotalSavingsInput={setTotalSavingsInput}
             inflationRateInput={inflationRateInput}
             setInflationRateInput={setInflationRateInput}
-            annualReturnInput={annualReturnInput}
-            setAnnualReturnInput={setAnnualReturnInput}
+            stocksReturnInput={stocksReturnInput}
+            setStocksReturnInput={setStocksReturnInput}
+            percentStocksInput={percentStocksInput}
+            setPercentStocksInput={setPercentStocksInput}
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
@@ -76,7 +81,8 @@ export default function Checkpoint(props) {
             monthlySavings={monthlySavings}
             totalSavings={totalSavings}
             inflationRate={inflationRate}
-            annualReturn={annualReturn}
+            stocksReturn={stocksReturn}
+            percentStocks={percentStocks}
           />
         </Grid>
       </Grid>
@@ -92,7 +98,8 @@ Checkpoint.propTypes = {
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,
-    annualReturn: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
 };

@@ -78,22 +78,22 @@ export default [
   {
     type: "MultipleChoiceQuestion",
     inputType: "string",
-    variableName: "annualReturn",
+    variableName: "percentStocks",
     content: {
       prompt:
         "Which of the following best describes how your savings are allocated? 📈",
       answers: [
         {
           label: "Mostly stocks",
-          value: "7",
+          value: "80",
         },
         {
           label: "About half stocks",
-          value: "5",
+          value: "50",
         },
         {
           label: "Mostly not stocks",
-          value: "3",
+          value: "20",
         },
       ],
     },
