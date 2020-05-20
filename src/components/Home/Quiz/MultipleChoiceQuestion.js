@@ -18,13 +18,17 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     fontWeight: theme.typography.fontWeightRegular,
   },
+  helperText: {
+    marginTop: theme.spacing(3),
+    color: theme.palette.text.secondary,
+  },
 }));
 
 export default function MultipleChoiceQuestion(props) {
   const classes = useStyles();
   const { question, onSubmitAnswer } = props;
   const { variableName, content } = question;
-  const { prompt, answers } = content;
+  const { prompt, answers, helperText } = content;
 
   const renderAnswer = (answer) => {
     return (
@@ -46,6 +50,11 @@ export default function MultipleChoiceQuestion(props) {
         <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
       <ul className={classes.answers}>{answers.map(renderAnswer)}</ul>
+      {helperText && (
+        <Typography variant="body2" className={classes.helperText}>
+          {"ℹ️ " + helperText}
+        </Typography>
+      )}
     </React.Fragment>
   );
 }
