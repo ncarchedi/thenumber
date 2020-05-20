@@ -42,7 +42,7 @@ export default [
     content: {
       prompt: "What's your current age? ⏳",
       helperText:
-        "By the way, I won't save any information you share with me unless you explicitly ask me to later on.",
+        "By the way, I won't save any personal information you share with me unless you explicitly ask me to later on.",
     },
   },
   {
@@ -84,16 +84,16 @@ export default [
         "Which of the following best describes how your savings are allocated? 📈",
       answers: [
         {
-          value: "7",
           label: "Mostly stocks",
+          value: "7",
         },
         {
-          value: "5",
           label: "About half stocks",
+          value: "5",
         },
         {
-          value: "3",
           label: "Mostly not stocks",
+          value: "3",
         },
       ],
     },
