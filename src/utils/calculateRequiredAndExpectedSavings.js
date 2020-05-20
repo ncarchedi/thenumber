@@ -15,7 +15,7 @@ export default function calculateRequiredAndExpectedSavings(
 
   const futureSpending = [];
 
-  for (let i = 0; i <= maxAge; i++) {
+  for (let i = 0; i <= maxAge - currentAge; i++) {
     futureSpending.push(annualExpenses * (1 + inflationRate / 100) ** i);
   }
 
