@@ -26,7 +26,7 @@ export default function Assumptions(props) {
     <form onSubmit={updateInputs}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography variant="h6">Your Information</Typography>
+          <Typography variant="h6">Your Assumptions</Typography>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -84,9 +84,6 @@ export default function Assumptions(props) {
             }}
             fullWidth
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h6">Other Assumptions</Typography>
         </Grid>
         <Grid item xs={12}>
           <TextField

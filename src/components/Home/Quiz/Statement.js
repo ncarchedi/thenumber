@@ -27,7 +27,7 @@ export default function Statement(props) {
   return (
     <React.Fragment>
       <Typography variant="h5" className={classes.prompt}>
-        {prompt}
+        <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
       {helperText && (
         <Typography variant="body2" className={classes.helperText}>

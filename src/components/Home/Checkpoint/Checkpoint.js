@@ -10,9 +10,6 @@ const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
     alignItems: "center",
-    [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(6),
-    },
   },
   resultsContainer: {
     textAlign: "center",
@@ -26,8 +23,9 @@ export default function Checkpoint(props) {
     monthlyExpenses,
     monthlySavings,
     totalSavings,
+    inflationRate,
+    annualReturn,
   } = props.user;
-  const { inflationRate, annualReturn } = props.assumptions;
 
   // use props for initial assumptions form state
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
@@ -48,12 +46,6 @@ export default function Checkpoint(props) {
       monthlyExpenses: monthlyExpensesInput,
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
-    });
-
-    props.setAssumptions({
-      ...props.assumptions,
-      inflationRate: inflationRateInput,
-      annualReturn: annualReturnInput,
     });
   };
 
@@ -97,11 +89,8 @@ Checkpoint.propTypes = {
     monthlyExpenses: PropTypes.string.isRequired,
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
-  }),
-  assumptions: PropTypes.exact({
     inflationRate: PropTypes.string.isRequired,
     annualReturn: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
-  setAssumptions: PropTypes.func.isRequired,
 };

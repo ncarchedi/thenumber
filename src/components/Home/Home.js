@@ -12,6 +12,8 @@ export default function Home(props) {
     monthlyExpenses: "",
     monthlySavings: "",
     totalSavings: "",
+    inflationRate: "",
+    annualReturn: "",
   });
 
   // // For testing purposes only
@@ -22,13 +24,9 @@ export default function Home(props) {
   //   monthlyExpenses: "4000",
   //   monthlySavings: "2000",
   //   totalSavings: "250000",
+  //   inflationRate: "3",
+  //   annualReturn: "7",
   // });
-
-  const [assumptions, setAssumptions] = useState({
-    inflationRate: "3",
-    annualReturn: "7",
-    // withdrawalRate: "4",
-  });
 
   const setUserValue = (key, value) => {
     const updatedUser = {
@@ -42,12 +40,7 @@ export default function Home(props) {
   };
 
   return showCheckpoint ? (
-    <Checkpoint
-      user={user}
-      assumptions={assumptions}
-      setUser={setUser}
-      setAssumptions={setAssumptions}
-    />
+    <Checkpoint user={user} setUser={setUser} />
   ) : (
     <Quiz
       questions={content}

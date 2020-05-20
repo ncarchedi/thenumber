@@ -5,7 +5,6 @@ import Container from "@material-ui/core/Container";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
-import QuestionEmptyScreen from "./QuestionEmptyScreen";
 
 const useStyles = makeStyles((theme) => ({
   quiz: {
@@ -41,7 +40,7 @@ export default function Quiz(props) {
       setUserValue(variableName, variableValue);
 
     // TODO: un-hardcode when to show results?
-    if (questionNumber >= 9) {
+    if (questionNumber >= questions.length) {
       setShowCheckpoint(true);
     }
 
@@ -49,11 +48,6 @@ export default function Quiz(props) {
   };
 
   const currentQuestion = questions[questionNumber - 1];
-
-  // if question doesn't exist, show empty screen
-  if (!currentQuestion) {
-    return <QuestionEmptyScreen />;
-  }
 
   // replace blank in second question with user's name
   let updatedQuestion = currentQuestion.content.prompt;
