@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(6),
     },
   },
   resultsContainer: {
@@ -27,7 +27,7 @@ export default function Checkpoint(props) {
     monthlySavings,
     totalSavings,
   } = props.user;
-  const { inflationRate, annualReturn, withdrawalRate } = props.assumptions;
+  const { inflationRate, annualReturn } = props.assumptions;
 
   // use props for initial assumptions form state
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
@@ -39,9 +39,6 @@ export default function Checkpoint(props) {
   const [totalSavingsInput, setTotalSavingsInput] = useState(totalSavings);
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
   const [annualReturnInput, setAnnualReturnInput] = useState(annualReturn);
-  const [withdrawalRateInput, setWithdrawalRateInput] = useState(
-    withdrawalRate
-  );
 
   const updateInputs = (e) => {
     e.preventDefault();
@@ -57,7 +54,6 @@ export default function Checkpoint(props) {
       ...props.assumptions,
       inflationRate: inflationRateInput,
       annualReturn: annualReturnInput,
-      withdrawalRate: withdrawalRateInput,
     });
   };
 
@@ -77,8 +73,6 @@ export default function Checkpoint(props) {
             setInflationRateInput={setInflationRateInput}
             annualReturnInput={annualReturnInput}
             setAnnualReturnInput={setAnnualReturnInput}
-            withdrawalRateInput={withdrawalRateInput}
-            setWithdrawalRateInput={setWithdrawalRateInput}
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
@@ -89,7 +83,6 @@ export default function Checkpoint(props) {
             totalSavings={totalSavings}
             inflationRate={inflationRate}
             annualReturn={annualReturn}
-            withdrawalRate={withdrawalRate}
           />
         </Grid>
       </Grid>
@@ -108,7 +101,6 @@ Checkpoint.propTypes = {
   assumptions: PropTypes.exact({
     inflationRate: PropTypes.string.isRequired,
     annualReturn: PropTypes.string.isRequired,
-    withdrawalRate: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
   setAssumptions: PropTypes.func.isRequired,

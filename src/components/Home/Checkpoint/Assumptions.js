@@ -20,8 +20,6 @@ export default function Assumptions(props) {
     setInflationRateInput,
     annualReturnInput,
     setAnnualReturnInput,
-    withdrawalRateInput,
-    setWithdrawalRateInput,
   } = props;
 
   return (
@@ -124,23 +122,6 @@ export default function Assumptions(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="withdrawalRate"
-            name="withdrawalRate"
-            label="Withdrawal rate"
-            value={withdrawalRateInput}
-            onChange={(e) => setWithdrawalRateInput(e.target.value)}
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">%</InputAdornment>,
-            }}
-            fullWidth
-          />
-        </Grid>
         <Grid item xs={12} style={{ textAlign: "center" }}>
           <Button endIcon={<ReplayIcon />} type="submit">
             Update Results
@@ -163,6 +144,4 @@ Assumptions.propTypes = {
   setInflationRateInput: PropTypes.func.isRequired,
   annualReturnInput: PropTypes.string.isRequired,
   setAnnualReturnInput: PropTypes.func.isRequired,
-  withdrawalRateInput: PropTypes.string.isRequired,
-  setWithdrawalRateInput: PropTypes.func.isRequired,
 };

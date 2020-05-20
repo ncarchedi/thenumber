@@ -27,7 +27,7 @@ export default function Home(props) {
   const [assumptions, setAssumptions] = useState({
     inflationRate: "3",
     annualReturn: "7",
-    withdrawalRate: "4",
+    // withdrawalRate: "4",
   });
 
   const setUserValue = (key, value) => {

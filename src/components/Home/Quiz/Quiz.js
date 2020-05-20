@@ -41,7 +41,7 @@ export default function Quiz(props) {
       setUserValue(variableName, variableValue);
 
     // TODO: un-hardcode when to show results?
-    if (questionNumber >= 8) {
+    if (questionNumber >= 9) {
       setShowCheckpoint(true);
     }
 

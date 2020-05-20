@@ -72,11 +72,11 @@ export default function ResultsChart(props) {
 
   const series = [
     {
-      name: "Required Savings",
+      name: "Savings required to retire",
       data: [...requiredSavings],
     },
     {
-      name: "Your Savings",
+      name: "Your projected savings",
       data: [...expectedSavings],
     },
   ];

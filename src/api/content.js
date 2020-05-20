@@ -11,21 +11,28 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "Welcome, ___! In the next few minutes, I'll help you figure out how much money you need to achieve financial independence and how soon you'll be able to achieve it. 🙌",
+        "Hi, ___! In the next few minutes, let's figure out how much money you need to achieve financial independence and how soon you'll be able to get there. 🙌",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "There’s a common rule of thumb among personal finance nerds that you’ve achieved financial independence when your total savings exceed 25 times your annual expenses...",
+        "The amount of money you need to retire depends on a number of factors—including your cost of living, expected inflation and expected investment returns. 📝",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "...But because living expenses generally increase over time—due to inflation and/or changes in lifestyle—your number is a moving target. Let's figure it out together. 🎯",
+        "It may be counterintuitive, but the amount of money you need to retire actually *increases* over time. In short, any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
+    },
+  },
+  {
+    type: "Statement",
+    content: {
+      prompt:
+        "The amount you need to retire—your number—is a moving target, so let's figure it out together! 🎯",
     },
   },
   {
