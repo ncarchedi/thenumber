@@ -14,7 +14,7 @@ export default function Home(props) {
     totalSavings: "",
     inflationRate: "3",
     percentStocks: "",
-    stocksReturn: "",
+    stocksReturn: "7",
   });
 
   // // For testing purposes only
