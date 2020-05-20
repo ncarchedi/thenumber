@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
+import Survey from "./Survey/Survey";
 import quizContent from "../../api/quizContent";
+import surveyContent from "../../api/surveyContent";
 
 export default function Home(props) {
-  const [showCheckpoint, setShowCheckpoint] = useState(false);
+  const [activeStage, setActiveStage] = useState("quiz");
   const [user, setUser] = useState({
     name: "",
     currentAge: "",
@@ -18,7 +20,7 @@ export default function Home(props) {
   });
 
   // // For testing purposes only
-  // const [showCheckpoint, setShowCheckpoint] = useState(true);
+  // const [activeStage, setActiveStage] = useState("quiz");
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -41,16 +43,46 @@ export default function Home(props) {
     setUser(updatedUser);
   };
 
-  return showCheckpoint ? (
-    <Checkpoint user={user} setUser={setUser} />
-  ) : (
-    <Quiz
-      questions={quizContent}
-      userName={user.name}
-      setUserValue={setUserValue}
-      setShowCheckpoint={setShowCheckpoint}
-    />
-  );
+  const renderHome = () => {
+    let stage;
+
+    switch (activeStage) {
+      case "quiz":
+        stage = (
+          <Quiz
+            questions={quizContent}
+            userName={user.name}
+            setUserValue={setUserValue}
+            setActiveStage={setActiveStage}
+          />
+        );
+        break;
+      case "checkpoint":
+        stage = (
+          <Checkpoint
+            user={user}
+            setUser={setUser}
+            setActiveStage={setActiveStage}
+          />
+        );
+        break;
+      case "survey":
+        stage = (
+          <Survey
+            questions={surveyContent}
+            userName={user.name}
+            setUserValue={setUserValue}
+          />
+        );
+        break;
+      default:
+        stage = null;
+    }
+
+    return stage;
+  };
+
+  return renderHome();
 }
 
 Home.propTypes = {

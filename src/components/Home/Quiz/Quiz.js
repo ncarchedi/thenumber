@@ -29,7 +29,7 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, userName, setUserValue, setShowCheckpoint } = props;
+  const { questions, userName, setUserValue, setActiveStage } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
@@ -39,9 +39,8 @@ export default function Quiz(props) {
     if (variableName && variableValue)
       setUserValue(variableName, variableValue);
 
-    // TODO: un-hardcode when to show results?
     if (questionNumber >= questions.length) {
-      setShowCheckpoint(true);
+      setActiveStage("checkpoint");
     }
 
     goToNextQuestion();
@@ -77,5 +76,5 @@ Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   userName: PropTypes.string.isRequired,
   setUserValue: PropTypes.func.isRequired,
-  setShowCheckpoint: PropTypes.func.isRequired,
+  setActiveStage: PropTypes.func, // optional
 };

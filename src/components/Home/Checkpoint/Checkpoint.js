@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkpoint(props) {
   const classes = useStyles();
+  const { user, setUser, setActiveStage } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -26,7 +27,7 @@ export default function Checkpoint(props) {
     inflationRate,
     stocksReturn,
     percentStocks,
-  } = props.user;
+  } = user;
 
   // use props for initial assumptions form state
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
@@ -43,8 +44,8 @@ export default function Checkpoint(props) {
   const updateInputs = (e) => {
     e.preventDefault();
 
-    props.setUser({
-      ...props.user,
+    setUser({
+      ...user,
       monthlyExpenses: monthlyExpensesInput,
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
@@ -83,6 +84,7 @@ export default function Checkpoint(props) {
             inflationRate={inflationRate}
             stocksReturn={stocksReturn}
             percentStocks={percentStocks}
+            setActiveStage={setActiveStage}
           />
         </Grid>
       </Grid>
@@ -102,4 +104,5 @@ Checkpoint.propTypes = {
     percentStocks: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
+  setActiveStage: PropTypes.func.isRequired,
 };

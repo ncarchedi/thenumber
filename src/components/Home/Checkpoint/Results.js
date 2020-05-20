@@ -40,6 +40,7 @@ export default function Results(props) {
     inflationRate,
     stocksReturn,
     percentStocks,
+    setActiveStage,
   } = props;
 
   const {
@@ -90,7 +91,7 @@ export default function Results(props) {
         color="primary"
         size="large"
         endIcon={<ArrowForwardIcon />}
-        onClick={() => alert("Coming soon!")}
+        onClick={() => setActiveStage("survey")}
       >
         Let's do this!
       </Button>
@@ -106,4 +107,5 @@ Results.propTypes = {
   inflationRate: PropTypes.string.isRequired,
   stocksReturn: PropTypes.string.isRequired,
   percentStocks: PropTypes.string.isRequired,
+  setActiveStage: PropTypes.func.isRequired,
 };
