@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     borderBottomWidth: "5px",
   },
   supportingText: {
-    margin: theme.spacing(4),
+    maxWidth: theme.breakpoints.values.sm,
+    margin: theme.spacing(4, "auto"),
     fontWeight: 400,
   },
   actionButton: {
