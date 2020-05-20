@@ -12,7 +12,7 @@ export default function Home(props) {
     monthlyExpenses: "",
     monthlySavings: "",
     totalSavings: "",
-    inflationRate: "",
+    inflationRate: "3",
     annualReturn: "",
   });
 

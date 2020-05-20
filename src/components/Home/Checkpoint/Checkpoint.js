@@ -46,6 +46,8 @@ export default function Checkpoint(props) {
       monthlyExpenses: monthlyExpensesInput,
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
+      inflationRate: inflationRateInput,
+      annualReturn: annualReturnInput,
     });
   };
 

@@ -32,7 +32,7 @@ export default function Assumptions(props) {
           <TextField
             id="monthlyExpenses"
             name="monthlyExpenses"
-            label="Monthly expenses"
+            label="Current monthly expenses"
             value={monthlyExpensesInput}
             onChange={(e) => setMonthlyExpensesInput(e.target.value)}
             variant="outlined"
@@ -51,7 +51,7 @@ export default function Assumptions(props) {
           <TextField
             id="monthlySavings"
             name="monthlySavings"
-            label="Monthly savings"
+            label="Current monthly savings"
             value={monthlySavingsInput}
             onChange={(e) => setMonthlySavingsInput(e.target.value)}
             variant="outlined"
@@ -70,7 +70,7 @@ export default function Assumptions(props) {
           <TextField
             id="totalSavings"
             name="totalSavings"
-            label="Current savings"
+            label="Total savings"
             value={totalSavingsInput}
             onChange={(e) => setTotalSavingsInput(e.target.value)}
             variant="outlined"
@@ -89,7 +89,7 @@ export default function Assumptions(props) {
           <TextField
             id="inflationRate"
             name="inflationRate"
-            label="Inflation rate"
+            label="Annual inflation rate"
             value={inflationRateInput}
             onChange={(e) => setInflationRateInput(e.target.value)}
             variant="outlined"
@@ -106,7 +106,7 @@ export default function Assumptions(props) {
           <TextField
             id="annualReturn"
             name="annualReturn"
-            label="Annual return"
+            label="Annual return on savings"
             value={annualReturnInput}
             onChange={(e) => setAnnualReturnInput(e.target.value)}
             variant="outlined"

@@ -25,14 +25,14 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "It may be counterintuitive, but the amount of money you need to retire actually <em>increases</em> over time. In short, any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
+        "It may be counterintuitive, but the amount of money you need to retire actually <em>increases</em> over time. Any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "The amount you need to retire—your number—is a moving target, so let's figure it out together! 🎯",
+        "In short, the amount you need to retire—your number—is a moving target. Let's figure it out together! 🎯",
     },
   },
   {
@@ -75,27 +75,27 @@ export default [
         "Include cash, investments, retirement accounts, and any other savings that could be used to pay your monthly expenses someday.",
     },
   },
-  // {
-  //   type: "MultipleChoiceQuestion",
-  //   inputType: "string",
-  //   variableName: "annualReturn",
-  //   content: {
-  //     prompt:
-  //       "Which of the following best describes how your savings are allocated? 📈",
-  //     answers: [
-  //       {
-  //         value: "7",
-  //         label: "Mostly stocks",
-  //       },
-  //       {
-  //         value: "5",
-  //         label: "About half stocks",
-  //       },
-  //       {
-  //         value: "3",
-  //         label: "Mostly not stocks",
-  //       },
-  //     ],
-  //   },
-  // },
+  {
+    type: "MultipleChoiceQuestion",
+    inputType: "string",
+    variableName: "annualReturn",
+    content: {
+      prompt:
+        "Which of the following best describes how your savings are allocated? 📈",
+      answers: [
+        {
+          value: "7",
+          label: "Mostly stocks",
+        },
+        {
+          value: "5",
+          label: "About half stocks",
+        },
+        {
+          value: "3",
+          label: "Mostly not stocks",
+        },
+      ],
+    },
+  },
 ];
