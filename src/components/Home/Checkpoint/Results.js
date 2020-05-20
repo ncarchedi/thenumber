@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
@@ -62,7 +63,12 @@ export default function Results(props) {
   return (
     <React.Fragment>
       <Typography variant="h2" className={classes.headerText}>
-        {toDollars(retirementAmount)}
+        <CountUp
+          end={retirementAmount}
+          prefix="$"
+          separator=","
+          duration={1.5}
+        />
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
         If you continue saving {toDollars(monthlySavings)} a month for the next{" "}

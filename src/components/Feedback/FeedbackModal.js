@@ -5,7 +5,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Emoji from "../General/Emoji";
@@ -54,39 +53,33 @@ export default function FeedbackModal(props) {
           <em>The Number</em> is a work in progress—and you can help shape it!
         </DialogContentText>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                type="email"
-                name="email"
-                label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="message"
-                label="Feedback"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                variant="outlined"
-                multiline
-                rows={3}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12}></Grid>
-          </Grid>
+          <TextField
+            type="email"
+            name="email"
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            variant="outlined"
+            fullWidth
+          />
+          <TextField
+            name="message"
+            label="Feedback"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            variant="outlined"
+            multiline
+            rows={3}
+            margin="normal"
+            fullWidth
+          />
         </form>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleSubmit} color="primary">
+        <Button onClick={handleSubmit} color="primary" variant="contained">
           Submit
         </Button>
       </DialogActions>
