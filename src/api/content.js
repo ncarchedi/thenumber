@@ -63,7 +63,7 @@ export default [
     inputType: "dollar",
     variableName: "totalSavings",
     content: {
-      prompt: "Approximately how much money do you have saved? 🏦",
+      prompt: "Approximately how much money do you have saved in total? 🏦",
       helperText:
         "Include cash, investments, retirement accounts, and any other savings that could be used to pay your monthly expenses someday.",
     },
