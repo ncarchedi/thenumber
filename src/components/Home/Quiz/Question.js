@@ -1,34 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
-import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
+import Statement from "./Statement";
 import TextQuestion from "./TextQuestion";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    backgroundColor: "inherit",
-  },
-}));
+import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 
 export default function Question(props) {
-  const classes = useStyles();
   const { question, onSubmitAnswer } = props;
   const { type } = question;
 
+  let currentQuestion;
+  if (type === "Statement")
+    currentQuestion = (
+      <Statement question={question} onSubmitAnswer={onSubmitAnswer} />
+    );
+  else if (type === "TextQuestion")
+    currentQuestion = (
+      <TextQuestion question={question} onSubmitAnswer={onSubmitAnswer} />
+    );
+  else if (type === "MultipleChoiceQuestion")
+    currentQuestion = (
+      <MultipleChoiceQuestion
+        question={question}
+        onSubmitAnswer={onSubmitAnswer}
+      />
+    );
+
   return (
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
-      <Paper elevation={0} className={classes.paper}>
-        {type === "TextQuestion" ? (
-          <TextQuestion question={question} onSubmitAnswer={onSubmitAnswer} />
-        ) : (
-          <MultipleChoiceQuestion
-            question={question}
-            onSubmitAnswer={onSubmitAnswer}
-          />
-        )}
-      </Paper>
+      <div>{currentQuestion}</div>
     </Slide>
   );
 }

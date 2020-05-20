@@ -2,13 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+// import Button from "@material-ui/core/Button";
+// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../../../utils/toDollars";
-import getTotalSavingsChartData from "../../../utils/getTotalSavingsChartData";
-import calculateAnnualContribution from "../../../utils/calculateAnnualContribution";
-import calculateTargetSavings from "../../../utils/calculateTargetSavings";
+import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
 const useStyles = makeStyles((theme) => ({
   headerText: {
@@ -17,9 +15,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     fontFamily: ["Racing Sans One", "cursive"],
     borderBottom: "solid",
+    borderBottomWidth: "5px",
   },
   supportingText: {
-    margin: theme.spacing(4, 4, 2, 4),
+    maxWidth: theme.breakpoints.values.sm + 50,
+    margin: theme.spacing(4, "auto"),
     fontWeight: 400,
   },
   actionButton: {
@@ -30,58 +30,52 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
   const classes = useStyles();
   const {
-    retirementAge,
     currentAge,
     monthlyExpenses,
-    currentSavings,
-    annualReturn,
-    withdrawalRate,
+    monthlySavings,
+    totalSavings,
     inflationRate,
-  } = props;
-  const targetSavings = calculateTargetSavings(
-    currentAge,
-    retirementAge,
-    monthlyExpenses,
-    withdrawalRate,
-    inflationRate
-  );
-
-  const additionalSavings = targetSavings - currentSavings;
-  const yearsToRetirement = retirementAge - currentAge;
-
-  const annualContribution = calculateAnnualContribution(
-    currentSavings,
-    targetSavings,
     annualReturn,
-    yearsToRetirement
-  );
+  } = props;
 
-  const totalSavingsChartData = getTotalSavingsChartData(
+  const {
+    age,
+    requiredSavings,
+    expectedSavings,
+    canRetire,
+  } = calculateRequiredAndExpectedSavings(
     currentAge,
-    retirementAge,
-    currentSavings,
-    annualContribution,
+    monthlyExpenses,
+    monthlySavings,
+    totalSavings,
+    inflationRate,
     annualReturn
   );
+
+  const breakeven = canRetire.findIndex((e) => e);
+  const retirementAge = age[breakeven];
+  const retirementAmount = expectedSavings[breakeven];
+  const yearsToRetirement = retirementAge - currentAge;
+  // const additionalSavings = retirementAmount - totalSavings;
 
   return (
     <React.Fragment>
       <Typography variant="h2" className={classes.headerText}>
-        {toDollars(targetSavings)}
+        {toDollars(retirementAmount)}
       </Typography>
       <Typography variant="h6" className={classes.supportingText}>
-        {`This is your number—the amount you need to retire at age ${retirementAge}. You have ${toDollars(
-          currentSavings
-        )} today, so you need to accumulate an additional ${toDollars(
-          additionalSavings
-        )} over the next ${yearsToRetirement} years.`}
+        If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
+        {yearsToRetirement} years, you'll be on track to retire at age{" "}
+        {retirementAge} with a total of {toDollars(retirementAmount)} in
+        savings.
       </Typography>
       <ResultsChart
-        xArray={totalSavingsChartData.ageArray}
-        yArray={totalSavingsChartData.savingsArray}
-        chartType="line"
+        age={age}
+        requiredSavings={requiredSavings}
+        expectedSavings={expectedSavings}
+        retirementAge={retirementAge}
       />
-      <Button
+      {/* <Button
         className={classes.actionButton}
         variant="contained"
         color="primary"
@@ -90,17 +84,16 @@ export default function Results(props) {
         onClick={() => alert("Coming soon!")}
       >
         Create a Plan
-      </Button>
+      </Button> */}
     </React.Fragment>
   );
 }
 
 Results.propTypes = {
-  retirementAge: PropTypes.string.isRequired,
   currentAge: PropTypes.string.isRequired,
   monthlyExpenses: PropTypes.string.isRequired,
-  currentSavings: PropTypes.string.isRequired,
-  annualReturn: PropTypes.string.isRequired,
-  withdrawalRate: PropTypes.string.isRequired,
+  monthlySavings: PropTypes.string.isRequired,
+  totalSavings: PropTypes.string.isRequired,
   inflationRate: PropTypes.string.isRequired,
+  annualReturn: PropTypes.string.isRequired,
 };

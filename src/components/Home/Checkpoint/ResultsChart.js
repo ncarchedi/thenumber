@@ -6,10 +6,10 @@ import toDollars from "../../../utils/toDollars.js";
 
 export default function ResultsChart(props) {
   const theme = useTheme();
+  const { age, requiredSavings, expectedSavings, retirementAge } = props;
 
   const options = {
     chart: {
-      height: 350,
       zoom: {
         enabled: false,
       },
@@ -21,23 +21,39 @@ export default function ResultsChart(props) {
     dataLabels: {
       enabled: false,
     },
-    markers: {
-      size: 5,
-      strokeColors: theme.palette.background.default,
-      strokeWidth: 3,
-    },
+    // markers: {
+    //   size: 5,
+    //   strokeColors: theme.palette.background.default,
+    //   strokeWidth: 3,
+    // },
     tooltip: {
       enabled: true,
       theme: "dark",
       x: {
         formatter: (x) => {
-          return `Age ${props.xArray[x - 1]}`;
+          return `Age ${age[x - 1]}`;
         },
       },
     },
-    colors: [theme.palette.primary.main],
+    colors: [theme.palette.secondary.main, theme.palette.primary.main],
+    legend: {
+      position: "top",
+      labels: {
+        colors: theme.palette.text.primary,
+      },
+    },
+    annotations: {
+      xaxis: [
+        {
+          x: retirementAge,
+          strokeDashArray: 5,
+          borderColor: theme.palette.primary.main,
+          borderWidth: 5,
+        },
+      ],
+    },
     xaxis: {
-      categories: [...props.xArray],
+      categories: [...age],
       labels: {
         style: {
           colors: theme.palette.text.primary,
@@ -56,8 +72,12 @@ export default function ResultsChart(props) {
 
   const series = [
     {
-      name: "Total Savings",
-      data: [...props.yArray],
+      name: "Savings required to retire",
+      data: [...requiredSavings],
+    },
+    {
+      name: "Your projected savings",
+      data: [...expectedSavings],
     },
   ];
 
@@ -65,15 +85,16 @@ export default function ResultsChart(props) {
     <Chart
       options={options}
       series={series}
-      type={props.chartType}
+      type="line"
       width="100%"
-      height={300}
+      height="400px"
     />
   );
 }
 
 ResultsChart.propTypes = {
-  xArray: PropTypes.array.isRequired,
-  yArray: PropTypes.array.isRequired,
-  chartType: PropTypes.string.isRequired,
+  age: PropTypes.array.isRequired,
+  requiredSavings: PropTypes.array.isRequired,
+  expectedSavings: PropTypes.array.isRequired,
+  retirementAge: PropTypes.number.isRequired,
 };

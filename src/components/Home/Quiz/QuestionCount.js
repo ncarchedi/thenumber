@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function QuestionCount(props) {
   const classes = useStyles();
+  const { current, total } = props;
 
   return (
     <Typography variant="body2" className={classes.count}>
-      Question <span>{props.current}</span> of <span>{props.total}</span>
+      {current} / {total}
     </Typography>
   );
 }

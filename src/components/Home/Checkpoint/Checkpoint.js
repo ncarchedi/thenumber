@@ -8,7 +8,6 @@ import Results from "./Results";
 
 const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
-    // marginTop: theme.spacing(4),
     display: "flex",
     alignItems: "center",
   },
@@ -20,38 +19,35 @@ const useStyles = makeStyles((theme) => ({
 export default function Checkpoint(props) {
   const classes = useStyles();
   const {
-    retirementAge,
     currentAge,
     monthlyExpenses,
-    currentSavings,
+    monthlySavings,
+    totalSavings,
+    inflationRate,
+    annualReturn,
   } = props.user;
-  const { annualReturn, withdrawalRate, inflationRate } = props.assumptions;
 
   // use props for initial assumptions form state
-  const [retirementAgeInput, setRetirementAgeInput] = useState(retirementAge);
-  const [currentAgeInput, setCurrentAgeInput] = useState(currentAge);
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
     monthlyExpenses
   );
-  const [currentSavingsInput, setCurrentSavingsInput] = useState(
-    currentSavings
+  const [monthlySavingsInput, setMonthlySavingsInput] = useState(
+    monthlySavings
   );
+  const [totalSavingsInput, setTotalSavingsInput] = useState(totalSavings);
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
+  const [annualReturnInput, setAnnualReturnInput] = useState(annualReturn);
 
   const updateInputs = (e) => {
     e.preventDefault();
 
     props.setUser({
       ...props.user,
-      retirementAge: retirementAgeInput,
-      currentAge: currentAgeInput,
       monthlyExpenses: monthlyExpensesInput,
-      currentSavings: currentSavingsInput,
-    });
-
-    props.setAssumptions({
-      ...props.assumptions,
+      monthlySavings: monthlySavingsInput,
+      totalSavings: totalSavingsInput,
       inflationRate: inflationRateInput,
+      annualReturn: annualReturnInput,
     });
   };
 
@@ -61,27 +57,26 @@ export default function Checkpoint(props) {
         <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
           <Assumptions
             updateInputs={updateInputs}
-            retirementAgeInput={retirementAgeInput}
-            setRetirementAgeInput={setRetirementAgeInput}
-            currentAgeInput={currentAgeInput}
-            setCurrentAgeInput={setCurrentAgeInput}
             monthlyExpensesInput={monthlyExpensesInput}
             setMonthlyExpensesInput={setMonthlyExpensesInput}
-            currentSavingsInput={currentSavingsInput}
-            setCurrentSavingsInput={setCurrentSavingsInput}
+            monthlySavingsInput={monthlySavingsInput}
+            setMonthlySavingsInput={setMonthlySavingsInput}
+            totalSavingsInput={totalSavingsInput}
+            setTotalSavingsInput={setTotalSavingsInput}
             inflationRateInput={inflationRateInput}
             setInflationRateInput={setInflationRateInput}
+            annualReturnInput={annualReturnInput}
+            setAnnualReturnInput={setAnnualReturnInput}
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
           <Results
-            retirementAge={retirementAge}
             currentAge={currentAge}
             monthlyExpenses={monthlyExpenses}
-            currentSavings={currentSavings}
-            annualReturn={annualReturn}
-            withdrawalRate={withdrawalRate}
+            monthlySavings={monthlySavings}
+            totalSavings={totalSavings}
             inflationRate={inflationRate}
+            annualReturn={annualReturn}
           />
         </Grid>
       </Grid>
@@ -92,16 +87,12 @@ export default function Checkpoint(props) {
 Checkpoint.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
-    retirementAge: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
-    currentSavings: PropTypes.string.isRequired,
-  }),
-  assumptions: PropTypes.exact({
-    annualReturn: PropTypes.string.isRequired,
-    withdrawalRate: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,
+    annualReturn: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
-  setAssumptions: PropTypes.func.isRequired,
 };

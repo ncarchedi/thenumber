@@ -4,10 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import NumberFormat from "react-number-format";
+import ContinueButton from "./ContinueButton";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
-    margin: theme.spacing(4, 0, 3, 0),
+    marginBottom: theme.spacing(3),
   },
   textField: {
     "& input": {
@@ -69,7 +70,7 @@ export default function TextQuestion(props) {
   return (
     <React.Fragment>
       <Typography variant="h5" className={classes.prompt}>
-        {prompt}
+        <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
       <form onSubmit={handleSubmit}>
         {inputType === "dollar" ? (
@@ -94,12 +95,13 @@ export default function TextQuestion(props) {
             fullWidth
           ></TextField>
         )}
+        {helperText && (
+          <Typography variant="body2" className={classes.helperText}>
+            {"ℹ️ " + helperText}
+          </Typography>
+        )}
+        {value && <ContinueButton text="OK" />}
       </form>
-      {helperText && (
-        <Typography variant="body2" className={classes.helperText}>
-          {"ℹ️ " + helperText}
-        </Typography>
-      )}
     </React.Fragment>
   );
 }

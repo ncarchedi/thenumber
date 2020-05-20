@@ -2,33 +2,31 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-import quiz1 from "../../api/quiz1";
+import content from "../../api/content";
 
 export default function Home(props) {
   const [showCheckpoint, setShowCheckpoint] = useState(false);
   const [user, setUser] = useState({
     name: "",
-    retirementAge: "",
     currentAge: "",
     monthlyExpenses: "",
-    currentSavings: "",
+    monthlySavings: "",
+    totalSavings: "",
+    inflationRate: "3",
+    annualReturn: "",
   });
 
-  // For testing purposes only
+  // // For testing purposes only
   // const [showCheckpoint, setShowCheckpoint] = useState(true);
   // const [user, setUser] = useState({
   //   name: "Marley",
-  //   retirementAge: "60",
-  //   currentAge: "30",
+  //   currentAge: "35",
   //   monthlyExpenses: "4000",
-  //   currentSavings: "200000",
+  //   monthlySavings: "2000",
+  //   totalSavings: "250000",
+  //   inflationRate: "3",
+  //   annualReturn: "7",
   // });
-
-  const [assumptions, setAssumptions] = useState({
-    annualReturn: "7",
-    withdrawalRate: "4",
-    inflationRate: "3",
-  });
 
   const setUserValue = (key, value) => {
     const updatedUser = {
@@ -42,15 +40,10 @@ export default function Home(props) {
   };
 
   return showCheckpoint ? (
-    <Checkpoint
-      user={user}
-      assumptions={assumptions}
-      setUser={setUser}
-      setAssumptions={setAssumptions}
-    />
+    <Checkpoint user={user} setUser={setUser} />
   ) : (
     <Quiz
-      questions={quiz1}
+      questions={content}
       userName={user.name}
       setUserValue={setUserValue}
       setShowCheckpoint={setShowCheckpoint}

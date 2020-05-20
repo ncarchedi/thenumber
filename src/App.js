@@ -15,9 +15,9 @@ import FeedbackModal from "./components/Feedback/FeedbackModal";
 
 const useStyles = makeStyles((theme) => ({
   app: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(10),
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(12),
     },
   },
 }));
@@ -33,6 +33,9 @@ export default function App() {
       type: darkMode ? "dark" : "light",
       primary: {
         main: "#59cd90",
+      },
+      secondary: {
+        main: "#d500f9",
       },
     },
   });

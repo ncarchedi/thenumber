@@ -2,31 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   prompt: {
-    margin: 0,
-    padding: theme.spacing(4, 0),
+    marginBottom: theme.spacing(3),
   },
   answers: {
-    width: "90%",
     margin: 0,
     padding: 0,
-    listStyle: "none",
   },
   answer: {
-    // backgroundColor: "#303030",
-    padding: theme.spacing(2, 3),
-    margin: theme.spacing(2, 0),
-    borderRadius: "4px",
-    borderWidth: "1px",
-    // borderColor: "#f1ece2",
-    borderStyle: "solid",
+    margin: theme.spacing(1, 0),
     fontSize: "1.5rem",
-    "& :hover": {
-      // backgroundColor: "#545454",
-      cursor: "pointer",
-    },
+    textTransform: "none",
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
@@ -34,25 +24,28 @@ export default function MultipleChoiceQuestion(props) {
   const classes = useStyles();
   const { question, onSubmitAnswer } = props;
   const { variableName, content } = question;
+  const { prompt, answers } = content;
 
   const renderAnswer = (answer) => {
     return (
-      <div
+      <Button
         key={answer.value}
         className={classes.answer}
         onClick={() => onSubmitAnswer(variableName, answer.value)}
+        variant="contained"
+        fullWidth
       >
         {answer.label}
-      </div>
+      </Button>
     );
   };
 
   return (
     <React.Fragment>
       <Typography variant="h5" className={classes.prompt}>
-        {content.prompt}
+        <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
-      <ul className={classes.answers}>{content.answers.map(renderAnswer)}</ul>
+      <ul className={classes.answers}>{answers.map(renderAnswer)}</ul>
     </React.Fragment>
   );
 }
