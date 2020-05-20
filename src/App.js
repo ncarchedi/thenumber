@@ -5,6 +5,8 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
+import teal from "@material-ui/core/colors/teal";
+import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
@@ -32,10 +34,10 @@ export default function App() {
     palette: {
       type: darkMode ? "dark" : "light",
       primary: {
-        main: "#59cd90",
+        main: teal[500],
       },
       secondary: {
-        main: "#d500f9",
+        main: amber[700],
       },
     },
   });

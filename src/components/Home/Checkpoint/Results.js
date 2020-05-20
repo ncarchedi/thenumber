@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import Button from "@material-ui/core/Button";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ResultsChart from "./ResultsChart";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     padding: theme.spacing(0, 5, 3, 5),
     color: theme.palette.primary.main,
-    fontFamily: ["Racing Sans One", "cursive"],
+    fontFamily: ["Bai Jamjuree", "sans-serif"],
     borderBottom: "solid",
     borderBottomWidth: "5px",
   },
@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   actionButton: {
     marginTop: theme.spacing(3),
+    padding: theme.spacing(2, 4),
+    fontSize: "1.2rem",
   },
 }));
 
@@ -56,7 +58,6 @@ export default function Results(props) {
   const retirementAge = age[breakeven];
   const retirementAmount = expectedSavings[breakeven];
   const yearsToRetirement = retirementAge - currentAge;
-  // const additionalSavings = retirementAmount - totalSavings;
 
   return (
     <React.Fragment>
@@ -75,7 +76,7 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      {/* <Button
+      <Button
         className={classes.actionButton}
         variant="contained"
         color="primary"
@@ -83,8 +84,8 @@ export default function Results(props) {
         endIcon={<ArrowForwardIcon />}
         onClick={() => alert("Coming soon!")}
       >
-        Create a Plan
-      </Button> */}
+        Let's do this!
+      </Button>
     </React.Fragment>
   );
 }

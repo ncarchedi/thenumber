@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   logo: {
     color: theme.palette.primary.main,
-    fontFamily: ["Racing Sans One", "cursive"],
+    fontFamily: ["Bai Jamjuree", "sans-serif"],
   },
 }));
 
