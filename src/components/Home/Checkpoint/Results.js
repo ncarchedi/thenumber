@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
+  const { user, setActiveStage } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -40,8 +41,7 @@ export default function Results(props) {
     inflationRate,
     stocksReturn,
     percentStocks,
-    setActiveStage,
-  } = props;
+  } = user;
 
   const {
     age,
@@ -100,12 +100,14 @@ export default function Results(props) {
 }
 
 Results.propTypes = {
-  currentAge: PropTypes.string.isRequired,
-  monthlyExpenses: PropTypes.string.isRequired,
-  monthlySavings: PropTypes.string.isRequired,
-  totalSavings: PropTypes.string.isRequired,
-  inflationRate: PropTypes.string.isRequired,
-  stocksReturn: PropTypes.string.isRequired,
-  percentStocks: PropTypes.string.isRequired,
+  user: PropTypes.exact({
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+  }),
   setActiveStage: PropTypes.func.isRequired,
 };

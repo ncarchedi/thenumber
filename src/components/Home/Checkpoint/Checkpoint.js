@@ -20,7 +20,6 @@ export default function Checkpoint(props) {
   const classes = useStyles();
   const { user, setUser, setActiveStage } = props;
   const {
-    currentAge,
     monthlyExpenses,
     monthlySavings,
     totalSavings,
@@ -76,16 +75,7 @@ export default function Checkpoint(props) {
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
-          <Results
-            currentAge={currentAge}
-            monthlyExpenses={monthlyExpenses}
-            monthlySavings={monthlySavings}
-            totalSavings={totalSavings}
-            inflationRate={inflationRate}
-            stocksReturn={stocksReturn}
-            percentStocks={percentStocks}
-            setActiveStage={setActiveStage}
-          />
+          <Results user={user} setActiveStage={setActiveStage} />
         </Grid>
       </Grid>
     </Slide>
