@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkpoint(props) {
   const classes = useStyles();
-  const { user, setUser, setActiveStage } = props;
+  const { user, setUser, goToNextStage } = props;
   const {
     monthlyExpenses,
     monthlySavings,
@@ -75,7 +75,7 @@ export default function Checkpoint(props) {
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
-          <Results user={user} setActiveStage={setActiveStage} />
+          <Results user={user} goToNextStage={goToNextStage} />
         </Grid>
       </Grid>
     </Slide>
@@ -94,5 +94,5 @@ Checkpoint.propTypes = {
     percentStocks: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
-  setActiveStage: PropTypes.func.isRequired,
+  goToNextStage: PropTypes.func.isRequired,
 };

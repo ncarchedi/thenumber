@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-import Survey from "./Survey/Survey";
+import Thanks from "./Thanks/Thanks";
 import quizContent from "../../api/quizContent";
 import surveyContent from "../../api/surveyContent";
 
 export default function Home(props) {
-  const [activeStage, setActiveStage] = useState("quiz");
+  const [activeStage, setActiveStage] = useState(0);
   const [user, setUser] = useState({
     name: "",
     currentAge: "",
@@ -26,8 +26,8 @@ export default function Home(props) {
     email: "",
   });
 
-  // // For testing purposes only //////////////////////////////
-  // const [activeStage, setActiveStage] = useState("survey");
+  // // For testing purposes only ----------------------------
+  // const [activeStage, setActiveStage] = useState(0);
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -45,6 +45,7 @@ export default function Home(props) {
   //   provideEmail: "",
   //   email: "",
   // });
+  // // ------------------------------------------------------
 
   const setUserValue = (key, value) => {
     const updatedUser = {
@@ -66,37 +67,45 @@ export default function Home(props) {
     setSurvey(updatedSurvey);
   };
 
+  const goToNextStage = () => {
+    setActiveStage(activeStage + 1);
+  };
+
   const renderHome = () => {
     let stage;
 
     switch (activeStage) {
-      case "quiz":
+      case 0:
         stage = (
           <Quiz
             questions={quizContent}
             userName={user.name}
             setValue={setUserValue}
-            setActiveStage={setActiveStage}
+            goToNextStage={goToNextStage}
           />
         );
         break;
-      case "checkpoint":
+      case 1:
         stage = (
           <Checkpoint
             user={user}
             setUser={setUser}
-            setActiveStage={setActiveStage}
+            goToNextStage={goToNextStage}
           />
         );
         break;
-      case "survey":
+      case 2:
         stage = (
-          <Survey
+          <Quiz
             questions={surveyContent}
             userName={user.name}
             setValue={setSurveyValue}
+            goToNextStage={goToNextStage}
           />
         );
+        break;
+      case 3:
+        stage = <Thanks />;
         break;
       default:
         stage = null;

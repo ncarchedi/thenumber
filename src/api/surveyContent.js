@@ -67,7 +67,7 @@ export default [
     inputType: "string",
     variableName: "email",
     content: {
-      prompt: "Thanks! What's your email address? 🔒",
+      prompt: "Great! What's your email address? 🔒",
     },
   },
 ];

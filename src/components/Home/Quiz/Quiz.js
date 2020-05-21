@@ -29,7 +29,7 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, userName, setValue, setActiveStage } = props;
+  const { questions, userName, setValue, goToNextStage } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
@@ -38,9 +38,12 @@ export default function Quiz(props) {
   const handleSubmitAnswer = (variableName, variableValue) => {
     if (variableName && variableValue) setValue(variableName, variableValue);
 
-    if (questionNumber >= questions.length) {
-      setActiveStage("checkpoint");
-    }
+    // if we've reached the end of the quiz
+    if (questionNumber >= questions.length) goToNextStage();
+
+    // if user opts out of providing their email
+    if (variableName === "provideEmail" && variableValue === "no")
+      goToNextStage();
 
     goToNextQuestion();
   };
@@ -76,5 +79,5 @@ Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   userName: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
-  setActiveStage: PropTypes.func, // optional
+  goToNextStage: PropTypes.func.isRequired,
 };

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
-  const { user, setActiveStage } = props;
+  const { user, goToNextStage } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -91,7 +91,7 @@ export default function Results(props) {
         color="primary"
         size="large"
         endIcon={<ArrowForwardIcon />}
-        onClick={() => setActiveStage("survey")}
+        onClick={() => goToNextStage()}
       >
         Let's do this!
       </Button>
@@ -109,5 +109,5 @@ Results.propTypes = {
     stocksReturn: PropTypes.string.isRequired,
     percentStocks: PropTypes.string.isRequired,
   }),
-  setActiveStage: PropTypes.func.isRequired,
+  goToNextStage: PropTypes.func.isRequired,
 };
