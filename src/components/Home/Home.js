@@ -71,6 +71,10 @@ export default function Home(props) {
     setActiveStage(activeStage + 1);
   };
 
+  const startOver = () => {
+    setActiveStage(0);
+  };
+
   const renderHome = () => {
     let stage;
 
@@ -105,7 +109,7 @@ export default function Home(props) {
         );
         break;
       case 3:
-        stage = <Thanks />;
+        stage = <Thanks startOver={startOver} />;
         break;
       default:
         stage = null;

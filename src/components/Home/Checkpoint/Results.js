@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
+import BigButton from "../../General/BigButton";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -22,11 +22,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.breakpoints.values.sm + 50,
     margin: theme.spacing(4, "auto"),
     fontWeight: 400,
-  },
-  actionButton: {
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(2, 4),
-    fontSize: "1.2rem",
   },
 }));
 
@@ -85,16 +80,14 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      <Button
-        className={classes.actionButton}
+      <BigButton
         variant="contained"
         color="primary"
-        size="large"
         endIcon={<ArrowForwardIcon />}
         onClick={() => goToNextStage()}
       >
         Let's do this!
-      </Button>
+      </BigButton>
     </React.Fragment>
   );
 }
