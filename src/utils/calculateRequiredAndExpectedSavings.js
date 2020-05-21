@@ -37,8 +37,8 @@ export default function calculateRequiredAndExpectedSavings(
     );
     canRetire.push(expectedSavings[i] >= requiredSavings[i]);
 
-    // show 3 years after breakeven
-    if (canRetire[i - 3]) break;
+    // show 5 years after breakeven
+    if (canRetire[i - 5]) break;
   }
 
   return {
