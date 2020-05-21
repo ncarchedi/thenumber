@@ -50,7 +50,7 @@ export default [
     inputType: "dollar",
     variableName: "monthlyExpenses",
     content: {
-      prompt: "How much money do you spend in an typical month? 💳",
+      prompt: "How much money do you spend in a typical month? 💳",
       helperText:
         "Expenses often vary month-to-month. This can be a rough estimate for now.",
     },
