@@ -18,7 +18,7 @@ export default function Home(props) {
     inflationRate: "3",
     percentStocks: "",
     stocksReturn: "7",
-    lifeExpectancy: "95",
+    lifeExpectancy: "",
   });
   const [survey, setSurvey] = useState({
     nextAction: "",
