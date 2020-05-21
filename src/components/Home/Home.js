@@ -11,14 +11,15 @@ export default function Home(props) {
   const [user, setUser] = useState({
     name: "",
     currentAge: "",
+    lifeExpectancy: "",
     monthlyExpenses: "",
     percentExpenses: "",
     monthlySavings: "",
     totalSavings: "",
-    inflationRate: "3",
     percentStocks: "",
     stocksReturn: "7",
-    lifeExpectancy: "",
+    inflationRate: "3",
+    taxRate: "20",
   });
   const [survey, setSurvey] = useState({
     nextAction: "",
@@ -33,14 +34,15 @@ export default function Home(props) {
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
+  //   lifeExpectancy: "95",
   //   monthlyExpenses: "4000",
   //   percentExpenses: "80",
   //   monthlySavings: "2000",
   //   totalSavings: "250000",
-  //   inflationRate: "3",
   //   percentStocks: "80",
   //   stocksReturn: "7",
-  //   lifeExpectancy: "95",
+  //   inflationRate: "3",
+  //   taxRate: "20",
   // });
   // const [survey, setSurvey] = useState({
   //   nextAction: "",

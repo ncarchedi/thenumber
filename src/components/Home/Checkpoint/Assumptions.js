@@ -27,6 +27,8 @@ export default function Assumptions(props) {
     setPercentStocksInput,
     lifeExpectancyInput,
     setLifeExpectancyInput,
+    taxRateInput,
+    setTaxRateInput,
   } = props;
 
   return (
@@ -157,6 +159,21 @@ export default function Assumptions(props) {
             fullWidth
           />
         </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="taxRate"
+            name="taxRate"
+            label="Tax rate on withdrawals"
+            value={taxRateInput}
+            onChange={(e) => setTaxRateInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{ inputComponent: PercentInputFormat }}
+            fullWidth
+          />
+        </Grid>
         <Grid item xs={12} style={{ textAlign: "center" }}>
           <Button endIcon={<ReplayIcon />} type="submit">
             Update Results
@@ -185,4 +202,6 @@ Assumptions.propTypes = {
   setPercentStocksInput: PropTypes.func.isRequired,
   lifeExpectancyInput: PropTypes.string.isRequired,
   setLifeExpectancyInput: PropTypes.func.isRequired,
+  taxRateInput: PropTypes.string.isRequired,
+  setTaxRateInput: PropTypes.func.isRequired,
 };
