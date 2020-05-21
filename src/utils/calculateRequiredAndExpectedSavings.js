@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 export default function calculateRequiredAndExpectedSavings(
   currentAge,
   monthlyExpenses,
+  percentExpenses,
   monthlySavings,
   totalSavings,
   inflationRate,
@@ -11,7 +12,7 @@ export default function calculateRequiredAndExpectedSavings(
   percentStocks,
   lifeExpectancy
 ) {
-  const annualExpenses = monthlyExpenses * 12;
+  const annualExpenses = monthlyExpenses * 12 * (percentExpenses / 100);
   const annualSavings = monthlySavings * 12;
   const annualReturn = stocksReturn * (percentStocks / 100);
 

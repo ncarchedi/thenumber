@@ -31,6 +31,7 @@ export default function Results(props) {
   const {
     currentAge,
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
@@ -47,6 +48,7 @@ export default function Results(props) {
   } = calculateRequiredAndExpectedSavings(
     currentAge,
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
@@ -98,6 +100,7 @@ Results.propTypes = {
   user: PropTypes.exact({
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,

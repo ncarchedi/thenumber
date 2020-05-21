@@ -56,6 +56,31 @@ export default [
     },
   },
   {
+    type: "MultipleChoiceQuestion",
+    inputType: "string",
+    variableName: "percentExpenses",
+    content: {
+      prompt:
+        "How do you expect your living expenses to change <em>after</em> you achieve financial independence? 💸",
+      answers: [
+        {
+          label: "My expenses will probably increase",
+          value: "120",
+        },
+        {
+          label: "My expenses will stay about the same",
+          value: "100",
+        },
+        {
+          label: "My expenses will probably decrease",
+          value: "80",
+        },
+      ],
+      helperText:
+        "Ignore the impact of inflation—we'll take care of that for you. Are there costs that you have now that you won't have in the future (e.g. a mortgage)? Do you expect to spend money on new things (e.g. travel)?",
+    },
+  },
+  {
     type: "TextQuestion",
     inputType: "dollar",
     variableName: "monthlySavings",
@@ -109,7 +134,7 @@ export default [
     inputType: "number",
     variableName: "lifeExpectancy",
     content: {
-      prompt: "What age should we assume you'll live to?",
+      prompt: "What age should we assume you'll live to? 🧓🏽",
       helperText:
         "Picking a higher number means you'll need to save more, but it also means you're less likely to run out of money later in life.",
     },

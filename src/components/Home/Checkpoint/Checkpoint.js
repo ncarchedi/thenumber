@@ -21,6 +21,7 @@ export default function Checkpoint(props) {
   const { user, setUser, goToNextStage } = props;
   const {
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
@@ -32,6 +33,9 @@ export default function Checkpoint(props) {
   // use props for initial assumptions form state
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
     monthlyExpenses
+  );
+  const [percentExpensesInput, setPercentExpensesInput] = useState(
+    percentExpenses
   );
   const [monthlySavingsInput, setMonthlySavingsInput] = useState(
     monthlySavings
@@ -50,6 +54,7 @@ export default function Checkpoint(props) {
     setUser({
       ...user,
       monthlyExpenses: monthlyExpensesInput,
+      percentExpenses: percentExpensesInput,
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
       inflationRate: inflationRateInput,
@@ -67,6 +72,8 @@ export default function Checkpoint(props) {
             updateInputs={updateInputs}
             monthlyExpensesInput={monthlyExpensesInput}
             setMonthlyExpensesInput={setMonthlyExpensesInput}
+            percentExpensesInput={percentExpensesInput}
+            setPercentExpensesInput={setPercentExpensesInput}
             monthlySavingsInput={monthlySavingsInput}
             setMonthlySavingsInput={setMonthlySavingsInput}
             totalSavingsInput={totalSavingsInput}
@@ -94,6 +101,7 @@ Checkpoint.propTypes = {
     name: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,

@@ -13,6 +13,8 @@ export default function Assumptions(props) {
     updateInputs,
     monthlyExpensesInput,
     setMonthlyExpensesInput,
+    percentExpensesInput,
+    setPercentExpensesInput,
     monthlySavingsInput,
     setMonthlySavingsInput,
     totalSavingsInput,
@@ -45,6 +47,21 @@ export default function Assumptions(props) {
               shrink: true,
             }}
             InputProps={{ inputComponent: DollarInputFormat }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="percentExpenses"
+            name="percentExpenses"
+            label="Future expenses"
+            value={percentExpensesInput}
+            onChange={(e) => setPercentExpensesInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{ inputComponent: PercentInputFormat }}
             fullWidth
           />
         </Grid>
@@ -154,6 +171,8 @@ Assumptions.propTypes = {
   updateInputs: PropTypes.func.isRequired,
   monthlyExpensesInput: PropTypes.string.isRequired,
   setMonthlyExpensesInput: PropTypes.func.isRequired,
+  percentExpensesInput: PropTypes.string.isRequired,
+  setPercentExpensesInput: PropTypes.func.isRequired,
   monthlySavingsInput: PropTypes.string.isRequired,
   setMonthlySavingsInput: PropTypes.func.isRequired,
   totalSavingsInput: PropTypes.string.isRequired,
