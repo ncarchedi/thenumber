@@ -8,23 +8,18 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Emoji from "../General/Emoji";
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+import encode from "../../utils/encode";
 
 export default function FeedbackModal(props) {
   const { name, open, setOpen } = props;
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState("");
 
   const handleSubmit = (e) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "feedback", name, email, message }),
+      body: encode({ "form-name": "feedback", name, email, feedback }),
     })
       .then(props.onCloseModal)
       .catch((error) => alert(error));
@@ -36,7 +31,7 @@ export default function FeedbackModal(props) {
   const handleClose = () => {
     setOpen(false);
     setEmail("");
-    setMessage("");
+    setFeedback("");
   };
 
   return (
@@ -64,10 +59,10 @@ export default function FeedbackModal(props) {
             required
           />
           <TextField
-            name="message"
+            name="feedback"
             label="Feedback"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
             variant="outlined"
             multiline
             rows={3}

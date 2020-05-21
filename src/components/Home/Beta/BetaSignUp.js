@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import BigButton from "../../General/BigButton";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Emoji from "../../General/Emoji";
+import encode from "../../../utils/encode";
 
 const useStyles = makeStyles((theme) => ({
   betaText: {
@@ -19,6 +20,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BetaSignUp(props) {
   const classes = useStyles();
+  const { name } = props;
+  const [email, setEmail] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = (e) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "betaSignUp", name, email, feedback }),
+    })
+      .then(props.onCloseModal)
+      .catch((error) => alert(error));
+
+    e.preventDefault();
+  };
 
   return (
     <Container maxWidth="sm">
@@ -35,40 +51,42 @@ export default function BetaSignUp(props) {
           beta...
         </em>
       </Typography>
-      <form className={classes.form} onSubmit={() => console.log("test")}>
+      <form className={classes.form} onSubmit={handleSubmit}>
         <TextField
           type="email"
           name="email"
           label="Email"
-          // value={email}
-          // onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
           fullWidth
           required
         />
         <TextField
-          name="message"
+          name="feedback"
           label="Feedback (optional)"
           placeholder="I would love The Number even more if..."
-          // value={message}
-          // onChange={(e) => setMessage(e.target.value)}
+          value={feedback}
+          onChange={(e) => setFeedback(e.target.value)}
           variant="outlined"
           multiline
           rows={3}
           margin="normal"
           fullWidth
         />
+        <BigButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          endIcon={<NotificationsIcon />}
+        >
+          Get notified
+        </BigButton>
       </form>
-      <BigButton
-        variant="contained"
-        color="primary"
-        endIcon={<NotificationsIcon />}
-        // onClick={startOver}
-      >
-        Get notified
-      </BigButton>
     </Container>
   );
 }
 
-BetaSignUp.propTypes = {};
+BetaSignUp.propTypes = {
+  name: PropTypes.string.isRequired,
+};
