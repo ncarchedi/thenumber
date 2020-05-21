@@ -47,7 +47,7 @@ export default function MultipleChoiceQuestion(props) {
 
   return (
     <React.Fragment>
-      <Typography variant="h5" className={classes.prompt}>
+      <Typography variant="h5" component="h1" className={classes.prompt}>
         <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
       <ul className={classes.answers}>{answers.map(renderAnswer)}</ul>

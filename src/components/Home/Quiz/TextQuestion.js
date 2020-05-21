@@ -42,7 +42,7 @@ export default function TextQuestion(props) {
 
   return (
     <React.Fragment>
-      <Typography variant="h5" className={classes.prompt}>
+      <Typography variant="h5" component="h1" className={classes.prompt}>
         <div dangerouslySetInnerHTML={{ __html: prompt }} />
       </Typography>
       <form onSubmit={handleSubmit}>

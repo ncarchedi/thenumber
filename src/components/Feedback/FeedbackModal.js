@@ -61,6 +61,7 @@ export default function FeedbackModal(props) {
             onChange={(e) => setEmail(e.target.value)}
             variant="outlined"
             fullWidth
+            required
           />
           <TextField
             name="message"
@@ -72,6 +73,7 @@ export default function FeedbackModal(props) {
             rows={3}
             margin="normal"
             fullWidth
+            required
           />
         </form>
       </DialogContent>
