@@ -9,7 +9,7 @@ import Results from "./Results";
 const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
-    alignItems: "center",
+    marginTop: theme.spacing(2),
   },
   resultsContainer: {
     textAlign: "center",
@@ -21,16 +21,22 @@ export default function Checkpoint(props) {
   const { user, setUser, goToNextStage } = props;
   const {
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
     stocksReturn,
     percentStocks,
+    lifeExpectancy,
+    taxRate,
   } = user;
 
   // use props for initial assumptions form state
   const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
     monthlyExpenses
+  );
+  const [percentExpensesInput, setPercentExpensesInput] = useState(
+    percentExpenses
   );
   const [monthlySavingsInput, setMonthlySavingsInput] = useState(
     monthlySavings
@@ -39,6 +45,10 @@ export default function Checkpoint(props) {
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
   const [stocksReturnInput, setStocksReturnInput] = useState(stocksReturn);
   const [percentStocksInput, setPercentStocksInput] = useState(percentStocks);
+  const [lifeExpectancyInput, setLifeExpectancyInput] = useState(
+    lifeExpectancy
+  );
+  const [taxRateInput, setTaxRateInput] = useState(taxRate);
 
   const updateInputs = (e) => {
     e.preventDefault();
@@ -46,11 +56,14 @@ export default function Checkpoint(props) {
     setUser({
       ...user,
       monthlyExpenses: monthlyExpensesInput,
+      percentExpenses: percentExpensesInput,
       monthlySavings: monthlySavingsInput,
       totalSavings: totalSavingsInput,
       inflationRate: inflationRateInput,
       stocksReturn: stocksReturnInput,
       percentStocks: percentStocksInput,
+      lifeExpectancy: lifeExpectancyInput,
+      taxRate: taxRateInput,
     });
   };
 
@@ -62,6 +75,8 @@ export default function Checkpoint(props) {
             updateInputs={updateInputs}
             monthlyExpensesInput={monthlyExpensesInput}
             setMonthlyExpensesInput={setMonthlyExpensesInput}
+            percentExpensesInput={percentExpensesInput}
+            setPercentExpensesInput={setPercentExpensesInput}
             monthlySavingsInput={monthlySavingsInput}
             setMonthlySavingsInput={setMonthlySavingsInput}
             totalSavingsInput={totalSavingsInput}
@@ -72,6 +87,10 @@ export default function Checkpoint(props) {
             setStocksReturnInput={setStocksReturnInput}
             percentStocksInput={percentStocksInput}
             setPercentStocksInput={setPercentStocksInput}
+            lifeExpectancyInput={lifeExpectancyInput}
+            setLifeExpectancyInput={setLifeExpectancyInput}
+            taxRateInput={taxRateInput}
+            setTaxRateInput={setTaxRateInput}
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
@@ -87,11 +106,14 @@ Checkpoint.propTypes = {
     name: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,
     stocksReturn: PropTypes.string.isRequired,
     percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
   goToNextStage: PropTypes.func.isRequired,

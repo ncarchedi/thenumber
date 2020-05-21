@@ -34,7 +34,7 @@ export default function MultipleChoiceQuestion(props) {
   const renderAnswer = (answer) => {
     return (
       <Button
-        key={answer.value}
+        key={answer.label}
         className={classes.answer}
         onClick={() => onSubmitAnswer(variableName, answer.value)}
         variant="outlined"

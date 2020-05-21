@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   supportingText: {
     maxWidth: theme.breakpoints.values.sm + 50,
     margin: theme.spacing(4, "auto"),
-    fontWeight: 400,
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
@@ -31,11 +31,14 @@ export default function Results(props) {
   const {
     currentAge,
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
     stocksReturn,
     percentStocks,
+    lifeExpectancy,
+    taxRate,
   } = user;
 
   const {
@@ -46,11 +49,14 @@ export default function Results(props) {
   } = calculateRequiredAndExpectedSavings(
     currentAge,
     monthlyExpenses,
+    percentExpenses,
     monthlySavings,
     totalSavings,
     inflationRate,
     stocksReturn,
-    percentStocks
+    percentStocks,
+    lifeExpectancy,
+    taxRate
   );
 
   const breakeven = canRetire.findIndex((e) => e);
@@ -94,13 +100,17 @@ export default function Results(props) {
 
 Results.propTypes = {
   user: PropTypes.exact({
+    name: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
     monthlySavings: PropTypes.string.isRequired,
     totalSavings: PropTypes.string.isRequired,
     inflationRate: PropTypes.string.isRequired,
     stocksReturn: PropTypes.string.isRequired,
     percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
   }),
   goToNextStage: PropTypes.func.isRequired,
 };

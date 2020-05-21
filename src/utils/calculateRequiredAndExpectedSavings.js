@@ -4,21 +4,24 @@ import PropTypes from "prop-types";
 export default function calculateRequiredAndExpectedSavings(
   currentAge,
   monthlyExpenses,
+  percentExpenses,
   monthlySavings,
   totalSavings,
   inflationRate,
   stocksReturn,
-  percentStocks
+  percentStocks,
+  lifeExpectancy,
+  taxRate
 ) {
-  const maxAge = 100;
-  const annualExpenses = monthlyExpenses * 12;
+  const annualExpenses = monthlyExpenses * 12 * (percentExpenses / 100);
+  const annualWithdrawal = annualExpenses / (1 - taxRate / 100);
   const annualSavings = monthlySavings * 12;
   const annualReturn = stocksReturn * (percentStocks / 100);
 
   const futureSpending = [];
 
-  for (let i = 0; i <= maxAge - currentAge; i++) {
-    futureSpending.push(annualExpenses * (1 + inflationRate / 100) ** i);
+  for (let i = 0; i <= lifeExpectancy - currentAge; i++) {
+    futureSpending.push(annualWithdrawal * (1 + inflationRate / 100) ** i);
   }
 
   const finance = new Finance();
@@ -37,8 +40,8 @@ export default function calculateRequiredAndExpectedSavings(
     );
     canRetire.push(expectedSavings[i] >= requiredSavings[i]);
 
-    // show 3 years after breakeven
-    if (canRetire[i - 3]) break;
+    // show 5 years after breakeven
+    if (canRetire[i - 5]) break;
   }
 
   return {
@@ -57,4 +60,6 @@ calculateRequiredAndExpectedSavings.propTypes = {
   inflationRate: PropTypes.number.isRequired,
   stocksReturn: PropTypes.number.isRequired,
   percentStocks: PropTypes.number.isRequired,
+  lifeExpectancy: PropTypes.number.isRequired,
+  taxRate: PropTypes.number.isRequired,
 };
