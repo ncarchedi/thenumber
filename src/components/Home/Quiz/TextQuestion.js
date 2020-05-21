@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import NumberFormat from "react-number-format";
+import DollarInputFormat from "../../General/DollarInputFormat";
 import ContinueButton from "./ContinueButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,33 +20,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-
-function DollarInputFormat(props) {
-  const { inputRef, onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={inputRef}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      thousandSeparator
-      isNumericString
-      prefix="$"
-    />
-  );
-}
-
-DollarInputFormat.propTypes = {
-  inputRef: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 export default function TextQuestion(props) {
   const classes = useStyles();
@@ -81,9 +54,7 @@ export default function TextQuestion(props) {
             placeholder="Type your answer here..."
             autoFocus
             fullWidth
-            InputProps={{
-              inputComponent: DollarInputFormat,
-            }}
+            InputProps={{ inputComponent: DollarInputFormat }}
           ></TextField>
         ) : (
           <TextField

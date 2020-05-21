@@ -18,7 +18,7 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "The amount of money you need to achieve FI—or <em>your number</em>—depends on several factors—including your cost of living, expected inflation and expected investment returns. 📝",
+        "The amount of money you need to achieve FI—<em>your number</em>—depends on several factors including your cost of living, expected inflation and expected investment returns. 📝",
     },
   },
   {

@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import ReplayIcon from "@material-ui/icons/Replay";
+import DollarInputFormat from "../../General/DollarInputFormat";
+import PercentInputFormat from "../../General/PercentInputFormat";
 
 export default function Assumptions(props) {
   const {
@@ -41,11 +42,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
+            InputProps={{ inputComponent: DollarInputFormat }}
             fullWidth
           />
         </Grid>
@@ -60,11 +57,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
+            InputProps={{ inputComponent: DollarInputFormat }}
             fullWidth
           />
         </Grid>
@@ -79,11 +72,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
+            InputProps={{ inputComponent: DollarInputFormat }}
             fullWidth
           />
         </Grid>
@@ -98,9 +87,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">%</InputAdornment>,
-            }}
+            InputProps={{ inputComponent: PercentInputFormat }}
             fullWidth
           />
         </Grid>
@@ -118,9 +105,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">%</InputAdornment>,
-            }}
+            InputProps={{ inputComponent: PercentInputFormat }}
             fullWidth
           />
         </Grid>
@@ -135,9 +120,7 @@ export default function Assumptions(props) {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">%</InputAdornment>,
-            }}
+            InputProps={{ inputComponent: PercentInputFormat }}
             fullWidth
           />
         </Grid>

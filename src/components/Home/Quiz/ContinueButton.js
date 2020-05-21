@@ -6,7 +6,7 @@ import DoneIcon from "@material-ui/icons/Done";
 
 const useStyles = makeStyles((theme) => ({
   buttonContainer: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(4),
   },
   orPressEnter: {
     alignSelf: "center",
