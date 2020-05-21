@@ -9,6 +9,7 @@ import Results from "./Results";
 const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
+    marginTop: theme.spacing(2),
   },
   resultsContainer: {
     textAlign: "center",
