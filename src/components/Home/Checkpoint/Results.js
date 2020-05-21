@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
-// import BigButton from "../../General/BigButton";
-// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import BigButton from "../../General/BigButton";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   supportingText: {
     maxWidth: theme.breakpoints.values.sm + 50,
     margin: theme.spacing(4, "auto"),
-    fontWeight: 400,
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
@@ -86,14 +86,14 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      {/* <BigButton
+      <BigButton
         variant="contained"
         color="primary"
         endIcon={<ArrowForwardIcon />}
         onClick={() => goToNextStage()}
       >
         Let's do this!
-      </BigButton> */}
+      </BigButton>
     </React.Fragment>
   );
 }
