@@ -8,16 +8,16 @@ export default function calculateRequiredAndExpectedSavings(
   totalSavings,
   inflationRate,
   stocksReturn,
-  percentStocks
+  percentStocks,
+  lifeExpectancy
 ) {
-  const maxAge = 100;
   const annualExpenses = monthlyExpenses * 12;
   const annualSavings = monthlySavings * 12;
   const annualReturn = stocksReturn * (percentStocks / 100);
 
   const futureSpending = [];
 
-  for (let i = 0; i <= maxAge - currentAge; i++) {
+  for (let i = 0; i <= lifeExpectancy - currentAge; i++) {
     futureSpending.push(annualExpenses * (1 + inflationRate / 100) ** i);
   }
 
@@ -57,4 +57,5 @@ calculateRequiredAndExpectedSavings.propTypes = {
   inflationRate: PropTypes.number.isRequired,
   stocksReturn: PropTypes.number.isRequired,
   percentStocks: PropTypes.number.isRequired,
+  lifeExpectancy: PropTypes.number.isRequired,
 };

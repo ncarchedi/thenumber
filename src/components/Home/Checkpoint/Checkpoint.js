@@ -26,6 +26,7 @@ export default function Checkpoint(props) {
     inflationRate,
     stocksReturn,
     percentStocks,
+    lifeExpectancy,
   } = user;
 
   // use props for initial assumptions form state
@@ -39,6 +40,9 @@ export default function Checkpoint(props) {
   const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
   const [stocksReturnInput, setStocksReturnInput] = useState(stocksReturn);
   const [percentStocksInput, setPercentStocksInput] = useState(percentStocks);
+  const [lifeExpectancyInput, setLifeExpectancyInput] = useState(
+    lifeExpectancy
+  );
 
   const updateInputs = (e) => {
     e.preventDefault();
@@ -51,6 +55,7 @@ export default function Checkpoint(props) {
       inflationRate: inflationRateInput,
       stocksReturn: stocksReturnInput,
       percentStocks: percentStocksInput,
+      lifeExpectancy: lifeExpectancyInput,
     });
   };
 
@@ -72,6 +77,8 @@ export default function Checkpoint(props) {
             setStocksReturnInput={setStocksReturnInput}
             percentStocksInput={percentStocksInput}
             setPercentStocksInput={setPercentStocksInput}
+            lifeExpectancyInput={lifeExpectancyInput}
+            setLifeExpectancyInput={setLifeExpectancyInput}
           />
         </Grid>
         <Grid item xs={12} md={9} className={classes.resultsContainer}>
@@ -92,6 +99,7 @@ Checkpoint.propTypes = {
     inflationRate: PropTypes.string.isRequired,
     stocksReturn: PropTypes.string.isRequired,
     percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
   goToNextStage: PropTypes.func.isRequired,

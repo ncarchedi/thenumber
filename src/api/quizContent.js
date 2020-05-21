@@ -104,4 +104,14 @@ export default [
         "Don't worry if you're not entirely sure about this. Part of this process is about increasing your financial awareness.",
     },
   },
+  {
+    type: "TextQuestion",
+    inputType: "number",
+    variableName: "lifeExpectancy",
+    content: {
+      prompt: "What age should we assume you'll live to?",
+      helperText:
+        "Picking a higher number means you'll need to save more, but it also means you're less likely to run out of money later in life.",
+    },
+  },
 ];

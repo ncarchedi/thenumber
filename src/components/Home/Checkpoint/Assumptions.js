@@ -23,6 +23,8 @@ export default function Assumptions(props) {
     setStocksReturnInput,
     percentStocksInput,
     setPercentStocksInput,
+    lifeExpectancyInput,
+    setLifeExpectancyInput,
   } = props;
 
   return (
@@ -92,6 +94,20 @@ export default function Assumptions(props) {
           />
         </Grid>
         <Grid item xs={12}>
+          <TextField
+            id="lifeExpectancy"
+            name="lifeExpectancy"
+            label="Life expectancy"
+            value={lifeExpectancyInput}
+            onChange={(e) => setLifeExpectancyInput(e.target.value)}
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
           <Typography variant="h6">Other Assumptions</Typography>
         </Grid>
         <Grid item xs={12}>
@@ -148,4 +164,6 @@ Assumptions.propTypes = {
   setStocksReturnInput: PropTypes.func.isRequired,
   percentStocksInput: PropTypes.string.isRequired,
   setPercentStocksInput: PropTypes.func.isRequired,
+  lifeExpectancyInput: PropTypes.string.isRequired,
+  setLifeExpectancyInput: PropTypes.func.isRequired,
 };
