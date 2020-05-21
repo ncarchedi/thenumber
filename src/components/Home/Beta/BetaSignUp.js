@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Thanks(props) {
+export default function BetaSignUp(props) {
   const classes = useStyles();
 
   return (
@@ -71,4 +71,4 @@ export default function Thanks(props) {
   );
 }
 
-Thanks.propTypes = {};
+BetaSignUp.propTypes = {};
