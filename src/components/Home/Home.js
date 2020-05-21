@@ -18,9 +18,16 @@ export default function Home(props) {
     percentStocks: "",
     stocksReturn: "7",
   });
+  const [survey, setSurvey] = useState({
+    nextAction: "",
+    productFeedback: "",
+    anythingElse: "",
+    provideEmail: "",
+    email: "",
+  });
 
-  // // For testing purposes only
-  // const [activeStage, setActiveStage] = useState("quiz");
+  // // For testing purposes only //////////////////////////////
+  // const [activeStage, setActiveStage] = useState("survey");
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -30,6 +37,13 @@ export default function Home(props) {
   //   inflationRate: "3",
   //   percentStocks: "80",
   //   stocksReturn: "7",
+  // });
+  // const [survey, setSurvey] = useState({
+  //   nextAction: "",
+  //   productFeedback: "",
+  //   anythingElse: "",
+  //   provideEmail: "",
+  //   email: "",
   // });
 
   const setUserValue = (key, value) => {
@@ -43,6 +57,15 @@ export default function Home(props) {
     setUser(updatedUser);
   };
 
+  const setSurveyValue = (key, value) => {
+    const updatedSurvey = {
+      ...survey,
+      [key]: value,
+    };
+
+    setSurvey(updatedSurvey);
+  };
+
   const renderHome = () => {
     let stage;
 
@@ -52,7 +75,7 @@ export default function Home(props) {
           <Quiz
             questions={quizContent}
             userName={user.name}
-            setUserValue={setUserValue}
+            setValue={setUserValue}
             setActiveStage={setActiveStage}
           />
         );
@@ -71,7 +94,7 @@ export default function Home(props) {
           <Survey
             questions={surveyContent}
             userName={user.name}
-            setUserValue={setUserValue}
+            setValue={setSurveyValue}
           />
         );
         break;

@@ -29,15 +29,14 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, userName, setUserValue, setActiveStage } = props;
+  const { questions, userName, setValue, setActiveStage } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
   };
 
   const handleSubmitAnswer = (variableName, variableValue) => {
-    if (variableName && variableValue)
-      setUserValue(variableName, variableValue);
+    if (variableName && variableValue) setValue(variableName, variableValue);
 
     if (questionNumber >= questions.length) {
       setActiveStage("checkpoint");
@@ -48,6 +47,7 @@ export default function Quiz(props) {
 
   const currentQuestion = questions[questionNumber - 1];
 
+  // TODO: make this less hacky
   // replace blank in second question with user's name
   let updatedQuestion = currentQuestion.content.prompt;
   if (questionNumber === 2) {
@@ -75,6 +75,6 @@ export default function Quiz(props) {
 Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   userName: PropTypes.string.isRequired,
-  setUserValue: PropTypes.func.isRequired,
+  setValue: PropTypes.func.isRequired,
   setActiveStage: PropTypes.func, // optional
 };
