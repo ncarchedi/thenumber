@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
-import BigButton from "../../General/BigButton";
+// import BigButton from "../../General/BigButton";
+// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -80,14 +80,14 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      <BigButton
+      {/* <BigButton
         variant="contained"
         color="primary"
         endIcon={<ArrowForwardIcon />}
         onClick={() => goToNextStage()}
       >
         Let's do this!
-      </BigButton>
+      </BigButton> */}
     </React.Fragment>
   );
 }
