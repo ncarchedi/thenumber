@@ -54,7 +54,7 @@ export default function Assumptions(props) {
           <TextField
             id="percentExpenses"
             name="percentExpenses"
-            label="Future expenses"
+            label="Future expenses (% of current)"
             value={percentExpensesInput}
             onChange={(e) => setPercentExpensesInput(e.target.value)}
             variant="outlined"
@@ -99,7 +99,7 @@ export default function Assumptions(props) {
           <TextField
             id="percentStocks"
             name="percentStocks"
-            label="Percentage stocks"
+            label="Stocks (% of total savings)"
             value={percentStocksInput}
             onChange={(e) => setPercentStocksInput(e.target.value)}
             variant="outlined"
