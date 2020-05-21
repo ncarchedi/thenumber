@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
-import Thanks from "./Thanks/Thanks";
+import BetaSignUp from "./Beta/BetaSignUp";
 import quizContent from "../../api/quizContent";
 import surveyContent from "../../api/surveyContent";
 
@@ -30,7 +30,7 @@ export default function Home(props) {
   });
 
   // // For testing purposes only ----------------------------
-  // const [activeStage, setActiveStage] = useState(1);
+  // const [activeStage, setActiveStage] = useState(3);
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -77,10 +77,6 @@ export default function Home(props) {
     setActiveStage(activeStage + 1);
   };
 
-  const startOver = () => {
-    setActiveStage(0);
-  };
-
   const renderHome = () => {
     let stage;
 
@@ -115,7 +111,7 @@ export default function Home(props) {
         );
         break;
       case 3:
-        stage = <Thanks startOver={startOver} />;
+        stage = <BetaSignUp name={user.name} />;
         break;
       default:
         stage = null;

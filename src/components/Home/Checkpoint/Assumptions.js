@@ -56,7 +56,7 @@ export default function Assumptions(props) {
             aria-controls="your-assumptions"
             id="your-assumptions"
           >
-            <Typography variant="h6" className={classes.heading}>
+            <Typography variant="h6" component="h2" className={classes.heading}>
               Your Assumptions
             </Typography>
           </ExpansionPanelSummary>
@@ -160,7 +160,7 @@ export default function Assumptions(props) {
             aria-controls="other-assumptions"
             id="other-assumptions"
           >
-            <Typography variant="h6" className={classes.heading}>
+            <Typography variant="h6" component="h2" className={classes.heading}>
               Other Assumptions
             </Typography>
           </ExpansionPanelSummary>

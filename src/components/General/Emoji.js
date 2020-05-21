@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 
 export default function Emoji(props) {
   const { symbol, label } = props;
@@ -8,3 +9,8 @@ export default function Emoji(props) {
     </span>
   );
 }
+
+Emoji.propTypes = {
+  symbol: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};

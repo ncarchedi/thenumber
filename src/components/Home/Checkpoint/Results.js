@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
-// import BigButton from "../../General/BigButton";
-// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import BigButton from "../../General/BigButton";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -66,7 +66,7 @@ export default function Results(props) {
 
   return (
     <React.Fragment>
-      <Typography variant="h2" className={classes.headerText}>
+      <Typography variant="h2" component="h1" className={classes.headerText}>
         <CountUp
           end={retirementAmount}
           prefix="$"
@@ -74,7 +74,7 @@ export default function Results(props) {
           duration={1.5}
         />
       </Typography>
-      <Typography variant="h6" className={classes.supportingText}>
+      <Typography variant="h6" component="p" className={classes.supportingText}>
         If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
         {yearsToRetirement} years, you'll be on track to retire at age{" "}
         {retirementAge} with a total of {toDollars(retirementAmount)} in
@@ -86,14 +86,14 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      {/* <BigButton
+      <BigButton
         variant="contained"
         color="primary"
         endIcon={<ArrowForwardIcon />}
         onClick={() => goToNextStage()}
       >
         Let's do this!
-      </BigButton> */}
+      </BigButton>
     </React.Fragment>
   );
 }
