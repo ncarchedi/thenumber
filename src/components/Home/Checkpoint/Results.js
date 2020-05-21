@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
+import BigButton from "../../General/BigButton";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -23,15 +23,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(4, "auto"),
     fontWeight: 400,
   },
-  actionButton: {
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(2, 4),
-    fontSize: "1.2rem",
-  },
 }));
 
 export default function Results(props) {
   const classes = useStyles();
+  const { user, goToNextStage } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -40,7 +36,7 @@ export default function Results(props) {
     inflationRate,
     stocksReturn,
     percentStocks,
-  } = props;
+  } = user;
 
   const {
     age,
@@ -84,26 +80,27 @@ export default function Results(props) {
         expectedSavings={expectedSavings}
         retirementAge={retirementAge}
       />
-      <Button
-        className={classes.actionButton}
+      <BigButton
         variant="contained"
         color="primary"
-        size="large"
         endIcon={<ArrowForwardIcon />}
-        onClick={() => alert("Coming soon!")}
+        onClick={() => goToNextStage()}
       >
         Let's do this!
-      </Button>
+      </BigButton>
     </React.Fragment>
   );
 }
 
 Results.propTypes = {
-  currentAge: PropTypes.string.isRequired,
-  monthlyExpenses: PropTypes.string.isRequired,
-  monthlySavings: PropTypes.string.isRequired,
-  totalSavings: PropTypes.string.isRequired,
-  inflationRate: PropTypes.string.isRequired,
-  stocksReturn: PropTypes.string.isRequired,
-  percentStocks: PropTypes.string.isRequired,
+  user: PropTypes.exact({
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+  }),
+  goToNextStage: PropTypes.func.isRequired,
 };

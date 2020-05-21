@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
+import Thanks from "./Thanks/Thanks";
 import quizContent from "../../api/quizContent";
+import surveyContent from "../../api/surveyContent";
 
 export default function Home(props) {
-  const [showCheckpoint, setShowCheckpoint] = useState(false);
+  const [activeStage, setActiveStage] = useState(0);
   const [user, setUser] = useState({
     name: "",
     currentAge: "",
@@ -16,9 +18,16 @@ export default function Home(props) {
     percentStocks: "",
     stocksReturn: "7",
   });
+  const [survey, setSurvey] = useState({
+    nextAction: "",
+    productFeedback: "",
+    anythingElse: "",
+    provideEmail: "",
+    email: "",
+  });
 
-  // // For testing purposes only
-  // const [showCheckpoint, setShowCheckpoint] = useState(true);
+  // // For testing purposes only ----------------------------
+  // const [activeStage, setActiveStage] = useState(0);
   // const [user, setUser] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -29,6 +38,14 @@ export default function Home(props) {
   //   percentStocks: "80",
   //   stocksReturn: "7",
   // });
+  // const [survey, setSurvey] = useState({
+  //   nextAction: "",
+  //   productFeedback: "",
+  //   anythingElse: "",
+  //   provideEmail: "",
+  //   email: "",
+  // });
+  // // ------------------------------------------------------
 
   const setUserValue = (key, value) => {
     const updatedUser = {
@@ -41,16 +58,67 @@ export default function Home(props) {
     setUser(updatedUser);
   };
 
-  return showCheckpoint ? (
-    <Checkpoint user={user} setUser={setUser} />
-  ) : (
-    <Quiz
-      questions={quizContent}
-      userName={user.name}
-      setUserValue={setUserValue}
-      setShowCheckpoint={setShowCheckpoint}
-    />
-  );
+  const setSurveyValue = (key, value) => {
+    const updatedSurvey = {
+      ...survey,
+      [key]: value,
+    };
+
+    setSurvey(updatedSurvey);
+  };
+
+  const goToNextStage = () => {
+    setActiveStage(activeStage + 1);
+  };
+
+  const startOver = () => {
+    setActiveStage(0);
+  };
+
+  const renderHome = () => {
+    let stage;
+
+    switch (activeStage) {
+      case 0:
+        stage = (
+          <Quiz
+            questions={quizContent}
+            userName={user.name}
+            setValue={setUserValue}
+            goToNextStage={goToNextStage}
+          />
+        );
+        break;
+      case 1:
+        stage = (
+          <Checkpoint
+            user={user}
+            setUser={setUser}
+            goToNextStage={goToNextStage}
+          />
+        );
+        break;
+      case 2:
+        stage = (
+          <Quiz
+            questions={surveyContent}
+            userName={user.name}
+            setValue={setSurveyValue}
+            goToNextStage={goToNextStage}
+          />
+        );
+        break;
+      case 3:
+        stage = <Thanks startOver={startOver} />;
+        break;
+      default:
+        stage = null;
+    }
+
+    return stage;
+  };
+
+  return renderHome();
 }
 
 Home.propTypes = {

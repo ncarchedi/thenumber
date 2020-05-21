@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   answer: {
     margin: theme.spacing(1, 0),
     fontSize: "1.5rem",
+    justifyContent: "left",
     textTransform: "none",
     fontWeight: theme.typography.fontWeightRegular,
   },

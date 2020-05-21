@@ -29,26 +29,28 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, userName, setUserValue, setShowCheckpoint } = props;
+  const { questions, userName, setValue, goToNextStage } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
   };
 
   const handleSubmitAnswer = (variableName, variableValue) => {
-    if (variableName && variableValue)
-      setUserValue(variableName, variableValue);
+    if (variableName && variableValue) setValue(variableName, variableValue);
 
-    // TODO: un-hardcode when to show results?
-    if (questionNumber >= questions.length) {
-      setShowCheckpoint(true);
-    }
+    // if we've reached the end of the quiz
+    if (questionNumber >= questions.length) goToNextStage();
+
+    // if user opts out of providing their email
+    if (variableName === "provideEmail" && variableValue === "no")
+      goToNextStage();
 
     goToNextQuestion();
   };
 
   const currentQuestion = questions[questionNumber - 1];
 
+  // TODO: make this less hacky
   // replace blank in second question with user's name
   let updatedQuestion = currentQuestion.content.prompt;
   if (questionNumber === 2) {
@@ -76,6 +78,6 @@ export default function Quiz(props) {
 Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   userName: PropTypes.string.isRequired,
-  setUserValue: PropTypes.func.isRequired,
-  setShowCheckpoint: PropTypes.func.isRequired,
+  setValue: PropTypes.func.isRequired,
+  goToNextStage: PropTypes.func.isRequired,
 };
