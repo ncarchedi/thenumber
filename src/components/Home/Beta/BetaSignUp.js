@@ -30,7 +30,7 @@ export default function BetaSignUp(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "betaSignUp", name, email, feedback }),
     })
-      .then(props.onCloseModal)
+      .then(() => console.log("Beta sign up form sent!"))
       .catch((error) => alert(error));
 
     e.preventDefault();

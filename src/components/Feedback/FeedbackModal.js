@@ -21,6 +21,7 @@ export default function FeedbackModal(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "feedback", name, email, feedback }),
     })
+      .then(() => console.log("Feedback form sent!"))
       .then(props.onCloseModal)
       .catch((error) => alert(error));
 
@@ -47,7 +48,7 @@ export default function FeedbackModal(props) {
         <DialogContentText>
           <em>The Number</em> is a work in progress—and you can help shape it!
         </DialogContentText>
-        <form onSubmit={handleSubmit}>
+        <form>
           <TextField
             type="email"
             name="email"
