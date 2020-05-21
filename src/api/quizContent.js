@@ -11,28 +11,28 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "Hi, ___! In the next few minutes, let's figure out how much money you need to achieve financial independence and how soon you'll be able to get there. 🙌",
+        "Hi, ___! Let's talk about financial independence, or \"FI\" for short. <br><br>You've achieved FI when you have enough money to cover all of your future living expenses. You have the freedom to spend your time however you choose. If you choose to work (as many do), it's out of desire instead of necessity. 🕒",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "The amount of money you need to retire depends on a number of factors—including your cost of living, expected inflation and expected investment returns. 📝",
+        "The amount of money you need to achieve FI—or <em>your number</em>—depends on several factors—including your cost of living, expected inflation and expected investment returns. 📝",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "It may be counterintuitive, but the amount of money you need to retire actually <em>increases</em> over time. Any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
+        "It may be counterintuitive, but your number actually <em>increases</em> over time. Any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "In short, the amount you need to retire—your number—is a moving target. Let's figure it out together! 🎯",
+        "In short, your number is a moving target. Let's figure it out together! 🎯",
     },
   },
   {
@@ -42,7 +42,7 @@ export default [
     content: {
       prompt: "What's your current age? ⏳",
       helperText:
-        "By the way, I won't save any personal information you share with me unless you explicitly ask me to later on.",
+        "By the way, we won't save any personal information you share with us unless you explicitly ask us to later on.",
     },
   },
   {
@@ -81,7 +81,7 @@ export default [
     variableName: "percentStocks",
     content: {
       prompt:
-        "Which of the following best describes how your savings are allocated? 📈",
+        "Which of the following best describes how much of your savings are invested in stocks (or stock-based mutual funds, ETFs, etc.)? 📊",
       answers: [
         {
           label: "Mostly stocks",
@@ -95,7 +95,13 @@ export default [
           label: "Mostly not stocks",
           value: "20",
         },
+        {
+          label: "I have no idea 🙈",
+          value: "50",
+        },
       ],
+      helperText:
+        "Don't worry if you're not entirely sure about this. Part of this process is about increasing your financial awareness.",
     },
   },
 ];
