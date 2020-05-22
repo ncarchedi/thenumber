@@ -5,14 +5,10 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import BigButton from "../../General/BigButton";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import Emoji from "../../General/Emoji";
 import encode from "../../../utils/encode";
 
 const useStyles = makeStyles((theme) => ({
-  betaText: {
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     marginTop: theme.spacing(3),
   },
@@ -21,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gif: {
     margin: theme.spacing(4, "auto"),
+    maxWidth: theme.breakpoints.values.sm,
   },
 }));
 
@@ -45,10 +42,10 @@ export default function BetaSignUp(props) {
   };
 
   return (
-    <Container maxWidth="sm">
+    <React.Fragment>
       {showThanks ? (
-        <div className={classes.thanksContainer}>
-          <Typography variant="h3" component="h1">
+        <Container maxWidth="md" className={classes.thanksContainer}>
+          <Typography variant="h2" component="h1">
             Thanks, we'll be in touch!
           </Typography>
           <img
@@ -57,21 +54,16 @@ export default function BetaSignUp(props) {
             className={classes.gif}
             width="100%"
           />
-        </div>
+        </Container>
       ) : (
-        <div>
-          <Typography variant="h3" component="h1" paragraph>
-            Sign up for our beta <Emoji symbol="🤫" label="shushing face" />
+        <Container maxWidth="sm">
+          <Typography variant="h4" component="h1" paragraph>
+            Thanks for your feedback!{" "}
+            <Emoji symbol="👏" label="hands clapping" />
           </Typography>
           <Typography variant="subtitle1" paragraph>
-            Thanks for letting us know what you'd like to do next! We're still
-            collecting feedback to figure out what our users want most.
-          </Typography>
-          <Typography variant="subtitle1">
-            <em className={classes.betaText}>
-              In the meantime, leave your email to be notified when we launch
-              our beta...
-            </em>
+            We're actively working on new features to help you achieve financial
+            independence. Sign up below for updates and early access!
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
@@ -96,18 +88,13 @@ export default function BetaSignUp(props) {
               margin="normal"
               fullWidth
             />
-            <BigButton
-              type="submit"
-              variant="contained"
-              color="primary"
-              endIcon={<NotificationsIcon />}
-            >
-              Get notified
+            <BigButton type="submit" variant="contained" color="primary">
+              Sign up now
             </BigButton>
           </form>
-        </div>
+        </Container>
       )}
-    </Container>
+    </React.Fragment>
   );
 }
 

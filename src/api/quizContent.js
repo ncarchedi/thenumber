@@ -11,21 +11,21 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "Hi, ___! Let's talk about financial independence, or \"FI\" for short. <br><br>You've achieved FI when you have enough money to cover all of your future living expenses. You have the freedom to spend your time however you choose. If you choose to work (as many do), it's out of desire instead of necessity. 🕒",
+        "Hi, ___! Let's talk about financial independence. <br><br>You've achieved it when you have enough money to cover all future living expenses and the freedom to spend your time however you choose. If you continue to work (as many people do), it's out of desire instead of necessity. 🙋🏽",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "The amount of money you need to achieve FI—<em>your number</em>—depends on several factors including your cost of living, expected inflation and expected investment returns. 📝",
+        "The amount of money you need to achieve financial independence—<em>your number</em>—depends on several factors, including cost of living, inflation and investment returns. 🏠",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "It may be counterintuitive, but your number actually <em>increases</em> over time. Any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
+        "It may seem counterintuitive, but your number can actually <em>increase</em> over time. This is because any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
     },
   },
   {
@@ -75,6 +75,10 @@ export default [
           label: "My expenses will probably decrease",
           value: "80",
         },
+        {
+          label: "Your guess is as good as mine 🙈",
+          value: "100",
+        },
       ],
       helperText:
         "Ignore the impact of inflation—we'll take care of that for you. Are there costs that you have now that you won't have in the future (e.g. a mortgage)? Do you expect to spend money on new things (e.g. travel)?",
@@ -106,7 +110,7 @@ export default [
     variableName: "percentStocks",
     content: {
       prompt:
-        "Which of the following best describes how much of your savings are invested in stocks (or stock-based mutual funds, ETFs, etc.)? 📊",
+        "Which of the following best describes how much of your savings are invested in stocks (including stock-based mutual funds, ETFs, etc.)? 📊",
       answers: [
         {
           label: "Mostly stocks",
@@ -121,7 +125,7 @@ export default [
           value: "20",
         },
         {
-          label: "I have no idea 🙈",
+          label: "I have absolutely no idea 🤯",
           value: "50",
         },
       ],

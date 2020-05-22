@@ -7,19 +7,16 @@ export default [
       prompt: "What would you like to do next? 🤷🏽",
       answers: [
         {
-          label:
-            "Connect my bank accounts to automatically track my progress over time",
-          value: "connectAccounts",
+          label: "Link my bank accounts to track my progress over time",
+          value: "linkAccounts",
         },
         {
-          label:
-            "Complete an interactive course to increase my personal finance IQ",
-          value: "completeCourse",
+          label: "Start an interactive course to increase my financial IQ",
+          value: "startCourse",
         },
         {
-          label:
-            "Speak with a professional financial planner to evaluate my situation",
-          value: "meetProfessional",
+          label: "Connect with a financial planner to optimize my investments",
+          value: "connectPro",
         },
       ],
     },

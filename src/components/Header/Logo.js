@@ -4,8 +4,9 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    color: theme.palette.primary.main,
     fontFamily: ["Bai Jamjuree", "sans-serif"],
+    fontWeight: theme.typography.fontWeightRegular,
+    color: theme.palette.primary.main,
     fontSize: "2rem",
   },
 }));

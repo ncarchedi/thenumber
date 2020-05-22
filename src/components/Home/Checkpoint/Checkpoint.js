@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkpoint(props) {
   const classes = useStyles();
+  const [showAssumptions, setShowAssumptions] = useState(false);
+
   const { user, setUser, goToNextStage } = props;
   const {
     monthlyExpenses,
@@ -70,31 +72,43 @@ export default function Checkpoint(props) {
   return (
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
-          <Assumptions
-            updateInputs={updateInputs}
-            monthlyExpensesInput={monthlyExpensesInput}
-            setMonthlyExpensesInput={setMonthlyExpensesInput}
-            percentExpensesInput={percentExpensesInput}
-            setPercentExpensesInput={setPercentExpensesInput}
-            monthlySavingsInput={monthlySavingsInput}
-            setMonthlySavingsInput={setMonthlySavingsInput}
-            totalSavingsInput={totalSavingsInput}
-            setTotalSavingsInput={setTotalSavingsInput}
-            inflationRateInput={inflationRateInput}
-            setInflationRateInput={setInflationRateInput}
-            stocksReturnInput={stocksReturnInput}
-            setStocksReturnInput={setStocksReturnInput}
-            percentStocksInput={percentStocksInput}
-            setPercentStocksInput={setPercentStocksInput}
-            lifeExpectancyInput={lifeExpectancyInput}
-            setLifeExpectancyInput={setLifeExpectancyInput}
-            taxRateInput={taxRateInput}
-            setTaxRateInput={setTaxRateInput}
+        {showAssumptions && (
+          <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
+            <Assumptions
+              updateInputs={updateInputs}
+              monthlyExpensesInput={monthlyExpensesInput}
+              setMonthlyExpensesInput={setMonthlyExpensesInput}
+              percentExpensesInput={percentExpensesInput}
+              setPercentExpensesInput={setPercentExpensesInput}
+              monthlySavingsInput={monthlySavingsInput}
+              setMonthlySavingsInput={setMonthlySavingsInput}
+              totalSavingsInput={totalSavingsInput}
+              setTotalSavingsInput={setTotalSavingsInput}
+              inflationRateInput={inflationRateInput}
+              setInflationRateInput={setInflationRateInput}
+              stocksReturnInput={stocksReturnInput}
+              setStocksReturnInput={setStocksReturnInput}
+              percentStocksInput={percentStocksInput}
+              setPercentStocksInput={setPercentStocksInput}
+              lifeExpectancyInput={lifeExpectancyInput}
+              setLifeExpectancyInput={setLifeExpectancyInput}
+              taxRateInput={taxRateInput}
+              setTaxRateInput={setTaxRateInput}
+            />
+          </Grid>
+        )}
+        <Grid
+          item
+          xs={12}
+          md={showAssumptions ? 9 : 12}
+          className={classes.resultsContainer}
+        >
+          <Results
+            user={user}
+            showAssumptions={showAssumptions}
+            setShowAssumptions={setShowAssumptions}
+            goToNextStage={goToNextStage}
           />
-        </Grid>
-        <Grid item xs={12} md={9} className={classes.resultsContainer}>
-          <Results user={user} goToNextStage={goToNextStage} />
         </Grid>
       </Grid>
     </Slide>
