@@ -1,15 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 import DollarInputFormat from "../../General/DollarInputFormat";
 import PercentInputFormat from "../../General/PercentInputFormat";
 
@@ -17,10 +20,15 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontWeight: theme.typography.fontWeightRegular,
   },
+  tooltip: {
+    cursor: "default",
+  },
 }));
 
 const AssumptionInput = (props) => {
-  const { id, label, value, onChangeFunction, InputProps } = props;
+  const classes = useStyles();
+  const theme = useTheme();
+  const { id, label, value, onChangeFunction, InputProps, helperText } = props;
 
   return (
     <TextField
@@ -33,10 +41,31 @@ const AssumptionInput = (props) => {
       InputLabelProps={{
         shrink: true,
       }}
-      InputProps={InputProps}
+      InputProps={{
+        ...InputProps,
+        endAdornment: (
+          <InputAdornment position="end">
+            <Tooltip className={classes.tooltip} title={helperText}>
+              <HelpOutlineIcon
+                fontSize="small"
+                style={{ color: theme.palette.text.secondary }}
+              />
+            </Tooltip>
+          </InputAdornment>
+        ),
+      }}
       fullWidth
     />
   );
+};
+
+AssumptionInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChangeFunction: PropTypes.func.isRequired,
+  InputProps: PropTypes.object, // optional
+  helperText: PropTypes.string.isRequired,
 };
 
 export default function Assumptions(props) {
@@ -85,6 +114,7 @@ export default function Assumptions(props) {
                   value={monthlyExpensesInput}
                   onChangeFunction={setMonthlyExpensesInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
+                  helperText="Used as a baseline to determine what your after-tax expenses will be in the future."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,6 +124,7 @@ export default function Assumptions(props) {
                   value={percentExpensesInput}
                   onChangeFunction={setPercentExpensesInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
+                  helperText="Adjustment to current monthly expenses to determine what your after-tax expenses will be in the future."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -103,6 +134,7 @@ export default function Assumptions(props) {
                   value={monthlySavingsInput}
                   onChangeFunction={setMonthlySavingsInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
+                  helperText="Assumed to remain constant every month until you achieve financial independence."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -112,6 +144,7 @@ export default function Assumptions(props) {
                   value={totalSavingsInput}
                   onChangeFunction={setTotalSavingsInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
+                  helperText="Includes anything that could be used to cover living expenses in the future."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +154,7 @@ export default function Assumptions(props) {
                   value={percentStocksInput}
                   onChangeFunction={setPercentStocksInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
+                  helperText="Proportion of your current and future savings that are assumed to be invested in stocks or stock equivalents."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -129,6 +163,7 @@ export default function Assumptions(props) {
                   label="Life expectancy"
                   value={lifeExpectancyInput}
                   onChangeFunction={setLifeExpectancyInput}
+                  helperText="Used to determine how many years of living expenses you need to cover after achieving financial independence."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -165,6 +200,7 @@ export default function Assumptions(props) {
                   value={stocksReturnInput}
                   onChangeFunction={setStocksReturnInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
+                  helperText="Annual return applied to the portion of your savings assumed to be invested in stocks or stock equivalents."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -174,6 +210,7 @@ export default function Assumptions(props) {
                   value={inflationRateInput}
                   onChangeFunction={setInflationRateInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
+                  helperText="Rate at which your living expenses are assumed to increase every year."
                 />
               </Grid>
               <Grid item xs={12}>
@@ -183,6 +220,7 @@ export default function Assumptions(props) {
                   value={taxRateInput}
                   onChangeFunction={setTaxRateInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
+                  helperText="Tax rate applied to all withdrawals from savings to cover future living expenses."
                 />
               </Grid>
             </Grid>
