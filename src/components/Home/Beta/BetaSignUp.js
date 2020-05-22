@@ -9,6 +9,9 @@ import Emoji from "../../General/Emoji";
 import encode from "../../../utils/encode";
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    fontSize: "2rem",
+  },
   form: {
     marginTop: theme.spacing(3),
   },
@@ -57,8 +60,13 @@ export default function BetaSignUp(props) {
         </Container>
       ) : (
         <Container maxWidth="sm">
-          <Typography variant="h4" component="h1" paragraph>
-            Thanks for your feedback!{" "}
+          <Typography
+            variant="h4"
+            component="h1"
+            paragraph
+            className={classes.header}
+          >
+            {name}, thanks for your feedback!{" "}
             <Emoji symbol="👏" label="hands clapping" />
           </Typography>
           <Typography variant="subtitle1" paragraph>
