@@ -19,6 +19,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const AssumptionInput = (props) => {
+  const { id, label, value, onChangeFunction, InputProps } = props;
+
+  return (
+    <TextField
+      id={id}
+      name={id}
+      label={label}
+      value={value}
+      onChange={(e) => onChangeFunction(e.target.value)}
+      variant="outlined"
+      InputLabelProps={{
+        shrink: true,
+      }}
+      InputProps={InputProps}
+      fullWidth
+    />
+  );
+};
+
 export default function Assumptions(props) {
   const classes = useStyles();
   const {
@@ -59,92 +79,56 @@ export default function Assumptions(props) {
           <ExpansionPanelDetails>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="monthlyExpenses"
-                  name="monthlyExpenses"
                   label="Current monthly expenses"
                   value={monthlyExpensesInput}
-                  onChange={(e) => setMonthlyExpensesInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setMonthlyExpensesInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="percentExpenses"
-                  name="percentExpenses"
                   label="Future expenses (% of current)"
                   value={percentExpensesInput}
-                  onChange={(e) => setPercentExpensesInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setPercentExpensesInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="monthlySavings"
-                  name="monthlySavings"
                   label="Current monthly savings"
                   value={monthlySavingsInput}
-                  onChange={(e) => setMonthlySavingsInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setMonthlySavingsInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="totalSavings"
-                  name="totalSavings"
                   label="Total savings"
                   value={totalSavingsInput}
-                  onChange={(e) => setTotalSavingsInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setTotalSavingsInput}
                   InputProps={{ inputComponent: DollarInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="percentStocks"
-                  name="percentStocks"
                   label="Stocks (% of total savings)"
                   value={percentStocksInput}
-                  onChange={(e) => setPercentStocksInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setPercentStocksInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="lifeExpectancy"
-                  name="lifeExpectancy"
                   label="Life expectancy"
                   value={lifeExpectancyInput}
-                  onChange={(e) => setLifeExpectancyInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  fullWidth
+                  onChangeFunction={setLifeExpectancyInput}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -175,48 +159,30 @@ export default function Assumptions(props) {
           <ExpansionPanelDetails>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="stocksReturn"
-                  name="stocksReturn"
                   label="Annual return on stocks"
                   value={stocksReturnInput}
-                  onChange={(e) => setStocksReturnInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setStocksReturnInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="inflationRate"
-                  name="inflationRate"
                   label="Annual inflation rate"
                   value={inflationRateInput}
-                  onChange={(e) => setInflationRateInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setInflationRateInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
-                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <AssumptionInput
                   id="taxRate"
-                  name="taxRate"
                   label="Tax rate on withdrawals"
                   value={taxRateInput}
-                  onChange={(e) => setTaxRateInput(e.target.value)}
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  onChangeFunction={setTaxRateInput}
                   InputProps={{ inputComponent: PercentInputFormat }}
-                  fullWidth
                 />
               </Grid>
             </Grid>
