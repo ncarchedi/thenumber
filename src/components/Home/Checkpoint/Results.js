@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
 import BigButton from "../../General/BigButton";
+import EditIcon from "@material-ui/icons/Edit";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
@@ -19,15 +20,20 @@ const useStyles = makeStyles((theme) => ({
     borderBottomWidth: "5px",
   },
   supportingText: {
-    maxWidth: theme.breakpoints.values.sm + 50,
+    maxWidth: theme.breakpoints.values.md * 0.8,
     margin: theme.spacing(4, "auto"),
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  chartContainer: {
+    maxWidth: theme.breakpoints.values.md,
+    height: "350px",
+    margin: theme.spacing(0, "auto"),
   },
 }));
 
 export default function Results(props) {
   const classes = useStyles();
-  const { user, goToNextStage } = props;
+  const { user, showAssumptions, setShowAssumptions, goToNextStage } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -76,24 +82,37 @@ export default function Results(props) {
       </Typography>
       <Typography variant="h6" component="p" className={classes.supportingText}>
         If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
-        {yearsToRetirement} years, you'll be on track to retire at age{" "}
-        {retirementAge} with a total of {toDollars(retirementAmount)} in
-        savings.
+        {yearsToRetirement} years, you'll be on track to achieve financial
+        independence at age {retirementAge} with a total of{" "}
+        {toDollars(retirementAmount)} in savings.
       </Typography>
-      <ResultsChart
-        age={age}
-        requiredSavings={requiredSavings}
-        expectedSavings={expectedSavings}
-        retirementAge={retirementAge}
-      />
-      <BigButton
-        variant="contained"
-        color="primary"
-        endIcon={<ArrowForwardIcon />}
-        onClick={() => goToNextStage()}
-      >
-        Let's do this!
-      </BigButton>
+      <div className={classes.chartContainer}>
+        <ResultsChart
+          age={age}
+          requiredSavings={requiredSavings}
+          expectedSavings={expectedSavings}
+          retirementAge={retirementAge}
+        />
+      </div>
+      {showAssumptions ? (
+        <BigButton
+          variant="contained"
+          color="primary"
+          endIcon={<ArrowForwardIcon />}
+          onClick={goToNextStage}
+        >
+          Commit to my number
+        </BigButton>
+      ) : (
+        <BigButton
+          variant="contained"
+          color="primary"
+          endIcon={<EditIcon />}
+          onClick={() => setShowAssumptions(true)}
+        >
+          Edit my assumptions
+        </BigButton>
+      )}
     </React.Fragment>
   );
 }
@@ -112,5 +131,7 @@ Results.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
   }),
+  showAssumptions: PropTypes.bool.isRequired,
+  setShowAssumptions: PropTypes.func.isRequired,
   goToNextStage: PropTypes.func.isRequired,
 };

@@ -8,18 +8,14 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Button from "@material-ui/core/Button";
-import ReplayIcon from "@material-ui/icons/Replay";
 import DollarInputFormat from "../../General/DollarInputFormat";
 import PercentInputFormat from "../../General/PercentInputFormat";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
     fontWeight: theme.typography.fontWeightRegular,
-  },
-  buttonContainer: {
-    marginTop: theme.spacing(2),
-    textAlign: "center",
   },
 }));
 
@@ -151,6 +147,18 @@ export default function Assumptions(props) {
                   fullWidth
                 />
               </Grid>
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="default"
+                  endIcon={<ArrowForwardIcon />}
+                  type="submit"
+                  fullWidth
+                >
+                  Apply Changes
+                </Button>
+              </Grid>
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -214,17 +222,6 @@ export default function Assumptions(props) {
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-      </div>
-      <div className={classes.buttonContainer}>
-        <Button
-          variant="contained"
-          size="large"
-          color="default"
-          endIcon={<ReplayIcon />}
-          type="submit"
-        >
-          Update Results
-        </Button>
       </div>
     </form>
   );

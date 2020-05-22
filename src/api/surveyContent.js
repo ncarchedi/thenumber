@@ -8,18 +8,18 @@ export default [
       answers: [
         {
           label:
-            "Connect my bank accounts to automatically track my progress over time",
-          value: "connectAccounts",
+            "Link my bank accounts to automatically track my progress over time",
+          value: "linkAccounts",
         },
         {
           label:
-            "Complete an interactive course to increase my personal finance IQ",
-          value: "completeCourse",
+            "Start an interactive course to increase my personal finance IQ",
+          value: "startCourse",
         },
         {
           label:
-            "Speak with a professional financial planner to evaluate my situation",
-          value: "meetProfessional",
+            "Connect with a professional financial planner to evaluate my situation",
+          value: "connectPro",
         },
       ],
     },
