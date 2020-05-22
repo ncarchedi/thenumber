@@ -15,18 +15,23 @@ const useStyles = makeStyles((theme) => ({
   form: {
     marginTop: theme.spacing(3),
   },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "space-evenly",
+  },
   thanksContainer: {
     textAlign: "center",
   },
   gif: {
-    margin: theme.spacing(4, "auto"),
-    maxWidth: theme.breakpoints.values.sm,
+    display: "block",
+    margin: theme.spacing(4, "auto", 2, "auto"),
+    maxWidth: theme.breakpoints.values.sm - 100,
   },
 }));
 
 export default function BetaSignUp(props) {
   const classes = useStyles();
-  const { name } = props;
+  const { name, goToResults } = props;
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [showThanks, setShowThanks] = useState(false);
@@ -57,6 +62,9 @@ export default function BetaSignUp(props) {
             className={classes.gif}
             width="100%"
           />
+          <BigButton onClick={goToResults} variant="contained">
+            Back to results
+          </BigButton>
         </Container>
       ) : (
         <Container maxWidth="sm">
@@ -96,9 +104,14 @@ export default function BetaSignUp(props) {
               margin="normal"
               fullWidth
             />
-            <BigButton type="submit" variant="contained" color="primary">
-              Sign up now
-            </BigButton>
+            <div className={classes.buttonContainer}>
+              <BigButton onClick={goToResults} color="primary">
+                Back to results
+              </BigButton>
+              <BigButton type="submit" variant="contained" color="primary">
+                Sign up now
+              </BigButton>
+            </div>
           </form>
         </Container>
       )}
@@ -108,4 +121,5 @@ export default function BetaSignUp(props) {
 
 BetaSignUp.propTypes = {
   name: PropTypes.string.isRequired,
+  goToResults: PropTypes.func.isRequired,
 };

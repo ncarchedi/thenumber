@@ -77,6 +77,10 @@ export default function Home(props) {
     setActiveStage(activeStage + 1);
   };
 
+  const goToResults = () => {
+    setActiveStage(1);
+  };
+
   const renderHome = () => {
     let stage;
 
@@ -111,7 +115,7 @@ export default function Home(props) {
         );
         break;
       case 3:
-        stage = <BetaSignUp name={user.name} />;
+        stage = <BetaSignUp name={user.name} goToResults={goToResults} />;
         break;
       default:
         stage = null;
