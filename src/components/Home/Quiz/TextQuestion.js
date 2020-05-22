@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
 import DollarInputFormat from "../../General/DollarInputFormat";
 import ContinueButton from "./ContinueButton";
@@ -10,10 +10,8 @@ const useStyles = makeStyles((theme) => ({
   prompt: {
     marginBottom: theme.spacing(3),
   },
-  textField: {
-    "& input": {
-      fontSize: "2rem",
-    },
+  input: {
+    fontSize: "2rem",
   },
   helperText: {
     marginTop: theme.spacing(2),
@@ -47,24 +45,26 @@ export default function TextQuestion(props) {
       </Typography>
       <form onSubmit={handleSubmit}>
         {inputType === "dollar" ? (
-          <TextField
+          <Input
             className={classes.textField}
             value={value}
             onChange={handleChange}
+            classes={{ root: classes.input }}
             placeholder="Type your answer here..."
             autoFocus
             fullWidth
-            InputProps={{ inputComponent: DollarInputFormat }}
-          ></TextField>
+            inputComponent={DollarInputFormat}
+          ></Input>
         ) : (
-          <TextField
+          <Input
             className={classes.textField}
             value={value}
             onChange={handleChange}
+            classes={{ root: classes.input }}
             placeholder="Type your answer here..."
             autoFocus
             fullWidth
-          ></TextField>
+          ></Input>
         )}
         {helperText && (
           <Typography variant="body2" className={classes.helperText}>
