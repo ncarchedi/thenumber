@@ -53,7 +53,7 @@ export default function Assumptions(props) {
             id="your-assumptions"
           >
             <Typography variant="h6" component="h2" className={classes.heading}>
-              Your Assumptions
+              Your Inputs
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>

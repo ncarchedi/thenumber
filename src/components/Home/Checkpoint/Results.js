@@ -5,8 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
 import BigButton from "../../General/BigButton";
-import EditIcon from "@material-ui/icons/Edit";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import toDollars from "../../../utils/toDollars";
 import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
 
@@ -16,13 +14,19 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 5, 3, 5),
     color: theme.palette.primary.main,
     fontFamily: ["Bai Jamjuree", "sans-serif"],
+    fontWeight: theme.typography.fontWeightLight,
     borderBottom: "solid",
-    borderBottomWidth: "5px",
+    borderBottomWidth: "3px",
   },
   supportingText: {
     maxWidth: theme.breakpoints.values.md * 0.8,
     margin: theme.spacing(4, "auto"),
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  highlight: {
+    fontWeight: theme.typography.fontWeightMedium,
+    color: theme.palette.primary.main,
+    fontFamily: ["Bai Jamjuree", "sans-serif"],
   },
   chartContainer: {
     maxWidth: theme.breakpoints.values.md,
@@ -81,10 +85,17 @@ export default function Results(props) {
         />
       </Typography>
       <Typography variant="h6" component="p" className={classes.supportingText}>
-        If you continue saving {toDollars(monthlySavings)} a month for the next{" "}
-        {yearsToRetirement} years, you'll be on track to achieve financial
-        independence at age {retirementAge} with a total of{" "}
-        {toDollars(retirementAmount)} in savings.
+        If you continue saving{" "}
+        <span className={classes.highlight}>
+          {toDollars(monthlySavings)} a month
+        </span>{" "}
+        for the next{" "}
+        <span className={classes.highlight}>{yearsToRetirement} years</span>,
+        you'll be on track to achieve financial independence at{" "}
+        <span className={classes.highlight}>age {retirementAge}</span> with a
+        total of{" "}
+        <span className={classes.highlight}>{toDollars(retirementAmount)}</span>{" "}
+        in savings.
       </Typography>
       <div className={classes.chartContainer}>
         <ResultsChart
@@ -95,22 +106,16 @@ export default function Results(props) {
         />
       </div>
       {showAssumptions ? (
-        <BigButton
-          variant="contained"
-          color="primary"
-          endIcon={<ArrowForwardIcon />}
-          onClick={goToNextStage}
-        >
-          Commit to my number
+        <BigButton variant="contained" color="primary" onClick={goToNextStage}>
+          So let's take action
         </BigButton>
       ) : (
         <BigButton
           variant="contained"
           color="primary"
-          endIcon={<EditIcon />}
           onClick={() => setShowAssumptions(true)}
         >
-          Edit my assumptions
+          How did I get here?
         </BigButton>
       )}
     </React.Fragment>

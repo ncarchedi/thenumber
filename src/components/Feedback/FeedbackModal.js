@@ -42,7 +42,7 @@ export default function FeedbackModal(props) {
       aria-labelledby="form-dialog-title"
     >
       <DialogTitle id="form-dialog-title">
-        Give us feedback <Emoji symbol="📝" label="memo" />
+        Give us feedback <Emoji symbol="📣" label="megaphone" />
       </DialogTitle>
       <DialogContent>
         <DialogContentText>
