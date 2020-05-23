@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
@@ -11,6 +11,7 @@ export default function Home(props) {
   const { userAuth, onSetName } = props;
 
   const [activeStage, setActiveStage] = useState(0);
+  const [hasResults, setHasResults] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
     currentAge: "",
@@ -29,7 +30,8 @@ export default function Home(props) {
   });
 
   // // For testing purposes only ----------------------------
-  // const [activeStage, setActiveStage] = useState(1);
+  // const [activeStage, setActiveStage] = useState(0);
+  // const [hasResults, setHasResults] = useState(true);
   // const [userData, setUserData] = useState({
   //   name: "Marley",
   //   currentAge: "35",
@@ -47,6 +49,12 @@ export default function Home(props) {
   //   nextAction: "",
   // });
   // // ------------------------------------------------------
+
+  // TODO: need to persist state to be useful?
+  // Should only run on load for returning users
+  useEffect(() => {
+    hasResults && goToResults();
+  });
 
   const setUserValue = (key, value) => {
     const updatedUser = {
@@ -87,6 +95,7 @@ export default function Home(props) {
             userName={userData.name}
             setValue={setUserValue}
             goToNextStage={goToNextStage}
+            setHasResults={setHasResults}
           />
         );
         break;
