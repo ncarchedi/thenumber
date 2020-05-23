@@ -5,6 +5,9 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from "firebase/app";
+import "firebase/auth";
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [name, setName] = useState("");
+  // docs here: https://github.com/CSFrequency/react-firebase-hooks
+  const [userAuth, userAuthLoading, userAuthError] = useAuthState(
+    firebase.auth()
+  );
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
 
@@ -42,6 +49,10 @@ export default function App() {
     },
   });
 
+  const handleSignOut = () => {
+    firebase.auth().signOut();
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -50,11 +61,13 @@ export default function App() {
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           setOpenFeedbackModal={setOpenFeedbackModal}
+          isSignedIn={!!userAuth}
+          onSignOut={handleSignOut}
         />
         <Container maxWidth="lg" className={classes.app}>
           <Switch>
             <Route exact path="/">
-              <Home onSetName={(name) => setName(name)} />
+              <Home userAuth={userAuth} onSetName={(name) => setName(name)} />
             </Route>
             {/* <Route path="/about">
               <About />

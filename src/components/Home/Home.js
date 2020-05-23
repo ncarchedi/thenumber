@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz/Quiz";
 import Checkpoint from "./Checkpoint/Checkpoint";
+import SignIn from "./SignIn/SignIn";
 import BetaSignUp from "./Beta/BetaSignUp";
 import quizContent from "../../api/quizContent";
 import surveyContent from "../../api/surveyContent";
 
 export default function Home(props) {
+  const { userAuth, onSetName } = props;
+
   const [activeStage, setActiveStage] = useState(0);
-  const [user, setUser] = useState({
+  const [userData, setUserData] = useState({
     name: "",
     currentAge: "",
     lifeExpectancy: "",
@@ -23,15 +26,11 @@ export default function Home(props) {
   });
   const [survey, setSurvey] = useState({
     nextAction: "",
-    productFeedback: "",
-    anythingElse: "",
-    provideEmail: "",
-    email: "",
   });
 
   // // For testing purposes only ----------------------------
-  // const [activeStage, setActiveStage] = useState(3);
-  // const [user, setUser] = useState({
+  // const [activeStage, setActiveStage] = useState(1);
+  // const [userData, setUserData] = useState({
   //   name: "Marley",
   //   currentAge: "35",
   //   lifeExpectancy: "95",
@@ -46,22 +45,18 @@ export default function Home(props) {
   // });
   // const [survey, setSurvey] = useState({
   //   nextAction: "",
-  //   productFeedback: "",
-  //   anythingElse: "",
-  //   provideEmail: "",
-  //   email: "",
   // });
   // // ------------------------------------------------------
 
   const setUserValue = (key, value) => {
     const updatedUser = {
-      ...user,
+      ...userData,
       [key]: value,
     };
 
-    if (key === "name") props.onSetName(value);
+    if (key === "name") onSetName(value);
 
-    setUser(updatedUser);
+    setUserData(updatedUser);
   };
 
   const setSurveyValue = (key, value) => {
@@ -89,7 +84,7 @@ export default function Home(props) {
         stage = (
           <Quiz
             questions={quizContent}
-            userName={user.name}
+            userName={userData.name}
             setValue={setUserValue}
             goToNextStage={goToNextStage}
           />
@@ -98,24 +93,26 @@ export default function Home(props) {
       case 1:
         stage = (
           <Checkpoint
-            user={user}
-            setUser={setUser}
+            userData={userData}
+            setUserData={setUserData}
             goToNextStage={goToNextStage}
           />
         );
         break;
       case 2:
-        stage = (
+        stage = !!userAuth ? (
           <Quiz
             questions={surveyContent}
-            userName={user.name}
+            userName={userData.name}
             setValue={setSurveyValue}
             goToNextStage={goToNextStage}
           />
+        ) : (
+          <SignIn goToNextStage={goToNextStage} />
         );
         break;
       case 3:
-        stage = <BetaSignUp name={user.name} goToResults={goToResults} />;
+        stage = <BetaSignUp name={userData.name} goToResults={goToResults} />;
         break;
       default:
         stage = null;
@@ -128,5 +125,6 @@ export default function Home(props) {
 }
 
 Home.propTypes = {
+  userAuth: PropTypes.object, // optional
   onSetName: PropTypes.func.isRequired,
 };
