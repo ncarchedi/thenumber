@@ -29,21 +29,17 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, userName, setValue, goToNextStage } = props;
+  const { questions, user, setUser, goToNextStage } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
   };
 
-  const handleSubmitAnswer = (variableName, variableValue) => {
-    if (variableName && variableValue) setValue(variableName, variableValue);
-
-    // if we've reached the end of the quiz
+  const handleSubmitAnswer = (varName, varValue) => {
+    // update the user state with the new value
+    if (varName && varValue) setUser({ ...user, [varName]: varValue });
+    // if we've reached the end of the quiz, move to next stage
     if (questionNumber >= questions.length) goToNextStage();
-
-    // if user opts out of providing their email
-    if (variableName === "provideEmail" && variableValue === "no")
-      goToNextStage();
 
     goToNextQuestion();
   };
@@ -54,7 +50,7 @@ export default function Quiz(props) {
   // replace blank in second question with user's name
   let updatedQuestion = currentQuestion.content.prompt;
   if (questionNumber === 2) {
-    updatedQuestion = replaceBlanks(currentQuestion.content.prompt, userName);
+    updatedQuestion = replaceBlanks(currentQuestion.content.prompt, user.name);
   }
   currentQuestion.content.prompt = updatedQuestion;
 
@@ -77,7 +73,20 @@ export default function Quiz(props) {
 
 Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
-  userName: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
+  user: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
+    nextAction: PropTypes.string.isRequired,
+  }),
+  setUser: PropTypes.func.isRequired,
   goToNextStage: PropTypes.func.isRequired,
 };

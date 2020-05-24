@@ -8,49 +8,7 @@ import surveyContent from "../../api/surveyContent";
 
 export default function Home(props) {
   const [activeStage, setActiveStage] = useState(0);
-  const [user, setUser] = useState({
-    name: "",
-    currentAge: "",
-    lifeExpectancy: "",
-    monthlyExpenses: "",
-    percentExpenses: "",
-    monthlySavings: "",
-    totalSavings: "",
-    percentStocks: "",
-    stocksReturn: "7",
-    inflationRate: "3",
-    taxRate: "20",
-    nextAction: "",
-  });
-
-  // // For testing purposes only ----------------------------
-  // const [activeStage, setActiveStage] = useState(3);
-  // const [user, setUser] = useState({
-  //   name: "Marley",
-  //   currentAge: "35",
-  //   lifeExpectancy: "95",
-  //   monthlyExpenses: "4000",
-  //   percentExpenses: "80",
-  //   monthlySavings: "2000",
-  //   totalSavings: "250000",
-  //   percentStocks: "80",
-  //   stocksReturn: "7",
-  //   inflationRate: "3",
-  //   taxRate: "20",
-  //   nextAction: "",
-  // });
-  // // ------------------------------------------------------
-
-  const setUserValue = (key, value) => {
-    const updatedUser = {
-      ...user,
-      [key]: value,
-    };
-
-    if (key === "name") props.onSetName(value);
-
-    setUser(updatedUser);
-  };
+  const { user, setUser } = props;
 
   const goToNextStage = () => {
     setActiveStage(activeStage + 1);
@@ -68,8 +26,8 @@ export default function Home(props) {
         stage = (
           <Quiz
             questions={quizContent}
-            userName={user.name}
-            setValue={setUserValue}
+            user={user}
+            setUser={setUser}
             goToNextStage={goToNextStage}
           />
         );
@@ -87,8 +45,8 @@ export default function Home(props) {
         stage = (
           <Quiz
             questions={surveyContent}
-            userName={user.name}
-            setValue={setUserValue}
+            user={user}
+            setUser={setUser}
             goToNextStage={goToNextStage}
           />
         );
@@ -107,5 +65,19 @@ export default function Home(props) {
 }
 
 Home.propTypes = {
-  onSetName: PropTypes.func.isRequired,
+  user: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
+    nextAction: PropTypes.string.isRequired,
+  }),
+  setUser: PropTypes.func.isRequired,
 };
