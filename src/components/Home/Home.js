@@ -20,13 +20,7 @@ export default function Home(props) {
     stocksReturn: "7",
     inflationRate: "3",
     taxRate: "20",
-  });
-  const [survey, setSurvey] = useState({
     nextAction: "",
-    productFeedback: "",
-    anythingElse: "",
-    provideEmail: "",
-    email: "",
   });
 
   // // For testing purposes only ----------------------------
@@ -43,13 +37,7 @@ export default function Home(props) {
   //   stocksReturn: "7",
   //   inflationRate: "3",
   //   taxRate: "20",
-  // });
-  // const [survey, setSurvey] = useState({
   //   nextAction: "",
-  //   productFeedback: "",
-  //   anythingElse: "",
-  //   provideEmail: "",
-  //   email: "",
   // });
   // // ------------------------------------------------------
 
@@ -62,15 +50,6 @@ export default function Home(props) {
     if (key === "name") props.onSetName(value);
 
     setUser(updatedUser);
-  };
-
-  const setSurveyValue = (key, value) => {
-    const updatedSurvey = {
-      ...survey,
-      [key]: value,
-    };
-
-    setSurvey(updatedSurvey);
   };
 
   const goToNextStage = () => {
@@ -109,7 +88,7 @@ export default function Home(props) {
           <Quiz
             questions={surveyContent}
             userName={user.name}
-            setValue={setSurveyValue}
+            setValue={setUserValue}
             goToNextStage={goToNextStage}
           />
         );

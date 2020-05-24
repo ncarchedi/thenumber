@@ -135,6 +135,7 @@ Results.propTypes = {
     percentStocks: PropTypes.string.isRequired,
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
+    nextAction: PropTypes.string.isRequired,
   }),
   showAssumptions: PropTypes.bool.isRequired,
   setShowAssumptions: PropTypes.func.isRequired,
