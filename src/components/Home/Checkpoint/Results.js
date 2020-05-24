@@ -37,7 +37,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
-  const { user, showAssumptions, setShowAssumptions, goToNextStage } = props;
+  const {
+    userData,
+    showAssumptions,
+    setShowAssumptions,
+    goToNextStage,
+  } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -49,7 +54,7 @@ export default function Results(props) {
     percentStocks,
     lifeExpectancy,
     taxRate,
-  } = user;
+  } = userData;
 
   const {
     age,
@@ -123,7 +128,7 @@ export default function Results(props) {
 }
 
 Results.propTypes = {
-  user: PropTypes.exact({
+  userData: PropTypes.exact({
     name: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
