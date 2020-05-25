@@ -10,8 +10,8 @@ import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
-import Quiz from "./components/Home/Quiz/Quiz";
-import Checkpoint from "./components/Home/Checkpoint/Checkpoint";
+import Quiz from "./components/Quiz/Quiz";
+import Checkpoint from "./components/Checkpoint/Checkpoint";
 import FeedbackModal from "./components/Feedback/FeedbackModal";
 import quizContent from "./api/quizContent";
 
@@ -27,31 +27,31 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
-    name: "",
-    currentAge: "",
-    lifeExpectancy: "",
-    monthlyExpenses: "",
-    percentExpenses: "",
-    monthlySavings: "",
-    totalSavings: "",
-    percentStocks: "",
-    stocksReturn: "7",
-    inflationRate: "3",
-    taxRate: "20",
-    nextAction: "",
-
-    // name: "Marley",
-    // currentAge: "35",
-    // lifeExpectancy: "95",
-    // monthlyExpenses: "4000",
-    // percentExpenses: "80",
-    // monthlySavings: "2000",
-    // totalSavings: "250000",
-    // percentStocks: "80",
+    // name: "",
+    // currentAge: "",
+    // lifeExpectancy: "",
+    // monthlyExpenses: "",
+    // percentExpenses: "",
+    // monthlySavings: "",
+    // totalSavings: "",
+    // percentStocks: "",
     // stocksReturn: "7",
     // inflationRate: "3",
     // taxRate: "20",
     // nextAction: "",
+
+    name: "Marley",
+    currentAge: "35",
+    lifeExpectancy: "95",
+    monthlyExpenses: "4000",
+    percentExpenses: "80",
+    monthlySavings: "2000",
+    totalSavings: "250000",
+    percentStocks: "80",
+    stocksReturn: "7",
+    inflationRate: "3",
+    taxRate: "20",
+    nextAction: "",
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);

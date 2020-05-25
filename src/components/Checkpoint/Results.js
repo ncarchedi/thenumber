@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
-import BigButton from "../../General/BigButton";
-import toDollars from "../../../utils/toDollars";
-import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
+import BigButton from "../General/BigButton";
+import toDollars from "../../utils/toDollars";
+import calculateRequiredAndExpectedSavings from "../../utils/calculateRequiredAndExpectedSavings";
 
 const useStyles = makeStyles((theme) => ({
   headerText: {

@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import BigButton from "../../General/BigButton";
-import Emoji from "../../General/Emoji";
-import encode from "../../../utils/encode";
+import BigButton from "../General/BigButton";
+import Emoji from "../General/Emoji";
+import encode from "../../utils/encode";
 
 const useStyles = makeStyles((theme) => ({
   header: {
