@@ -20,14 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-evenly",
   },
-  thanksContainer: {
-    textAlign: "center",
-  },
-  gif: {
-    display: "block",
-    margin: theme.spacing(4, "auto", 2, "auto"),
-    maxWidth: theme.breakpoints.values.sm - 100,
-  },
 }));
 
 export default function SignUp(props) {
@@ -66,41 +58,27 @@ export default function SignUp(props) {
   };
 
   return (
-    <React.Fragment>
-      {showThanks ? (
-        <Container maxWidth="md" className={classes.thanksContainer}>
-          <Typography variant="h2" component="h1">
-            Thanks, we'll be in touch!
+    <Container maxWidth="sm">
+      <Typography
+        variant="h4"
+        component="h1"
+        paragraph
+        className={classes.header}
+      >
+        {name}, thanks for your feedback!{" "}
+        <Emoji symbol="👏" label="hands clapping" />
+      </Typography>
+      <Typography variant="subtitle1" paragraph>
+        We're actively working on new features to help you achieve financial
+        independence. Sign up below for updates and early access!
+      </Typography>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        {showThanks ? (
+          <Typography variant="body1">
+            <b>Thanks! We'll be in touch with updates.</b>
           </Typography>
-          <img
-            src="https://media.giphy.com/media/WmkqburJqXziM/giphy.gif"
-            alt="carlton dance"
-            className={classes.gif}
-            width="100%"
-          />
-          <BigButton
-            onClick={() => history.push("/results")}
-            variant="contained"
-          >
-            Back to results
-          </BigButton>
-        </Container>
-      ) : (
-        <Container maxWidth="sm">
-          <Typography
-            variant="h4"
-            component="h1"
-            paragraph
-            className={classes.header}
-          >
-            {name}, thanks for your feedback!{" "}
-            <Emoji symbol="👏" label="hands clapping" />
-          </Typography>
-          <Typography variant="subtitle1" paragraph>
-            We're actively working on new features to help you achieve financial
-            independence. Sign up below for updates and early access!
-          </Typography>
-          <form className={classes.form} onSubmit={handleSubmit}>
+        ) : (
+          <React.Fragment>
             <TextField
               type="email"
               name="email"
@@ -123,21 +101,18 @@ export default function SignUp(props) {
               margin="normal"
               fullWidth
             />
-            <div className={classes.buttonContainer}>
-              <BigButton
-                onClick={() => history.push("/results")}
-                color="primary"
-              >
-                Back to results
-              </BigButton>
-              <BigButton type="submit" variant="contained" color="primary">
-                Sign up now
-              </BigButton>
-            </div>
-          </form>
-        </Container>
-      )}
-    </React.Fragment>
+          </React.Fragment>
+        )}
+        <div className={classes.buttonContainer}>
+          <BigButton onClick={() => history.push("/results")} color="primary">
+            Back to results
+          </BigButton>
+          <BigButton type="submit" variant="contained" color="primary">
+            Sign up now
+          </BigButton>
+        </div>
+      </form>
+    </Container>
   );
 }
 
