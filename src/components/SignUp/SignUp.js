@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -33,22 +33,35 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp(props) {
   const classes = useStyles();
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [showThanks, setShowThanks] = useState(false);
   const { user, setUser } = props;
-  const { name } = user;
+  const { name, email } = user;
+  const [emailInput, setEmailInput] = useState();
+  const [feedbackInput, setFeedbackInput] = useState("");
+  const [showThanks, setShowThanks] = useState(false);
+
+  useEffect(() => {
+    setEmailInput(email);
+  }, [email]);
+
+  // if we don't have a name, we should probably go to the quiz
+  if (!name) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "betaSignUp", name, email, feedback }),
+      body: encode({
+        "form-name": "betaSignUp",
+        name: name,
+        email: emailInput,
+        feedback: feedbackInput,
+      }),
     })
       .then(() => console.log("Beta sign up form sent!"))
       .then(() => setShowThanks(true))
       .catch((error) => alert(error));
 
+    setUser({ ...user, email: emailInput });
     e.preventDefault();
   };
 
@@ -92,8 +105,8 @@ export default function SignUp(props) {
               type="email"
               name="email"
               label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={emailInput}
+              onChange={(e) => setEmailInput(e.target.value)}
               variant="outlined"
               fullWidth
               required
@@ -102,8 +115,8 @@ export default function SignUp(props) {
               name="feedback"
               label="Feedback (optional)"
               placeholder="I would love The Number even more if..."
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
+              value={feedbackInput}
+              onChange={(e) => setFeedbackInput(e.target.value)}
               variant="outlined"
               multiline
               rows={3}
@@ -131,6 +144,7 @@ export default function SignUp(props) {
 SignUp.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,

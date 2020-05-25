@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -29,7 +29,6 @@ const replaceBlanks = (text, value) => {
 
 export default function Quiz(props) {
   const classes = useStyles();
-  const history = useHistory();
   const [questionNumber, setQuestionNumber] = useState(1);
   const { questions, user, setUser } = props;
 
@@ -44,7 +43,10 @@ export default function Quiz(props) {
 
   const currentQuestion = questions[questionNumber - 1];
 
-  if (!currentQuestion) history.push("/results");
+  // if quiz is over, go to results
+  if (!currentQuestion) {
+    return <Redirect to="results" />;
+  }
 
   // TODO: make this less hacky
   // replace blank in second question with user's name
@@ -75,6 +77,7 @@ Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,

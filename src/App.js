@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -28,31 +33,32 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
-    // name: "",
-    // currentAge: "",
-    // lifeExpectancy: "",
-    // monthlyExpenses: "",
-    // percentExpenses: "",
-    // monthlySavings: "",
-    // totalSavings: "",
-    // percentStocks: "",
-    // stocksReturn: "7",
-    // inflationRate: "3",
-    // taxRate: "20",
-    // nextAction: "",
-
-    name: "Marley",
-    currentAge: "35",
-    lifeExpectancy: "95",
-    monthlyExpenses: "4000",
-    percentExpenses: "80",
-    monthlySavings: "2000",
-    totalSavings: "250000",
-    percentStocks: "80",
+    name: "",
+    email: "",
+    currentAge: "",
+    lifeExpectancy: "",
+    monthlyExpenses: "",
+    percentExpenses: "",
+    monthlySavings: "",
+    totalSavings: "",
+    percentStocks: "",
     stocksReturn: "7",
     inflationRate: "3",
     taxRate: "20",
     nextAction: "",
+
+    // name: "Marley",
+    // currentAge: "35",
+    // lifeExpectancy: "95",
+    // monthlyExpenses: "4000",
+    // percentExpenses: "80",
+    // monthlySavings: "2000",
+    // totalSavings: "250000",
+    // percentStocks: "80",
+    // stocksReturn: "7",
+    // inflationRate: "3",
+    // taxRate: "20",
+    // nextAction: "",
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
@@ -89,9 +95,11 @@ export default function App() {
             <Route path="/signup">
               <SignUp user={user} setUser={setUser} />
             </Route>
+            <Route render={() => <Redirect to="/" />} />
           </Switch>
           <FeedbackModal
-            name={user.name}
+            user={user}
+            setUser={setUser}
             open={openFeedbackModal}
             setOpen={setOpenFeedbackModal}
           />

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
@@ -41,6 +41,7 @@ export default function Results(props) {
   const history = useHistory();
   const { user, showAssumptions, setShowAssumptions } = props;
   const {
+    name,
     currentAge,
     monthlyExpenses,
     percentExpenses,
@@ -52,6 +53,9 @@ export default function Results(props) {
     lifeExpectancy,
     taxRate,
   } = user;
+
+  // if we don't have a name, we should probably go to the quiz
+  if (!name) return <Redirect to="/" />;
 
   const {
     age,
@@ -131,6 +135,7 @@ export default function Results(props) {
 Results.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,
