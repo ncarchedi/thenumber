@@ -95,7 +95,7 @@ export default function Assumptions(props) {
   return (
     <form onSubmit={updateInputs}>
       <div>
-        <ExpansionPanel expanded>
+        <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="your-assumptions"
