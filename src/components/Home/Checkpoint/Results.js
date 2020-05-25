@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
-  const { user, showAssumptions, setShowAssumptions, goToNextStage } = props;
+  const { user, showAssumptions, setShowAssumptions } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -106,7 +106,7 @@ export default function Results(props) {
         />
       </div>
       {showAssumptions ? (
-        <BigButton variant="contained" color="primary" onClick={goToNextStage}>
+        <BigButton variant="contained" color="primary">
           So let's take action
         </BigButton>
       ) : (
@@ -139,5 +139,4 @@ Results.propTypes = {
   }),
   showAssumptions: PropTypes.bool.isRequired,
   setShowAssumptions: PropTypes.func.isRequired,
-  goToNextStage: PropTypes.func.isRequired,
 };
