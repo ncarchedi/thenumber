@@ -13,8 +13,8 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
-import DollarInputFormat from "../../General/DollarInputFormat";
-import PercentInputFormat from "../../General/PercentInputFormat";
+import DollarInputFormat from "../General/DollarInputFormat";
+import PercentInputFormat from "../General/PercentInputFormat";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -95,7 +95,7 @@ export default function Assumptions(props) {
   return (
     <form onSubmit={updateInputs}>
       <div>
-        <ExpansionPanel expanded>
+        <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="your-assumptions"

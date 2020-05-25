@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Checkpoint(props) {
   const classes = useStyles();
   const [showAssumptions, setShowAssumptions] = useState(false);
-
-  const { user, setUser, goToNextStage } = props;
+  const { user, setUser } = props;
   const {
     monthlyExpenses,
     percentExpenses,
@@ -107,7 +106,6 @@ export default function Checkpoint(props) {
             user={user}
             showAssumptions={showAssumptions}
             setShowAssumptions={setShowAssumptions}
-            goToNextStage={goToNextStage}
           />
         </Grid>
       </Grid>
@@ -118,6 +116,7 @@ export default function Checkpoint(props) {
 Checkpoint.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,
@@ -131,5 +130,4 @@ Checkpoint.propTypes = {
     nextAction: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
-  goToNextStage: PropTypes.func.isRequired,
 };

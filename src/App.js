@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -10,8 +15,11 @@ import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
+import Quiz from "./components/Quiz/Quiz";
+import Checkpoint from "./components/Checkpoint/Checkpoint";
+import SignUp from "./components/SignUp/SignUp";
 import FeedbackModal from "./components/Feedback/FeedbackModal";
+import quizContent from "./api/quizContent";
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -26,6 +34,7 @@ export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
     name: "",
+    email: "",
     currentAge: "",
     lifeExpectancy: "",
     monthlyExpenses: "",
@@ -37,27 +46,22 @@ export default function App() {
     inflationRate: "3",
     taxRate: "20",
     nextAction: "",
+
+    // name: "Marley",
+    // currentAge: "35",
+    // lifeExpectancy: "95",
+    // monthlyExpenses: "4000",
+    // percentExpenses: "80",
+    // monthlySavings: "2000",
+    // totalSavings: "250000",
+    // percentStocks: "80",
+    // stocksReturn: "7",
+    // inflationRate: "3",
+    // taxRate: "20",
+    // nextAction: "",
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
-
-  // // For testing purposes only
-  // useEffect(() => {
-  //   setUser({
-  //     name: "Marley",
-  //     currentAge: "35",
-  //     lifeExpectancy: "95",
-  //     monthlyExpenses: "4000",
-  //     percentExpenses: "80",
-  //     monthlySavings: "2000",
-  //     totalSavings: "250000",
-  //     percentStocks: "80",
-  //     stocksReturn: "7",
-  //     inflationRate: "3",
-  //     taxRate: "20",
-  //     nextAction: "",
-  //   });
-  // });
 
   const theme = createMuiTheme({
     palette: {
@@ -74,7 +78,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router forceRefresh>
+      <Router>
         <Header
           darkMode={darkMode}
           setDarkMode={setDarkMode}
@@ -83,14 +87,19 @@ export default function App() {
         <Container maxWidth="lg" className={classes.app}>
           <Switch>
             <Route exact path="/">
-              <Home user={user} setUser={setUser} />
+              <Quiz questions={quizContent} user={user} setUser={setUser} />
             </Route>
-            {/* <Route path="/about">
-              <About />
-            </Route> */}
+            <Route path="/results">
+              <Checkpoint user={user} setUser={setUser} />
+            </Route>
+            <Route path="/signup">
+              <SignUp user={user} setUser={setUser} />
+            </Route>
+            <Route render={() => <Redirect to="/" />} />
           </Switch>
           <FeedbackModal
-            name={user.name}
+            user={user}
+            setUser={setUser}
             open={openFeedbackModal}
             setOpen={setOpenFeedbackModal}
           />

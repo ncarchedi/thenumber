@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CountUp from "react-countup";
 import ResultsChart from "./ResultsChart";
-import BigButton from "../../General/BigButton";
-import toDollars from "../../../utils/toDollars";
-import calculateRequiredAndExpectedSavings from "../../../utils/calculateRequiredAndExpectedSavings";
+import BigButton from "../General/BigButton";
+import toDollars from "../../utils/toDollars";
+import calculateRequiredAndExpectedSavings from "../../utils/calculateRequiredAndExpectedSavings";
 
 const useStyles = makeStyles((theme) => ({
   headerText: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
-  const { user, showAssumptions, setShowAssumptions, goToNextStage } = props;
+  const { user, showAssumptions, setShowAssumptions } = props;
   const {
     currentAge,
     monthlyExpenses,
@@ -106,7 +106,7 @@ export default function Results(props) {
         />
       </div>
       {showAssumptions ? (
-        <BigButton variant="contained" color="primary" onClick={goToNextStage}>
+        <BigButton variant="contained" color="primary">
           So let's take action
         </BigButton>
       ) : (
@@ -125,6 +125,7 @@ export default function Results(props) {
 Results.propTypes = {
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,
@@ -139,5 +140,4 @@ Results.propTypes = {
   }),
   showAssumptions: PropTypes.bool.isRequired,
   setShowAssumptions: PropTypes.func.isRequired,
-  goToNextStage: PropTypes.func.isRequired,
 };

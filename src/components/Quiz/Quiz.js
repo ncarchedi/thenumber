@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -29,22 +30,23 @@ const replaceBlanks = (text, value) => {
 export default function Quiz(props) {
   const classes = useStyles();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const { questions, user, setUser, goToNextStage } = props;
+  const { questions, user, setUser } = props;
 
   const goToNextQuestion = () => {
     setQuestionNumber(questionNumber + 1);
   };
 
   const handleSubmitAnswer = (varName, varValue) => {
-    // update the user state with the new value
     if (varName && varValue) setUser({ ...user, [varName]: varValue });
-    // if we've reached the end of the quiz, move to next stage
-    if (questionNumber >= questions.length) goToNextStage();
-
     goToNextQuestion();
   };
 
   const currentQuestion = questions[questionNumber - 1];
+
+  // if quiz is over, go to results
+  if (!currentQuestion) {
+    return <Redirect to="results" />;
+  }
 
   // TODO: make this less hacky
   // replace blank in second question with user's name
@@ -75,6 +77,7 @@ Quiz.propTypes = {
   questions: PropTypes.array.isRequired,
   user: PropTypes.exact({
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     currentAge: PropTypes.string.isRequired,
     monthlyExpenses: PropTypes.string.isRequired,
     percentExpenses: PropTypes.string.isRequired,
@@ -88,5 +91,4 @@ Quiz.propTypes = {
     nextAction: PropTypes.string.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
-  goToNextStage: PropTypes.func.isRequired,
 };
