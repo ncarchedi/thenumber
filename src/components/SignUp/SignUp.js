@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -29,12 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BetaSignUp(props) {
+export default function SignUp(props) {
   const classes = useStyles();
-  const { name, goToResults } = props;
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [showThanks, setShowThanks] = useState(false);
+  const { user, setUser } = props;
+  const { name } = user;
 
   const handleSubmit = (e) => {
     fetch("/", {
@@ -62,7 +65,10 @@ export default function BetaSignUp(props) {
             className={classes.gif}
             width="100%"
           />
-          <BigButton onClick={goToResults} variant="contained">
+          <BigButton
+            onClick={() => history.push("/results")}
+            variant="contained"
+          >
             Back to results
           </BigButton>
         </Container>
@@ -105,7 +111,10 @@ export default function BetaSignUp(props) {
               fullWidth
             />
             <div className={classes.buttonContainer}>
-              <BigButton onClick={goToResults} color="primary">
+              <BigButton
+                onClick={() => history.push("/results")}
+                color="primary"
+              >
                 Back to results
               </BigButton>
               <BigButton type="submit" variant="contained" color="primary">
@@ -119,7 +128,20 @@ export default function BetaSignUp(props) {
   );
 }
 
-BetaSignUp.propTypes = {
-  name: PropTypes.string.isRequired,
-  goToResults: PropTypes.func.isRequired,
+SignUp.propTypes = {
+  user: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
+    nextAction: PropTypes.string.isRequired,
+  }),
+  setUser: PropTypes.func.isRequired,
 };

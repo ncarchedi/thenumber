@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
 import Quiz from "./components/Quiz/Quiz";
 import Checkpoint from "./components/Checkpoint/Checkpoint";
+import SignUp from "./components/SignUp/SignUp";
 import FeedbackModal from "./components/Feedback/FeedbackModal";
 import quizContent from "./api/quizContent";
 
@@ -84,6 +85,9 @@ export default function App() {
             </Route>
             <Route path="/results">
               <Checkpoint user={user} setUser={setUser} />
+            </Route>
+            <Route path="/signup">
+              <SignUp user={user} setUser={setUser} />
             </Route>
           </Switch>
           <FeedbackModal

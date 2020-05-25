@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Results(props) {
   const classes = useStyles();
+  const history = useHistory();
   const { user, showAssumptions, setShowAssumptions } = props;
   const {
     currentAge,
@@ -106,7 +108,11 @@ export default function Results(props) {
         />
       </div>
       {showAssumptions ? (
-        <BigButton variant="contained" color="primary">
+        <BigButton
+          variant="contained"
+          color="primary"
+          onClick={() => history.push("/signup")}
+        >
           So let's take action
         </BigButton>
       ) : (
