@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, "auto"),
   },
   formContainer: {
-    margin: theme.spacing(5, 0, 8, 0),
+    margin: theme.spacing(5, 0),
   },
   form: {
     marginTop: theme.spacing(3),
@@ -180,13 +180,13 @@ export default function SignUp(props) {
       <Typography variant="body1" paragraph>
         We deserve a lot better. That's why I'm building The Number.
       </Typography>
-      {/* <Typography variant="body1" paragraph>
+      <Typography variant="body1" paragraph>
         <b>
           P.S.—For a more complete (and perhaps entertaining) list of my gripes
-          with other products, check out the{" "}
-          <RouterLink to="/manifesto">manifesto</RouterLink>.
+          with other products, check out{" "}
+          <RouterLink to="/manifesto">the manifesto</RouterLink>.
         </b>
-      </Typography> */}
+      </Typography>
 
       <div className={classes.formContainer}>
         <Typography id="signup" variant="h4" component="h2" paragraph>
