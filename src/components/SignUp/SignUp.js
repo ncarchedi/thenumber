@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useHistory, Redirect, Link as RouterLink } from "react-router-dom";
+import { useHistory, Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
@@ -39,7 +39,7 @@ export default function SignUp(props) {
   const classes = useStyles();
   const history = useHistory();
   const { user, setUser } = props;
-  const { name, email, hasResults } = user;
+  const { name, email } = user;
   const [emailInput, setEmailInput] = useState(email);
   const [feedbackInput, setFeedbackInput] = useState("");
   const [showThanks, setShowThanks] = useState(false);
@@ -47,9 +47,6 @@ export default function SignUp(props) {
   useEffect(() => {
     setEmailInput(email);
   }, [email]);
-
-  // if no results, redirect to quiz
-  if (!hasResults) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     fetch("/", {

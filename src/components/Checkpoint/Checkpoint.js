@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
@@ -31,7 +30,6 @@ export default function Checkpoint(props) {
     percentStocks,
     lifeExpectancy,
     taxRate,
-    hasResults,
   } = user;
 
   // use props for initial assumptions form state
@@ -52,9 +50,6 @@ export default function Checkpoint(props) {
     lifeExpectancy
   );
   const [taxRateInput, setTaxRateInput] = useState(taxRate);
-
-  // if no results, redirect to quiz
-  if (!hasResults) return <Redirect to="/" />;
 
   const updateInputs = (e) => {
     e.preventDefault();

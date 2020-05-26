@@ -92,16 +92,21 @@ export default function App() {
             <Route exact path="/">
               <Quiz questions={quizContent} user={user} setUser={setUser} />
             </Route>
-            <Route path="/mynumber">
-              <Checkpoint user={user} setUser={setUser} />
-            </Route>
-            <Route path="/signup">
-              <SignUp user={user} setUser={setUser} />
-            </Route>
             <Route path="/manifesto">
               <Manifesto />
             </Route>
-            <Route render={() => <Redirect to="/" />} />
+            {user.hasResults ? (
+              <React.Fragment>
+                <Route path="/mynumber">
+                  <Checkpoint user={user} setUser={setUser} />
+                </Route>
+                <Route path="/signup">
+                  <SignUp user={user} setUser={setUser} />
+                </Route>
+              </React.Fragment>
+            ) : (
+              <Redirect to="/" />
+            )}
           </Switch>
           <FeedbackModal
             user={user}
