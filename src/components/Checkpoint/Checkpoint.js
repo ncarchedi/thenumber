@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -50,6 +50,12 @@ export default function Checkpoint(props) {
     lifeExpectancy
   );
   const [taxRateInput, setTaxRateInput] = useState(taxRate);
+
+  // scroll to top of screen when assumptions are shown
+  // mostly a fix for mobile, since assumptions show above results
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [showAssumptions]);
 
   const updateInputs = (e) => {
     e.preventDefault();

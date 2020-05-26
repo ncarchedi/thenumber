@@ -48,6 +48,11 @@ export default function SignUp(props) {
     setEmailInput(email);
   }, [email]);
 
+  // scroll to top of screen on load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSubmit = (e) => {
     fetch("/", {
       method: "POST",
@@ -135,10 +140,26 @@ export default function SignUp(props) {
         choose how and when I work. Some of my questions were:
       </Typography>
       <ol>
-        <li>How much money do I need to be financially independent?</li>
-        <li>When will I realistically reach that goal?</li>
-        <li>What's the most efficient path to get there?</li>
-        <li>How can I hold myself accountable over time?</li>
+        <li>
+          <Typography variant="body1">
+            How much money do I need to be financially independent?
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="body1">
+            When will I realistically reach that goal?
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="body1">
+            What's the most efficient path to get there?
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="body1">
+            How can I hold myself accountable over time?
+          </Typography>
+        </li>
       </ol>
       <Typography variant="body1" paragraph>
         In the past, I had used many popular personal finance apps—Mint, YNAB,

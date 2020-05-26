@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -35,32 +30,33 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    currentAge: "",
-    lifeExpectancy: "",
-    monthlyExpenses: "",
-    percentExpenses: "",
-    monthlySavings: "",
-    totalSavings: "",
-    percentStocks: "",
-    stocksReturn: "7",
-    inflationRate: "3",
-    taxRate: "20",
-    hasResults: false,
-
-    // name: "Marley",
-    // currentAge: "35",
-    // lifeExpectancy: "95",
-    // monthlyExpenses: "4000",
-    // percentExpenses: "80",
-    // monthlySavings: "2000",
-    // totalSavings: "250000",
-    // percentStocks: "80",
+    // name: "",
+    // email: "",
+    // currentAge: "",
+    // lifeExpectancy: "",
+    // monthlyExpenses: "",
+    // percentExpenses: "",
+    // monthlySavings: "",
+    // totalSavings: "",
+    // percentStocks: "",
     // stocksReturn: "7",
     // inflationRate: "3",
     // taxRate: "20",
-    // hasResults: true
+    // hasResults: false,
+
+    name: "Marley",
+    email: "marley@example.com",
+    currentAge: "35",
+    lifeExpectancy: "95",
+    monthlyExpenses: "4000",
+    percentExpenses: "80",
+    monthlySavings: "2000",
+    totalSavings: "250000",
+    percentStocks: "80",
+    stocksReturn: "7",
+    inflationRate: "3",
+    taxRate: "20",
+    hasResults: true,
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
@@ -105,7 +101,6 @@ export default function App() {
                 </Route>
               </React.Fragment>
             )}
-            <Redirect to="/" />
           </Switch>
           <FeedbackModal
             user={user}
