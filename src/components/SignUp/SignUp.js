@@ -74,121 +74,120 @@ export default function SignUp(props) {
         paragraph
         className={classes.header}
       >
-        {name}, thanks for stopping by!{" "}
+        Thanks for using The Number!{" "}
         <Emoji symbol="👏" label="hands clapping" />
       </Typography>
 
       <Typography variant="body1" paragraph>
-        My name is Nick, and I'm building The Number.
+        Great to meet you, {name}. My name is Nick, and I'm building The Number.
       </Typography>
       <Typography variant="body1" paragraph>
-        If you have a minute, I'd love to give you some background on who I am
-        and how the The Number came to be. Otherwise,{" "}
-        <b>
-          feel free to <Link href="#signup">skip ahead</Link> to sign up for
-          updates when we launch new features.
-        </b>
-      </Typography>
-
-      <Divider className={classes.divider} />
-
-      <Typography variant="body1" paragraph>
-        I started my first career as a financial advisor at the height of the
-        financial crisis in 2008. I loved helping people with their finances,
-        but gradually fell out of love with the financial services industry as a
-        whole. I saw firsthand how often incentives were misaligned between
-        advisors and their clients and the impact that it had on the choices
-        people made.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        By 2012, I decided to move on from finance and pursue a Master's degree
-        in statistics. (I had studied math as an undergrad, so this wasn't as
-        crazy as it sounds). While in grad school, I wrote{" "}
-        <Link href="https://swirlstats.com/">some software</Link> that helped
-        make statistics and programming more approachable to newbies (like
-        myself).
-      </Typography>
-      <Typography variant="body1" paragraph>
-        After finishing school in 2014, I went to work as a data scientist for a
-        management consulting firm, but left a year later to join a small,
-        scrappy startup that was building an online platform for learning and
-        teaching data science. After my experience in grad school, his was right
-        up my alley.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Over the next four years, I held a few different positions involving
-        curriculum and product development. We grew the company to around 150
-        employees and several million users around the world.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        In November 2019, the company hit a brief rough patch and I was laid
-        off. This was difficult, but I didn't hold a grudge. The experience had
-        galvanized my desire to start a company of my own.
+        If you have a minute, I'd love to share some background on how the The
+        Number came to be.{" "}
+        <em>
+          In a rush? Feel free to <Link href="#signup">skip ahead</Link> to sign
+          up for updates when we launch new features.
+        </em>
       </Typography>
 
       <Divider className={classes.divider} />
 
       <Typography variant="body1" paragraph>
-        I spent the next few months searching for ideas. Then the pandemic hit.
+        I started my first career as a financial advisor in 2008. Helping people
+        manage their money was rewarding, but I gradually became disillusioned
+        with the financial services industry. In particular, I saw firsthand how
+        misaligned incentives could negatively impact the recommendations that
+        advisors gave their clients.
       </Typography>
       <Typography variant="body1" paragraph>
-        The global economy tanked and financial markets whipsawed. I—like many
-        others—found myself wondering what impact this would have on my
-        long-term financial well-being.{" "}
-        <b>
-          Specifically, when (if ever) would I be able to achieve financial
-          independence and what would it take to get there?
-        </b>
+        By 2012, I left finance to pursue a master's degree in statistics. While
+        in school, I created{" "}
+        <Link href="https://swirlstats.com/" target="_'blank">
+          open source software
+        </Link>{" "}
+        that helped make statistics and programming more approachable. It must
+        have struck a nerve—since then, the program has been downloaded almost 2
+        million times.
       </Typography>
       <Typography variant="body1" paragraph>
-        I had used many of the most popular personal finance apps—Mint, YNAB,
-        Personal Capital, Vanguard, Betterment, etc.—but none did a particularly
-        good job of answering this question. I spent sometime poking around
-        online for so-called <em>retirement calculators</em>, but found myself
-        equally disappointed.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        For whatever reason, nearly every app or tool that I'd seen started with
-        the question "When would you like to retire?" But the answer to that
-        question for most people is "As soon as possible!" or "You tell me!"
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Besides asking the wrong question(s), most tools seemed to have put
-        almost no thought into product design and user experience. Many of the
-        top hits for "retirement calculator" on Google looked like they were
-        built decades ago and never updated.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        And—perhaps worst of all—I saw the same misaligned incentives that I
-        recalled from my days as a financial advisor, just in different forms.
-        Instead of charging customers directly for providing a valuable service,
-        the companies behind these products wanted you to click on ads or
-        affiliate links, or to manage your money. No thanks.
+        Soon after graduating, I joined a small startup that was building an
+        online platform for data science training. Over the next four years, I
+        led curriculum development and managed several key products. By the time
+        I left in 2019, we had grown the company to 150 employees and several
+        million users around the world.
       </Typography>
 
       <Divider className={classes.divider} />
 
       <Typography variant="body1" paragraph>
-        We expect so much more from the products we use to browse the web, check
-        the weather, create and share documents, connect with others, read the
-        news, listen to music, and collaborate at work, so why are we willing to
-        settle for less when it comes to one of the most important tasks in our
-        lives—planning for our financial future?
+        At this point, it was clear I wanted to start my own company.
       </Typography>
       <Typography variant="body1" paragraph>
-        We can do so much better. That's why I'm building The Number.
+        Like many first-time founders, I started by asking myself what I was
+        good at, what I enjoyed and where I saw a need. I still had an interest
+        in personal finance, but was now armed with experience in data science,
+        online education and product management.
       </Typography>
       <Typography variant="body1" paragraph>
+        Specifically, as a newly self-employed person, I was drawn to the topic
+        of financial independence. Not retirement, per se, but the ability to
+        choose how and when I work. Some of my questions were:
+        <ol>
+          <li>How much money do I need to be financially independent?</li>
+          <li>When will I realistically reach that goal?</li>
+          <li>What's the most efficient path to get there?</li>
+          <li>How can I hold myself accountable over time?</li>
+        </ol>
+      </Typography>
+      <Typography variant="body1" paragraph>
+        In the past, I had used many popular personal finance apps—Mint, YNAB,
+        Personal Capital, Vanguard, Betterment, etc.—but none of them
+        sufficiently tackled these questions. I even tried a bunch of online
+        retirement calculators, but found myself equally disappointed.
+      </Typography>
+      <Typography variant="body1" paragraph>
+        For whatever reason, nearly every product started with the question
+        "When would you like to retire?" or "How much would you like to save?".
+        But the answers to these questions are typically: "As soon as possible!"
+        and "You tell me!".
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Besides asking the wrong questions, most tools seemed to ignore basic
+        principles of good product design and user experience. The top hits for
+        "retirement calculator" on Google often look like they were built
+        decades ago (and never updated).
+      </Typography>
+      <Typography variant="body1" paragraph>
+        And—perhaps worst of all—these products suffered from the same
+        misaligned incentives that I witnessed as a financial advisor, just in
+        different forms. Seemingly "free" products either led users to click on
+        ads / affiliate links disguised as unbiased recommendations or served as
+        thinly-veiled marketing tools for financial advisory firms. No thanks.
+      </Typography>
+
+      <Divider className={classes.divider} />
+
+      <Typography variant="body1" paragraph>
+        We expect so much from the products we use to browse the web, check the
+        weather, connect with others, read the news, listen to music and
+        collaborate at work. Why should we settle for less when it comes to
+        planning our financial futures?
+      </Typography>
+      <Typography variant="body1" paragraph>
+        We deserve a lot better. That's why I'm building The Number.
+      </Typography>
+      {/* <Typography variant="body1" paragraph>
         <b>
           P.S.—For a more complete (and perhaps entertaining) list of my gripes
           with other products, check out the{" "}
           <RouterLink to="/manifesto">manifesto</RouterLink>.
         </b>
-      </Typography>
+      </Typography> */}
 
       <div className={classes.formContainer}>
         <Typography id="signup" variant="h4" component="h2" paragraph>
-          Sign up to stay in the loop <Emoji symbol="🔔" label="bell" />
+          Sign up for product updates{" "}
+          <Emoji symbol="🙋🏾" label="person raising hand" />
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           {showThanks ? (
