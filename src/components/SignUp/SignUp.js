@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-evenly",
   },
+  thanksText: {
+    backgroundColor: theme.palette.secondary.main,
+    display: "inline-block",
+  },
 }));
 
 export default function SignUp(props) {
@@ -191,8 +195,8 @@ export default function SignUp(props) {
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           {showThanks ? (
-            <Typography variant="body1">
-              <b>Thanks! We'll be in touch with updates.</b>
+            <Typography variant="body1" className={classes.thanksText}>
+              Thanks! We'll be in touch with updates.
             </Typography>
           ) : (
             <React.Fragment>
@@ -224,9 +228,11 @@ export default function SignUp(props) {
             <BigButton onClick={() => history.push("/results")} color="primary">
               Back to results
             </BigButton>
-            <BigButton type="submit" variant="contained" color="primary">
-              Sign up now
-            </BigButton>
+            {!showThanks && (
+              <BigButton type="submit" variant="contained" color="primary">
+                Sign up now
+              </BigButton>
+            )}
           </div>
         </form>
       </div>

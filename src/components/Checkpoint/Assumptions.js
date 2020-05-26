@@ -168,14 +168,14 @@ export default function Assumptions(props) {
               </Grid>
               <Grid item xs={12}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   size="large"
-                  color="default"
+                  color="primary"
                   endIcon={<ArrowForwardIcon />}
                   type="submit"
                   fullWidth
                 >
-                  Apply Changes
+                  Update my number
                 </Button>
               </Grid>
             </Grid>

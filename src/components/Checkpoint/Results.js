@@ -117,7 +117,7 @@ export default function Results(props) {
           color="primary"
           onClick={() => history.push("/signup")}
         >
-          So let's take action
+          Commit to my number
         </BigButton>
       ) : (
         <BigButton
@@ -125,7 +125,7 @@ export default function Results(props) {
           color="primary"
           onClick={() => setShowAssumptions(true)}
         >
-          How did I get here?
+          Refine my number
         </BigButton>
       )}
     </React.Fragment>
