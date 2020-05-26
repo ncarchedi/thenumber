@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const history = useHistory();
-  const { darkMode, setDarkMode, setOpenFeedbackModal } = props;
+  const { showResults, darkMode, setDarkMode, setOpenFeedbackModal } = props;
 
   return (
     <AppBar color="default" elevation={1}>
@@ -30,8 +30,13 @@ export default function Header(props) {
         <Link to="/" className={classes.logoLink}>
           <Logo />
         </Link>
+        {showResults && (
+          <Button color="primary" onClick={() => history.push("/mynumber")}>
+            My number
+          </Button>
+        )}
         <Button color="primary" onClick={() => history.push("/manifesto")}>
-          manifesto
+          Manifesto
         </Button>
         <Tooltip title={darkMode ? "Light Mode" : "Dark Mode"}>
           <IconButton
@@ -57,6 +62,7 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
+  showResults: PropTypes.bool.isRequired,
   darkMode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func.isRequired,
   setOpenFeedbackModal: PropTypes.func.isRequired,

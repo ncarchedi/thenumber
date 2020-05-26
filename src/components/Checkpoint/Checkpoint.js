@@ -22,7 +22,6 @@ export default function Checkpoint(props) {
   const [showAssumptions, setShowAssumptions] = useState(false);
   const { user, setUser } = props;
   const {
-    name,
     monthlyExpenses,
     percentExpenses,
     monthlySavings,
@@ -32,6 +31,7 @@ export default function Checkpoint(props) {
     percentStocks,
     lifeExpectancy,
     taxRate,
+    hasResults,
   } = user;
 
   // use props for initial assumptions form state
@@ -53,8 +53,8 @@ export default function Checkpoint(props) {
   );
   const [taxRateInput, setTaxRateInput] = useState(taxRate);
 
-  // if we don't have a name, we should probably go to the quiz
-  if (!name) return <Redirect to="/" />;
+  // if no results, redirect to quiz
+  if (!hasResults) return <Redirect to="/" />;
 
   const updateInputs = (e) => {
     e.preventDefault();
@@ -133,6 +133,7 @@ Checkpoint.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
     nextAction: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
 };

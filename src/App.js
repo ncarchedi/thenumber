@@ -48,6 +48,7 @@ export default function App() {
     inflationRate: "3",
     taxRate: "20",
     nextAction: "",
+    hasResults: false,
 
     // name: "Marley",
     // currentAge: "35",
@@ -61,6 +62,7 @@ export default function App() {
     // inflationRate: "3",
     // taxRate: "20",
     // nextAction: "",
+    // hasResults: true
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
@@ -82,6 +84,7 @@ export default function App() {
       <CssBaseline />
       <Router>
         <Header
+          showResults={user.hasResults}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           setOpenFeedbackModal={setOpenFeedbackModal}
@@ -91,7 +94,7 @@ export default function App() {
             <Route exact path="/">
               <Quiz questions={quizContent} user={user} setUser={setUser} />
             </Route>
-            <Route path="/results">
+            <Route path="/mynumber">
               <Checkpoint user={user} setUser={setUser} />
             </Route>
             <Route path="/signup">

@@ -111,6 +111,7 @@ FeedbackModal.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
     nextAction: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,

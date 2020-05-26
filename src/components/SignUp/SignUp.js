@@ -39,8 +39,8 @@ export default function SignUp(props) {
   const classes = useStyles();
   const history = useHistory();
   const { user, setUser } = props;
-  const { name, email } = user;
-  const [emailInput, setEmailInput] = useState();
+  const { name, email, hasResults } = user;
+  const [emailInput, setEmailInput] = useState(email);
   const [feedbackInput, setFeedbackInput] = useState("");
   const [showThanks, setShowThanks] = useState(false);
 
@@ -48,8 +48,8 @@ export default function SignUp(props) {
     setEmailInput(email);
   }, [email]);
 
-  // if we don't have a name, we should probably go to the quiz
-  if (!name) return <Redirect to="/" />;
+  // if no results, redirect to quiz
+  if (!hasResults) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     fetch("/", {
@@ -136,13 +136,13 @@ export default function SignUp(props) {
         Specifically, as a newly self-employed person, I was drawn to the topic
         of financial independence. Not retirement, per se, but the ability to
         choose how and when I work. Some of my questions were:
-        <ol>
-          <li>How much money do I need to be financially independent?</li>
-          <li>When will I realistically reach that goal?</li>
-          <li>What's the most efficient path to get there?</li>
-          <li>How can I hold myself accountable over time?</li>
-        </ol>
       </Typography>
+      <ol>
+        <li>How much money do I need to be financially independent?</li>
+        <li>When will I realistically reach that goal?</li>
+        <li>What's the most efficient path to get there?</li>
+        <li>How can I hold myself accountable over time?</li>
+      </ol>
       <Typography variant="body1" paragraph>
         In the past, I had used many popular personal finance apps—Mint, YNAB,
         Personal Capital, Vanguard, Betterment, etc.—but none of them
@@ -184,7 +184,7 @@ export default function SignUp(props) {
         <b>
           P.S.—For a more complete (and perhaps entertaining) list of my gripes
           with other products, check out{" "}
-          <RouterLink to="/manifesto">the manifesto</RouterLink>.
+          <RouterLink to="/manifesto">The Manifesto</RouterLink>.
         </b>
       </Typography>
 
@@ -225,8 +225,11 @@ export default function SignUp(props) {
             </React.Fragment>
           )}
           <div className={classes.buttonContainer}>
-            <BigButton onClick={() => history.push("/results")} color="primary">
-              Back to results
+            <BigButton
+              onClick={() => history.push("/mynumber")}
+              color="primary"
+            >
+              Back to my number
             </BigButton>
             {!showThanks && (
               <BigButton type="submit" variant="contained" color="primary">
@@ -255,6 +258,7 @@ SignUp.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
     nextAction: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
 };

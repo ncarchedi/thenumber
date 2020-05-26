@@ -45,7 +45,8 @@ export default function Quiz(props) {
 
   // if quiz is over, go to results
   if (!currentQuestion) {
-    return <Redirect to="results" />;
+    setUser({ ...user, hasResults: true });
+    return <Redirect to="/mynumber" />;
   }
 
   // TODO: make this less hacky
@@ -89,6 +90,7 @@ Quiz.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
     nextAction: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
   }),
   setUser: PropTypes.func.isRequired,
 };

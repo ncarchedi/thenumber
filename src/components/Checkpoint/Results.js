@@ -143,6 +143,7 @@ Results.propTypes = {
     lifeExpectancy: PropTypes.string.isRequired,
     taxRate: PropTypes.string.isRequired,
     nextAction: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
   }),
   showAssumptions: PropTypes.bool.isRequired,
   setShowAssumptions: PropTypes.func.isRequired,
