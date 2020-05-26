@@ -14,7 +14,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-import ListIcon from "@material-ui/icons/List";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import SunIcon from "@material-ui/icons/Brightness7";
 import MoonIcon from "@material-ui/icons/Brightness4";
 import FeedbackIcon from "@material-ui/icons/Feedback";
@@ -40,11 +40,19 @@ export default function Header(props) {
     return (
       <React.Fragment>
         {showResults && (
-          <Button color="primary" onClick={() => history.push("/mynumber")}>
+          <Button
+            color="primary"
+            onClick={() => history.push("/mynumber")}
+            startIcon={<TrendingUpIcon />}
+          >
             My number
           </Button>
         )}
-        <Button color="primary" onClick={() => history.push("/manifesto")}>
+        <Button
+          color="primary"
+          onClick={() => history.push("/manifesto")}
+          startIcon={<AssignmentIcon />}
+        >
           Manifesto
         </Button>
         <Tooltip title={darkMode ? "Light Mode" : "Dark Mode"}>
@@ -109,7 +117,7 @@ export default function Header(props) {
               }}
             >
               <ListItemIcon>
-                <ListIcon />
+                <AssignmentIcon />
               </ListItemIcon>
               <ListItemText primary={"Manifesto"} />
             </ListItem>
