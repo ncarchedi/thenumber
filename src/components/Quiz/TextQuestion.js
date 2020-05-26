@@ -35,7 +35,8 @@ export default function TextQuestion(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmitAnswer(variableName, value);
+    // submit if answer isn't blank
+    value && onSubmitAnswer(variableName, value);
   };
 
   return (
