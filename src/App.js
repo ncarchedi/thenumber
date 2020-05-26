@@ -105,9 +105,7 @@ export default function App() {
                 </Route>
               </React.Fragment>
             )}
-            <Route>
-              <Redirect to="/" />
-            </Route>
+            <Redirect to="/" />
           </Switch>
           <FeedbackModal
             user={user}
