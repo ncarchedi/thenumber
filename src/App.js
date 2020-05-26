@@ -47,7 +47,6 @@ export default function App() {
     stocksReturn: "7",
     inflationRate: "3",
     taxRate: "20",
-    nextAction: "",
     hasResults: false,
 
     // name: "Marley",
@@ -61,7 +60,6 @@ export default function App() {
     // stocksReturn: "7",
     // inflationRate: "3",
     // taxRate: "20",
-    // nextAction: "",
     // hasResults: true
   });
   const [darkMode, setDarkMode] = useState(false);
