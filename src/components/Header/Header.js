@@ -1,18 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import Button from "@material-ui/core/Button";
 import SunIcon from "@material-ui/icons/Brightness7";
 import MoonIcon from "@material-ui/icons/Brightness4";
 import FeedbackIcon from "@material-ui/icons/Feedback";
-import { makeStyles } from "@material-ui/core/styles";
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
+  logoLink: {
     flexGrow: 1,
     textDecoration: "none",
   },
@@ -20,14 +21,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
+  const history = useHistory();
   const { darkMode, setDarkMode, setOpenFeedbackModal } = props;
 
   return (
     <AppBar color="default" elevation={1}>
       <Toolbar>
-        <Link to="/" className={classes.logo}>
+        <Link to="/" className={classes.logoLink}>
           <Logo />
         </Link>
+        <Button color="primary" onClick={() => history.push("/manifesto")}>
+          manifesto
+        </Button>
         <Tooltip title={darkMode ? "Light Mode" : "Dark Mode"}>
           <IconButton
             aria-label="dark mode toggle"
