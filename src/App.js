@@ -89,13 +89,13 @@ export default function App() {
         />
         <Container maxWidth="lg" className={classes.app}>
           <Switch>
-            <Route exact path="/">
+            <Route path="/" exact>
               <Quiz questions={quizContent} user={user} setUser={setUser} />
             </Route>
             <Route path="/manifesto">
               <Manifesto />
             </Route>
-            {user.hasResults ? (
+            {user.hasResults && (
               <React.Fragment>
                 <Route path="/mynumber">
                   <Checkpoint user={user} setUser={setUser} />
@@ -104,9 +104,10 @@ export default function App() {
                   <SignUp user={user} setUser={setUser} />
                 </Route>
               </React.Fragment>
-            ) : (
-              <Redirect to="/" />
             )}
+            <Route>
+              <Redirect to="/" />
+            </Route>
           </Switch>
           <FeedbackModal
             user={user}
