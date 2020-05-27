@@ -11,17 +11,13 @@ import calculateRequiredAndExpectedSavings from "../../utils/calculateRequiredAn
 
 const useStyles = makeStyles((theme) => ({
   headerText: {
-    display: "inline-block",
-    padding: theme.spacing(0, 5, 3, 5),
     color: theme.palette.primary.main,
     fontFamily: ["Bai Jamjuree", "sans-serif"],
     fontWeight: theme.typography.fontWeightLight,
-    borderBottom: "solid",
-    borderBottomWidth: "3px",
   },
   supportingText: {
     maxWidth: theme.breakpoints.values.md * 0.8,
-    margin: theme.spacing(4, "auto"),
+    margin: theme.spacing(3, "auto", 4, "auto"),
     fontWeight: theme.typography.fontWeightRegular,
   },
   highlight: {

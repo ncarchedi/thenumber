@@ -21,8 +21,18 @@ export default function Checkpoint(props) {
   const [showAssumptions, setShowAssumptions] = useState(false);
   const { user, setUser } = props;
 
+  // scroll to top of screen when results are updated
   useEffect(() => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [user]);
+
+  // scroll to assumptions when they are opened by user
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+  useEffect(() => {
     const element = document.getElementById("assumptions");
     element &&
       element.scrollIntoView({
@@ -35,6 +45,7 @@ export default function Checkpoint(props) {
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
       <Grid container spacing={6}>
         <Grid
+          id="results"
           item
           xs={12}
           md={showAssumptions ? 9 : 12}

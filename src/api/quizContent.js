@@ -18,7 +18,7 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "How much money do you need to achieve it? How soon will you get there? These are the questions I'll help you answer over the next few minutes. Let's get started! ⏱️",
+        "How much money do you need to achieve it? How soon will you get there? These are the questions we'll answer together over the next few minutes. Let's get started! ➡️",
     },
   },
   {
