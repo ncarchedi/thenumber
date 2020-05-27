@@ -49,6 +49,7 @@ export default function SignUp(props) {
   }, [email]);
 
   // scroll to top of screen on load
+  // to fix weird issue where it was opened partially scrolled
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -245,6 +246,7 @@ export default function SignUp(props) {
           <div className={classes.buttonContainer}>
             <BigButton
               onClick={() => history.push("/mynumber")}
+              variant="outlined"
               color="primary"
             >
               Back to my number

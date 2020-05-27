@@ -9,7 +9,7 @@ import Results from "./Results";
 const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
   },
   resultsContainer: {
     textAlign: "center",
@@ -20,89 +20,32 @@ export default function Checkpoint(props) {
   const classes = useStyles();
   const [showAssumptions, setShowAssumptions] = useState(false);
   const { user, setUser } = props;
-  const {
-    monthlyExpenses,
-    percentExpenses,
-    monthlySavings,
-    totalSavings,
-    inflationRate,
-    stocksReturn,
-    percentStocks,
-    lifeExpectancy,
-    taxRate,
-  } = user;
 
-  // use props for initial assumptions form state
-  const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
-    monthlyExpenses
-  );
-  const [percentExpensesInput, setPercentExpensesInput] = useState(
-    percentExpenses
-  );
-  const [monthlySavingsInput, setMonthlySavingsInput] = useState(
-    monthlySavings
-  );
-  const [totalSavingsInput, setTotalSavingsInput] = useState(totalSavings);
-  const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
-  const [stocksReturnInput, setStocksReturnInput] = useState(stocksReturn);
-  const [percentStocksInput, setPercentStocksInput] = useState(percentStocks);
-  const [lifeExpectancyInput, setLifeExpectancyInput] = useState(
-    lifeExpectancy
-  );
-  const [taxRateInput, setTaxRateInput] = useState(taxRate);
-
-  // scroll to top of screen when assumptions are shown
-  // mostly a fix for mobile, since assumptions show above results
+  // scroll to top of screen when results are updated
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [showAssumptions]);
-
-  const updateInputs = (e) => {
-    e.preventDefault();
-
-    setUser({
-      ...user,
-      monthlyExpenses: monthlyExpensesInput,
-      percentExpenses: percentExpensesInput,
-      monthlySavings: monthlySavingsInput,
-      totalSavings: totalSavingsInput,
-      inflationRate: inflationRateInput,
-      stocksReturn: stocksReturnInput,
-      percentStocks: percentStocksInput,
-      lifeExpectancy: lifeExpectancyInput,
-      taxRate: taxRateInput,
+    window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: "smooth",
     });
-  };
+  }, [user]);
+
+  // scroll to assumptions when they are opened by user
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+  useEffect(() => {
+    const element = document.getElementById("assumptions");
+    element &&
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }, [showAssumptions]);
 
   return (
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
       <Grid container spacing={6}>
-        {showAssumptions && (
-          <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
-            <Assumptions
-              updateInputs={updateInputs}
-              monthlyExpensesInput={monthlyExpensesInput}
-              setMonthlyExpensesInput={setMonthlyExpensesInput}
-              percentExpensesInput={percentExpensesInput}
-              setPercentExpensesInput={setPercentExpensesInput}
-              monthlySavingsInput={monthlySavingsInput}
-              setMonthlySavingsInput={setMonthlySavingsInput}
-              totalSavingsInput={totalSavingsInput}
-              setTotalSavingsInput={setTotalSavingsInput}
-              inflationRateInput={inflationRateInput}
-              setInflationRateInput={setInflationRateInput}
-              stocksReturnInput={stocksReturnInput}
-              setStocksReturnInput={setStocksReturnInput}
-              percentStocksInput={percentStocksInput}
-              setPercentStocksInput={setPercentStocksInput}
-              lifeExpectancyInput={lifeExpectancyInput}
-              setLifeExpectancyInput={setLifeExpectancyInput}
-              taxRateInput={taxRateInput}
-              setTaxRateInput={setTaxRateInput}
-            />
-          </Grid>
-        )}
         <Grid
+          id="results"
           item
           xs={12}
           md={showAssumptions ? 9 : 12}
@@ -114,6 +57,17 @@ export default function Checkpoint(props) {
             setShowAssumptions={setShowAssumptions}
           />
         </Grid>
+        {showAssumptions && (
+          <Grid
+            id="assumptions"
+            item
+            xs={12}
+            md={3}
+            className={classes.assumptionsContainer}
+          >
+            <Assumptions user={user} setUser={setUser} />
+          </Grid>
+        )}
       </Grid>
     </Slide>
   );

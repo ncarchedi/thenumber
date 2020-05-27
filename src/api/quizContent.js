@@ -11,28 +11,14 @@ export default [
     type: "Statement",
     content: {
       prompt:
-        "Hi, ___! Let's talk about financial independence. <br><br>You've achieved it when you have enough money to cover all future living expenses and the freedom to spend your time however you choose. If you continue to work (as many people do), it's out of desire instead of necessity. 🙋🏽",
+        "Hi, ___! Let's talk about financial independence—the glorious moment at which you have enough money saved to cover all of your future living expenses. 🙌",
     },
   },
   {
     type: "Statement",
     content: {
       prompt:
-        "The amount of money you need to achieve financial independence—<em>your number</em>—depends on several factors, including cost of living, inflation and investment returns. 🏠",
-    },
-  },
-  {
-    type: "Statement",
-    content: {
-      prompt:
-        "It may seem counterintuitive, but your number can actually <em>increase</em> over time. This is because any money you don't have saved today is money that's not invested and earning a return for tomorrow. 📈",
-    },
-  },
-  {
-    type: "Statement",
-    content: {
-      prompt:
-        "In short, your number is a moving target. Let's figure it out together! 🎯",
+        "How much money do you need to achieve it? How soon will you get there? These are the questions we'll answer together over the next few minutes. Let's get started! ➡️",
     },
   },
   {
@@ -42,7 +28,7 @@ export default [
     content: {
       prompt: "What's your current age? ⏳",
       helperText:
-        "By the way, we won't save any personal information you share with us unless you explicitly ask us to later on.",
+        "By the way, we won't save any personal information you share with us unless you ask us to later on.",
     },
   },
   {

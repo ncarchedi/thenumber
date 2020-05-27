@@ -4,9 +4,11 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(2, 4),
-    fontSize: "1.2rem",
+    margin: theme.spacing(2, 1),
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(2, 4),
+      fontSize: "1.2rem",
+    },
   },
 }));
 
