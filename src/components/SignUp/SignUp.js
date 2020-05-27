@@ -245,6 +245,7 @@ export default function SignUp(props) {
           <div className={classes.buttonContainer}>
             <BigButton
               onClick={() => history.push("/mynumber")}
+              variant="outlined"
               color="primary"
             >
               Back to my number
