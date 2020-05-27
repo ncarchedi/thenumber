@@ -9,7 +9,7 @@ import Results from "./Results";
 const useStyles = makeStyles((theme) => ({
   assumptionsContainer: {
     display: "flex",
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
   },
   resultsContainer: {
     textAlign: "center",
@@ -51,10 +51,14 @@ export default function Checkpoint(props) {
   );
   const [taxRateInput, setTaxRateInput] = useState(taxRate);
 
-  // scroll to top of screen when assumptions are shown
-  // mostly a fix for mobile, since assumptions show above results
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    const element = document.getElementById("assumptions");
+    element &&
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
   }, [showAssumptions]);
 
   const updateInputs = (e) => {
@@ -77,8 +81,26 @@ export default function Checkpoint(props) {
   return (
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
       <Grid container spacing={6}>
+        <Grid
+          item
+          xs={12}
+          md={showAssumptions ? 9 : 12}
+          className={classes.resultsContainer}
+        >
+          <Results
+            user={user}
+            showAssumptions={showAssumptions}
+            setShowAssumptions={setShowAssumptions}
+          />
+        </Grid>
         {showAssumptions && (
-          <Grid item xs={12} md={3} className={classes.assumptionsContainer}>
+          <Grid
+            id="assumptions"
+            item
+            xs={12}
+            md={3}
+            className={classes.assumptionsContainer}
+          >
             <Assumptions
               updateInputs={updateInputs}
               monthlyExpensesInput={monthlyExpensesInput}
@@ -102,18 +124,6 @@ export default function Checkpoint(props) {
             />
           </Grid>
         )}
-        <Grid
-          item
-          xs={12}
-          md={showAssumptions ? 9 : 12}
-          className={classes.resultsContainer}
-        >
-          <Results
-            user={user}
-            showAssumptions={showAssumptions}
-            setShowAssumptions={setShowAssumptions}
-          />
-        </Grid>
       </Grid>
     </Slide>
   );

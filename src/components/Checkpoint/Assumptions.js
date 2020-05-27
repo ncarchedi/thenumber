@@ -9,7 +9,7 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -171,7 +171,7 @@ export default function Assumptions(props) {
                   variant="outlined"
                   size="large"
                   color="primary"
-                  endIcon={<ArrowForwardIcon />}
+                  endIcon={<RefreshIcon />}
                   type="submit"
                   fullWidth
                 >
