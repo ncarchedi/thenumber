@@ -20,36 +20,6 @@ export default function Checkpoint(props) {
   const classes = useStyles();
   const [showAssumptions, setShowAssumptions] = useState(false);
   const { user, setUser } = props;
-  const {
-    monthlyExpenses,
-    percentExpenses,
-    monthlySavings,
-    totalSavings,
-    inflationRate,
-    stocksReturn,
-    percentStocks,
-    lifeExpectancy,
-    taxRate,
-  } = user;
-
-  // use props for initial assumptions form state
-  const [monthlyExpensesInput, setMonthlyExpensesInput] = useState(
-    monthlyExpenses
-  );
-  const [percentExpensesInput, setPercentExpensesInput] = useState(
-    percentExpenses
-  );
-  const [monthlySavingsInput, setMonthlySavingsInput] = useState(
-    monthlySavings
-  );
-  const [totalSavingsInput, setTotalSavingsInput] = useState(totalSavings);
-  const [inflationRateInput, setInflationRateInput] = useState(inflationRate);
-  const [stocksReturnInput, setStocksReturnInput] = useState(stocksReturn);
-  const [percentStocksInput, setPercentStocksInput] = useState(percentStocks);
-  const [lifeExpectancyInput, setLifeExpectancyInput] = useState(
-    lifeExpectancy
-  );
-  const [taxRateInput, setTaxRateInput] = useState(taxRate);
 
   useEffect(() => {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
@@ -60,23 +30,6 @@ export default function Checkpoint(props) {
         block: "start",
       });
   }, [showAssumptions]);
-
-  const updateInputs = (e) => {
-    e.preventDefault();
-
-    setUser({
-      ...user,
-      monthlyExpenses: monthlyExpensesInput,
-      percentExpenses: percentExpensesInput,
-      monthlySavings: monthlySavingsInput,
-      totalSavings: totalSavingsInput,
-      inflationRate: inflationRateInput,
-      stocksReturn: stocksReturnInput,
-      percentStocks: percentStocksInput,
-      lifeExpectancy: lifeExpectancyInput,
-      taxRate: taxRateInput,
-    });
-  };
 
   return (
     <Slide direction="left" in={true} mountOnEnter unmountOnExit>
@@ -101,27 +54,7 @@ export default function Checkpoint(props) {
             md={3}
             className={classes.assumptionsContainer}
           >
-            <Assumptions
-              updateInputs={updateInputs}
-              monthlyExpensesInput={monthlyExpensesInput}
-              setMonthlyExpensesInput={setMonthlyExpensesInput}
-              percentExpensesInput={percentExpensesInput}
-              setPercentExpensesInput={setPercentExpensesInput}
-              monthlySavingsInput={monthlySavingsInput}
-              setMonthlySavingsInput={setMonthlySavingsInput}
-              totalSavingsInput={totalSavingsInput}
-              setTotalSavingsInput={setTotalSavingsInput}
-              inflationRateInput={inflationRateInput}
-              setInflationRateInput={setInflationRateInput}
-              stocksReturnInput={stocksReturnInput}
-              setStocksReturnInput={setStocksReturnInput}
-              percentStocksInput={percentStocksInput}
-              setPercentStocksInput={setPercentStocksInput}
-              lifeExpectancyInput={lifeExpectancyInput}
-              setLifeExpectancyInput={setLifeExpectancyInput}
-              taxRateInput={taxRateInput}
-              setTaxRateInput={setTaxRateInput}
-            />
+            <Assumptions user={user} setUser={setUser} />
           </Grid>
         )}
       </Grid>

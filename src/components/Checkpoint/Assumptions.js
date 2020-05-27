@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -25,75 +25,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AssumptionInput = (props) => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const { id, label, value, onChangeFunction, InputProps, helperText } = props;
-
-  return (
-    <TextField
-      id={id}
-      name={id}
-      label={label}
-      value={value}
-      onChange={(e) => onChangeFunction(e.target.value)}
-      variant="outlined"
-      InputLabelProps={{
-        shrink: true,
-      }}
-      InputProps={{
-        ...InputProps,
-        endAdornment: (
-          <InputAdornment position="end">
-            <Tooltip className={classes.tooltip} title={helperText}>
-              <HelpOutlineIcon
-                fontSize="small"
-                style={{ color: theme.palette.text.secondary }}
-              />
-            </Tooltip>
-          </InputAdornment>
-        ),
-      }}
-      fullWidth
-    />
-  );
-};
-
-AssumptionInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChangeFunction: PropTypes.func.isRequired,
-  InputProps: PropTypes.object, // optional
-  helperText: PropTypes.string.isRequired,
-};
-
 export default function Assumptions(props) {
   const classes = useStyles();
-  const {
-    updateInputs,
-    monthlyExpensesInput,
-    setMonthlyExpensesInput,
-    percentExpensesInput,
-    setPercentExpensesInput,
-    monthlySavingsInput,
-    setMonthlySavingsInput,
-    totalSavingsInput,
-    setTotalSavingsInput,
-    inflationRateInput,
-    setInflationRateInput,
-    stocksReturnInput,
-    setStocksReturnInput,
-    percentStocksInput,
-    setPercentStocksInput,
-    lifeExpectancyInput,
-    setLifeExpectancyInput,
-    taxRateInput,
-    setTaxRateInput,
-  } = props;
+  const { user, setUser } = props;
+  const [inputs, setInputs] = useState({
+    monthlyExpenses: user.monthlyExpenses,
+    percentExpenses: user.percentExpenses,
+    monthlySavings: user.monthlySavings,
+    totalSavings: user.totalSavings,
+    inflationRate: user.inflationRate,
+    stocksReturn: user.stocksReturn,
+    percentStocks: user.percentStocks,
+    lifeExpectancy: user.lifeExpectancy,
+    taxRate: user.taxRate,
+  });
+
+  const handleChange = (e) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUser({
+      ...user,
+      ...inputs,
+    });
+  };
 
   return (
-    <form onSubmit={updateInputs}>
+    <form onSubmit={handleSubmit}>
       <div>
         <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary
@@ -111,8 +74,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="monthlyExpenses"
                   label="Current monthly expenses"
-                  value={monthlyExpensesInput}
-                  onChangeFunction={setMonthlyExpensesInput}
+                  value={inputs.monthlyExpenses}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: DollarInputFormat }}
                   helperText="Used as a baseline to determine what your after-tax expenses will be in the future."
                 />
@@ -121,8 +84,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="percentExpenses"
                   label="Future expenses (% of current)"
-                  value={percentExpensesInput}
-                  onChangeFunction={setPercentExpensesInput}
+                  value={inputs.percentExpenses}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: PercentInputFormat }}
                   helperText="Adjustment to current monthly expenses to determine what your after-tax expenses will be in the future."
                 />
@@ -131,8 +94,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="monthlySavings"
                   label="Current monthly savings"
-                  value={monthlySavingsInput}
-                  onChangeFunction={setMonthlySavingsInput}
+                  value={inputs.monthlySavings}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: DollarInputFormat }}
                   helperText="Assumed to remain constant every month until you achieve financial independence."
                 />
@@ -141,8 +104,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="totalSavings"
                   label="Total savings"
-                  value={totalSavingsInput}
-                  onChangeFunction={setTotalSavingsInput}
+                  value={inputs.totalSavings}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: DollarInputFormat }}
                   helperText="Includes anything that could be used to cover living expenses in the future."
                 />
@@ -151,8 +114,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="percentStocks"
                   label="Stocks (% of total savings)"
-                  value={percentStocksInput}
-                  onChangeFunction={setPercentStocksInput}
+                  value={inputs.percentStocks}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: PercentInputFormat }}
                   helperText="Proportion of your current and future savings that are assumed to be invested in stocks or stock equivalents."
                 />
@@ -161,8 +124,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="lifeExpectancy"
                   label="Life expectancy"
-                  value={lifeExpectancyInput}
-                  onChangeFunction={setLifeExpectancyInput}
+                  value={inputs.lifeExpectancy}
+                  onChange={handleChange}
                   helperText="Used to determine how many years of living expenses you need to cover after achieving financial independence."
                 />
               </Grid>
@@ -197,8 +160,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="stocksReturn"
                   label="Annual return on stocks"
-                  value={stocksReturnInput}
-                  onChangeFunction={setStocksReturnInput}
+                  value={inputs.stocksReturn}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: PercentInputFormat }}
                   helperText="Annual return applied to the portion of your savings assumed to be invested in stocks or stock equivalents."
                 />
@@ -207,8 +170,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="inflationRate"
                   label="Annual inflation rate"
-                  value={inflationRateInput}
-                  onChangeFunction={setInflationRateInput}
+                  value={inputs.inflationRate}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: PercentInputFormat }}
                   helperText="Rate at which your living expenses are assumed to increase every year."
                 />
@@ -217,8 +180,8 @@ export default function Assumptions(props) {
                 <AssumptionInput
                   id="taxRate"
                   label="Tax rate on withdrawals"
-                  value={taxRateInput}
-                  onChangeFunction={setTaxRateInput}
+                  value={inputs.taxRate}
+                  onChange={handleChange}
                   InputProps={{ inputComponent: PercentInputFormat }}
                   helperText="Tax rate applied to all withdrawals from savings to cover future living expenses."
                 />
@@ -232,23 +195,63 @@ export default function Assumptions(props) {
 }
 
 Assumptions.propTypes = {
-  updateInputs: PropTypes.func.isRequired,
-  monthlyExpensesInput: PropTypes.string.isRequired,
-  setMonthlyExpensesInput: PropTypes.func.isRequired,
-  percentExpensesInput: PropTypes.string.isRequired,
-  setPercentExpensesInput: PropTypes.func.isRequired,
-  monthlySavingsInput: PropTypes.string.isRequired,
-  setMonthlySavingsInput: PropTypes.func.isRequired,
-  totalSavingsInput: PropTypes.string.isRequired,
-  setTotalSavingsInput: PropTypes.func.isRequired,
-  inflationRateInput: PropTypes.string.isRequired,
-  setInflationRateInput: PropTypes.func.isRequired,
-  stocksReturnInput: PropTypes.string.isRequired,
-  setStocksReturnInput: PropTypes.func.isRequired,
-  percentStocksInput: PropTypes.string.isRequired,
-  setPercentStocksInput: PropTypes.func.isRequired,
-  lifeExpectancyInput: PropTypes.string.isRequired,
-  setLifeExpectancyInput: PropTypes.func.isRequired,
-  taxRateInput: PropTypes.string.isRequired,
-  setTaxRateInput: PropTypes.func.isRequired,
+  user: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    currentAge: PropTypes.string.isRequired,
+    monthlyExpenses: PropTypes.string.isRequired,
+    percentExpenses: PropTypes.string.isRequired,
+    monthlySavings: PropTypes.string.isRequired,
+    totalSavings: PropTypes.string.isRequired,
+    inflationRate: PropTypes.string.isRequired,
+    stocksReturn: PropTypes.string.isRequired,
+    percentStocks: PropTypes.string.isRequired,
+    lifeExpectancy: PropTypes.string.isRequired,
+    taxRate: PropTypes.string.isRequired,
+    hasResults: PropTypes.bool.isRequired,
+  }),
+  setUser: PropTypes.func.isRequired,
+};
+
+const AssumptionInput = (props) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const { id, label, value, onChange, InputProps, helperText } = props;
+
+  return (
+    <TextField
+      id={id}
+      name={id}
+      label={label}
+      value={value}
+      onChange={onChange}
+      variant="outlined"
+      InputLabelProps={{
+        shrink: true,
+      }}
+      InputProps={{
+        ...InputProps,
+        endAdornment: (
+          <InputAdornment position="end">
+            <Tooltip className={classes.tooltip} title={helperText}>
+              <HelpOutlineIcon
+                fontSize="small"
+                style={{ color: theme.palette.text.secondary }}
+              />
+            </Tooltip>
+          </InputAdornment>
+        ),
+      }}
+      fullWidth
+    />
+  );
+};
+
+AssumptionInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  InputProps: PropTypes.object, // optional
+  helperText: PropTypes.string.isRequired,
 };
