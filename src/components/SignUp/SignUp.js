@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     display: "flex",
     justifyContent: "space-evenly",
+    "& button": {
+      margin: theme.spacing(2, 1),
+    },
   },
   thanksText: {
     backgroundColor: theme.palette.secondary.main,

@@ -10,6 +10,7 @@ import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import Quiz from "./components/Quiz/Quiz";
 import Checkpoint from "./components/Checkpoint/Checkpoint";
 import SignUp from "./components/SignUp/SignUp";
@@ -86,6 +87,9 @@ export default function App() {
         <Container maxWidth="lg" className={classes.app}>
           <Switch>
             <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/quiz">
               <Quiz questions={quizContent} user={user} setUser={setUser} />
             </Route>
             <Route path="/manifesto">
@@ -102,13 +106,13 @@ export default function App() {
               </React.Fragment>
             )}
           </Switch>
-          <FeedbackModal
-            user={user}
-            setUser={setUser}
-            open={openFeedbackModal}
-            setOpen={setOpenFeedbackModal}
-          />
         </Container>
+        <FeedbackModal
+          user={user}
+          setUser={setUser}
+          open={openFeedbackModal}
+          setOpen={setOpenFeedbackModal}
+        />
       </Router>
     </ThemeProvider>
   );
