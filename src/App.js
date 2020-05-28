@@ -10,6 +10,7 @@ import amber from "@material-ui/core/colors/amber";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import Quiz from "./components/Quiz/Quiz";
 import Checkpoint from "./components/Checkpoint/Checkpoint";
 import SignUp from "./components/SignUp/SignUp";
@@ -30,33 +31,33 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    currentAge: "",
-    lifeExpectancy: "",
-    monthlyExpenses: "",
-    percentExpenses: "",
-    monthlySavings: "",
-    totalSavings: "",
-    percentStocks: "",
+    //   name: "",
+    //   email: "",
+    //   currentAge: "",
+    //   lifeExpectancy: "",
+    //   monthlyExpenses: "",
+    //   percentExpenses: "",
+    //   monthlySavings: "",
+    //   totalSavings: "",
+    //   percentStocks: "",
+    //   stocksReturn: "7",
+    //   inflationRate: "3",
+    //   taxRate: "20",
+    //   hasResults: false,
+
+    name: "Marley",
+    email: "marley@example.com",
+    currentAge: "35",
+    lifeExpectancy: "95",
+    monthlyExpenses: "4000",
+    percentExpenses: "80",
+    monthlySavings: "2000",
+    totalSavings: "250000",
+    percentStocks: "80",
     stocksReturn: "7",
     inflationRate: "3",
     taxRate: "20",
-    hasResults: false,
-
-    // name: "Marley",
-    // email: "marley@example.com",
-    // currentAge: "35",
-    // lifeExpectancy: "95",
-    // monthlyExpenses: "4000",
-    // percentExpenses: "80",
-    // monthlySavings: "2000",
-    // totalSavings: "250000",
-    // percentStocks: "80",
-    // stocksReturn: "7",
-    // inflationRate: "3",
-    // taxRate: "20",
-    // hasResults: true,
+    hasResults: true,
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
@@ -83,13 +84,13 @@ export default function App() {
           setDarkMode={setDarkMode}
           setOpenFeedbackModal={setOpenFeedbackModal}
         />
-        <Container maxWidth="lg" className={classes.app}>
-          <Switch>
-            <Route path="/" exact>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Container maxWidth="lg" className={classes.app}>
+            <Route path="/quiz">
               <Quiz questions={quizContent} user={user} setUser={setUser} />
-            </Route>
-            <Route path="/manifesto">
-              <Manifesto />
             </Route>
             {user.hasResults && (
               <React.Fragment>
@@ -101,14 +102,17 @@ export default function App() {
                 </Route>
               </React.Fragment>
             )}
-          </Switch>
-          <FeedbackModal
-            user={user}
-            setUser={setUser}
-            open={openFeedbackModal}
-            setOpen={setOpenFeedbackModal}
-          />
-        </Container>
+            <Route path="/manifesto">
+              <Manifesto />
+            </Route>
+          </Container>
+        </Switch>
+        <FeedbackModal
+          user={user}
+          setUser={setUser}
+          open={openFeedbackModal}
+          setOpen={setOpenFeedbackModal}
+        />
       </Router>
     </ThemeProvider>
   );
