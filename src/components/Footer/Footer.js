@@ -16,7 +16,7 @@ export default function Footer() {
 
   return (
     <Typography variant="body2" className={classes.footer}>
-      <Link color="inherit" href="https://dayonelabs.io/">
+      <Link color="inherit" href="https://dayonelabs.io/" target="_blank">
         Day One Labs LLC
       </Link>
       {" © "}
