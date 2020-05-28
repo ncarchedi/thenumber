@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thanksText: {
     backgroundColor: theme.palette.secondary.main,
+    marginBottom: theme.spacing(2),
     display: "inline-block",
   },
 }));
