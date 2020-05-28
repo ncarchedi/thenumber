@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: "1.8rem",
     maxWidth: theme.breakpoints.values.md - 250,
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
       lineHeight: "2.5rem",
     },
@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
   supportingText: {
     fontWeight: theme.typography.fontWeightLight,
+  },
+  finalRow: {
+    textAlign: "center",
+    marginTop: theme.spacing(10),
   },
 }));
 
@@ -56,8 +60,8 @@ export default function Home(props) {
             <Emoji symbol="👋" label="waving hand" /> What's your number?
           </Typography>
           <Typography variant="h2" className={classes.subHeader}>
-            Get the answer you really want, without banging your head against
-            the wall or giving up your privacy.
+            Determine your path to financial independence for free, without
+            giving up your privacy—or your sanity.
           </Typography>
           <BigButton
             variant="contained"
@@ -66,15 +70,15 @@ export default function Home(props) {
             endIcon={<ArrowForwardIcon />}
             onClick={handleClick}
           >
-            Get started now
+            Get my number
           </BigButton>
         </Grid>
       </Grid>
       <Grid container spacing={6} className={classes.row}>
         <Grid item xs={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
-            Answer a series of targeted questions in a conversational style,
-            with plenty of help if you need it.
+            Answer a series of targeted questions in a fun and conversational
+            style, with plenty of help if you need it.
           </Typography>
         </Grid>
         <Grid item xs={8}>
@@ -99,14 +103,30 @@ export default function Home(props) {
       <Grid container spacing={6} className={classes.row}>
         <Grid item xs={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
-            Tweak your assumptions until you feel good about your number and are
-            ready to commit.
+            Tweak your assumptions until you feel confident in your number. Then
+            commit to achieving it.
           </Typography>
         </Grid>
         <Grid item xs={8}>
           <Paper elevation={3} className={classes.imageContainer}>
             <img src="assumptions.png" alt="assumptions example" width="100%" />
           </Paper>
+        </Grid>
+      </Grid>
+      <Grid container className={classes.finalRow}>
+        <Grid item xs={12}>
+          <Typography variant="h4" gutterBottom>
+            Ready to take your first step toward financial independence?
+          </Typography>
+          <BigButton
+            variant="contained"
+            color="primary"
+            size="xl"
+            endIcon={<ArrowForwardIcon />}
+            onClick={handleClick}
+          >
+            Get my number
+          </BigButton>
         </Grid>
       </Grid>
       <Footer />
