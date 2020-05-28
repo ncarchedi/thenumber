@@ -31,33 +31,33 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [user, setUser] = useState({
-    //   name: "",
-    //   email: "",
-    //   currentAge: "",
-    //   lifeExpectancy: "",
-    //   monthlyExpenses: "",
-    //   percentExpenses: "",
-    //   monthlySavings: "",
-    //   totalSavings: "",
-    //   percentStocks: "",
-    //   stocksReturn: "7",
-    //   inflationRate: "3",
-    //   taxRate: "20",
-    //   hasResults: false,
-
-    name: "Marley",
-    email: "marley@example.com",
-    currentAge: "35",
-    lifeExpectancy: "95",
-    monthlyExpenses: "4000",
-    percentExpenses: "80",
-    monthlySavings: "2000",
-    totalSavings: "250000",
-    percentStocks: "80",
+    name: "",
+    email: "",
+    currentAge: "",
+    lifeExpectancy: "",
+    monthlyExpenses: "",
+    percentExpenses: "",
+    monthlySavings: "",
+    totalSavings: "",
+    percentStocks: "",
     stocksReturn: "7",
     inflationRate: "3",
     taxRate: "20",
-    hasResults: true,
+    hasResults: false,
+
+    // name: "Marley",
+    // email: "marley@example.com",
+    // currentAge: "35",
+    // lifeExpectancy: "95",
+    // monthlyExpenses: "4000",
+    // percentExpenses: "80",
+    // monthlySavings: "2000",
+    // totalSavings: "250000",
+    // percentStocks: "80",
+    // stocksReturn: "7",
+    // inflationRate: "3",
+    // taxRate: "20",
+    // hasResults: true,
   });
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
@@ -84,13 +84,16 @@ export default function App() {
           setDarkMode={setDarkMode}
           setOpenFeedbackModal={setOpenFeedbackModal}
         />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Container maxWidth="lg" className={classes.app}>
+        <Container maxWidth="lg" className={classes.app}>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
             <Route path="/quiz">
               <Quiz questions={quizContent} user={user} setUser={setUser} />
+            </Route>
+            <Route path="/manifesto">
+              <Manifesto />
             </Route>
             {user.hasResults && (
               <React.Fragment>
@@ -102,11 +105,8 @@ export default function App() {
                 </Route>
               </React.Fragment>
             )}
-            <Route path="/manifesto">
-              <Manifesto />
-            </Route>
-          </Container>
-        </Switch>
+          </Switch>
+        </Container>
         <FeedbackModal
           user={user}
           setUser={setUser}
