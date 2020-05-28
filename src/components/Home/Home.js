@@ -11,13 +11,19 @@ import Emoji from "../General/Emoji";
 import Footer from "../Footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
-  row: {
+  firstRow: {
+    marginTop: theme.spacing(8),
+    [theme.breakpoints.up("sm")]: {
+      marginTop: theme.spacing(15),
+    },
+  },
+  middleRow: {
     [theme.breakpoints.up("sm")]: {
       marginTop: theme.spacing(15),
     },
   },
   header: {
-    fontSize: theme.typography.h3.fontSize,
+    fontSize: theme.typography.h4.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     [theme.breakpoints.up("sm")]: {
       fontSize: theme.typography.h2.fontSize,
@@ -79,7 +85,7 @@ export default function Home(props) {
 
   return (
     <React.Fragment>
-      <Grid container spacing={6} className={classes.row}>
+      <Grid container spacing={6} className={classes.firstRow}>
         <Grid item xs={12}>
           <Typography
             variant="h2"
@@ -105,7 +111,7 @@ export default function Home(props) {
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
-      <Grid container spacing={6} className={classes.row}>
+      <Grid container spacing={6} className={classes.middleRow}>
         <Grid item xs={12} md={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
             Answer a series of questions in language you understand. It only
@@ -119,7 +125,7 @@ export default function Home(props) {
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
-      <Grid container spacing={6} className={classes.row}>
+      <Grid container spacing={6} className={classes.middleRow}>
         <Grid item xs={12} md={8}>
           <Paper elevation={3} className={classes.imageContainer}>
             <img src="results.png" alt="results example" width="100%" />
@@ -133,7 +139,7 @@ export default function Home(props) {
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
-      <Grid container spacing={6} className={classes.row}>
+      <Grid container spacing={6} className={classes.middleRow}>
         <Grid item xs={12} md={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
             Adjust your assumptions until you feel confident in your savings
