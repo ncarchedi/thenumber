@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: theme.typography.h4.fontSize,
     },
   },
+  imageContainer: {
+    backgroundColor: "inherit",
+  },
   supportingTextContainer: {
     display: "flex",
     alignItems: "center",
@@ -87,8 +90,8 @@ export default function Home(props) {
             <Emoji symbol="👋" label="waving hand" /> What's your number?
           </Typography>
           <Typography variant="h2" className={classes.subHeader}>
-            Determine your path to financial independence for free, without
-            giving up your privacy—or your sanity.
+            Determine your path to financial independence, without giving up
+            your privacy—or sanity.
           </Typography>
           <BigButton
             variant="contained"
@@ -105,8 +108,8 @@ export default function Home(props) {
       <Grid container spacing={6} className={classes.row}>
         <Grid item xs={12} md={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
-            Answer a series of targeted questions in a fun and conversational
-            style, with plenty of help if you need it.
+            Answer a series of questions in language you understand. It only
+            takes a few minutes.
           </Typography>
         </Grid>
         <Grid item xs={12} md={8}>
@@ -119,13 +122,13 @@ export default function Home(props) {
       <Grid container spacing={6} className={classes.row}>
         <Grid item xs={12} md={8}>
           <Paper elevation={3} className={classes.imageContainer}>
-            <img src="results-chart.png" alt="chart example" width="100%" />
+            <img src="results.png" alt="results example" width="100%" />
           </Paper>
         </Grid>
         <Grid item xs={12} md={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
-            Understand how much you need to save and how long it will take you
-            to save it. Plain and simple.
+            Learn how much you need to save and how long it will take to save
+            it. Plain and simple.
           </Typography>
         </Grid>
       </Grid>
@@ -133,8 +136,8 @@ export default function Home(props) {
       <Grid container spacing={6} className={classes.row}>
         <Grid item xs={12} md={4} className={classes.supportingTextContainer}>
           <Typography variant="h4" className={classes.supportingText}>
-            Tweak your assumptions until you feel confident in your number. Then
-            commit to achieving it.
+            Adjust your assumptions until you feel confident in your savings
+            goal. Then commit to achieving it.
           </Typography>
         </Grid>
         <Grid item xs={12} md={8}>
