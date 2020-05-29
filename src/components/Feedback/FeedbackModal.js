@@ -88,7 +88,12 @@ export default function FeedbackModal(props) {
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleSubmit} color="primary" variant="contained">
+        <Button
+          onClick={handleSubmit}
+          color="primary"
+          variant="contained"
+          disabled={!emailInput || !feedbackInput}
+        >
           Submit
         </Button>
       </DialogActions>
