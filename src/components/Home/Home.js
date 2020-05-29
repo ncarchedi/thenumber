@@ -102,9 +102,9 @@ export default function Home(props) {
           <BigButton
             variant="contained"
             color="primary"
-            size="xl"
             endIcon={<ArrowForwardIcon />}
             onClick={handleClick}
+            xl
           >
             Get my number
           </BigButton>
@@ -164,9 +164,9 @@ export default function Home(props) {
           <BigButton
             variant="contained"
             color="primary"
-            size="xl"
             endIcon={<ArrowForwardIcon />}
             onClick={handleClick}
+            xl
           >
             Get my number
           </BigButton>

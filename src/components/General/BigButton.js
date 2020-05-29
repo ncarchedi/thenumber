@@ -22,12 +22,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BigButton(props) {
   const classes = useStyles();
-
+  const { xl, ...others } = props;
   return (
-    <Button
-      className={props.size === "xl" ? classes.xl : classes.lg}
-      {...props}
-    >
+    <Button className={props.xl ? classes.xl : classes.lg} {...others}>
       {props.children}
     </Button>
   );
