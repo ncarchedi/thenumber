@@ -62,22 +62,22 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [openFeedbackModal, setOpenFeedbackModal] = React.useState(false);
 
-  // send updated user data to Intercom, when available
-  // might fail for user if they change their email in the same session
-  useEffect(() => {
-    user.name &&
-      window.Intercom("update", {
-        name: user.name,
-      });
-    user.email &&
-      window.Intercom("update", {
-        email: user.email,
-      });
-  }, [user.name, user.email]);
+  // // send updated user data to Intercom, when available
+  // // might fail for user if they change their email in the same session
+  // useEffect(() => {
+  //   user.name &&
+  //     window.Intercom("update", {
+  //       name: user.name,
+  //     });
+  //   user.email &&
+  //     window.Intercom("update", {
+  //       email: user.email,
+  //     });
+  // }, [user.name, user.email]);
 
-  // clear Intercom cookie on mount in case user is sharing their computer
-  // https://developers.intercom.com/installing-intercom/docs/intercom-javascript
-  useEffect(() => window.Intercom("shutdown"), []);
+  // // clear Intercom cookie on mount in case user is sharing their computer
+  // // https://developers.intercom.com/installing-intercom/docs/intercom-javascript
+  // useEffect(() => window.Intercom("shutdown"), []);
 
   const theme = createMuiTheme({
     palette: {
